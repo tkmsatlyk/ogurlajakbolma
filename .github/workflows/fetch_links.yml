@@ -1,0 +1,40 @@
+name: Fetch and Clean Free VPN Links
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Her 6 saatte bir otomatik çalışır
+  workflow_dispatch: # İstediğin zaman manuel çalıştırmak için
+
+jobs:
+  fetch-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fetch Links from Public Sources
+        run: |
+          # Toplama havuzu oluştur
+          touch raw_links.txt
+          
+          # Bilinen açık kaynaklı GitHub abonelik linklerinden verileri çekiyoruz
+          curl -s "https://raw.githubusercontent.com/freefq/free/master/v2" >> raw_links.txt
+          curl -s "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt" >> raw_links.txt
+          
+          # Sadece vless, vmess, trojan ve ss ile başlayan satırları filtrele (Bozuk formatları eler)
+          grep -E "^(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw_links.txt > filtered_links.txt || true
+          
+          # Aynı olan (tekrar eden) linkleri temizle ve benzersiz hale getir
+          sort -u filtered_links.txt > toplanan_linkler.txt
+          
+          # Geçici dosyaları temizle
+          rm -f raw_links.txt filtered_links.txt
+
+      - name: Commit and Push Clean Links
+        run: |
+          git config --global user.name "VordrBot"
+          git config --global user.email "bot@vordr.com"
+          git add toplanan_linkler.txt
+          git commit -m "Bedava link listesi guncellendi [Formatlar temizlendi]" || exit 0
+          git push
