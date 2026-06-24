@@ -13,33 +13,41 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch and Decode Links
+      - name: Fetch and Smart Decode Links
         run: |
-          touch raw_base64.txt raw_links.txt
-          
-          # Kaynaklardan verileri çek
-          curl -s "https://raw.githubusercontent.com/freefq/free/master/v2" >> raw_base64.txt || true
-          curl -s "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt" >> raw_base64.txt || true
-          curl -s "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray" >> raw_base64.txt || true
-          
-          # Satır satır oku ve her birini Base64 olarak çözmeye çalış
-          while IFS= read -r line; do
-            if [[ ! -z "$line" ]]; then
-              echo "$line" | base64 -d >> raw_links.txt 2>/dev/null || echo "$line" >> raw_links.txt
+          touch all_combined.txt
+
+          # Hem Base64 hem duz metin linkleri ayiklayan akilli fonksiyon
+          download_and_extract() {
+            local url=$1
+            curl -s "$url" > raw.txt
+            cat raw.txt | base64 -d > decoded.txt 2>/dev/null || true
+            
+            if grep -qE "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" decoded.txt; then
+              cat decoded.txt >> all_combined.txt
+            elif grep -qE "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw.txt; then
+              cat raw.txt >> all_combined.txt
             fi
-          done < raw_base64.txt
+            rm -f raw.txt decoded.txt
+          }
+
+          # Kaynak havuzlarini sirayla tara
+          download_and_extract "https://raw.githubusercontent.com/freefq/free/master/v2"
+          download_and_extract "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt"
+          download_and_extract "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray"
+          download_and_extract "https://raw.githubusercontent.com/tubaoshu/sub/main/v2ray"
+
+          # Protokolleri suz, Windows satir sonlarini (\r) temizle ve sirala
+          grep -E "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" all_combined.txt > filtered.txt || true
+          sed -i 's/\r//g' filtered.txt
+          sort -u filtered.txt > toplanan_linkler.txt
           
-          # Protokolleri filtrele ve temizle
-          grep -E "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw_links.txt > filtered_links.txt || true
-          sort -u filtered_links.txt > toplanan_linkler.txt
-          
-          # Geçici temizlik
-          rm -f raw_base64.txt raw_links.txt filtered_links.txt
+          rm -f all_combined.txt filtered.txt
 
       - name: Commit and Push Clean Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
-          git commit -m "Bedava link listesi guncellendi [Base64 Cozuldu]" || true
+          git commit -m "Bedava link listesi guncellendi [Akilli Decode]" || true
           git push || true
