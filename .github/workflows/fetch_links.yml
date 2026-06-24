@@ -1,7 +1,7 @@
 name: Fetch and Clean Free VPN Links
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '*/30 * * * *' # HER 30 DAKİKADA BİR otomatik çalışır ve taze linkleri yakalar!
   workflow_dispatch:
 
 jobs:
@@ -13,41 +13,45 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch and Smart Decode Links
+      - name: Fetch Anlik Taze Links
         run: |
-          touch all_combined.txt
+          # Eski bayat linkleri tamamen uçuruyoruz
+          > toplanan_linkler.txt
+          touch temp_raw.txt
 
-          # Hem Base64 hem duz metin linkleri ayiklayan akilli fonksiyon
-          download_and_extract() {
-            local url=$1
-            curl -s "$url" > raw.txt
-            cat raw.txt | base64 -d > decoded.txt 2>/dev/null || true
-            
-            if grep -qE "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" decoded.txt; then
-              cat decoded.txt >> all_combined.txt
-            elif grep -qE "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw.txt; then
-              cat raw.txt >> all_combined.txt
-            fi
-            rm -f raw.txt decoded.txt
-          }
+          # Dakikalık ve anlık güncellenen, en taze proxy scrapers (kazıyıcılar)
+          URLS=(
+            "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
+            "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray"
+            "https://raw.githubusercontent.com/freefq/free/master/v2"
+            "https://raw.githubusercontent.com/shif6/v2ray-free/master/v2ray"
+          )
 
-          # Kaynak havuzlarini sirayla tara
-          download_and_extract "https://raw.githubusercontent.com/freefq/free/master/v2"
-          download_and_extract "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt"
-          download_and_extract "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray"
-          download_and_extract "https://raw.githubusercontent.com/tubaoshu/sub/main/v2ray"
+          for url in "${URLS[@]}"; do
+            curl -s --max-time 10 "$url" > single_raw.txt
+            # Eğer Base64 şifreliyse çöz, düz metinse aynen al
+            cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null || cat single_raw.txt > single_decoded.txt
+            cat single_decoded.txt >> temp_raw.txt
+          done
 
-          # Protokolleri suz, Windows satir sonlarini (\r) temizle ve sirala
-          grep -E "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" all_combined.txt > filtered.txt || true
+          # Sadece geçerli protokol satırlarını filtrele
+          grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_raw.txt > filtered.txt || true
+          
+          # Windows satır sonlarını (\r) temizle ve mükerrerleri silerek sırala
           sed -i 's/\r//g' filtered.txt
           sort -u filtered.txt > toplanan_linkler.txt
           
-          rm -f all_combined.txt filtered.txt
+          # Temizlik
+          rm -f single_raw.txt single_decoded.txt temp_raw.txt filtered.txt
 
-      - name: Commit and Push Clean Links
+      - name: Commit and Push Anlik Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
-          git commit -m "Bedava link listesi guncellendi [Akilli Decode]" || true
-          git push || true
+          
+          # Sadece dosya doluysa ve gerçekten yeni bir şeyler geldiyse dakikalık zaman damgasıyla yükle
+          if [ -s toplanan_linkler.txt ]; then
+            git commit -m "Anlik taptaze linkler yuklendi: $(date +'%H:%M:%S')"
+            git push
+          fi
