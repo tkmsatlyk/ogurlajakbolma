@@ -1,4 +1,4 @@
-name: Fetch and Clean Free VPN Links
+name: Fetch and Clean Free VPN Link
 on:
   schedule:
     - cron: '*/30 * * * *' # HER 30 DAKİKADA BİR otomatik çalışır ve taze linkleri yakalar!
