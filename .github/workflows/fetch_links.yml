@@ -1,7 +1,7 @@
 name: Fetch and Clean Free VPN Links
 on:
   schedule:
-    - cron: '*/30 * * * *' # Yarım saatte bir tazelemek için otomatik çalışır
+    - cron: '*/30 * * * *' # Her 30 dakikada bir en taze düşenleri yakalar
   workflow_dispatch:
 
 jobs:
@@ -13,53 +13,52 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch Pure Just Delivered Links
+      - name: Fetch Realtime Live Links
         run: |
-          # Eski bayat ve hatalı verileri sıfırla
+          # Eski listeyi tamamen sıfırla, bayat tek bir satır kalmasın
           > toplanan_linkler.txt
-          touch temp_raw.txt
+          touch temp_live.txt
 
-          # 404 vermeyen, anlık güncellenen en taze aktif havuzlar
+          # Telegram ve anlık havuzlardan saniyelik proxy çeken canlı API ve büyük scraper adresleri
           URLS=(
-            "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray"
-            "https://raw.githubusercontent.com/freefq/free/master/v2"
-            "https://raw.githubusercontent.com/shif6/v2ray-free/master/v2ray"
-            "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt"
+            "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
+            "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt"
+            "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge.txt"
+            "https://raw.githubusercontent.com/awesome-vpn/vpn/master/v2ray"
           )
 
           for url in "${URLS[@]}"; do
-            # 404 veya 500 gibi sunucu hatalarını içeriğe yazdırmamak için --fail parametresi ekledik!
+            # Hatalı siteleri es geç, veriyi çek
             curl -sL --fail --max-time 15 "$url" > single_raw.txt || continue
             
-            # 404 yazısı içermediğinden ve dosyanın boş olmadığından emin ol
             if [ -s single_raw.txt ] && ! grep -q "Not Found" single_raw.txt; then
-              # İçerik Base64 ise çöz, düz metinse aynen ekle
+              # Base64 korumalı kontrol ve decode işlemi
               if cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null; then
-                cat single_decoded.txt >> temp_raw.txt
+                cat single_decoded.txt >> temp_live.txt
               else
-                cat single_raw.txt >> temp_raw.txt
+                cat single_raw.txt >> temp_live.txt
               fi
             fi
           done
 
-          # Satırda protokol içerenleri yakala (Kırık "404:" yazılarını tamamen eler)
-          grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_raw.txt > filtered.txt || true
+          # Sadece geçerli, canlı protokol formatlarını süz (404 veya çöp metinleri engeller)
+          grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_live.txt > filtered.txt || true
           
-          # Satır sonlarını temizle ve benzersizleri sırala
+          # Windows satır sonlarını uçur ve mükerrerleri silerek temizle
           sed -i 's/\r//g' filtered.txt
           sort -u filtered.txt > toplanan_linkler.txt
           
-          # Geçici dosyaları uçur
-          rm -f single_raw.txt single_decoded.txt temp_raw.txt filtered.txt
+          # Geçici dosyaları temizle
+          rm -f single_raw.txt single_decoded.txt temp_live.txt filtered.txt
 
-      - name: Commit and Push Taptaze Links
+      - name: Commit and Push Realtime Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          # Sadece dosya doluysa anlık saat damgasıyla push et
+          # Eğer dosya başarıyla dolduysa anlık saatle push et
           if [ -s toplanan_linkler.txt ]; then
-            git commit -m "Anlik taptaze teslimat yuklendi: $(date +'%H:%M:%S')"
+            git commit -m "Saniyelik taze havuz yuklendi: $(date +'%H:%M:%S')"
             git push
           fi
