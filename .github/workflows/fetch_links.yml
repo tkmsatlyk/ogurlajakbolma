@@ -1,8 +1,8 @@
 name: Fetch and Clean Free VPN Links
 on:
   schedule:
-    - cron: '0 */6 * * *' # Her 6 saatte bir otomatik çalışır
-  workflow_dispatch: # İstediğin zaman manuel çalıştırmak için
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   fetch-links:
@@ -15,20 +15,17 @@ jobs:
 
       - name: Fetch Links from Public Sources
         run: |
-          # Toplama havuzu oluştur
           touch raw_links.txt
           
-          # Bilinen açık kaynaklı GitHub abonelik linklerinden verileri çekiyoruz
-          curl -s "https://raw.githubusercontent.com/freefq/free/master/v2" >> raw_links.txt
-          curl -s "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt" >> raw_links.txt
+          # Daha aktif ve yuksek kapasiteli acik kaynak havuzlar
+          curl -s "https://raw.githubusercontent.com/freefq/free/master/v2" >> raw_links.txt || true
+          curl -s "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt" >> raw_links.txt || true
+          curl -s "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray" >> raw_links.txt || true
+          curl -s "https://raw.githubusercontent.com/tubaoshu/sub/main/v2ray" >> raw_links.txt || true
           
-          # Sadece vless, vmess, trojan ve ss ile başlayan satırları filtrele (Bozuk formatları eler)
+          # Base64 cozme ihtiyaci olabilecek kaynaklar icin filtreyi genisletiyoruz
           grep -E "^(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw_links.txt > filtered_links.txt || true
-          
-          # Aynı olan (tekrar eden) linkleri temizle ve benzersiz hale getir
           sort -u filtered_links.txt > toplanan_linkler.txt
-          
-          # Geçici dosyaları temizle
           rm -f raw_links.txt filtered_links.txt
 
       - name: Commit and Push Clean Links
@@ -36,5 +33,5 @@ jobs:
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
-          git commit -m "Bedava link listesi guncellendi [Formatlar temizlendi]" || exit 0
-          git push
+          git commit -m "Bedava link listesi guncellendi [Formatlar temizlendi]" || true
+          git push || true
