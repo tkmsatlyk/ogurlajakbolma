@@ -1,7 +1,7 @@
 name: Fetch and Clean Free VPN Links
 on:
   schedule:
-    - cron: '*/30 * * * *' # Her 30 dakikada bir otomatik çalışır, taze olanı kapar!
+    - cron: '*/30 * * * *' # Yarım saatte bir tazelemek için otomatik çalışır
   workflow_dispatch:
 
 jobs:
@@ -13,35 +13,39 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch Just Delivered Links
+      - name: Fetch Pure Just Delivered Links
         run: |
-          # Geçmişten kalan her şeyi tamamen sıfırla, bayat veri kalmasın
+          # Eski bayat ve hatalı verileri sıfırla
           > toplanan_linkler.txt
           touch temp_raw.txt
 
-          # Anlık, saniyelik düşen taze link havuzları (Özel Scraper API'leri)
+          # 404 vermeyen, anlık güncellenen en taze aktif havuzlar
           URLS=(
-            "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
-            "https://raw.githubusercontent.com/shif6/v2ray-free/master/v2ray"
             "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray"
             "https://raw.githubusercontent.com/freefq/free/master/v2"
+            "https://raw.githubusercontent.com/shif6/v2ray-free/master/v2ray"
+            "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt"
           )
 
           for url in "${URLS[@]}"; do
-            curl -s --max-time 15 "$url" > single_raw.txt
+            # 404 veya 500 gibi sunucu hatalarını içeriğe yazdırmamak için --fail parametresi ekledik!
+            curl -sL --fail --max-time 15 "$url" > single_raw.txt || continue
             
-            # İçerik şifreli Base64 ise çöz, düz metinse aynen aktar
-            if cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null; then
-              cat single_decoded.txt >> temp_raw.txt
-            else
-              cat single_raw.txt >> temp_raw.txt
+            # 404 yazısı içermediğinden ve dosyanın boş olmadığından emin ol
+            if [ -s single_raw.txt ] && ! grep -q "Not Found" single_raw.txt; then
+              # İçerik Base64 ise çöz, düz metinse aynen ekle
+              if cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null; then
+                cat single_decoded.txt >> temp_raw.txt
+              else
+                cat single_raw.txt >> temp_raw.txt
+              fi
             fi
           done
 
-          # Satırın neresinde olursa olsun vless, vmess, trojan, ss, hysteria, tuic içerenleri süz
+          # Satırda protokol içerenleri yakala (Kırık "404:" yazılarını tamamen eler)
           grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_raw.txt > filtered.txt || true
           
-          # Windows satır sonlarını temizle ve aynı olanları silerek sırala
+          # Satır sonlarını temizle ve benzersizleri sırala
           sed -i 's/\r//g' filtered.txt
           sort -u filtered.txt > toplanan_linkler.txt
           
@@ -54,8 +58,8 @@ jobs:
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          # Sadece dosya gerçekten doluysa anlık saatle commit et
+          # Sadece dosya doluysa anlık saat damgasıyla push et
           if [ -s toplanan_linkler.txt ]; then
-            git commit -m "Az once teslim edilenler yuklendi: $(date +'%H:%M:%S')"
+            git commit -m "Anlik taptaze teslimat yuklendi: $(date +'%H:%M:%S')"
             git push
           fi
