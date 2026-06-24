@@ -1,7 +1,7 @@
-name: Fetch and Clean Free VPN Link
+name: Fetch and Clean Free VPN Links
 on:
   schedule:
-    - cron: '*/30 * * * *' # HER 30 DAKİKADA BİR otomatik çalışır ve taze linkleri yakalar!
+    - cron: '*/30 * * * *' # Her 30 dakikada bir otomatik çalışır, taze olanı kapar!
   workflow_dispatch:
 
 jobs:
@@ -13,45 +13,49 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch Anlik Taze Links
+      - name: Fetch Just Delivered Links
         run: |
-          # Eski bayat linkleri tamamen uçuruyoruz
+          # Geçmişten kalan her şeyi tamamen sıfırla, bayat veri kalmasın
           > toplanan_linkler.txt
           touch temp_raw.txt
 
-          # Dakikalık ve anlık güncellenen, en taze proxy scrapers (kazıyıcılar)
+          # Anlık, saniyelik düşen taze link havuzları (Özel Scraper API'leri)
           URLS=(
             "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
+            "https://raw.githubusercontent.com/shif6/v2ray-free/master/v2ray"
             "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray"
             "https://raw.githubusercontent.com/freefq/free/master/v2"
-            "https://raw.githubusercontent.com/shif6/v2ray-free/master/v2ray"
           )
 
           for url in "${URLS[@]}"; do
-            curl -s --max-time 10 "$url" > single_raw.txt
-            # Eğer Base64 şifreliyse çöz, düz metinse aynen al
-            cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null || cat single_raw.txt > single_decoded.txt
-            cat single_decoded.txt >> temp_raw.txt
+            curl -s --max-time 15 "$url" > single_raw.txt
+            
+            # İçerik şifreli Base64 ise çöz, düz metinse aynen aktar
+            if cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null; then
+              cat single_decoded.txt >> temp_raw.txt
+            else
+              cat single_raw.txt >> temp_raw.txt
+            fi
           done
 
-          # Sadece geçerli protokol satırlarını filtrele
+          # Satırın neresinde olursa olsun vless, vmess, trojan, ss, hysteria, tuic içerenleri süz
           grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_raw.txt > filtered.txt || true
           
-          # Windows satır sonlarını (\r) temizle ve mükerrerleri silerek sırala
+          # Windows satır sonlarını temizle ve aynı olanları silerek sırala
           sed -i 's/\r//g' filtered.txt
           sort -u filtered.txt > toplanan_linkler.txt
           
-          # Temizlik
+          # Geçici dosyaları uçur
           rm -f single_raw.txt single_decoded.txt temp_raw.txt filtered.txt
 
-      - name: Commit and Push Anlik Links
+      - name: Commit and Push Taptaze Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          # Sadece dosya doluysa ve gerçekten yeni bir şeyler geldiyse dakikalık zaman damgasıyla yükle
+          # Sadece dosya gerçekten doluysa anlık saatle commit et
           if [ -s toplanan_linkler.txt ]; then
-            git commit -m "Anlik taptaze linkler yuklendi: $(date +'%H:%M:%S')"
+            git commit -m "Az once teslim edilenler yuklendi: $(date +'%H:%M:%S')"
             git push
           fi
