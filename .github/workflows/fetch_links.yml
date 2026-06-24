@@ -13,25 +13,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch Links from Public Sources
+      - name: Fetch and Decode Links
         run: |
-          touch raw_links.txt
+          touch raw_base64.txt raw_links.txt
           
-          # Daha aktif ve yuksek kapasiteli acik kaynak havuzlar
-          curl -s "https://raw.githubusercontent.com/freefq/free/master/v2" >> raw_links.txt || true
-          curl -s "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt" >> raw_links.txt || true
-          curl -s "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray" >> raw_links.txt || true
-          curl -s "https://raw.githubusercontent.com/tubaoshu/sub/main/v2ray" >> raw_links.txt || true
+          # Kaynaklardan verileri çek
+          curl -s "https://raw.githubusercontent.com/freefq/free/master/v2" >> raw_base64.txt || true
+          curl -s "https://raw.githubusercontent.com/vfarid/v2ray-share/main/all_links.txt" >> raw_base64.txt || true
+          curl -s "https://raw.githubusercontent.com/w1770946466/Auto_Proxy/main/Long_live_v2ray" >> raw_base64.txt || true
           
-          # Base64 cozme ihtiyaci olabilecek kaynaklar icin filtreyi genisletiyoruz
-          grep -E "^(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw_links.txt > filtered_links.txt || true
+          # Satır satır oku ve her birini Base64 olarak çözmeye çalış
+          while IFS= read -r line; do
+            if [[ ! -z "$line" ]]; then
+              echo "$line" | base64 -d >> raw_links.txt 2>/dev/null || echo "$line" >> raw_links.txt
+            fi
+          done < raw_base64.txt
+          
+          # Protokolleri filtrele ve temizle
+          grep -E "(vless:\/\/|vmess:\/\/|trojan:\/\/|ss:\/\/)" raw_links.txt > filtered_links.txt || true
           sort -u filtered_links.txt > toplanan_linkler.txt
-          rm -f raw_links.txt filtered_links.txt
+          
+          # Geçici temizlik
+          rm -f raw_base64.txt raw_links.txt filtered_links.txt
 
       - name: Commit and Push Clean Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
-          git commit -m "Bedava link listesi guncellendi [Formatlar temizlendi]" || true
+          git commit -m "Bedava link listesi guncellendi [Base64 Cozuldu]" || true
           git push || true
