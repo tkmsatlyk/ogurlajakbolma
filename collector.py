@@ -1,16 +1,17 @@
 import urllib.request
+import re
 
 # 1. ADIM: Senin o şanlı imzan
 HEADER = """#profile-title: 《_🜲 VØRÐR 🔱_》
 #profile-update-interval: 1
 #support-url: 
 #profile-web-page-url: 
-#announce: 《_🜲 VØRÐR 🔱_》⚠️ Canli ve Sınırsız VIP Havuz 🚨
+#announce: 《_🜲 VØRÐR 🔱_》⚠️ Telegram & GitHub VIP Canli Havuz 🚨
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 """
 
-# O büyük abonelik sahiplerinin beslendiği EN BÜYÜK ana GitHub havuzları
-RAW_SOURCES = [
+# EN AKTİF GİTHUB HAVUZLARI
+GITHUB_SOURCES = [
     "https://raw.githubusercontent.com/ShadowException/VPN/main/configs/VPN-cat",
     "https://raw.githubusercontent.com/wuyuncuo/Compiled-Sub/main/v2ray.txt",
     "https://raw.githubusercontent.com/asfytw/v2ray-share/main/all_links.txt",
@@ -20,37 +21,62 @@ RAW_SOURCES = [
     "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge.txt"
 ]
 
+# 7/24 TAZE LİNK AKAN TELEGRAM KANALLARI (API anahtarsız gizli kazıma yöntemi)
+TELEGRAM_CHANNELS = [
+    "https://t.me/s/v2rayng_org",
+    "https://t.me/s/v2rayng_vpn",
+    "https://t.me/s/FreeVlessVpn",
+    "https://t.me/s/V2rayNG_VPNN",
+    "https://t.me/s/v2ray_outlineee",
+    "https://t.me/s/vmess_vless_v2ray",
+    "https://t.me/s/Shadowsocks_v2ray"
+]
+
 def main():
-    print("[+] Garanti satır motoru başlatıldı...")
-    final_links = []
+    print("[+] VØRÐR Hibrit Motor Başlatıldı...")
+    collected_lines = []
     
-    # Tüm kaynaklardan verileri indir ve satır satır oku
-    for url in RAW_SOURCES:
+    # --- GİTHUB KAYNAKLARINI SÖMÜR ---
+    for url in GITHUB_SOURCES:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=15) as response:
+            with urllib.request.urlopen(req, timeout=12) as response:
                 lines = response.read().decode('utf-8', errors='ignore').splitlines()
-                
                 for line in lines:
-                    clean_line = line.strip()
-                    # Satırın içinde vless://, vmess:// veya genel olarak :// varsa ve boş değilse al
-                    if "://" in clean_line and not clean_line.startswith("#"):
-                        final_links.append(clean_line)
-        except Exception as e:
-            print(f"[-] Kaynak çekilemedi: {url}")
+                    clean = line.strip()
+                    if "://" in clean and not clean.startswith("#") and len(clean) > 15:
+                        collected_lines.append(clean)
+        except:
+            continue
 
-    # Aynı olan (mükerrer) linkleri temizle
-    unique_links = list(set(final_links))
+    # --- TELEGRAM KANALLARINI KAZI ---
+    # Telegram kanallarının son mesajlarını tarayıp içindeki linkleri cımbızla çeker
+    for url in TELEGRAM_CHANNELS:
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+            with urllib.request.urlopen(req, timeout=12) as response:
+                html_content = response.read().decode('utf-8', errors='ignore')
+                
+                # HTML kodunun içinden protokolleri eksiksiz yakalayan Regex
+                pattern = r'(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/[^\s"\'<>\n\r\t]+'
+                links = re.findall(pattern, html_content, re.IGNORECASE)
+                for link in links:
+                    if len(link) > 15:
+                        collected_lines.append(link)
+        except:
+            continue
 
-    print(f"[+] Filtresiz tam {len(unique_links)} adet GERÇEK LİNK listeye yazılıyor!")
+    # --- AYNI OLANLARI SİL VE TEMİZLE ---
+    unique_links = list(set(collected_lines))
+    print(f"[+] Toplam {len(unique_links)} adet eşsiz link havuzda birleştirildi.")
 
-    # Dosyayı sıfırla, başlığı mühürle ve TÜM linkleri doğrudan bas
+    # --- DOSYAYA YAZ ---
     with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
         f.write(HEADER)
         for link in unique_links:
             f.write(link + "\n")
             
-    print("[+] 'toplanan_linkler.txt' binlerce gerçek linkle dolduruldu!")
+    print("[+] 'toplanan_linkler.txt' başarıyla güncellendi!")
 
 if __name__ == "__main__":
     main()
