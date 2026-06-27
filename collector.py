@@ -1,5 +1,4 @@
 import urllib.request
-import re
 
 # 1. ADIM: Senin o şanlı imzan
 HEADER = """#profile-title: 《_🜲 VØRÐR 🔱_》
@@ -22,26 +21,28 @@ RAW_SOURCES = [
 ]
 
 def main():
-    print("[+] Sınırsız toplayıcı motor başlatıldı...")
-    all_raw_text = ""
+    print("[+] Garanti satır motoru başlatıldı...")
+    final_links = []
     
-    # Tüm kaynaklardan ham verileri indir
+    # Tüm kaynaklardan verileri indir ve satır satır oku
     for url in RAW_SOURCES:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
             with urllib.request.urlopen(req, timeout=15) as response:
-                all_raw_text += response.read().decode('utf-8', errors='ignore') + "\n"
+                lines = response.read().decode('utf-8', errors='ignore').splitlines()
+                
+                for line in lines:
+                    clean_line = line.strip()
+                    # Satırın içinde vless://, vmess:// veya genel olarak :// varsa ve boş değilse al
+                    if "://" in clean_line and not clean_line.startswith("#"):
+                        final_links.append(clean_line)
         except Exception as e:
             print(f"[-] Kaynak çekilemedi: {url}")
 
-    # En geniş yakalama formülü (Hepsini filtrelemeden toplar)
-    pattern = r'(vless|vmess|trojan|ss|ssr|hysteria|tuic)://[^\s"\'<>]+'
-    extracted_links = re.findall(pattern, all_raw_text, re.IGNORECASE)
-    
-    # Aynı olan linkleri temizle
-    unique_links = list(set(extracted_links))
+    # Aynı olan (mükerrer) linkleri temizle
+    unique_links = list(set(final_links))
 
-    print(f"[+] Filtresiz tam {len(unique_links)} adet link listeye yazılıyor!")
+    print(f"[+] Filtresiz tam {len(unique_links)} adet GERÇEK LİNK listeye yazılıyor!")
 
     # Dosyayı sıfırla, başlığı mühürle ve TÜM linkleri doğrudan bas
     with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
@@ -49,7 +50,7 @@ def main():
         for link in unique_links:
             f.write(link + "\n")
             
-    print("[+] 'toplanan_linkler.txt' binlerce linkle dolduruldu!")
+    print("[+] 'toplanan_linkler.txt' binlerce gerçek linkle dolduruldu!")
 
 if __name__ == "__main__":
     main()
