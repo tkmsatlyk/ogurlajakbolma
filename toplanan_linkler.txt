@@ -2,5 +2,5 @@
 #profile-update-interval: 0
 #support-url: 
 #profile-web-page-url: 
-#announce: 《_🜲 VØRÐR 🔱_》⚠️ Sadece Zırhlı Cloudflare VIP Havuzu 🚨
+#announce: 《_🜲 VØRÐR 🔱_》⚠️ Kripto Çözücü Zırhlı VIP Havuz 🚨
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
