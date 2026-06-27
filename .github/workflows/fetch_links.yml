@@ -1,7 +1,7 @@
 name: Fetch and Clean Free VPN Links
 on:
   schedule:
-    - cron: '*/30 * * * *' # Her 30 dakikada bir en taze düşenleri yakalar
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,21 +13,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set UTF-8 Locale
+        run: |
+          # Emojilerin ve özel karakterlerin patlamaması için sunucuyu UTF-8 moduna alıyoruz
+          sudo locale-gen tr_TR.UTF-8
+          export LANG=tr_TR.UTF-8
+          export LC_ALL=tr_TR.UTF-8
+
       - name: Fetch and Header Injection
         run: |
-          # 1. Aşama: Dosyayı sıfırla ve senin özel yazılarını EN BAŞA çak!
+          export LANG=tr_TR.UTF-8
+          export LC_ALL=tr_TR.UTF-8
+
+          # Dosyayı sıfırla ve senin o özel metinlerini mühürle
           cat << 'EOF' > toplanan_linkler.txt
-#profile-title: ✍şatlyk🜲.com🗿
+#profile-title: 《_🜲 VØRÐR 🔱_》
 #profile-update-interval: 1
 #support-url: 
 #profile-web-page-url: 
-#announce: ✍şatlyk🜲.com⚠️tarafından⚡️ yasalan getir🪪 bot 🚨
+#announce: 《_🜲 VØRÐR 🔱_》⚠️ tarafından ⚡️ yasalan getir 🪪 bot 🚨
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 EOF
 
           touch temp_live.txt
 
-          # Canlı proxy havuzları
+          # Büyük canlı proxy havuzları
           URLS=(
             "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
             "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt"
@@ -47,20 +57,21 @@ EOF
             fi
           done
 
-          # Geçerli protokol satırlarını süz
+          # Geçerli VPN protokollerini süz
           grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_live.txt > filtered_proto.txt || true
           
-          # Sadece 443 ve 80 portuna sahip olan linkleri ayıkla
+          # SADECE 443 VE 80 PORTLARINI AYIKLA
+          # Link yapısına göre portları nokta atışı çeker
           grep -E "(:443|:80)[^0-9]" filtered_proto.txt > filtered_ports.txt || true
           
-          # Windows satır sonlarını temizle ve mükerrerleri silerek sırala
+          # Satır sonlarını temizle ve benzersiz olanları sırala
           sed -i 's/\r//g' filtered_ports.txt
           sort -u filtered_ports.txt > sorted_links.txt
           
-          # 2. Aşama: Ayıklanan taze linkleri, o silinmez yazıların ALTINA ekle
+          # Linkleri senin o silinmez başlığının tam altına ekle
           cat sorted_links.txt >> toplanan_linkler.txt
           
-          # Geçici dosyaları temizle
+          # Geçici çöp dosyaları temizle
           rm -f single_raw.txt single_decoded.txt temp_live.txt filtered_proto.txt filtered_ports.txt sorted_links.txt
 
       - name: Commit and Push VIP Links with Header
@@ -69,8 +80,10 @@ EOF
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          # Dosyada sadece senin yazdığın başlıklar değil, link de varsa push et
-          if [ $(wc -l < toplanan_linkler.txt) -gt 7 ]; then
-            git commit -m "Satlyk Özel Başlıklı Havuz Güncellendi: $(date +'%H:%M:%S')"
+          # Dosya sadece senin başlığından ibaret değilse (link eklendiyse) push et
+          if [ $(wc -l < toplanan_linkler.txt) -gt 6 ]; then
+            git commit -m "Vordr VIP Havuz Guncellendi: $(date +'%H:%M:%S')"
             git push
+          else
+            echo "Eklenecek port 443/80 link bulunamadı veya havuz boş."
           fi
