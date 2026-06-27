@@ -22,13 +22,16 @@ jobs:
         run: |
           python collector.py
 
-      - name: Commit and Push VIP Links
+      - name: Commit and Force Push VIP Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
+          
+          # Dosyayı kesin olarak Git takibine ekle
           git add toplanan_linkler.txt
           
-          if [ $(wc -l < toplanan_linkler.txt) -gt 6 ]; then
-            git commit -m "Vordr Motoru Genis Portlarla Calistirildi: $(date +'%H:%M:%S')"
-            git push
-          fi
+          # Saat ve tarih mühürlü yeni bir commit mesajı oluştur (Her saniye değişeceği için Git farkı zorunlu hissedecek)
+          git commit -m "VIP Havuzu Zorunlu Yenilendi: $(date +'%d-%m-%Y %H:%M:%S')"
+          
+          # Değişikliği ana sunucuya zorla gönder
+          git push origin main
