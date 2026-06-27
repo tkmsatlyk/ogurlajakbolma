@@ -1,3 +1,9 @@
+#profile-title: ✍şatlyk🜲.com🗿
+#profile-update-interval: 1
+#support-url: 
+#profile-web-page-url: 
+#announce: ✍şatlyk🜲.com⚠️tarafından⚡️ yasalan getir🪪 bot 🚨
+#subscription-userinfo: upload=0; download=0; total=0; expire=0
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo0SHViMmY5SnloRUN5QXEyT3BtME5T@51.79.161.232:443#%F0%9F%87%B8%F0%9F%87%ACSG-51.79.161.232-9043
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo0YTJyZml4b3BoZGpmZmE4S1ZBNEFh@193.29.139.206:8080#%F0%9F%87%B3%F0%9F%87%B1NL-193.29.139.206-0212
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo0YlNMVkhieFEyc245@107.172.102.90:5997#%F0%9F%87%BA%F0%9F%87%B8US-107.172.102.90-0044
