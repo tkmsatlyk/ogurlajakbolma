@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,16 +24,18 @@ jobs:
         run: |
           python collector.py
 
-      - name: Commit and Force Push VIP Links
+      - name: Commit and Push VIP Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           
-          # Dosyayı kesin olarak Git takibine ekle
+          # Dosyayı takibe al
           git add toplanan_linkler.txt
           
-          # Saat ve tarih mühürlü yeni bir commit mesajı oluştur (Her saniye değişeceği için Git farkı zorunlu hissedecek)
-          git commit -m "VIP Havuzu Zorunlu Yenilendi: $(date +'%d-%m-%Y %H:%M:%S')"
-          
-          # Değişikliği ana sunucuya zorla gönder
-          git push origin main
+          # Eğer dosyada gerçekten bir değişiklik varsa commit et ve standart pushla
+          if ! git diff --cached --quiet; then
+            git commit -m "Zirhli Cloudflare VIP Havuzu Yenilendi: $(date +'%H:%M:%S')"
+            git push origin HEAD:main
+          else
+            echo "[-] Degisiklik yok, push atilmiyor."
+          fi
