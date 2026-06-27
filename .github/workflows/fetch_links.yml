@@ -13,13 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch and Filter Port 443 and 80 Links
+      - name: Fetch and Header Injection
         run: |
-          # Eski listeyi sıfırla
-          > toplanan_linkler.txt
+          # 1. Aşama: Dosyayı sıfırla ve senin özel yazılarını EN BAŞA çak!
+          cat << 'EOF' > toplanan_linkler.txt
+#profile-title: ✍şatlyk🜲.com🗿
+#profile-update-interval: 1
+#support-url: 
+#profile-web-page-url: 
+#announce: ✍şatlyk🜲.com⚠️tarafından⚡️ yasalan getir🪪 bot 🚨
+#subscription-userinfo: upload=0; download=0; total=0; expire=0
+EOF
+
           touch temp_live.txt
 
-          # Canlı ve devasa proxy havuzları
+          # Canlı proxy havuzları
           URLS=(
             "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
             "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt"
@@ -39,27 +47,30 @@ jobs:
             fi
           done
 
-          # 1. Aşama: Geçerli protokol satırlarını süz
+          # Geçerli protokol satırlarını süz
           grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_live.txt > filtered_proto.txt || true
           
-          # 2. Aşama: Regex ile Sadece :443 ve :80 portuna sahip olan linkleri cımbızla çek
-          # Bu komut linkin içindeki IP veya Domain'den sonra gelen ":443" veya ":80" kalıbını arar
+          # Sadece 443 ve 80 portuna sahip olan linkleri ayıkla
           grep -E "(:443|:80)[^0-9]" filtered_proto.txt > filtered_ports.txt || true
           
-          # Satır sonlarını temizle ve mükerrerleri silerek sırala
+          # Windows satır sonlarını temizle ve mükerrerleri silerek sırala
           sed -i 's/\r//g' filtered_ports.txt
-          sort -u filtered_ports.txt > toplanan_linkler.txt
+          sort -u filtered_ports.txt > sorted_links.txt
           
-          # Geçici dosyaları uçur
-          rm -f single_raw.txt single_decoded.txt temp_live.txt filtered_proto.txt filtered_ports.txt
+          # 2. Aşama: Ayıklanan taze linkleri, o silinmez yazıların ALTINA ekle
+          cat sorted_links.txt >> toplanan_linkler.txt
+          
+          # Geçici dosyaları temizle
+          rm -f single_raw.txt single_decoded.txt temp_live.txt filtered_proto.txt filtered_ports.txt sorted_links.txt
 
-      - name: Commit and Push VIP Port Links
+      - name: Commit and Push VIP Links with Header
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          if [ -s toplanan_linkler.txt ]; then
-            git commit -m "Sadece 443 ve 80 Portlu taze linkler yuklendi: $(date +'%H:%M:%S')"
+          # Dosyada sadece senin yazdığın başlıklar değil, link de varsa push et
+          if [ $(wc -l < toplanan_linkler.txt) -gt 7 ]; then
+            git commit -m "Satlyk Özel Başlıklı Havuz Güncellendi: $(date +'%H:%M:%S')"
             git push
           fi
