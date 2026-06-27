@@ -1,74 +1,34 @@
-import urllib.request
-import re
+name: Fetch and Clean Free VPN Links
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
 
-# 1. ADIM: Senin o asla silinmeyecek özel imzan (Güncel Markan ile)
-HEADER = """#profile-title: 《_🜲 VØRÐR 🔱_》
-#profile-update-interval: 1
-#support-url: 
-#profile-web-page-url: 
-#announce: 《_🜲 VØRÐR 🔱_》⚠️ tarafından ⚡️ yasalan getir 🪪 bot 🚨
-#subscription-userinfo: upload=0; download=0; total=0; expire=0
-"""
+jobs:
+  fetch-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-# 2. ADIM: O büyük abonelik sahiplerinin beslendiği ana GitHub havuzları
-RAW_SOURCES = [
-    "https://raw.githubusercontent.com/ShadowException/VPN/main/configs/VPN-cat",
-    "https://raw.githubusercontent.com/wuyuncuo/Compiled-Sub/main/v2ray.txt",
-    "https://raw.githubusercontent.com/asfytw/v2ray-share/main/all_links.txt",
-    "https://raw.githubusercontent.com/vfarid/v2ray-worker-sub/main/sub/mix",
-    "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt",
-    "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt",
-    "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge.txt"
-]
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-def main():
-    print("[+] VIP Port toplayıcı motor başlatıldı...")
-    all_raw_text = ""
-    
-    # Tüm kaynaklardan ham verileri indir
-    for url in RAW_SOURCES:
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=15) as response:
-                all_raw_text += response.read().decode('utf-8', errors='ignore') + "\n"
-        except Exception as e:
-            print(f"[-] Kaynak çekilemedi: {url} -> {e}")
+      - name: Run Collector Engine
+        run: |
+          python collector.py
 
-    # 3. ADIM: Linkleri Regex ile cımbızla çekme
-    pattern = r'(vless|vmess|trojan|ss|ssr|hysteria|tuic)://[^\s"\'<>]+'
-    extracted_links = re.findall(pattern, all_raw_text, re.IGNORECASE)
-    
-    # Mükerrer (aynı) olan linkleri temizle
-    unique_links = list(set(extracted_links))
-    
-    # 4. ADIM: O elemanların subscription listelerinde kullandığı TÜM PORTLAR
-    allowed_ports = [
-        ":443", ":80", 
-        ":8080", ":8443", ":2052", ":2053", ":2082", ":2083", ":2086", ":2087", ":2095", ":2096",
-        ":2097", ":8880", ":10086", ":54321"
-    ]
-    
-    final_links = []
-    for link in unique_links:
-        # Linkin içinde bu izin verilen portlardan biri var mı diye bakıyor
-        # Tam eşleşme için portun arkasından ekstra sayı gelmediğini regex ile doğrularız (Örn: :80'i alır ama :8085'i eler)
-        if any(port in link for port in allowed_ports):
-            # Portun sonuna denk gelen kısmın başka bir rakamla devam etmediğinden emin olalım
-            port_match = re.search(r':([0-9]+)', link)
-            if port_match:
-                detected_port = ":" + port_match.group(1)
-                if detected_port in allowed_ports:
-                    final_links.append(link)
-
-    print(f"[+] Elemanların portlarıyla senkronize {len(final_links)} adet canlı link ayıklandı.")
-
-    # 5. ADIM: Dosyayı sıfırla, başlığı mühürle ve yeni geniş portlu linkleri yaz
-    with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
-        f.write(HEADER)
-        for link in final_links:
-            f.write(link + "\n")
-            
-    print("[+] 'toplanan_linkler.txt' geniş port listesiyle güncellendi!")
-
-if __name__ == "__main__":
-    main()
+      - name: Commit and Push VIP Links
+        run: |
+          git config --global user.name "VordrBot"
+          git config --global user.email "bot@vordr.com"
+          git add toplanan_linkler.txt
+          
+          if [ $(wc -l < toplanan_linkler.txt) -gt 6 ]; then
+            git commit -m "Vordr Motoru Genis Portlarla Calistirildi: $(date +'%H:%M:%S')"
+            git push
+          fi
