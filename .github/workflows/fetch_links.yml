@@ -13,27 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set UTF-8 Locale
-        run: |
-          # Emojilerin ve özel karakterlerin patlamaması için sunucuyu UTF-8 moduna alıyoruz
-          sudo locale-gen tr_TR.UTF-8
-          export LANG=tr_TR.UTF-8
-          export LC_ALL=tr_TR.UTF-8
-
       - name: Fetch and Header Injection
         run: |
-          export LANG=tr_TR.UTF-8
-          export LC_ALL=tr_TR.UTF-8
-
-          # Dosyayı sıfırla ve senin o özel metinlerini mühürle
-          cat << 'EOF' > toplanan_linkler.txt
-#profile-title: 《_🜲 VØRÐR 🔱_》
-#profile-update-interval: 1
-#support-url: 
-#profile-web-page-url: 
-#announce: 《_🜲 VØRÐR 🔱_》⚠️ tarafından ⚡️ yasalan getir 🪪 bot 🚨
-#subscription-userinfo: upload=0; download=0; total=0; expire=0
-EOF
+          # 1. AŞAMA: Eski linkleri sil ve senin özel metinlerini EN BAŞA mühürle
+          echo "#profile-title: 《_🜲 VØRÐR 🔱_》" > toplanan_linkler.txt
+          echo "#profile-update-interval: 1" >> toplanan_linkler.txt
+          echo "#support-url: " >> toplanan_linkler.txt
+          echo "#profile-web-page-url: " >> toplanan_linkler.txt
+          echo "#announce: 《_🜲 VØRÐR 🔱_》⚠️ tarafından ⚡️ yasalan getir 🪪 bot 🚨" >> toplanan_linkler.txt
+          echo "#subscription-userinfo: upload=0; download=0; total=0; expire=0" >> toplanan_linkler.txt
 
           touch temp_live.txt
 
@@ -57,21 +45,20 @@ EOF
             fi
           done
 
-          # Geçerli VPN protokollerini süz
+          # Geçerli protokol satırlarını süz
           grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_live.txt > filtered_proto.txt || true
           
-          # SADECE 443 VE 80 PORTLARINI AYIKLA
-          # Link yapısına göre portları nokta atışı çeker
+          # Sadece :443 ve :80 portuna sahip olan linkleri ayıkla
           grep -E "(:443|:80)[^0-9]" filtered_proto.txt > filtered_ports.txt || true
           
-          # Satır sonlarını temizle ve benzersiz olanları sırala
+          # Satır sonlarını temizle ve mükerrerleri silerek sırala
           sed -i 's/\r//g' filtered_ports.txt
           sort -u filtered_ports.txt > sorted_links.txt
           
-          # Linkleri senin o silinmez başlığının tam altına ekle
+          # 2. AŞAMA: Yepyeni ayıklanan linkleri o silinmez başlığın ALTINA ekle
           cat sorted_links.txt >> toplanan_linkler.txt
           
-          # Geçici çöp dosyaları temizle
+          # Geçici dosyaları temizle
           rm -f single_raw.txt single_decoded.txt temp_live.txt filtered_proto.txt filtered_ports.txt sorted_links.txt
 
       - name: Commit and Push VIP Links with Header
@@ -80,10 +67,8 @@ EOF
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          # Dosya sadece senin başlığından ibaret değilse (link eklendiyse) push et
+          # Dosyada sadece senin yazdığın başlıklar değil, link de varsa push et
           if [ $(wc -l < toplanan_linkler.txt) -gt 6 ]; then
-            git commit -m "Vordr VIP Havuz Guncellendi: $(date +'%H:%M:%S')"
+            git commit -m "VIP 443/80 Havuzu Guncellendi: $(date +'%H:%M:%S')"
             git push
-          else
-            echo "Eklenecek port 443/80 link bulunamadı veya havuz boş."
           fi
