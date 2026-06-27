@@ -1,5 +1,5 @@
 #profile-title: 《_🜲 VØRÐR 🔱_》
-#profile-update-interval: 1
+#profile-update-interval: 0
 #support-url: 
 #profile-web-page-url: 
 #announce: 《_🜲 VØRÐR 🔱_》⚠️ tarafından ⚡️ yasalan getir 🪪 bot 🚨
