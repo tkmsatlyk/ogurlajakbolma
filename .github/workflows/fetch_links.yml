@@ -13,13 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch Realtime Live Links
+      - name: Fetch and Filter Port 443 and 80 Links
         run: |
-          # Eski listeyi tamamen sıfırla, bayat tek bir satır kalmasın
+          # Eski listeyi sıfırla
           > toplanan_linkler.txt
           touch temp_live.txt
 
-          # Telegram ve anlık havuzlardan saniyelik proxy çeken canlı API ve büyük scraper adresleri
+          # Canlı ve devasa proxy havuzları
           URLS=(
             "https://raw.githubusercontent.com/Zu6666/v2ray-share/main/all_links.txt"
             "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt"
@@ -28,11 +28,9 @@ jobs:
           )
 
           for url in "${URLS[@]}"; do
-            # Hatalı siteleri es geç, veriyi çek
             curl -sL --fail --max-time 15 "$url" > single_raw.txt || continue
             
             if [ -s single_raw.txt ] && ! grep -q "Not Found" single_raw.txt; then
-              # Base64 korumalı kontrol ve decode işlemi
               if cat single_raw.txt | base64 -d > single_decoded.txt 2>/dev/null; then
                 cat single_decoded.txt >> temp_live.txt
               else
@@ -41,24 +39,27 @@ jobs:
             fi
           done
 
-          # Sadece geçerli, canlı protokol formatlarını süz (404 veya çöp metinleri engeller)
-          grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_live.txt > filtered.txt || true
+          # 1. Aşama: Geçerli protokol satırlarını süz
+          grep -iE "(vless|vmess|trojan|ss|ssr|hysteria|tuic):\/\/" temp_live.txt > filtered_proto.txt || true
           
-          # Windows satır sonlarını uçur ve mükerrerleri silerek temizle
-          sed -i 's/\r//g' filtered.txt
-          sort -u filtered.txt > toplanan_linkler.txt
+          # 2. Aşama: Regex ile Sadece :443 ve :80 portuna sahip olan linkleri cımbızla çek
+          # Bu komut linkin içindeki IP veya Domain'den sonra gelen ":443" veya ":80" kalıbını arar
+          grep -E "(:443|:80)[^0-9]" filtered_proto.txt > filtered_ports.txt || true
           
-          # Geçici dosyaları temizle
-          rm -f single_raw.txt single_decoded.txt temp_live.txt filtered.txt
+          # Satır sonlarını temizle ve mükerrerleri silerek sırala
+          sed -i 's/\r//g' filtered_ports.txt
+          sort -u filtered_ports.txt > toplanan_linkler.txt
+          
+          # Geçici dosyaları uçur
+          rm -f single_raw.txt single_decoded.txt temp_live.txt filtered_proto.txt filtered_ports.txt
 
-      - name: Commit and Push Realtime Links
+      - name: Commit and Push VIP Port Links
         run: |
           git config --global user.name "VordrBot"
           git config --global user.email "bot@vordr.com"
           git add toplanan_linkler.txt
           
-          # Eğer dosya başarıyla dolduysa anlık saatle push et
           if [ -s toplanan_linkler.txt ]; then
-            git commit -m "Saniyelik taze havuz yuklendi: $(date +'%H:%M:%S')"
+            git commit -m "Sadece 443 ve 80 Portlu taze linkler yuklendi: $(date +'%H:%M:%S')"
             git push
           fi
