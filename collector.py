@@ -40,3 +40,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+# Dosyanın içini ekrana basar, Actions loglarından görebilirsin
+with open("toplanan_linkler.txt", "r", encoding="utf-8") as f:
+    print("DOSYA İÇERİĞİ ŞU AN ŞU:")
+    print(f.read())
