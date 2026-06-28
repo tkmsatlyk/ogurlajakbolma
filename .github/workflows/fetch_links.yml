@@ -1,41 +1,32 @@
-name: Fetch and Clean Free VPN Links
+name: VORDR Avci Bot
+
 on:
   schedule:
-    - cron: '*/30 * * * *'
-  workflow_dispatch:
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Senin manuel olarak tetikleyebilmen için
+
+permissions:
+  contents: write # Botun dosyayı kaydetmesi için gereken izin!
 
 jobs:
-  fetch-links:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout code
+      - name: Depoyu Klonla
         uses: actions/checkout@v3
-        with:
-          persist-credentials: true
 
-      - name: Set up Python
+      - name: Python Kurulumu
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.10'
 
-      - name: Run Collector Engine
-        run: |
-          python collector.py
+      - name: Avci Botu Calistir
+        run: python collector.py
 
-      - name: Commit and Push VIP Links
+      - name: Dosyayi Kaydet ve GitHub'a Yukle (PUSH)
         run: |
-          git config --global user.name "VordrBot"
-          git config --global user.email "bot@vordr.com"
-          
-          # Dosyayı takibe al
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add toplanan_linkler.txt
-          
-          # Eğer dosyada gerçekten bir değişiklik varsa commit et ve standart pushla
-          if ! git diff --cached --quiet; then
-            git commit -m "Zirhli Cloudflare VIP Havuzu Yenilendi: $(date +'%H:%M:%S')"
-            git push origin HEAD:main
-          else
-            echo "[-] Degisiklik yok, push atilmiyor."
-          fi
+          git diff --quiet && git diff --staged --quiet || git commit -m "🚀 Yeni Ares Kodu Avlandı ve Eklendi!"
+          git push
