@@ -1,39 +1,37 @@
 import urllib.request
 import re
-import time
 
-RSS_URL = "https://rss.app/feeds/SntEdwZf2uMuNxOn.xml"
+# Kanalın web görünümü
+URL = "https://t.me/s/aresvpn_2"
 
 def main():
     try:
-        cache_buster = f"{RSS_URL}?t={int(time.time())}"
-        req = urllib.request.Request(cache_buster, headers={'User-Agent': 'Mozilla/5.0'})
+        # Tarayıcı gibi davranıyoruz
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+        req = urllib.request.Request(URL, headers=headers)
         
-        with urllib.request.urlopen(req, timeout=15) as response:
-            rss_content = response.read().decode('utf-8', errors='ignore')
+        with urllib.request.urlopen(req, timeout=20) as response:
+            html = response.read().decode('utf-8')
             
-            # \S+ kullanarak boşluğa kadar ne var ne yok her şeyi alıyoruz (Linkin eksik kopyalanmasını önler)
-            matches = re.findall(r'happ://crypt5/\S+', rss_content)
+            # Tüm happ:// linklerini bul
+            matches = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', html)
             
             if matches:
-                latest_code = matches[-1]
-                # Eğer linkin sonunda HTML veya gereksiz karakter kaldıysa temizle
-                latest_code = latest_code.split('<')[0].split('"')[0]
+                # En sonuncusu en güncel olanıdır
+                latest = matches[-1]
                 
-                final_content = f"""#profile-title: 《_🜲 VØRÐR 🔱 ELITE-VIP 🔱_》
-#profile-update-interval: 0
-#subscription-userinfo: upload=0; download=0; total=53687091200; expire=1924992000
-
-{latest_code}"""
-                
+                # Dosyaya yaz (w modu eskisini komple siler, yenisini yazar)
                 with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
-                    f.write(final_content)
-                print(f"[+] Basarili! Kod yazildi: {latest_code[:20]}...")
+                    f.write(f"#profile-title: 《_🜲 VØRÐR 🔱 ELITE-VIP 🔱_》\n")
+                    f.write(f"#profile-update-interval: 1\n")
+                    f.write(f"#subscription-userinfo: upload=0; download=0; total=53687091200; expire=1924992000\n\n")
+                    f.write(latest)
+                print(f"Başarıyla güncellendi: {latest[:20]}...")
             else:
-                print("[-] RSS icinde yeni kod bulunamadi.")
+                print("Link bulunamadı, kanal yapısı değişmiş olabilir.")
                 
     except Exception as e:
-        print(f"[-] Hata: {e}")
+        print(f"Hata: {e}")
 
 if __name__ == "__main__":
     main()
