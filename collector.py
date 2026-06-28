@@ -22,7 +22,7 @@ def main():
                 # Happ uygulamaları genellikle başında #profile-title ve config gerektirir.
                 # İşte olması gereken format:
                 full_config = f"""#profile-title: 《_🜲 VØRÐR 🔱 ELITE-VIP 🔱_》
-#profile-update-interval: 1
+#profile-update-interval: 0
 #subscription-userinfo: upload=0; download=0; total=53687091200; expire=1924992000
 
 {clean_code}"""
