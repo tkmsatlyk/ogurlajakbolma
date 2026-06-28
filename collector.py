@@ -21,7 +21,7 @@ def main():
                 latest_code = matches[-1] 
                 
                 final_content = f"""#profile-title: 《_🜲 VØRÐR 🔱 ELITE-VIP 🔱_》
-#profile-update-interval: 1
+#profile-update-interval: 0
 #subscription-userinfo: upload=0; download=0; total=53687091200; expire=1924992000
 
 {latest_code}"""
