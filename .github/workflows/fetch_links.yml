@@ -1,32 +1,28 @@
-name: VORDR Avci Bot
+name: Ares Guncelleme
 
 on:
   schedule:
     - cron: '*/15 * * * *'
-  workflow_dispatch: # Senin manuel olarak tetikleyebilmen için
+  workflow_dispatch:
 
 permissions:
-  contents: write # Botun dosyayı kaydetmesi için gereken izin!
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Depoyu Klonla
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Python Kurulumu
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-
-      - name: Avci Botu Calistir
+      - name: Botu Calistir
         run: python collector.py
-
-      - name: Dosyayi Kaydet ve GitHub'a Yukle (PUSH)
+      - name: Git Push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add toplanan_linkler.txt
-          git diff --quiet && git diff --staged --quiet || git commit -m "🚀 Yeni Ares Kodu Avlandı ve Eklendi!"
+          git commit -m "Guncelleme"
           git push
