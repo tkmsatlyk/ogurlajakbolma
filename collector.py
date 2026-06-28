@@ -1,46 +1,35 @@
 import urllib.request
-import base64
 import re
 
 def main():
-    # 1. Telegram kanalından en son linki al
+    print("Kanala bağlanılıyor...")
+    url = "https://t.me/s/aresvpn_2"
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    
     try:
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        req = urllib.request.Request("https://t.me/s/aresvpn_2", headers=headers)
+        req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=30) as response:
             html = response.read().decode('utf-8')
-            # En son paylaşılan linki yakala
-            matches = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', html)
-            if not matches:
-                print("Link bulunamadı.")
-                return
-            latest_url = matches[-1]
             
-            # 2. O linkin içine gir (Panel içeriğini sök)
-            req_sub = urllib.request.Request(latest_url, headers=headers)
-            with urllib.request.urlopen(req_sub, timeout=30) as sub_res:
-                content = sub_res.read()
-                # Base64 çözümlemesi
-                try:
-                    decoded = base64.b64decode(content).decode('utf-8')
-                except:
-                    decoded = content.decode('utf-8')
-                
-                # 3. İÇERİĞİ TEMİZLE (Sunucu listesini ayıkla)
-                # '://' içeren tüm satırları al, çöp verileri at
-                servers = [line for line in decoded.splitlines() if '://' in line]
-                
-                # 4. DOSYAYA YAZ
-                if servers:
-                    with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
-                        f.write("\n".join(servers))
-                    print(f"Başarıyla {len(servers)} sunucu güncellendi.")
+            # Kanalda 'happ://' ile başlayan ne varsa bul
+            matches = re.findall(r'happ://[^\s<>"]+', html)
+            
+            if not matches:
+                print("HATA: Kanalda 'happ://' ile başlayan hiçbir şey bulunamadı!")
+                print("Sayfa içeriğinin ilk 500 karakteri:")
+                print(html[:500]) # Kanalda ne gördüğünü buraya dökecek
+                return
+            
+            print(f"Bulunan tüm linkler: {matches}")
+            
+            # Link bulunduysa dosyaya yaz
+            latest_url = matches[-1]
+            with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
+                f.write(latest_url)
+            print(f"Dosyaya yazıldı: {latest_url}")
+            
     except Exception as e:
-        print(f"Hata: {e}")
+        print(f"KRİTİK HATA: {e}")
 
 if __name__ == "__main__":
     main()
-# Dosyanın içini ekrana basar, Actions loglarından görebilirsin
-with open("toplanan_linkler.txt", "r", encoding="utf-8") as f:
-    print("DOSYA İÇERİĞİ ŞU AN ŞU:")
-    print(f.read())
