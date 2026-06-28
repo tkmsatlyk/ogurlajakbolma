@@ -1,74 +1,62 @@
 import urllib.request
 
-HEADER = """#profile-title: 《_🜲 VØRÐR 🔱_》
+HEADER = """#profile-title: 《_🜲 VØRÐR 🔱 PRO-SELECT 🔱_》
 #profile-update-interval: 0
 #support-url: 
 #profile-web-page-url: 
-#announce: 《_🜲 VØRÐR 🔱_》⚠️ Pro Geliştiriciler Özel VIP Havuzu 🚨
+#announce: 《_🜲 VØRÐR 🔱_》⚠️ Sadece Shadow-Level Profesyonel VIP Havuz 🚨
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 """
 
-# Sadece işi gücü kaliteli abonelik hazırlamak olan özel şahısların ana linkleri
-RAW_SOURCES = [
-    # 1. Senin favori ShadowException abimiz
+# Sadece ShadowException ayarında, profesyonel içerik üreten "Babalar" listesi
+PRO_SOURCES = [
+    # 1. ShadowException (Listenin kalbi)
     "https://raw.githubusercontent.com/ShadowException/VPN/main/configs/VPN-cat",
     
-    # 2. Bafry - Kaliteli Cloudflare ve Reality Ustası
-    "https://raw.githubusercontent.com/bafry/v2ray-subscription/main/sub/mix",
-    
-    # 3. LalatinaHub - Çin sansürünü delen en sağlam toplayıcılardan biri
-    "https://raw.githubusercontent.com/LalatinaHub/Mineral/master/sub/mix",
-    
-    # 4. Saeid0 - Reality ve gRPC Protokol Canavarı
-    "https://raw.githubusercontent.com/Saeid0/v2ray-collector/master/Sub/All_Configs_Sub.txt",
-    
-    # 5. Snakem7 - Sürekli taze ve elenmiş config basan hesap
-    "https://raw.githubusercontent.com/snakem7/v2ray-sub/main/mix",
-    
-    # 6. NiREvil - İran ağ ortamı için özel ayıklanmış havuz
-    "https://raw.githubusercontent.com/NiREvil/v2ray/main/sub/mix",
-    
-    # 7. vfarid ve yebekhe (Bunlar zaten bu işin kurucuları, listemizde kesin kalmalılar)
+    # 2. vfarid (Cloudflare Worker'ın mucitlerinden)
     "https://raw.githubusercontent.com/vfarid/v2ray-worker-sub/main/sub/mix",
-    "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt"
+    
+    # 3. yebekhe (En eski ve en profesyonel toplayıcılardan)
+    "https://raw.githubusercontent.com/yebekhe/TVC/main/v2ray/mix.txt",
+    
+    # 4. mahdibland (Reality protokolünün piri)
+    "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge.txt",
+    
+    # 5. tbbatbb (Çok stabil ve nadiren patlayan kaynaklar üretir)
+    "https://raw.githubusercontent.com/tbbatbb/Proxy/master/v2ray/v2ray.txt"
 ]
 
 def main():
-    print("[+] VØRÐR Özel Şahıslar Motoru Başlatıldı...")
-    collected_content = ""
+    print("[+] VØRÐR Pro-Select Motoru Başlatıldı...")
+    collected_lines = set()
     
-    for url in RAW_SOURCES:
+    for url in PRO_SOURCES:
         try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
-            with urllib.request.urlopen(req, timeout=12) as response:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=10) as response:
                 raw_text = response.read().decode('utf-8', errors='ignore')
-                collected_content += raw_text + "\n"
-                print(f"[+] Pro şahsın havuzu başarıyla çekildi: {url.split('/')[3]}")
+                for line in raw_text.splitlines():
+                    clean = line.strip()
+                    # Sadece link formunda olanları al, açıklamaları ve çöpü at
+                    if "://" in clean and not clean.startswith("#") and not clean.startswith("//"):
+                        collected_lines.add(clean)
         except:
             continue
 
-    # Ham veriyi satır satır bölüp listeliyoruz
-    lines = collected_content.splitlines()
-    final_lines = []
-    
-    for line in lines:
-        clean_line = line.strip()
-        # Boş satırları ve çöp başlıkları listeye eklemiyoruz
-        if clean_line and not clean_line.startswith("#") and not clean_line.startswith("//"):
-            final_lines.append(clean_line)
+    # 1'den başlayarak profesyonel bir şekilde numaralandır
+    sorted_links = sorted(list(collected_lines))
 
-    # Aynı olan linkleri (mükerrerleri) temizle
-    unique_lines = list(set(final_lines))
-
-    print(f"[+] {len(unique_lines)} adet elenmiş pro satır başarıyla yazılıyor.")
-
-    # Dosyayı sıfırla ve üzerine mühürle
     with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
         f.write(HEADER)
-        for item in unique_lines:
-            f.write(item + "\n")
+        for i, link in enumerate(sorted_links, 1):
+            # Her linke profesyonel bir isim etiketi ekle
+            if "#" in link:
+                new_link = link.split("#")[0] + f"#{i}. VORDR PRO"
+            else:
+                new_link = link + f"#{i}. VORDR PRO"
+            f.write(new_link + "\n")
             
-    print("[+] 'toplanan_linkler.txt' yeni proların linkleriyle dolduruldu!")
+    print("[+] Liste başarıyla profesyonellerden çekildi ve numaralandırıldı.")
 
 if __name__ == "__main__":
     main()
