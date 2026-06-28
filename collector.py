@@ -4,12 +4,7 @@ import re
 import os
 
 def main():
-    # Eski dosyayı her zaman sil, tertemiz başla
-    if os.path.exists("toplanan_linkler.txt"):
-        os.remove("toplanan_linkler.txt")
-
     try:
-        # Kanalı çek
         headers = {'User-Agent': 'Mozilla/5.0'}
         req = urllib.request.Request("https://t.me/s/aresvpn_2", headers=headers)
         
@@ -18,12 +13,11 @@ def main():
             matches = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', html)
             
             if not matches:
-                return # Kod yoksa dur
+                print("Link bulunamadı, dosya korunuyor.")
+                return # Link bulamazsa dosyayı silmeden çıkar
             
-            # Son (en güncel) linki al
             latest_url = matches[-1]
             
-            # İçeriği çek
             req_sub = urllib.request.Request(latest_url, headers=headers)
             with urllib.request.urlopen(req_sub, timeout=30) as sub_res:
                 content = sub_res.read()
@@ -32,13 +26,15 @@ def main():
                 except:
                     decoded = content.decode('utf-8')
                 
-                # Sadece linkleri al
                 servers = [line for line in decoded.splitlines() if '://' in line]
                 
-                # Yaz
-                with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
-                    f.write("\n".join(servers))
-                print("Başarıyla yazıldı.")
+                if servers:
+                    with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
+                        f.write("\n".join(servers))
+                    print("Başarıyla güncellendi.")
+                else:
+                    print("Sunucu linki çözülemedi, eski dosya korunuyor.")
+                    
     except Exception as e:
         print(f"Hata: {e}")
 
