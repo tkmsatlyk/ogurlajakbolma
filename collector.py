@@ -2,48 +2,52 @@ import urllib.request
 import base64
 import re
 
-# Ares'in kanalı
+# Telegram kanalının web arayüzü
 CHANNEL_URL = "https://t.me/s/aresvpn_2"
 
 def main():
     try:
-        # 1. AŞAMA: Kanalı tara ve en son paylaşılan linki bul
-        headers = {'User-Agent': 'Mozilla/5.0'}
+        # Telegram kanalını gerçek bir tarayıcı gibi ziyaret et
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
         req = urllib.request.Request(CHANNEL_URL, headers=headers)
-        with urllib.request.urlopen(req, timeout=20) as response:
+        
+        with urllib.request.urlopen(req, timeout=30) as response:
             html = response.read().decode('utf-8')
             
-            # Kanalda paylaşılan en son 'happ://' linkini bul
-            matches = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', html)
-            if not matches:
-                print("[-] Kanalda şu an yeni kod yok.")
+            # 1. EN SON PAYLAŞILAN MESAJI BUL (Kanalın en tepesindeki linki al)
+            # Telegram 't.me/s/' linklerinde mesajlar en tepeden başlar, bu yüzden ilk eşleşme en yenisidir.
+            match = re.search(r'happ://crypt5/[A-Za-z0-9+/=]+', html)
+            
+            if not match:
+                print("[-] Kanalda yeni kod bulunamadı.")
                 return
             
-            latest_subscription_url = matches[-1]
-            print(f"[+] Yeni abonelik linki bulundu: {latest_subscription_url}")
+            latest_url = match.group(0)
+            print(f"[+] En taze kod yakalandı: {latest_url}")
             
-            # 2. AŞAMA: O linkin içine gir ve gerçek sunucu listesini çek
-            req_sub = urllib.request.Request(latest_subscription_url, headers=headers)
-            with urllib.request.urlopen(req_sub, timeout=20) as sub_res:
+            # 2. O YENİ LİNKİN İÇİNE GİR VE SUNUCULARI SÖK
+            req_sub = urllib.request.Request(latest_url, headers=headers)
+            with urllib.request.urlopen(req_sub, timeout=30) as sub_res:
                 content = sub_res.read()
                 
-                # Base64 ile şifrelenmiş sunucu listesini çöz
+                # Base64 çözümü (Abonelik içeriğini açar)
                 try:
                     decoded = base64.b64decode(content).decode('utf-8')
                 except:
                     decoded = content.decode('utf-8')
                 
-                # Sadece '://' içeren gerçek sunucu linklerini al (Çöpleri at)
-                server_links = [line for line in decoded.splitlines() if '://' in line]
+                # Sadece '://' içeren gerçek sunucu satırlarını filtrele (Çöpü siliyor)
+                servers = [line for line in decoded.splitlines() if '://' in line]
                 
-                # 3. AŞAMA: Dosyayı SIFIRLA ve yeni sunucuları YAZ
+                # 3. ESKİYİ SİL VE YENİYİ YAZ
+                # 'w' modu, dosyanın içindeki tüm eski sunucuları siler ve listeyi günceller.
                 with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
-                    f.write("\n".join(server_links))
+                    f.write("\n".join(servers))
                 
-                print(f"[+] {len(server_links)} adet taze sunucu linki dosyaya yazıldı!")
+                print(f"[+] {len(servers)} adet taze sunucu başarıyla dosyaya işlendi.")
 
     except Exception as e:
-        print(f"[-] HATA: {e}")
+        print(f"[-] Hata oluştu: {e}")
 
 if __name__ == "__main__":
     main()
