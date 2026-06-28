@@ -2,7 +2,7 @@ import urllib.request
 
 # Senin şanlı markan ve sonsuz abonelik ayarları
 HEADER = """#profile-title: 《_🜲 VØRÐR 🔱 MASTER 🔱_》
-#profile-update-interval: 1
+#profile-update-interval: 0
 #support-url: 
 #profile-web-page-url: 
 #announce: 《_🜲 VØRÐR 🔱_》⚠️ Cerrahi Elemeli VIP Havuz (Max 1500) 🚨
