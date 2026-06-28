@@ -1,38 +1,25 @@
 import urllib.request
-import re
 
-URL = "https://t.me/s/aresvpn_2"
+# Ares'in "i" harfine basınca çıkan o gerçek abonelik linkini buraya yapıştır!
+# Örnek: https://aresvpn-linki.com/....
+SUBSCRIPTION_URL = "BURAYA_GERCEK_ABONELIK_LINKINI_YAPISTIR"
 
 def main():
     try:
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        req = urllib.request.Request(URL, headers=headers)
-        
-        with urllib.request.urlopen(req, timeout=20) as response:
-            html = response.read().decode('utf-8')
+        # Abonelik linkini bir tarayıcı gibi ziyaret et
+        req = urllib.request.Request(SUBSCRIPTION_URL, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=15) as response:
+            # Tüm sunucu listesini (VLESS, Shadowsocks vb.) olduğu gibi al
+            server_list = response.read().decode('utf-8')
             
-            # Regex ile sadece happ:// ile başlayan ve boşluğa/tırnağa kadar giden kodu al
-            # Bu regex, isimleri, reklamları ve kanal yazılarını tamamen dışarıda bırakır.
-            match = re.search(r'happ://crypt5/[A-Za-z0-9+/=]+', html)
-            
-            if match:
-                clean_code = match.group(0)
+            # İçeriği dosyaya tertemiz yaz
+            with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
+                f.write(server_list)
                 
-                # Şimdi tertemiz bir şekilde dosyaya yazıyoruz
-                final_content = f"""#profile-title: 《_🜲 VØRÐR 🔱 ELITE-VIP 🔱_》
-#profile-update-interval: 1
-#subscription-userinfo: upload=0; download=0; total=53687091200; expire=1924992000
-
-{clean_code}"""
-                
-                with open("toplanan_linkler.txt", "w", encoding="utf-8") as f:
-                    f.write(final_content)
-                print(f"Başarıyla temizlendi ve yazıldı: {clean_code[:20]}...")
-            else:
-                print("Hata: Kod bulunamadı, kanal mesajları temizlenmiş olabilir.")
+            print("[+] Tüm sunucu listesi başarıyla çekildi ve güncellendi!")
                 
     except Exception as e:
-        print(f"Hata: {e}")
+        print(f"[-] Hata oluştu: {e}")
 
 if __name__ == "__main__":
     main()
