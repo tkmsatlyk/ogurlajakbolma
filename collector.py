@@ -6,7 +6,7 @@ RSS_URL = "https://rss.app/feeds/SntEdwZf2uMuNxOn.xml"
 
 # Happ uygulamasının "doğru" kabul ettiği abonelik başlığı
 HEADER = """#profile-title: 《_🜲 VØRÐR 🔱 ELITE-VIP 🔱_》
-#profile-update-interval: 1
+#profile-update-interval: 0
 #subscription-userinfo: upload=0; download=0; total=53687091200; expire=1924992000
 """
 
