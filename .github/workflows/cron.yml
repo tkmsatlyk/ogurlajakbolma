@@ -1,0 +1,30 @@
+name: Abonelik MB Güncelleyici (5 dk)
+
+on:
+  schedule:
+    # Her 5 dakikada bir çalışır
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # GitHub üzerinden manuel başlatma butonu
+
+jobs:
+  add-mb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repoyu Klonla
+        uses: actions/checkout@v4
+
+      - name: Node.js Kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Scripti Çalıştır
+        run: node update.js
+
+      - name: Değişiklikleri GitHub'a Kaydet (Push)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add subscription.json
+          git commit -m "Aboneliğe +6.37 MB eklendi" || exit 0
+          git push
