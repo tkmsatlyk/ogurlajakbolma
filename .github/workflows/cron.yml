@@ -1,7 +1,9 @@
-name: Infinite Byte Updater
+name: Auto Byte Updater
+
 on:
+  push:
   schedule:
-    - cron: '*/5 * * * *' # Sınırsız: Her 5 dakikada bir tetiklenir
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,40 +12,41 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Add Bytes Continuously
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Run Update Script
         run: |
           python3 -c "
           import re
           import os
           
-          # Eklenecek miktar (6.38 MB = 5937792 Bytes)
+          # Eklenecek sabit değer (6.38 MB = 5937792 Bytes)
           bytes_to_add = 5937792
           
-          # Dosya var mı kontrol et
-          if not os.path.exists('sub'):
-              print('Dosya bulunamadı!')
-              exit(1)
-              
+          # sub dosyasını oku
           with open('sub', 'r') as f:
               data = f.read()
           
-          # Mevcut download değerini bul ve üzerine ekle
+          # 'download=' değerini bul ve üzerine ekle
+          # Bu regex sadece sayıları hedefler, formatı bozmaz
           def replacer(match):
               current_val = float(match.group(1))
               new_val = int(current_val + bytes_to_add)
               return f'download={new_val}'
           
-          # Sadece download satırını güncelle
           new_data = re.sub(r'download=([0-9.]+)', replacer, data)
           
+          # Dosyayı güncelle
           with open('sub', 'w') as f:
               f.write(new_data)
           "
           
-          # Değişiklikleri kaydet ve pushla
+          # Değişiklikleri Git'e kaydet ve gönder
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add sub
-          git commit -m "Sınırsız güncelleme: +6.38 MB eklendi"
+          git commit -m "Otomatik Byte Güncellemesi: +6.38 MB"
           git push
