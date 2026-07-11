@@ -11,20 +11,35 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Update only download value
+      - name: Update sub file
         run: |
-          # 1. Mevcut download değerini al
-          current_dl=$(grep -oP 'download=\K[0-9.]+' sub)
+          python3 -c "
+          import re
           
-          # 2. Yeni değeri hesapla (6.38 ekle)
-          new_dl=$(echo "$current_dl + 6.38" | bc)
+          # Eklenecek miktar (6.38 MB'ın byte karşılığı)
+          bytes_to_add = 5937792
           
-          # 3. Sadece download kısmını değiştir, dosyada başka hiçbir şeye dokunma
-          sed -i "s/download=[0-9.]\+/download=$new_dl/" sub
+          # Dosyayı oku
+          with open('sub', 'r') as f:
+              data = f.read()
           
-          # 4. Değişiklikleri kaydet
+          # Mevcut download değerini bul ve güncelle
+          def replacer(match):
+              current_val = float(match.group(1))
+              new_val = int(current_val + bytes_to_add)
+              return f'download={new_val}'
+          
+          # Dosyada sadece 'download=' satırını değiştir
+          new_data = re.sub(r'download=([0-9.]+)', replacer, data)
+          
+          # Dosyayı kaydet
+          with open('sub', 'w') as f:
+              f.write(new_data)
+          "
+          
+          # GitHub'a gönder
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add sub
-          git commit -m "Update download: ${new_dl}MB"
+          git commit -m "Update download value"
           git push
