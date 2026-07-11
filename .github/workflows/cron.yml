@@ -1,7 +1,7 @@
-name: Update Sub Usage
+name: Infinite Byte Updater
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *' # Sınırsız: Her 5 dakikada bir tetiklenir
   workflow_dispatch:
 
 jobs:
@@ -11,35 +11,39 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Update sub file
+      - name: Add Bytes Continuously
         run: |
           python3 -c "
           import re
+          import os
           
-          # Eklenecek miktar (6.38 MB'ın byte karşılığı)
+          # Eklenecek miktar (6.38 MB = 5937792 Bytes)
           bytes_to_add = 5937792
           
-          # Dosyayı oku
+          # Dosya var mı kontrol et
+          if not os.path.exists('sub'):
+              print('Dosya bulunamadı!')
+              exit(1)
+              
           with open('sub', 'r') as f:
               data = f.read()
           
-          # Mevcut download değerini bul ve güncelle
+          # Mevcut download değerini bul ve üzerine ekle
           def replacer(match):
               current_val = float(match.group(1))
               new_val = int(current_val + bytes_to_add)
               return f'download={new_val}'
           
-          # Dosyada sadece 'download=' satırını değiştir
+          # Sadece download satırını güncelle
           new_data = re.sub(r'download=([0-9.]+)', replacer, data)
           
-          # Dosyayı kaydet
           with open('sub', 'w') as f:
               f.write(new_data)
           "
           
-          # GitHub'a gönder
+          # Değişiklikleri kaydet ve pushla
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add sub
-          git commit -m "Update download value"
+          git commit -m "Sınırsız güncelleme: +6.38 MB eklendi"
           git push
