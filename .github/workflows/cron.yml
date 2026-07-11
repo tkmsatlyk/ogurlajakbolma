@@ -1,4 +1,4 @@
-name: Auto Byte Updater
+name: Auto Multi-File Updater
 
 on:
   push:
@@ -6,16 +6,15 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Run Update Script
         run: |
@@ -23,30 +22,25 @@ jobs:
           import re
           import os
           
-          # Eklenecek sabit değer (6.38 MB = 5937792 Bytes)
           bytes_to_add = 5937792
+          # Sadece bu iki dosyayı güncelliyoruz
+          files_to_update = ['sub', 'sub1']
           
-          # sub dosyasını oku
-          with open('sub', 'r') as f:
-              data = f.read()
-          
-          # 'download=' değerini bul ve üzerine ekle
-          # Bu regex sadece sayıları hedefler, formatı bozmaz
           def replacer(match):
               current_val = float(match.group(1))
-              new_val = int(current_val + bytes_to_add)
-              return f'download={new_val}'
+              return f'download={int(current_val + bytes_to_add)}'
           
-          new_data = re.sub(r'download=([0-9.]+)', replacer, data)
-          
-          # Dosyayı güncelle
-          with open('sub', 'w') as f:
-              f.write(new_data)
+          for filename in files_to_update:
+              if os.path.exists(filename):
+                  with open(filename, 'r') as f:
+                      data = f.read()
+                  new_data = re.sub(r'download=([0-9.]+)', replacer, data)
+                  with open(filename, 'w') as f:
+                      f.write(new_data)
           "
           
-          # Değişiklikleri Git'e kaydet ve gönder
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add sub
-          git commit -m "Otomatik Byte Güncellemesi: +6.38 MB"
+          git add sub sub1
+          git commit -m "Otomatik güncelleme: sub ve sub1 +6.38 MB"
           git push
