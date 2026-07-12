@@ -22,7 +22,7 @@ jobs:
           import re
           import os
           
-          bytes_to_add = 5937792
+          bytes_to_add = 146028888064
           # Sadece bu iki dosyayı güncelliyoruz
           files_to_update = ['sub', 'sub1']
           
@@ -42,5 +42,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add sub sub1
-          git commit -m "Otomatik güncelleme: sub ve sub1 +6.38 MB"
+          git commit -m "Otomatik güncelleme: sub ve sub1 +15.65 MB"
           git push
