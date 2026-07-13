@@ -12,7 +12,7 @@
 #ping-result: time
 #hide-settings:  true
 #ping-type: proxy
-#check-url-via-proxy: http://clients3.google.com/generate_204
+#check-url-via-proxy: http://clients3.google.comhttp/generate_204
 #profile-icon: https://telegram.org/img/t_logo.png
 
 vless://d0069ea4-18b3-4af1-bc64-f525d0fac759@212.22.82.138:8443?security=reality&encryption=none&pbk=GoARpHEm6UEmBN9i78FnpQw4qcQDgn6FoIIQZ1yBOxI&headerType=&fp=firefox&spx=%2FRkely7YLmwF6b8E&type=tcp&sni=api-maps.yandex.ru&sid=01b3e33129#🇯🇵⚡𝚅Ø𝚁Ð𝚁-𝙹𝙰𝙿𝙰𝙽-𝚅𝙸𝙿🍣⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
@@ -30,7 +30,7 @@ vless://96423879-75e7-4b83-9298-98a39888a8ba@85.239.54.134:8443?security=reality
 vless://96423879-75e7-4b83-9298-98a39888a8ba@85.239.54.134:8443?security=reality&encryption=none&pbk=lRPeETJHxWt5X_fgbQALgwNwDndk8l_GHwuBUpK_cEg&headerType=none&fp=qq&type=tcp&flow=xtls-rprx-vision&sni=site.rumedia-cdn.com&sid=cbf87c88b9edc929#🇰🇷⚡𝚅Ø𝚁Ð𝚁-𝙺𝙾𝚁𝙴𝙰-𝚅𝙸𝙿🍜⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
 
 vless://96423879-75e7-4b83-9298-98a39888a8ba@85.239.54.134:8443?security=reality&encryption=none&pbk=lRPeETJHxWt5X_fgbQALgwNwDndk8l_GHwuBUpK_cEg&headerType=none&fp=qq&type=tcp&flow=xtls-rprx-vision&sni=site.rumedia-cdn.com&sid=cbf87c88b9edc929#🇲🇽⚡𝚅Ø𝚁Ð𝚁-𝙼𝙴𝚇𝙸𝙲𝙾-𝚅𝙸𝙿🌮⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
-
+ 
 vless://3761d81d-68b2-480b-aad9-3ff847b93839@cdn-b305c2ba.glomedia-cdn.com:443?security=reality&encryption=none&pbk=OevcHjcNd6P5915hkVd476stUNgpabD_XO9eWtArrls&headerType=none&fp=qq&type=tcp&flow=xtls-rprx-vision&sni=site.rumedia-cdn.com&sid=f5f36cfd792b1f65#🇪🇸⚡𝚅Ø𝚁Ð𝚁-𝚂𝙿𝙰𝙸𝙽-𝚅𝙸𝙿💃⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
 
 vless://3761d81d-68b2-480b-aad9-3ff847b93839@cdn-b305c2ba.glomedia-cdn.com:443?security=reality&encryption=none&pbk=OevcHjcNd6P5915hkVd476stUNgpabD_XO9eWtArrls&headerType=none&fp=qq&type=tcp&flow=xtls-rprx-vision&sni=site.rumedia-cdn.com&sid=f5f36cfd792b1f65#🇬🇧⚡𝚅Ø𝚁Ð𝚁-𝚄𝙺-𝚅𝙸𝙿☕⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
@@ -94,3 +94,4 @@ vless://2797a040-443c-4249-ab49-546b37519642@94.126.206.161:5443?security=realit
 vless://7e544a9d-7667-413b-bbb0-b3bb1aac6d77@8.47.69.0:443?encryption=none&security=tls&sni=shegeftihaaa.net&echfq=none&allowinsecure=0&type=ws&host=shegeftihaaa.net&path=%2Frsedgws&fragment=2%2C0-1%2Ctlshello%2Cnull&fm=%7B%22tcp%22%3A%5B%7B%22settings%22%3A%7B%22delay%22%3A%220-1%22%2C%22length%22%3A%222%22%2C%22packets%22%3A%22tlshello%22%7D%2C%22type%22%3A%22fragment%22%7D%5D%7D#🇭🇺⚡𝚅Ø𝚁Ð𝚁-𝙷𝚄𝙽𝙶𝙰𝚁𝚈-𝚅𝙸𝙿🌶️⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
 
 vless://7e544a9d-7667-413b-bbb0-b3bb1aac6d77@8.47.69.0:443?encryption=none&security=tls&sni=shegeftihaaa.net&echfq=none&allowinsecure=0&type=ws&host=shegeftihaaa.net&path=%2Frsedgws&fragment=2%2C0-1%2Ctlshello%2Cnull&fm=%7B%22tcp%22%3A%5B%7B%22settings%22%3A%7B%22delay%22%3A%220-1%22%2C%22length%22%3A%222%22%2C%22packets%22%3A%22tlshello%22%7D%2C%22type%22%3A%22fragment%22%7D%5D%7D#🇷🇴⚡𝚅Ø𝚁Ð𝚁-𝚁𝙾𝙼𝙰𝙽𝙸𝙰-𝚅𝙸𝙿🧛⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
+vless://9c1b8179-0bf0-415f-a41e-afaa9bf280e6@75.119.151.16:80?encryption=none&security=none&type=xhttp&mode=stream-one&host=de.samanehha.io&path=%2F%3Fed%3D2048#%F0%9F%87%A9%F0%9F%87%AA%20%E2%AD%90%20Germany%E2%80%8D%E2%80%8D%E2%80%8D%E2%80%8D
