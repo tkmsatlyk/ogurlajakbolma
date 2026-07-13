@@ -24,7 +24,7 @@ jobs:
           
           bytes_to_add = 14602888
           # Sadece bu iki dosyayı güncelliyoruz
-          files_to_update = ['sub', 'Kilent1']
+          files_to_update = ['sub', 'sub1']
           
           def replacer(match):
               current_val = float(match.group(1))
