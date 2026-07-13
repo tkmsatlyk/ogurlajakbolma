@@ -12,7 +12,7 @@
 #ping-result: time
 #hide-settings:  true
 #ping-type: proxy
-#check-url-via-proxy: http://clients3.google.com/generate_204
+#check-url-via-proxy: http://cp.cloudflare.com/generate_204
 #profile-icon: https://telegram.org/img/t_logo.png
 
 vless://ab51054f-de76-4a0f-9f3a-b44c8df86a6c@138.16.169.188:8443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=api-maps.yandex.ru&fp=firefox&pbk=Jvo3mtGzgJPAntN3FgljPoUvZZgLzOh9wPlTrzI3AiY&allowinsecure=0&type=tcp&headerType=none#🇹🇲⚡Обновить etmek için⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
@@ -62,3 +62,5 @@ hysteria2://299bfbb6-89d4-45af-81e2-15fdc4728ac5@beta.mega-play.app:443?security
 vless://6c8a1ad4-0c04-460d-87e2-507a952ba902@116.206.92.167:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=www.apple.com&fp=chrome&pbk=LP_JNPrfHbQnMK5dYoKr4D6Q8I8yKHK5ygHffJb1hzw&sid=dfde4e821472fb98&allowinsecure=0&type=tcp&headerType=none#Test 1
 ss://aes-256-gcm:a338A9@aw-sg.vndmall.pro:8888#Test 2
 vless://01aacd3b-fdda-4e3f-894b-bc380f184fe1@de-vip-unlimited.relqino.ir:1020?flow=xtls-rprx-vision&encryption=none&security=reality&sni=yahoo.com&fp=chrome&pbk=jILgyIiDR7xY8WDrU9EMx_iXUi6nKr3LapCgglBVBAU&sid=3fa2fdb7dce16b8b&allowinsecure=0&type=tcp&headerType=none#Test 3
+vless://9c1b8179-0bf0-415f-a41e-afaa9bf280e6@75.119.151.16:80?encryption=none&security=none&type=xhttp&mode=stream-one&host=de.samanehha.io&path=%2F%3Fed%3D2048#%F0%9F%87%A9%F0%9F%87%AA%20%E2%AD%90%20Germany%E2%80%8D%E2%80%8D%E2%80%8D%E2%80%8D
+vless://9c1b8179-0bf0-415f-a41e-afaa9bf280e6@75.119.151.16:80?encryption=none&security=none&type=xhttp&mode=stream-one&host=de.samanehha.io&path=%2F%3Fed%3D2048#%F0%9F%87%A9%F0%9F%87%AA%20%E2%AD%90%20Germany%E2%80%8D%E2%80%8D%E2%80%8D%E2%80%8D
