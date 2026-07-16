@@ -22,7 +22,7 @@ jobs:
           import re
           import os
           
-          bytes_to_add = 14602888
+          bytes_to_add = 33822867.456
           # Sadece bu iki dosyayı güncelliyoruz
           files_to_update = ['sub', 'sub1']
           
