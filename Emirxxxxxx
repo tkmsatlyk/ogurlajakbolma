@@ -17,3 +17,4 @@
 
 
 hysteria2://8bc63720-5ec8-45b5-b6a6-9a21ffb490e8@fl02.auragg.org:8443?security=tls&fm=%7B%7D&sni=fl02.auragg.org#%F0%9F%87%A9%F0%9F%87%AA%203%20day
+vless://86208db7-8bbc-42c2-9eb2-ffe5675502c3@content.oneokgames.com:443?encryption=none&security=reality&sni=content.oneokgames.com&fp=firefox&pbk=Lij6_wEY1WQ8p9wjOyErAAmY8ce4oZmEO4QtYXH-WiU&sid=b9707fe704eb1415&type=grpc&mode=gun&authority=&serviceName=node.v1.MetricsService#%F0%9F%87%B3%F0%9F%87%B1100%25i%C3%9Fley%C3%A4r
