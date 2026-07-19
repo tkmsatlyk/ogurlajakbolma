@@ -4,7 +4,7 @@
 #profile-web-page-url: https://telegram.org/img/t_logo.png
 #support-url: https://t.me/osnsisbsbsbsjwnxuxnd
 #announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP OBNAVİT EDIP GORUŇ🦾 【²⁹ ᵍᵘⁿⁿ ᵍᵃˡᵈʸ】
-#subscription-userinfo: upload=0; download=33822867; total=0; expire=17987520000
+#subscription-userinfo: upload=0; download=0; total=0; expire=17987520000
 #subscriptions-sort-type: without
 #subscription-pin: true
 #subscription-auto-update-open-enable: false
@@ -15,6 +15,8 @@
 #check-url-via-proxy: http://cp.cloudflare.com/generate_204
 #profile-icon: https://telegram.org/img/t_logo.png
 
+vless://1ddee681-4008-43e5-80cc-69fe44ce96e0@45.196.201.243:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=storage.yandex.net&fp=firefox&pbk=zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04&sid=205748bc0f24a747&type=tcp&headerType=none#%F0%9F%87%AC%F0%9F%87%A7%F0%9F%96%A5PC%F0%9F%92%BB
+vless://1a3b82de-d8a5-4d18-b15d-4ff10b3dba19@panel1.legendcr.ir:2087?encryption=none&security=reality&sni=yahoo.com&fp=chrome&pbk=y45HXAPytyFncm6ISdBcVhDLkHgK8v435pZgaoQwklA&sid=e898156ae00ddeb8&spx=%2FHLN1XHt91iK35KU&type=xhttp&mode=auto&host=panel1.legendcr.ir&path=%2Fpath&extra=%7B%22xPaddingBytes%22%3A%22100-1000%22%7D#%F0%9F%87%B9%F0%9F%87%B7%F0%9F%96%A5PC%F0%9F%92%BB
 hysteria2://8bc63720-5ec8-45b5-b6a6-9a21ffb490e8@fl02.auragg.org:8443?security=tls&fm=%7B%7D&sni=fl02.auragg.org#%F0%9F%87%B8%F0%9F%87%ACKOMEKCI%3FserverDescription%3D4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD%0A
 
 vless://9d6104a5-fc6d-4fe6-95b7-80d8f699e09d@89.167.16.234:8526?security=reality&encryption=none&pbk=-zNDEqKkScKvMWB7spEper78GE_u-nR4jDHZ3DpOoxM&headerType=none&fp=chrome&type=tcp&sni=www.yahoo.com&sid=62ad184af31fc8cf#🇹🇲⚡ОБНОВИТЬ ETMEK ÜÇİN⚡?serverDescription=4paD4paC4paB8JOFiyBWw5hSw5BSIPCflLHigIsg4paB4paC4paD
