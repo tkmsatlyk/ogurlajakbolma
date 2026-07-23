@@ -1,25 +1,14 @@
-#providerid: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
-#profile-title: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
+#providerid: VÃ˜RÃR Service
+#profile-title: VÃ˜RÃR Service
 #profile-update-interval: 0
-#profile-web-page-url: https://t.me/xylen_111
-#support-url: https://t.me/xylen_111
-#announce: ❌ VPN İŞLEMEDE ◄ ⓘ ► BASYP BİZE YAZYŇ!🚀 TÄZE KODLARY ALYŇ ✅LIKE BASYP GOLDAMAGY✊️ UNUTMAŇ 🔥 
-#subscription-userinfo: upload=0; download=0; total=0; 
+#subscription-userinfo: upload=0; download=0; total=0;
 #subscriptions-sort-type: without
-#subscription-pin: true
-#subscription-auto-update-open-enable: false
-#subscriptions-collapse: false
 #ping-result: time
 #ping-type: proxy
 #check-url-via-proxy: http://clients3.google.com/generate_204
-#profile-icon: https://telegram.org/img/t_logo.png
-#hide-settings: true
-#sub-info-button-link: https://t.me/xylen_111
-#sub-info-button-text: Продлить VPN
-#sub-info-color: green
-#sub-info-text: ⏰ Продлите подписку заранее – чтобы не потерять доступ
-#subscription-ping-onopen-enabled: true
-Content-Type:text/plain; charset=utf-8
-
-vless://a2f6789e-977f-4749-81d2-1a74123768fa@cdn01.bearbeer.digital:443?encryption=none&security=tls&sni=cdn01.bearbeer.digital&alpn=h2%2C%20http%2F1.1&fp=qq&type=xhttp&mode=packet-up&host=cdn01.bearbeer.digital&path=%2Fuploadfiles%2F&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2Fuploadfiles%2F%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#%F0%9F%87%AA%F0%9F%87%BA%20%F0%9D%90%87%F0%9D%90%84%F0%9D%90%91%20%F0%9D%90%96%F0%9D%90%80%F0%9D%90%86%F0%9D%90%98%F0%9D%90%93%20%F0%9D%90%88%F0%9D%90%92%F0%9D%90%8B%F0%9D%90%84%F0%9D%90%98%F0%9D%90%80%F0%9D%90%91?serverDescription=​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
-
+ss://YWVzLTI1Ni1nY206c3NfMTc4NDc5ODU5Ng==@217.149.22.175:2050#Turkmenistan?serverDescription=TmFzxLFsc8Sxbg==
+ss://YWVzLTI1Ni1nY206c3NfMTc4NDc5ODU5Ng==@217.149.22.175:2050#Russia?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:420?security=none&type=tcp&headerType=none&path=&host=#Sweden?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:443?security=none&type=tcp&headerType=none&path=&host=#Turkey?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:989?security=none&type=tcp&headerType=none&path=&host=#Germany?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:898?security=none&type=tcp&headerType=none&path=&host=#Netherlands?serverDescription=TmFzxLFsc8Sxbg==
