@@ -1,14 +1,16 @@
-#providerid: VORDR Service
-#profile-title: VORDR Service
-#profile-update-interval: 0
-#subscription-userinfo: upload=0; download=0; total=0;
+#providerid: Custom
+#profile-title: My VPN
+#profile-update-interval: 1
+#subscription-pin: true
 #subscriptions-sort-type: without
 #ping-result: time
 #ping-type: proxy
-#check-url-via-proxy: http://clients3.google.com/generate_204
-ss://YWVzLTI1Ni1nY206c3NfMTc4NDc5ODU5Ng==@217.149.22.175:2050#Turkmenistan?serverDescription=Nasilsin
-ss://YWVzLTI1Ni1nY206c3NfMTc4NDc5ODU5Ng==@217.149.22.175:2050#Russia?serverDescription=Nasilsin
-vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:420?security=none&type=tcp&headerType=none&path=&host=#Sweden?serverDescription=Nasilsin
-vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:443?security=none&type=tcp&headerType=none&path=&host=#Turkey?serverDescription=Nasilsin
-vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:989?security=none&type=tcp&headerType=none&path=&host=#Germany?serverDescription=Nasilsin
-vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:898?security=none&type=tcp&headerType=none&path=&host=#Netherlands?serverDescription=Nasilsin
+#check-url-via-proxy: http://cp.cloudflare.com/generate_204
+#profile-icon: https://telegram.org/img/t_logo.png
+
+ss://YWVzLTI1Ni1nY206c3NfMTc4NDc5ODU5Ng==@217.149.22.175:2050#%F0%9F%87%B9%F0%9F%87%B2%20Turkmenistan%20?serverDescription=TmFzxLFsc8Sxbg==
+ss://YWVzLTI1Ni1nY206c3NfMTc4NDc5ODU5Ng==@217.149.22.175:2050#%F0%9F%87%B7%F0%9F%87%BA%20Russia%20?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:420?security=none&type=tcp&headerType=none&path=&host=#%F0%9F%87%B8%F0%9F%87%AA%20Sweden%20?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:443?security=none&type=tcp&headerType=none&path=&host=#%F0%9F%87%B9%F0%9F%87%B7%20Turkey%20?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:989?security=none&type=tcp&headerType=none&path=&host=#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20?serverDescription=TmFzxLFsc8Sxbg==
+vless://7468d6f7-6f18-4d2d-9071-e6bad850d362@217.149.22.175:898?security=none&type=tcp&headerType=none&path=&host=#%F0%9F%87%B3%F0%9F%87%B1%20Netherlands%20?serverDescription=TmFzxLFsc8Sxbg==
