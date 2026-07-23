@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-26 GÜNLÜK SAYAÇ
-- Her gün otomatik olarak 1 azalır
-- GÜN 0'A ULAŞTIĞINDA:
-  * Sub2'deki TÜM VPN linklerini sil
-  * Yeni rastgele VLESS protokolü oluştur (26 adet)
-  * 26 günü yeniden başlat
+26 GÜNLÜK SAYAÇ - SADECE #announce SAÜRINDaki SAYIYI GÜNCELLE
+- #announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【²⁶ ᵍᵘⁿ ᵍᵃˡᵈʸ】
+  Bu satırda SADECE SAYIYI DEĞİŞTİR: 26 → 25 → 24 ... → 0
+- GÜN 0'A ULAŞIRSA:
+  * Sub2'deki TÜM VLESS linklerini sil
+  * 1 tane yeni rastgele VLESS oluştur (#sag bolun ile)
+  * Sayacı yeniden 26 başlat
 """
 
 import json
@@ -39,7 +40,7 @@ def calculate_remaining_days(start_date):
     return max(0, remaining)
 
 def generate_random_vless():
-    """Rastgele VLESS protokolü oluştur"""
+    """Rastgele 1 VLESS protokolü oluştur"""
     uuid_val = str(uuid.uuid4())
     ip = f"{random.randint(1,255)}.{random.randint(0,255)}.{random.randint(0,255)}.{random.randint(0,255)}"
     port = random.randint(400, 65000)
@@ -57,23 +58,20 @@ def format_days_with_superscript(days):
         result += superscript_map.get(char, char)
     return result
 
-def delete_all_vpn_links(content):
-    """Tüm VPN linklerini sil (vless://, ss://, vmess://, trojan://)"""
+def delete_all_vless_links(content):
+    """Tüm VLESS linklerini sil"""
     lines = content.split('\n')
     filtered_lines = []
     
     for line in lines:
-        if (line.strip().startswith('vless://') or 
-            line.strip().startswith('ss://') or 
-            line.strip().startswith('vmess://') or
-            line.strip().startswith('trojan://')):
+        if line.strip().startswith('vless://'):
             continue
         filtered_lines.append(line)
     
     return '\n'.join(filtered_lines)
 
 def update_countdown():
-    """Sayacı güncelle - GÜN 0'A ULAŞIRSA YENİ VLESS OLUŞTUR"""
+    """Sayacı güncelle - SADECE #announce satırındaki sayı değişir"""
     start_date = load_limit_date()
     remaining_days = calculate_remaining_days(start_date)
     
@@ -84,46 +82,37 @@ def update_countdown():
     with open(SUB2_FILE, 'r', encoding='utf-8') as f:
         sub2_content = f.read()
     
-    # **GÜN 0'A ULAŞTI - TÜM LİNKLERİ SİL VE YENİ OLUŞTUR**
+    # **GÜN 0'A ULAŞTI - TÜM VLESS SİL VE 1 YENİ OLUŞTUR**
     if remaining_days == 0:
         print("🔴 ⚠️  GÜN 0'A ULAŞTI!")
-        print("🗑️  Tüm VPN linklerini siliyorum...")
+        print("🗑️  Tüm VLESS linklerini siliyorum...")
         
-        # Tüm VPN linklerini sil
-        sub2_content = delete_all_vpn_links(sub2_content)
+        # Tüm VLESS linklerini sil
+        sub2_content = delete_all_vless_links(sub2_content)
         
-        # Yeni 26 VLESS protokolü oluştur
-        print("✨ Yeni 26 VLESS oluşturuluyor...")
-        new_vless_links = []
-        flags = ["🇷🇺", "🇹🇲", "🇸🇪", "🇹🇷", "🇩🇪", "🇳🇱", "🇺🇸", "🇬🇧", "🇫🇷", "🇮🇹", "🇪🇸", "🇵🇱"]
-        countries = ["RUSSIA", "TURKMENISTAN", "SWEDEN", "TURKEY", "GERMANY", 
-                    "NETHERLANDS", "UNITED STATES", "UNITED KINGDOM", "FRANCE", "ITALY", "SPAIN", "POLAND"]
+        # 1 yeni VLESS oluştur
+        print("✨ Yeni 1 VLESS oluşturuluyor...")
+        new_vless = generate_random_vless()
+        new_vless_line = f"{new_vless}#sag bolun\n"
         
-        for i in range(26):
-            vless = generate_random_vless()
-            flag = flags[i % len(flags)]
-            country = countries[i % len(countries)]
-            new_vless_links.append(f"{vless}#{flag} {country}")
-        
-        # Yeni linkler ekle
-        sub2_content += "\n" + "\n".join(new_vless_links) + "\n"
+        # Boş satırlardan sonra yeni linki ekle
+        sub2_content += "\n" + new_vless_line
         
         # 26 günü yeniden başlat
         start_date = datetime.now().date()
         save_limit_date(start_date)
         remaining_days = 26
         
-        print(f"✅ 26 yeni VLESS oluşturuldu!")
+        print(f"✅ 1 yeni VLESS oluşturuldu!")
         print(f"✅ Sayaç RESETLENDI: 26 gün başladı!")
     
-    # Announce satırını güncelle
+    # #announce satırındaki SADECE SAYIYI GÜNCELLE
     formatted_days = format_days_with_superscript(remaining_days)
-    announce_text = f"❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【{formatted_days} ᵍᵘⁿ ᵍᵃˡᵈʸ】"
     
-    # #announce satırını güncelle
+    # Regex: 【[üst simgeler] ᵍᵘⁿ ᵍᵃˡᵈʸ】 formunu bul ve SADECE sayıyı değiştir
     updated_content = re.sub(
-        r'#announce:.*',
-        f'#announce: {announce_text}',
+        r'【[⁰¹²³⁴⁵⁶⁷⁸⁹]+ ᵍᵘⁿ ᵍᵃˡᵈʸ】',
+        f'【{formatted_days} ᵍᵘⁿ ᵍᵃˡᵈʸ】',
         sub2_content
     )
     
@@ -132,9 +121,9 @@ def update_countdown():
         f.write(updated_content)
     
     if remaining_days == 0:
-        print(f"🎉 Sub2 TAMAMEN güncellendi! Yeni 26 gün döngüsü başladı!")
+        print(f"🎉 Sub2 güncellendi! SIFIR gün - 1 yeni VLESS oluşturuldu!")
     else:
-        print(f"✅ Sub2 güncellendi: {remaining_days} gün kaldı!")
+        print(f"✅ #announce satırında sayı güncellendi: {remaining_days} gün")
 
 if __name__ == "__main__":
     update_countdown()
