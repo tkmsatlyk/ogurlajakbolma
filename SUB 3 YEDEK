@@ -1,93 +1,18 @@
-[
-  {
-    "remarks": "Turkmenistan",
-    "meta": { "serverDescription": "Nasilsin" },
-    "dns": { "servers": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"] },
-    "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" } },
-      { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": {} }
-    ],
-    "outbounds": [
-      { "tag": "proxy", "protocol": "shadowsocks", "settings": { "servers": [ { "address": "217.149.22.175", "port": 2050, "method": "aes-256-gcm", "password": "ss_1784798596" } ] } },
-      { "tag": "direct", "protocol": "freedom", "settings": {} },
-      { "tag": "block", "protocol": "blackhole", "settings": {} }
-    ],
-    "routing": { "rules": [ { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" } ] }
-  },
-  {
-    "remarks": "Russia",
-    "meta": { "serverDescription": "Nasilsin" },
-    "dns": { "servers": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"] },
-    "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" } },
-      { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": {} }
-    ],
-    "outbounds": [
-      { "tag": "proxy", "protocol": "shadowsocks", "settings": { "servers": [ { "address": "217.149.22.175", "port": 2050, "method": "aes-256-gcm", "password": "ss_1784798596" } ] } },
-      { "tag": "direct", "protocol": "freedom", "settings": {} },
-      { "tag": "block", "protocol": "blackhole", "settings": {} }
-    ],
-    "routing": { "rules": [ { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" } ] }
-  },
-  {
-    "remarks": "Sweden",
-    "meta": { "serverDescription": "Nasilsin" },
-    "dns": { "servers": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"] },
-    "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" } },
-      { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": {} }
-    ],
-    "outbounds": [
-      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [ { "address": "217.149.22.175", "port": 420, "users": [ { "id": "7468d6f7-6f18-4d2d-9071-e6bad850d362", "encryption": "none" } ] } ] }, "streamSettings": { "network": "tcp", "security": "none" } },
-      { "tag": "direct", "protocol": "freedom", "settings": {} },
-      { "tag": "block", "protocol": "blackhole", "settings": {} }
-    ],
-    "routing": { "rules": [ { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" } ] }
-  },
-  {
-    "remarks": "Turkey",
-    "meta": { "serverDescription": "Nasilsin" },
-    "dns": { "servers": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"] },
-    "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" } },
-      { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": {} }
-    ],
-    "outbounds": [
-      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [ { "address": "217.149.22.175", "port": 443, "users": [ { "id": "7468d6f7-6f18-4d2d-9071-e6bad850d362", "encryption": "none" } ] } ] }, "streamSettings": { "network": "tcp", "security": "none" } },
-      { "tag": "direct", "protocol": "freedom", "settings": {} },
-      { "tag": "block", "protocol": "blackhole", "settings": {} }
-    ],
-    "routing": { "rules": [ { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" } ] }
-  },
-  {
-    "remarks": "Germany",
-    "meta": { "serverDescription": "Nasilsin" },
-    "dns": { "servers": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"] },
-    "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" } },
-      { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": {} }
-    ],
-    "outbounds": [
-      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [ { "address": "217.149.22.175", "port": 989, "users": [ { "id": "7468d6f7-6f18-4d2d-9071-e6bad850d362", "encryption": "none" } ] } ] }, "streamSettings": { "network": "tcp", "security": "none" } },
-      { "tag": "direct", "protocol": "freedom", "settings": {} },
-      { "tag": "block", "protocol": "blackhole", "settings": {} }
-    ],
-    "routing": { "rules": [ { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" } ] }
-  },
-  {
-    "remarks": "Netherlands",
-    "meta": { "serverDescription": "Nasilsin" },
-    "dns": { "servers": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"] },
-    "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" } },
-      { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": {} }
-    ],
-    "outbounds": [
-      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [ { "address": "217.149.22.175", "port": 898, "users": [ { "id": "7468d6f7-6f18-4d2d-9071-e6bad850d362", "encryption": "none" } ] } ] }, "streamSettings": { "network": "tcp", "security": "none" } },
-      { "tag": "direct", "protocol": "freedom", "settings": {} },
-      { "tag": "block", "protocol": "blackhole", "settings": {} }
-    ],
-    "routing": { "rules": [ { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" } ] }
-  }
-]
 
+#providerid: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
+#profile-title: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
+#profile-update-interval: 0
+#profile-web-page-url: https://t.me/xylen_111
+#support-url: https://t.me/xylen_111
+#announce: ❌ VPN İŞLEMEDE ◄ ⓘ ► BASYP BİZE YAZYŇ!🚀 TÄZE KODLARY ALYŇ ✅LIKE BASYP GOLDAMAGY✊️ UNUTMAŇ 🔥 
+#subscription-userinfo: upload=0; download=0; total=0; 
+
+
+ss://YWVzLTI1Ni1nY206c3NfMTc4NDk1NTk4Mg==@201.24.114.75:2050#🇷🇺 𝖱𝖴𝖲𝖲𝖨𝖠
+ss://YWVzLTI1Ni1nY206c3NfMTc4NDk1NTk4Mg==@201.24.114.75:2050#🇹🇲 𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
+vless://782d26b8-364e-4e18-9ee3-a79610c06124@201.24.114.75:420?security=none&type=tcp&headerType=none&path=&host=#🇸🇪 𝖲𝖶𝖤𝖣𝖤𝖭
+vless://782d26b8-364e-4e18-9ee3-a79610c06124@201.24.114.75:410?security=none&type=tcp&headerType=none&path=&host=#🇺🇸 𝖀𝖭𝖨𝖳𝖤𝖉 𝖲𝖳𝖀𝖳𝖤𝖲
+vless://782d26b8-364e-4e18-9ee3-a79610c06124@201.24.114.75:443?security=none&type=tcp&headerType=none&path=&host=#🇹🇷 𝖳𝖴𝖱𝖪𝖤𝖸
+vless://782d26b8-364e-4e18-9ee3-a79610c06124@201.24.114.75:989?security=none&type=tcp&headerType=none&path=&host=#🇩🇪 𝖦𝖤𝖱𝖬𝖠𝖭𝖸
+vless://782d26b8-364e-4e18-9ee3-a79610c06124@201.24.114.75:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱 𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖣𝖲
+vless://782d26b8-364e-4e18-9ee3-a79610c06124@201.24.114.75:898?security=none&type=tcp&headerType=none&path=&host=#🇹🇲 𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
