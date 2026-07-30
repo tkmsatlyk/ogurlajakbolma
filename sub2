@@ -3,7 +3,7 @@
 #profile-update-interval: 0
 #profile-web-page-url: https://telegram.org/img/t_logo.png
 #support-url: https://t.me/osnsisbsbsbsjwnxuxnd
-#announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【²² ᵍᵘⁿ ᵍᵃˡᵈʸ】
+#announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【²⁰ ᵍᵘⁿ ᵍᵃˡᵈʸ】
 #subscription-userinfo: upload=0; download=0; total=0; expire=1798752000
 #subscriptions-sort-type: without
 #subscription-pin: true
@@ -16,10 +16,16 @@
 #profile-icon: https://telegram.org/img/t_logo.png
 
 
-vless://5eecb34f-c905-4c77-b7fb-d830b451cd11@193.124.57.208:20342?encryption=none&security=none&type=tcp&headerType=none&fragment=1-3%2C10-20%2Ctlshello%2Cnull&fm=%7B%22tcp%22%3A%5B%7B%22settings%22%3A%7B%22delay%22%3A%2210-20%22%2C%22length%22%3A%221-3%22%2C%22packets%22%3A%22tlshello%22%7D%2C%22type%22%3A%22fragment%22%7D%5D%7D#%F0%9F%87%B7%F0%9F%87%BA%20%F0%9F%9B%B0%EF%B8%8F%20StarLink%20%F0%9F%9B%B0%EF%B8%8F4g
+vmess://eyJhZGQiOiIxNjUuMTU0LjE5NS4zOCIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiI5NTlhOGNhZi00Y2VhLTQzZDAtYTU0OC0zNjI4ZTdkZGZhZmMiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjM1MDM0IiwicHMiOiLwn4ep8J+HqkdFUk1BTlkiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+vmess://eyJhZGQiOiIxNjUuMTU0LjE5NS4zOCIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiI5NTlhOGNhZi00Y2VhLTQzZDAtYTU0OC0zNjI4ZTdkZGZhZmMiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjM1MDM0IiwicHMiOiLwn4e18J+HuCBBUkFCSUEiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
 hysteria2://68b4b16e-2759-47a4-8a69-33118edf5ce6@5.180.97.78:443?security=tls&fm=%7B%7D&sni=nederland.gamestocke.ru#%F0%9F%87%AD%F0%9F%87%B0%F0%9F%96%A5GAMING-HG%E2%9A%A1%EF%B8%8F
-ss://aes-256-gcm:cfe685726eea2c4b@185.22.154.103:10921?fm=%7B%22tcp%22%3A%5B%7B%22settings%22%3A%7B%22delay%22%3A%221%22%2C%22length%22%3A%223%22%2C%22packets%22%3A%22tlshello%22%7D%2C%22type%22%3A%22fragment%22%7D%5D%7D#%F0%9F%87%B7%F0%9F%87%BA%F0%9F%8C%80TM-FASTING%F0%9F%96%A5
-ss://chacha20-ietf-poly1305:7e731ec3-f8e1-43f6-92cf-3978d14705c4@61.231.49.100:50099#%F0%9F%87%B7%F0%9F%87%BARR
+
+vless://56b9eb1b-cf39-4911-ac6c-fed02bbb5996@199.232.238.172:443?encryption=none&security=tls&sni=account.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=oh4.global.ssl.fastly.net&path=%2F#🇧🇪𝖡𝖤𝖫𝖦𝖨𝖴𝖬
+vless://56b9eb1b-cf39-4911-ac6c-fed02bbb5996@199.232.238.172:443?encryption=none&security=tls&sni=account.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd8.global.ssl.fastly.net&path=%2F#🇷🇴𝖱𝖮𝖬𝖠𝖭𝖨𝖠
+vless://64b6f905-94d5-4745-8f92-cafa107b7c16@94.126.204.43:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=apple.com&fp=qq&pbk=m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE&type=tcp&headerType=none#🇪🇺𝖤𝖴𝖱𝖮𝖯𝖤
+vless://56b9eb1b-cf39-4911-ac6c-fed02bbb5996@199.232.86.185:443?encryption=none&security=tls&sni=account.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd13.global.ssl.fastly.net&path=%2F#🇰🇿𝖪𝖠𝖹𝖠𝖪𝖧𝖲𝖳𝖠𝖭
+vless://56b9eb1b-cf39-4911-ac6c-fed02bbb5996@199.232.238.172:443?encryption=none&security=tls&sni=account.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=oh6.global.ssl.fastly.net&path=%2F#🇱🇺𝖫𝖴𝖷𝖤𝖬𝖡𝖮𝖴𝖱𝖦
+
 
 vless://3ffe5ba9-835a-40bd-9b57-5a7ea2c2b4bb@201.24.123.197:445?security=none&type=tcp&headerType=none&path=&host=#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
 vless://3ffe5ba9-835a-40bd-9b57-5a7ea2c2b4bb@201.24.123.197:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖁𝖲
@@ -29,38 +35,6 @@ vless://3ffe5ba9-835a-40bd-9b57-5a7ea2c2b4bb@201.24.123.197:420?security=none&ty
 vless://3ffe5ba9-835a-40bd-9b57-5a7ea2c2b4bb@201.24.123.197:445?security=none&type=tcp&headerType=none&path=&host=#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
 ss://YWVzLTI1Ni1nY206c3NfMTc4NTM4NTUyMQ==@201.24.123.197:2050#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
 
-
-
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@84.247.48.78:1080#🇮🇪IRLANDA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@194.187.249.218:1080#🇫🇷FRANSA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@89.249.74.188:1080#🇬🇧INGILTERE
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@91.193.5.112:1080#🇮🇹ITALYA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@38.132.118.198:1080#🇺🇸AMERIKA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@185.232.22.18:1080#🇺🇸AMERIKA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@185.232.22.28:1080#🇺🇸AMERIKA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@185.247.68.94:1080#🇺🇸AMERIKA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@68.168.114.226:1080#🇨🇦KANADA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@38.132.118.30:1080#🇺🇸AMERIKA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@185.236.200.210:1080#🇺🇸AMERIKA
-
-ss://chacha20-ietf-poly1305:XF0klw7870vXn3uQIxe19Q@62.113.194.157:1080#🇩🇪ALMANYAvless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
-vless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
-vless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
-vless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖁𝖲
-vless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇺🇸𝖴𝖭𝖨𝖳𝖤𝖁 𝖲𝖳𝖠𝖳𝖤𝖲
-vless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇸🇪𝖲𝖶𝖤𝖁𝖤𝖭
-vless://a6c4d2ad-adb3-40d5-9094-05ef6111740d@45.145.42.248:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=de.f1miy.cfd&fp=firefox&pbk=CxIgyFfWbaowHvCpG5VjVDQ5kEQFSaCTgF95Bk9PPHI&type=tcp&headerType=none#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
 
 vless://a2f6789e-977f-4749-81d2-1a74123768fa@cdn01.bearbeer.digital:443?encryption=none&security=tls&sni=cdn01.bearbeer.digital&alpn=h2%2C%20http%2F1.1&fp=qq&type=xhttp&mode=packet-up&host=cdn01.bearbeer.digital&path=%2Fuploadfiles%2F&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2Fuploadfiles%2F%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#%F0%9F%87%AA%F0%9F%87%BA%20%F0%9D%90%87%F0%9D%90%84%F0%9D%90%91%20%F0%9D%90%96%F0%9D%90%80%F0%9D%90%86%F0%9D%90%98%F0%9D%90%93%20%F0%9D%90%88%F0%9D%90%92%F0%9D%90%8B%F0%9D%90%84%F0%9D%90%98%F0%9D%90%80%F0%9D%90%91
 vless://a2f6789e-977f-4749-81d2-1a74123768fa@cdn01.bearbeer.digital:443?encryption=none&security=tls&sni=cdn01.bearbeer.digital&alpn=h2%2C%20http%2F1.1&fp=qq&type=xhttp&mode=packet-up&host=cdn01.bearbeer.digital&path=%2Fuploadfiles%2F&extra=%7B%22mode%22%3A%22packet-up%22%2C%22path%22%3A%22%2Fuploadfiles%2F%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#%F0%9F%87%AA%F0%9F%87%BA%20%F0%9D%90%87%F0%9D%90%84%F0%9D%90%91%20%F0%9D%90%96%F0%9D%90%80%F0%9D%90%86%F0%9D%90%98%F0%9D%90%93%20%F0%9D%90%88%F0%9D%90%92%F0%9D%90%8B%F0%9D%90%84%F0%9D%90%98%F0%9D%90%80%F0%9D%90%91
