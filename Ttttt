@@ -1,0 +1,292 @@
+{
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "1.0.0.1"
+    ],
+    "queryStrategy": "UseIP"
+  },
+  "log": {
+    "loglevel": "warning"
+  },
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "balancerTag": "CD_XHTTP_ROUNDROBIN"
+      }
+    ],
+    "balancers": [
+      {
+        "tag": "CD_XHTTP_ROUNDROBIN",
+        "selector": [
+          "cdxhttp"
+        ],
+        "strategy": {
+          "type": "roundRobin",
+          "settings": {}
+        },
+        "fallbackTag": "block"
+      }
+    ],
+    "domainMatcher": "hybrid",
+    "domainStrategy": "IPIfNonMatch"
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "udp": true,
+        "auth": "noauth"
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "http",
+      "port": 10809,
+      "listen": "127.0.0.1",
+      "protocol": "http",
+      "settings": {
+        "allowTransparent": false
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "cdxhttp",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "81.211.66.61",
+            "port": 443,
+            "users": [
+              {
+                "id": "361765bd-188c-4da2-a54b-5acbc7efb7da",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "mode": "packet-up",
+          "host": "qwenshop.net",
+          "path": "/media/hls/stream-01.ts/",
+          "extra": {
+            "xmux": {
+              "cMaxReuseTimes": "64-128",
+              "maxConcurrency": "16-24",
+              "maxConnections": 0,
+              "hMaxRequestTimes": "500-1000",
+              "hMaxReusableSecs": "900-1800"
+            },
+            "seqKey": "offset",
+            "sessionKey": "auth",
+            "noSSEHeader": false,
+            "noGRPCHeader": true,
+            "seqPlacement": "query",
+            "sessionIDKey": "auth",
+            "xPaddingBytes": "50-150",
+            "sessionIDTable": "",
+            "xPaddingHeader": "X-Api-Key",
+            "xPaddingMethod": "tokenish",
+            "sessionIDLength": "16-32",
+            "sessionPlacement": "query",
+            "uplinkHTTPMethod": "GET",
+            "xPaddingObfsMode": true,
+            "xPaddingPlacement": "header",
+            "scMaxBufferedPosts": 150,
+            "scMaxEachPostBytes": "800000-1100000",
+            "sessionIDPlacement": "query",
+            "uplinkDataPlacement": "body",
+            "scMinPostsIntervalMs": "15-30"
+          }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "qwenshop.net",
+          "fingerprint": "chrome",
+          "alpn": [
+            "h2"
+          ]
+        }
+      }
+    },
+    {
+      "tag": "cdxhttp-2",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "185.141.226.127",
+            "port": 443,
+            "users": [
+              {
+                "id": "361765bd-188c-4da2-a54b-5acbc7efb7da",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "mode": "packet-up",
+          "host": "qwenshop.net",
+          "path": "/assets/video/intro-2026.mp4/",
+          "extra": {
+            "xmux": {
+              "cMaxReuseTimes": "64-128",
+              "maxConcurrency": "16-24",
+              "maxConnections": 0,
+              "hMaxRequestTimes": "500-1000",
+              "hMaxReusableSecs": "900-1800"
+            },
+            "seqKey": "offset",
+            "sessionKey": "auth",
+            "noSSEHeader": false,
+            "noGRPCHeader": true,
+            "seqPlacement": "query",
+            "sessionIDKey": "auth",
+            "xPaddingBytes": "50-150",
+            "sessionIDTable": "",
+            "xPaddingHeader": "X-Api-Key",
+            "xPaddingMethod": "tokenish",
+            "sessionIDLength": "16-32",
+            "sessionPlacement": "query",
+            "uplinkHTTPMethod": "GET",
+            "xPaddingObfsMode": true,
+            "xPaddingPlacement": "header",
+            "scMaxBufferedPosts": 150,
+            "scMaxEachPostBytes": "800000-1100000",
+            "sessionIDPlacement": "query",
+            "uplinkDataPlacement": "body",
+            "scMinPostsIntervalMs": "15-30"
+          }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "qwenshop.net",
+          "fingerprint": "qq",
+          "alpn": [
+            "h2"
+          ]
+        }
+      }
+    },
+    {
+      "tag": "cdxhttp-3",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "81.222.127.190",
+            "port": 443,
+            "users": [
+              {
+                "id": "361765bd-188c-4da2-a54b-5acbc7efb7da",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "mode": "packet-up",
+          "host": "qwenshop.net",
+          "path": "/_next/static/chunks/4f7a9c2e1d8b.js/",
+          "extra": {
+            "xmux": {
+              "cMaxReuseTimes": "64-128",
+              "maxConcurrency": "16-24",
+              "maxConnections": 0,
+              "hMaxRequestTimes": "500-1000",
+              "hMaxReusableSecs": "900-1800"
+            },
+            "seqKey": "offset",
+            "sessionKey": "auth",
+            "noSSEHeader": false,
+            "noGRPCHeader": true,
+            "seqPlacement": "query",
+            "sessionIDKey": "auth",
+            "xPaddingBytes": "50-150",
+            "sessionIDTable": "",
+            "xPaddingHeader": "X-Api-Key",
+            "xPaddingMethod": "tokenish",
+            "sessionIDLength": "16-32",
+            "sessionPlacement": "query",
+            "uplinkHTTPMethod": "GET",
+            "xPaddingObfsMode": true,
+            "xPaddingPlacement": "header",
+            "scMaxBufferedPosts": 150,
+            "scMaxEachPostBytes": "800000-1100000",
+            "sessionIDPlacement": "query",
+            "uplinkDataPlacement": "body",
+            "scMinPostsIntervalMs": "15-30"
+          }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "qwenshop.net",
+          "fingerprint": "edge",
+          "alpn": [
+            "h2"
+          ]
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "burstObservatory": {
+    "pingConfig": {
+      "timeout": "5s",
+      "interval": "30s",
+      "sampling": 2,
+      "destination": "https://connectivitycheck.gstatic.com/generate_204",
+      "connectivity": ""
+    },
+    "subjectSelector": [
+      "cdxhttp"
+    ]
+  },
+  "remarks": "🇵🇱 POLAND"
+}
