@@ -1,3 +1,369 @@
-ew0KICAiZG5zIjogew0KICAgICJzZXJ2ZXJzIjogWw0KICAgICAgIjEuMS4xLjEiLA0KICAgICAgIjEuMC4wLjEiDQogICAgXSwNCiAgICAicXVlcnlTdHJhdGVneSI6ICJVc2VJUCINCiAgfSwNCiAgImxvZyI6IHsNCiAgICAibG9nbGV2ZWwiOiAid2FybmluZyINCiAgfSwNCiAgInJvdXRpbmciOiB7DQogICAgInJ1bGVzIjogWw0KICAgICAgew0KICAgICAgICAidHlwZSI6ICJmaWVsZCIsDQogICAgICAgICJuZXR3b3JrIjogInRjcCx1ZHAiLA0KICAgICAgICAiYmFsYW5jZXJUYWciOiAiQ0RfWEhUVFBfUk9VTkRST0JJTiINCiAgICAgIH0NCiAgICBdLA0KICAgICJiYWxhbmNlcnMiOiBbDQogICAgICB7DQogICAgICAgICJ0YWciOiAiQ0RfWEhUVFBfUk9VTkRST0JJTiIsDQogICAgICAgICJzZWxlY3RvciI6IFsNCiAgICAgICAgICAiY2R4aHR0cCINCiAgICAgICAgXSwNCiAgICAgICAgInN0cmF0ZWd5Ijogew0KICAgICAgICAgICJ0eXBlIjogInJvdW5kUm9iaW4iLA0KICAgICAgICAgICJzZXR0aW5ncyI6IHt9DQogICAgICAgIH0sDQogICAgICAgICJmYWxsYmFja1RhZyI6ICJibG9jayINCiAgICAgIH0NCiAgICBdLA0KICAgICJkb21haW5NYXRjaGVyIjogImh5YnJpZCIsDQogICAgImRvbWFpblN0cmF0ZWd5IjogIklQSWZOb25NYXRjaCINCiAgfSwNCiAgImluYm91bmRzIjogWw0KICAgIHsNCiAgICAgICJ0YWciOiAic29ja3MiLA0KICAgICAgInBvcnQiOiAxMDgwOCwNCiAgICAgICJsaXN0ZW4iOiAiMTI3LjAuMC4xIiwNCiAgICAgICJwcm90b2NvbCI6ICJzb2NrcyIsDQogICAgICAic2V0dGluZ3MiOiB7DQogICAgICAgICJ1ZHAiOiB0cnVlLA0KICAgICAgICAiYXV0aCI6ICJub2F1dGgiDQogICAgICB9LA0KICAgICAgInNuaWZmaW5nIjogew0KICAgICAgICAiZW5hYmxlZCI6IHRydWUsDQogICAgICAgICJyb3V0ZU9ubHkiOiBmYWxzZSwNCiAgICAgICAgImRlc3RPdmVycmlkZSI6IFsNCiAgICAgICAgICAiaHR0cCIsDQogICAgICAgICAgInRscyIsDQogICAgICAgICAgInF1aWMiDQogICAgICAgIF0NCiAgICAgIH0NCiAgICB9LA0KICAgIHsNCiAgICAgICJ0YWciOiAiaHR0cCIsDQogICAgICAicG9ydCI6IDEwODA5LA0KICAgICAgImxpc3RlbiI6ICIxMjcuMC4wLjEiLA0KICAgICAgInByb3RvY29sIjogImh0dHAiLA0KICAgICAgInNldHRpbmdzIjogew0KICAgICAgICAiYWxsb3dUcmFuc3BhcmVudCI6IGZhbHNlDQogICAgICB9LA0KICAgICAgInNuaWZmaW5nIjogew0KICAgICAgICAiZW5hYmxlZCI6IHRydWUsDQogICAgICAgICJyb3V0ZU9ubHkiOiBmYWxzZSwNCiAgICAgICAgImRlc3RPdmVycmlkZSI6IFsNCiAgICAgICAgICAiaHR0cCIsDQogICAgICAgICAgInRscyIsDQogICAgICAgICAgInF1aWMiDQogICAgICAgIF0NCiAgICAgIH0NCiAgICB9DQogIF0sDQogICJvdXRib3VuZHMiOiBbDQogICAgew0KICAgICAgInRhZyI6ICJjZHhodHRwIiwNCiAgICAgICJwcm90b2NvbCI6ICJ2bGVzcyIsDQogICAgICAic2V0dGluZ3MiOiB7DQogICAgICAgICJ2bmV4dCI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAiYWRkcmVzcyI6ICI4MS4yMTEuNjYuNjEiLA0KICAgICAgICAgICAgInBvcnQiOiA0NDMsDQogICAgICAgICAgICAidXNlcnMiOiBbDQogICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAiaWQiOiAiMzYxNzY1YmQtMTg4Yy00ZGEyLWE1NGItNWFjYmM3ZWZiN2RhIiwNCiAgICAgICAgICAgICAgICAiZW5jcnlwdGlvbiI6ICJub25lIiwNCiAgICAgICAgICAgICAgICAiZmxvdyI6ICIiDQogICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIF0NCiAgICAgICAgICB9DQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICAic3RyZWFtU2V0dGluZ3MiOiB7DQogICAgICAgICJuZXR3b3JrIjogInhodHRwIiwNCiAgICAgICAgInhodHRwU2V0dGluZ3MiOiB7DQogICAgICAgICAgIm1vZGUiOiAicGFja2V0LXVwIiwNCiAgICAgICAgICAiaG9zdCI6ICJxd2Vuc2hvcC5uZXQiLA0KICAgICAgICAgICJwYXRoIjogIi9tZWRpYS9obHMvc3RyZWFtLTAxLnRzLyIsDQogICAgICAgICAgImV4dHJhIjogew0KICAgICAgICAgICAgInhtdXgiOiB7DQogICAgICAgICAgICAgICJjTWF4UmV1c2VUaW1lcyI6ICI2NC0xMjgiLA0KICAgICAgICAgICAgICAibWF4Q29uY3VycmVuY3kiOiAiMTYtMjQiLA0KICAgICAgICAgICAgICAibWF4Q29ubmVjdGlvbnMiOiAwLA0KICAgICAgICAgICAgICAiaE1heFJlcXVlc3RUaW1lcyI6ICI1MDAtMTAwMCIsDQogICAgICAgICAgICAgICJoTWF4UmV1c2FibGVTZWNzIjogIjkwMC0xODAwIg0KICAgICAgICAgICAgfSwNCiAgICAgICAgICAgICJzZXFLZXkiOiAib2Zmc2V0IiwNCiAgICAgICAgICAgICJzZXNzaW9uS2V5IjogImF1dGgiLA0KICAgICAgICAgICAgIm5vU1NFSGVhZGVyIjogZmFsc2UsDQogICAgICAgICAgICAibm9HUlBDSGVhZGVyIjogdHJ1ZSwNCiAgICAgICAgICAgICJzZXFQbGFjZW1lbnQiOiAicXVlcnkiLA0KICAgICAgICAgICAgInNlc3Npb25JREtleSI6ICJhdXRoIiwNCiAgICAgICAgICAgICJ4UGFkZGluZ0J5dGVzIjogIjUwLTE1MCIsDQogICAgICAgICAgICAic2Vzc2lvbklEVGFibGUiOiAiIiwNCiAgICAgICAgICAgICJ4UGFkZGluZ0hlYWRlciI6ICJYLUFwaS1LZXkiLA0KICAgICAgICAgICAgInhQYWRkaW5nTWV0aG9kIjogInRva2VuaXNoIiwNCiAgICAgICAgICAgICJzZXNzaW9uSURMZW5ndGgiOiAiMTYtMzIiLA0KICAgICAgICAgICAgInNlc3Npb25QbGFjZW1lbnQiOiAicXVlcnkiLA0KICAgICAgICAgICAgInVwbGlua0hUVFBNZXRob2QiOiAiR0VUIiwNCiAgICAgICAgICAgICJ4UGFkZGluZ09iZnNNb2RlIjogdHJ1ZSwNCiAgICAgICAgICAgICJ4UGFkZGluZ1BsYWNlbWVudCI6ICJoZWFkZXIiLA0KICAgICAgICAgICAgInNjTWF4QnVmZmVyZWRQb3N0cyI6IDE1MCwNCiAgICAgICAgICAgICJzY01heEVhY2hQb3N0Qnl0ZXMiOiAiODAwMDAwLTExMDAwMDAiLA0KICAgICAgICAgICAgInNlc3Npb25JRFBsYWNlbWVudCI6ICJxdWVyeSIsDQogICAgICAgICAgICAidXBsaW5rRGF0YVBsYWNlbWVudCI6ICJib2R5IiwNCiAgICAgICAgICAgICJzY01pblBvc3RzSW50ZXJ2YWxNcyI6ICIxNS0zMCINCiAgICAgICAgICB9DQogICAgICAgIH0sDQogICAgICAgICJzZWN1cml0eSI6ICJ0bHMiLA0KICAgICAgICAidGxzU2V0dGluZ3MiOiB7DQogICAgICAgICAgInNlcnZlck5hbWUiOiAicXdlbnNob3AubmV0IiwNCiAgICAgICAgICAiZmluZ2VycHJpbnQiOiAiY2hyb21lIiwNCiAgICAgICAgICAiYWxwbiI6IFsNCiAgICAgICAgICAgICJoMiINCiAgICAgICAgICBdDQogICAgICAgIH0NCiAgICAgIH0NCiAgICB9LA0KICAgIHsNCiAgICAgICJ0YWciOiAiY2R4aHR0cC0yIiwNCiAgICAgICJwcm90b2NvbCI6ICJ2bGVzcyIsDQogICAgICAic2V0dGluZ3MiOiB7DQogICAgICAgICJ2bmV4dCI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAiYWRkcmVzcyI6ICIxODUuMTQxLjIyNi4xMjciLA0KICAgICAgICAgICAgInBvcnQiOiA0NDMsDQogICAgICAgICAgICAidXNlcnMiOiBbDQogICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAiaWQiOiAiMzYxNzY1YmQtMTg4Yy00ZGEyLWE1NGItNWFjYmM3ZWZiN2RhIiwNCiAgICAgICAgICAgICAgICAiZW5jcnlwdGlvbiI6ICJub25lIiwNCiAgICAgICAgICAgICAgICAiZmxvdyI6ICIiDQogICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIF0NCiAgICAgICAgICB9DQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICAic3RyZWFtU2V0dGluZ3MiOiB7DQogICAgICAgICJuZXR3b3JrIjogInhodHRwIiwNCiAgICAgICAgInhodHRwU2V0dGluZ3MiOiB7DQogICAgICAgICAgIm1vZGUiOiAicGFja2V0LXVwIiwNCiAgICAgICAgICAiaG9zdCI6ICJxd2Vuc2hvcC5uZXQiLA0KICAgICAgICAgICJwYXRoIjogIi9hc3NldHMvdmlkZW8vaW50cm8tMjAyNi5tcDQvIiwNCiAgICAgICAgICAiZXh0cmEiOiB7DQogICAgICAgICAgICAieG11eCI6IHsNCiAgICAgICAgICAgICAgImNNYXhSZXVzZVRpbWVzIjogIjY0LTEyOCIsDQogICAgICAgICAgICAgICJtYXhDb25jdXJyZW5jeSI6ICIxNi0yNCIsDQogICAgICAgICAgICAgICJtYXhDb25uZWN0aW9ucyI6IDAsDQogICAgICAgICAgICAgICJoTWF4UmVxdWVzdFRpbWVzIjogIjUwMC0xMDAwIiwNCiAgICAgICAgICAgICAgImhNYXhSZXVzYWJsZVNlY3MiOiAiOTAwLTE4MDAiDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgInNlcUtleSI6ICJvZmZzZXQiLA0KICAgICAgICAgICAgInNlc3Npb25LZXkiOiAiYXV0aCIsDQogICAgICAgICAgICAibm9TU0VIZWFkZXIiOiBmYWxzZSwNCiAgICAgICAgICAgICJub0dSUENIZWFkZXIiOiB0cnVlLA0KICAgICAgICAgICAgInNlcVBsYWNlbWVudCI6ICJxdWVyeSIsDQogICAgICAgICAgICAic2Vzc2lvbklES2V5IjogImF1dGgiLA0KICAgICAgICAgICAgInhQYWRkaW5nQnl0ZXMiOiAiNTAtMTUwIiwNCiAgICAgICAgICAgICJzZXNzaW9uSURUYWJsZSI6ICIiLA0KICAgICAgICAgICAgInhQYWRkaW5nSGVhZGVyIjogIlgtQXBpLUtleSIsDQogICAgICAgICAgICAieFBhZGRpbmdNZXRob2QiOiAidG9rZW5pc2giLA0KICAgICAgICAgICAgInNlc3Npb25JRExlbmd0aCI6ICIxNi0zMiIsDQogICAgICAgICAgICAic2Vzc2lvblBsYWNlbWVudCI6ICJxdWVyeSIsDQogICAgICAgICAgICAidXBsaW5rSFRUUE1ldGhvZCI6ICJHRVQiLA0KICAgICAgICAgICAgInhQYWRkaW5nT2Jmc01vZGUiOiB0cnVlLA0KICAgICAgICAgICAgInhQYWRkaW5nUGxhY2VtZW50IjogImhlYWRlciIsDQogICAgICAgICAgICAic2NNYXhCdWZmZXJlZFBvc3RzIjogMTUwLA0KICAgICAgICAgICAgInNjTWF4RWFjaFBvc3RCeXRlcyI6ICI4MDAwMDAtMTEwMDAwMCIsDQogICAgICAgICAgICAic2Vzc2lvbklEUGxhY2VtZW50IjogInF1ZXJ5IiwNCiAgICAgICAgICAgICJ1cGxpbmtEYXRhUGxhY2VtZW50IjogImJvZHkiLA0KICAgICAgICAgICAgInNjTWluUG9zdHNJbnRlcnZhbE1zIjogIjE1LTMwIg0KICAgICAgICAgIH0NCiAgICAgICAgfSwNCiAgICAgICAgInNlY3VyaXR5IjogInRscyIsDQogICAgICAgICJ0bHNTZXR0aW5ncyI6IHsNCiAgICAgICAgICAic2VydmVyTmFtZSI6ICJxd2Vuc2hvcC5uZXQiLA0KICAgICAgICAgICJmaW5nZXJwcmludCI6ICJxcSIsDQogICAgICAgICAgImFscG4iOiBbDQogICAgICAgICAgICAiaDIiDQogICAgICAgICAgXQ0KICAgICAgICB9DQogICAgICB9DQogICAgfSwNCiAgICB7DQogICAgICAidGFnIjogImNkeGh0dHAtMyIsDQogICAgICAicHJvdG9jb2wiOiAidmxlc3MiLA0KICAgICAgInNldHRpbmdzIjogew0KICAgICAgICAidm5leHQiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImFkZHJlc3MiOiAiODEuMjIyLjEyNy4xOTAiLA0KICAgICAgICAgICAgInBvcnQiOiA0NDMsDQogICAgICAgICAgICAidXNlcnMiOiBbDQogICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAiaWQiOiAiMzYxNzY1YmQtMTg4Yy00ZGEyLWE1NGItNWFjYmM3ZWZiN2RhIiwNCiAgICAgICAgICAgICAgICAiZW5jcnlwdGlvbiI6ICJub25lIiwNCiAgICAgICAgICAgICAgICAiZmxvdyI6ICIiDQogICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIF0NCiAgICAgICAgICB9DQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICAic3RyZWFtU2V0dGluZ3MiOiB7DQogICAgICAgICJuZXR3b3JrIjogInhodHRwIiwNCiAgICAgICAgInhodHRwU2V0dGluZ3MiOiB7DQogICAgICAgICAgIm1vZGUiOiAicGFja2V0LXVwIiwNCiAgICAgICAgICAiaG9zdCI6ICJxd2Vuc2hvcC5uZXQiLA0KICAgICAgICAgICJwYXRoIjogIi9fbmV4dC9zdGF0aWMvY2h1bmtzLzRmN2E5YzJlMWQ4Yi5qcy8iLA0KICAgICAgICAgICJleHRyYSI6IHsNCiAgICAgICAgICAgICJ4bXV4Ijogew0KICAgICAgICAgICAgICAiY01heFJldXNlVGltZXMiOiAiNjQtMTI4IiwNCiAgICAgICAgICAgICAgIm1heENvbmN1cnJlbmN5IjogIjE2LTI0IiwNCiAgICAgICAgICAgICAgIm1heENvbm5lY3Rpb25zIjogMCwNCiAgICAgICAgICAgICAgImhNYXhSZXF1ZXN0VGltZXMiOiAiNTAwLTEwMDAiLA0KICAgICAgICAgICAgICAiaE1heFJldXNhYmxlU2VjcyI6ICI5MDAtMTgwMCINCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICAic2VxS2V5IjogIm9mZnNldCIsDQogICAgICAgICAgICAic2Vzc2lvbktleSI6ICJhdXRoIiwNCiAgICAgICAgICAgICJub1NTRUhlYWRlciI6IGZhbHNlLA0KICAgICAgICAgICAgIm5vR1JQQ0hlYWRlciI6IHRydWUsDQogICAgICAgICAgICAic2VxUGxhY2VtZW50IjogInF1ZXJ5IiwNCiAgICAgICAgICAgICJzZXNzaW9uSURLZXkiOiAiYXV0aCIsDQogICAgICAgICAgICAieFBhZGRpbmdCeXRlcyI6ICI1MC0xNTAiLA0KICAgICAgICAgICAgInNlc3Npb25JRFRhYmxlIjogIiIsDQogICAgICAgICAgICAieFBhZGRpbmdIZWFkZXIiOiAiWC1BcGktS2V5IiwNCiAgICAgICAgICAgICJ4UGFkZGluZ01ldGhvZCI6ICJ0b2tlbmlzaCIsDQogICAgICAgICAgICAic2Vzc2lvbklETGVuZ3RoIjogIjE2LTMyIiwNCiAgICAgICAgICAgICJzZXNzaW9uUGxhY2VtZW50IjogInF1ZXJ5IiwNCiAgICAgICAgICAgICJ1cGxpbmtIVFRQTWV0aG9kIjogIkdFVCIsDQogICAgICAgICAgICAieFBhZGRpbmdPYmZzTW9kZSI6IHRydWUsDQogICAgICAgICAgICAieFBhZGRpbmdQbGFjZW1lbnQiOiAiaGVhZGVyIiwNCiAgICAgICAgICAgICJzY01heEJ1ZmZlcmVkUG9zdHMiOiAxNTAsDQogICAgICAgICAgICAic2NNYXhFYWNoUG9zdEJ5dGVzIjogIjgwMDAwMC0xMTAwMDAwIiwNCiAgICAgICAgICAgICJzZXNzaW9uSURQbGFjZW1lbnQiOiAicXVlcnkiLA0KICAgICAgICAgICAgInVwbGlua0RhdGFQbGFjZW1lbnQiOiAiYm9keSIsDQogICAgICAgICAgICAic2NNaW5Qb3N0c0ludGVydmFsTXMiOiAiMTUtMzAiDQogICAgICAgICAgfQ0KICAgICAgICB9LA0KICAgICAgICAic2VjdXJpdHkiOiAidGxzIiwNCiAgICAgICAgInRsc1NldHRpbmdzIjogew0KICAgICAgICAgICJzZXJ2ZXJOYW1lIjogInF3ZW5zaG9wLm5ldCIsDQogICAgICAgICAgImZpbmdlcnByaW50IjogImVkZ2UiLA0KICAgICAgICAgICJhbHBuIjogWw0KICAgICAgICAgICAgImgyIg0KICAgICAgICAgIF0NCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIH0sDQogICAgew0KICAgICAgInRhZyI6ICJkaXJlY3QiLA0KICAgICAgInByb3RvY29sIjogImZyZWVkb20iLA0KICAgICAgInNldHRpbmdzIjoge30NCiAgICB9LA0KICAgIHsNCiAgICAgICJ0YWciOiAiYmxvY2siLA0KICAgICAgInByb3RvY29sIjogImJsYWNraG9sZSIsDQogICAgICAic2V0dGluZ3MiOiB7fQ0KICAgIH0NCiAgXSwNCiAgImJ1cnN0T2JzZXJ2YXRvcnkiOiB7DQogICAgInBpbmdDb25maWciOiB7DQogICAgICAidGltZW91dCI6ICI1cyIsDQogICAgICAiaW50ZXJ2YWwiOiAiMzBzIiwNCiAgICAgICJzYW1wbGluZyI6IDIsDQogICAgICAiZGVzdGluYXRpb24iOiAiaHR0cHM6Ly9jb25uZWN0aXZpdHljaGVjay5nc3RhdGljLmNvbS9nZW5lcmF0ZV8yMDQiLA0KICAgICAgImNvbm5lY3Rpdml0eSI6ICIiDQogICAgfSwNCiAgICAic3ViamVjdFNlbGVjdG9yIjogWw0KICAgICAgImNkeGh0dHAiDQogICAgXQ0KICB9LA0KICAicmVtYXJrcyI6ICLwn4e18J+HsSBQT0xBTkQiDQp9
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "60.249.101.16",
+            "port": 10000,
+            "users": [ { "encryption": "none", "id": "431fe973-a43a-4fac-bf83-2a772e0d0625", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": { "network": "tcp", "security": "none" },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇹🇼 COMPANY",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
 
-dmxlc3M6Ly8xZGFiZjBjYS1mYzZjLTRiZDgtODMxNC03N2Q4MTU4NjAwYzRAMTg1LjE4NS4xNDMuNzQ6OTg5P2VuY3J5cHRpb249bm9uZSZzZWN1cml0eT1ub25lJnR5cGU9dGNwJmhlYWRlclR5cGU9bm9uZSMlRjAlOUYlODclQTklRjAlOUYlODclQUFnZXJtYW4NCnZsZXNzOi8vMWRhYmYwY2EtZmM2Yy00YmQ4LTgzMTQtNzdkODE1ODYwMGM0QDE4NS4xODUuMTQzLjc0Ojg5OD9lbmNyeXB0aW9uPW5vbmUmc2VjdXJpdHk9bm9uZSZ0eXBlPXRjcCZoZWFkZXJUeXBlPW5vbmUjJUYwJTlGJTg3JUIzJUYwJTlGJTg3JUIxbmV0aGVybGFuZHMNCnZsZXNzOi8vMWRhYmYwY2EtZmM2Yy00YmQ4LTgzMTQtNzdkODE1ODYwMGM0QDE4NS4xODUuMTQzLjc0OjQ0NT9lbmNyeXB0aW9uPW5vbmUmc2VjdXJpdHk9bm9uZSZ0eXBlPXRjcCZoZWFkZXJUeXBlPW5vbmUjJUYwJTlGJTg3JUI5JUYwJTlGJTg3JUIydXNlciUzQSUyMGFyZXN2cG4NCnZsZXNzOi8vMWRhYmYwY2EtZmM2Yy00YmQ4LTgzMTQtNzdkODE1ODYwMGM0QDE4NS4xODUuMTQzLjc0OjQ0NT9lbmNyeXB0aW9uPW5vbmUmc2VjdXJpdHk9bm9uZSZ0eXBlPXRjcCZoZWFkZXJUeXBlPW5vbmUjJUYwJTlGJTg3JUI5JUYwJTlGJTg3JUIydXNlciUzQSUyMGFyZXN2cG4NCnZsZXNzOi8vMWRhYmYwY2EtZmM2Yy00YmQ4LTgzMTQtNzdkODE1ODYwMGM0QDE4NS4xODUuMTQzLjc0OjQ0NT9lbmNyeXB0aW9uPW5vbmUmc2VjdXJpdHk9bm9uZSZ0eXBlPXRjcCZoZWFkZXJUeXBlPW5vbmUjJUYwJTlGJTg3JUI5JUYwJTlGJTg3JUIydXNlciUzQSUyMGFyZXN2cG4=
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "mdconverter.lte-shark.ru",
+            "port": 443,
+            "users": [ { "encryption": "none", "flow": "xtls-rprx-vision", "id": "361765bd-188c-4da2-a54b-5acbc7efb7da", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": { "fingerprint": "qq", "publicKey": "V9Lyc3esrsWiffBDy7oM-O71l_bC8wcz2X04QzQ38js", "serverName": "mdconverter.lte-shark.ru", "shortId": "31bc0471906bee2b", "show": false },
+        "security": "reality"
+      },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇲🇩 MOLDOVA",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "s593.gogocs.xyz",
+            "port": 443,
+            "users": [ { "encryption": "none", "flow": "xtls-rprx-vision", "id": "5d02517f-63d5-3e9f-b467-1bcf4d4e25d3", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": { "fingerprint": "chrome", "serverName": "b67c99c6s591.csgfw.top" }
+      },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇪🇺 EU",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nlconverter.lte-shark.ru",
+            "port": 443,
+            "users": [ { "encryption": "none", "flow": "xtls-rprx-vision", "id": "361765bd-188c-4da2-a54b-5acbc7efb7da", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": { "fingerprint": "qq", "publicKey": "YfcgAtTdnp48nyFzNGbobsEsYYkHHi13NZgHnpA1GVU", "serverName": "nlconverter.lte-shark.ru", "shortId": "42bc0471902cee1b", "show": false },
+        "security": "reality"
+      },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇳🇱 NETHERLANDS",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "165.154.195.38",
+            "port": 35034,
+            "users": [ { "alterId": 0, "id": "959a8caf-4cea-43d0-a548-3628e7ddfafc", "level": 8, "security": "auto" } ]
+          }
+        ]
+      },
+      "streamSettings": { "network": "tcp", "security": "none" },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇦🇪 ARABIA",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "qwe.tunnelpoint.space",
+            "port": 443,
+            "users": [ { "encryption": "none", "flow": "xtls-rprx-vision", "id": "06d44c57-8e1a-41f4-b9c4-65d35869e078", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": { "fingerprint": "qq", "publicKey": "aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o", "serverName": "qwe.tunnelpoint.space", "shortId": "fdda9806fe5d8584", "show": false },
+        "security": "reality"
+      },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇬🇧 BRITISH",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "site.neoncloak.space",
+            "port": 443,
+            "users": [ { "encryption": "none", "flow": "xtls-rprx-vision", "id": "06d44c57-8e1a-41f4-b9c4-65d35869e078", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": { "fingerprint": "qq", "publicKey": "OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw", "serverName": "site.neoncloak.space", "shortId": "d67ec5a8fc40ebea", "show": false },
+        "security": "reality"
+      },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇮🇹 ITALIAN",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "207.174.133.222",
+            "port": 10000,
+            "users": [ { "encryption": "none", "id": "431fe973-a43a-4fac-bf83-2a772e0d0625", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": { "network": "tcp", "security": "none" },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇺🇸 USA",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "89.23.99.68",
+            "port": 445,
+            "users": [ { "encryption": "none", "id": "11ca9186-5823-4c0a-9f2a-8d1adf868a5f", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": { "network": "tcp", "security": "none" },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇹🇲 TURKMENISTAN",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
+
+
+
+
+
+
+{
+  "api": { "listen": "[::1]:10085", "services": [ "StatsService" ], "tag": "api" },
+  "dns": { "hosts": { "domain:googleapis.cn": "googleapis.com" }, "queryStrategy": "UseIP", "servers": [ "1.1.1.1", { "address": "1.1.1.1", "domains": [], "port": 53 }, { "address": "8.8.8.8", "domains": [], "port": 53 } ] },
+  "inbounds": [ { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": [ "http", "tls", "quic" ], "enabled": true }, "tag": "socks" } ],
+  "log": { "access": "", "dnsLog": true, "error": "", "loglevel": "debug" },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cdn01.bearbeer.digital",
+            "port": 443,
+            "users": [ { "encryption": "none", "id": "a2f6789e-977f-4749-81d2-1a74123768fa", "level": 8 } ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": { "alpn": [ "h2", "http/1.1" ], "fingerprint": "qq", "serverName": "cdn01.bearbeer.digital" },
+        "xhttpSettings": { "host": "cdn01.bearbeer.digital", "mode": "packet-up", "path": "/uploadfiles/" }
+      },
+      "tag": "proxy"
+    },
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "block" }
+  ],
+  "policy": { "levels": { "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 } }, "system": { "statsOutboundDownlink": true, "statsOutboundUplink": true } },
+  "remarks": "🇪🇺 BEARBEER 1",
+  "routing": { "domainStrategy": "IPIfNonMatch", "rules": [ { "ip": [ "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" ], "outboundTag": "direct" } ] },
+  "stats": {}
+}
+
