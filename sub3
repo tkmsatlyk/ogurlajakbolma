@@ -24,6 +24,14 @@ vless://e9508a2a-7848-4805-bf54-1eb84b64ec68@192.220.43.144:8443?encryption=none
 
 vless://361765bd-188c-4da2-a54b-5acbc7efb7da@nlconverter.lte-shark.ru:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=nlconverter.lte-shark.ru&fp=qq&pbk=YfcgAtTdnp48nyFzNGbobsEsYYkHHi13NZgHnpA1GVU&sid=42bc0471902cee1b&type=tcp&headerType=none#%F0%9F%87%B3%F0%9F%87%B1%F0%9D%96%AD%F0%9D%96%A4%F0%9D%96%B3%F0%9D%96%A7%F0%9D%96%A4%F0%9D%96%B1%F0%9D%96%AB%F0%9D%96%A0%F0%9D%96%AD%F0%9D%96%A3%F0%9D%96%B2
 
+vless://b0fae2f4-adde-413f-83e7-fa58f0a487d7@193.233.91.185:898?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B3%F0%9F%87%B1netherlands
+vless://b0fae2f4-adde-413f-83e7-fa58f0a487d7@193.233.91.185:989?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AAgerman
+vless://b0fae2f4-adde-413f-83e7-fa58f0a487d7@193.233.91.185:420?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B8%F0%9F%87%AAsweden
+vless://b0fae2f4-adde-413f-83e7-fa58f0a487d7@193.233.91.185:443?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B9%F0%9F%87%B7T%C3%BCrk
+ss://aes-256-gcm:ss_1785936485@193.233.91.185:1080#%F0%9F%87%B7%F0%9F%87%BArussia-game
+
+
+
 vless://361765bd-188c-4da2-a54b-5acbc7efb7da@mdconverter.lte-shark.ru:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=mdconverter.lte-shark.ru&fp=qq&pbk=V9Lyc3esrsWiffBDy7oM-O71l_bC8wcz2X04QzQ38js&sid=31bc0471906bee2b&type=tcp&headerType=none#🇱🇺𝖫𝖴𝖷𝖤𝖬𝖡𝖮𝖴𝖱𝖦
 vless://361765bd-188c-4da2-a54b-5acbc7efb7da@mdconverter.lte-shark.ru:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=mdconverter.lte-shark.ru&fp=qq&pbk=V9Lyc3esrsWiffBDy7oM-O71l_bC8wcz2X04QzQ38js&sid=31bc0471906bee2b&type=tcp&headerType=none#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
 vless://361765bd-188c-4da2-a54b-5acbc7efb7da@mdconverter.lte-shark.ru:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=mdconverter.lte-shark.ru&fp=qq&pbk=V9Lyc3esrsWiffBDy7oM-O71l_bC8wcz2X04QzQ38js&sid=31bc0471906bee2b&type=tcp&headerType=none#🇸🇬𝖲𝖨𝖭𝖦𝖠𝖯𝖮𝖱𝖤
