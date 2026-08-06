@@ -6,9 +6,11 @@
 #announce: base64: SEFQUCAvIE5QViAvIEjEsERExLBGWSANCg0K8J+PhlZJUCBTRVJWRVIgMSBoZXBkZSAyMCB0bXQgMSBheSA4NSB0bXQNCiANCvCfj4ZWSVAgU0VSVkVSIDEgaGVwZGUgMzggc3RhcnMgMSBheSAxNzUgc3RhcnPwn5GRDQoNCvCfk7FFbmphbSBzYW55OjUNCvCfm7BMaW1pdHNpeiBrb2RsYXI64pm+77iPDQoNCvCfk7JIYWJhcmxhxZ9tYWsgdWNpbuKche+4jzogY2hlZGEgeWF6acWIIGdlbHnDpG4gDQo=
 #subscription-userinfo: upload=0; download=0; total=0; 
 
-vless://a2e1c335-78db-4622-8141-0002d5a3e1d9@217.149.19.213:420?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B8%F0%9F%87%AA%F0%9D%96%B2%F0%9D%96%B6%F0%9D%96%A4%F0%9D%96%A3%F0%9D%96%A4%F0%9D%96%AD
-vless://a2e1c335-78db-4622-8141-0002d5a3e1d9@217.149.19.213:898?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B3%F0%9F%87%B1%F0%9D%96%AD%F0%9D%96%A4%F0%9D%96%B3%F0%9D%96%A7%F0%9D%96%A4%F0%9D%96%B1%F0%9D%96%AB%F0%9D%96%A0%F0%9D%96%AD%F0%9D%96%A3%F0%9D%96%B2
-vless://a2e1c335-78db-4622-8141-0002d5a3e1d9@217.149.19.213:443?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B9%F0%9F%87%B7%F0%9D%96%B3%F0%9D%96%B4%F0%9D%96%B1%F0%9D%96%AA%F0%9D%96%A4%F0%9D%96%B8
-vless://a2e1c335-78db-4622-8141-0002d5a3e1d9@217.149.19.213:420?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B8%F0%9F%87%AA%F0%9D%96%B2%F0%9D%96%B6%F0%9D%96%A4%F0%9D%96%A3%F0%9D%96%A4%F0%9D%96%AD
-vless://a2e1c335-78db-4622-8141-0002d5a3e1d9@217.149.19.213:898?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B3%F0%9F%87%B1%F0%9D%96%AD%F0%9D%96%A4%F0%9D%96%B3%F0%9D%96%A7%F0%9D%96%A4%F0%9D%96%B1%F0%9D%96%AB%F0%9D%96%A0%F0%9D%96%AD%F0%9D%96%A3%F0%9D%96%B2
-vless://a2e1c335-78db-4622-8141-0002d5a3e1d9@217.149.19.213:443?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B9%F0%9F%87%B7%F0%9D%96%B3%F0%9D%96%B4%F0%9D%96%B1%F0%9D%96%AA%F0%9D%96%A4%F0%9D%96%B8
+vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:445?security=none&type=tcp&headerType=none&path=&host=#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
+vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖣𝖲
+vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:989?security=none&type=tcp&headerType=none&path=&host=#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
+vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:443?security=none&type=tcp&headerType=none&path=&host=#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
+vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:420?security=none&type=tcp&headerType=none&path=&host=#🇸🇪𝖲𝖶𝖤𝖣𝖤𝖭
+vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:445?security=none&type=tcp&headerType=none&path=&host=#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+ss://YWVzLTI1Ni1nY206c3NfMTc4NjAyMzgzOA==@217.149.19.213:1080#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+ss://aes-256-gcm:ss_1786023838@217.149.19.213:1080#%F0%9F%87%B7%F0%9F%87%BA%F0%9F%9B%B0%E2%98%ACgame%E2%98%AC%F0%9F%8E%AE
