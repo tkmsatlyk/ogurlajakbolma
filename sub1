@@ -17,13 +17,14 @@
 
 vless://dd8b69d3-5ef6-418c-a94c-2f4f37d88a7f@cdnya.yashaper.site:443?encryption=none&security=tls&sni=cdnya.yashaper.site&alpn=h2&fp=firefox&type=xhttp&mode=packet-up&host=cdnya.yashaper.site&path=%2Fassets%2Fmedia&extra=%7B%22path%22%3A%22%2Fassets%2Fmedia%2F%22%2C%22xmux%22%3A%7B%22hKeepAlivePeriod%22%3A20.0%2C%22hMaxReusableSecs%22%3A%2280-150%22%7D%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22uplinkHTTPMethod%22%3A%22get%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%2C%22scMinPostsIntervalMs%22%3A2.0%2C%22scStreamUpServerSecs%22%3A%225-12%22%7D#%F0%9F%87%A6%F0%9F%87%AA%E2%80%8B%F0%93%85%93%20V%C3%98R%C3%90R%E2%84%A2%EF%B8%8E%CB%A2%E1%B5%89%CA%B3%E1%B5%9B%E2%81%B1%E1%B6%9C%E1%B5%89%20%F0%9F%94%B1%E2%80%8B%20COMPANY
 
-vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:445?security=none&type=tcp&headerType=none&path=&host=#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
-vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖣𝖲
-vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:989?security=none&type=tcp&headerType=none&path=&host=#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
-vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:443?security=none&type=tcp&headerType=none&path=&host=#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
-vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:420?security=none&type=tcp&headerType=none&path=&host=#🇸🇪𝖲𝖶𝖤𝖣𝖤𝖭
-vless://0fcf86ab-82ff-4ed0-b086-06512e137f29@217.149.19.213:445?security=none&type=tcp&headerType=none&path=&host=#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
-ss://YWVzLTI1Ni1nY206c3NfMTc4NjAyMzgzOA==@217.149.19.213:1080#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+vless://c5cb56ec-0703-4113-bd19-1f684119f42f@217.149.19.213:445?security=none&type=tcp&headerType=none&path=&host=#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
+vless://c5cb56ec-0703-4113-bd19-1f684119f42f@217.149.19.213:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖣𝖲
+vless://c5cb56ec-0703-4113-bd19-1f684119f42f@217.149.19.213:989?security=none&type=tcp&headerType=none&path=&host=#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
+vless://c5cb56ec-0703-4113-bd19-1f684119f42f@217.149.19.213:443?security=none&type=tcp&headerType=none&path=&host=#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
+vless://c5cb56ec-0703-4113-bd19-1f684119f42f@217.149.19.213:420?security=none&type=tcp&headerType=none&path=&host=#🇸🇪𝖲𝖶𝖤𝖣𝖤𝖭
+vless://c5cb56ec-0703-4113-bd19-1f684119f42f@217.149.19.213:445?security=none&type=tcp&headerType=none&path=&host=#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+ss://YWVzLTI1Ni1nY206c3NfMTc4NjAzMjU0MQ==@217.149.19.213:1080#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+
 
 
 vless://dd8b69d3-5ef6-418c-a94c-2f4f37d88a7f@germanag.online:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=germanag.online&fp=qq&pbk=dGF9csm2FGTtmgL5ZOxfU_wOMVilKOVq60lwD7F-MVw&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AA%20%F0%9F%93%A1%F0%9D%97%A6%F0%9D%97%A7%F0%9D%97%94%F0%9D%97%A5-%F0%9D%97%9F%F0%9D%97%9C%F0%9D%97%A1%F0%9D%97%9A%20%F0%9F%9B%B0
