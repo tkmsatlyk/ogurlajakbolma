@@ -3,7 +3,7 @@
 #profile-update-interval: 0
 #profile-web-page-url: https://telegram.org/img/t_logo.png
 #support-url: https://t.me/osnsisbsbsbsjwnxuxnd
-#announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【📡ULTRA SERVIS CONNECT✅️】【²² ᵍᵘⁿ ᵍᵃˡᵈʸ】
+#announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【📡ULTRA SERVIS CONNECT✅️】【²¹ ᵍᵘⁿ ᵍᵃˡᵈʸ】
 #subscription-userinfo: upload=0; download=2029372020; total=0; expire=1798752000
 #subscriptions-sort-type: without
 #subscription-pin: true
@@ -21,6 +21,8 @@ vless://0000000000@00000000:998998?encryption=none&security=tls&sni=accaunt.fast
 vless://dbeffc3c-529b-4c25-9fd9-9f0969380534@37.77.105.11:420?encryption=none&security=none&type=tcp&headerType=none#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
 vless://dbeffc3c-529b-4c25-9fd9-9f0969380534@37.77.105.11:445?encryption=none&security=none&type=tcp&headerType=none#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
 vless://0dbacd35-9159-4648-89ac-c38b741567a8@164.37.111.117:2020?encryption=none&security=none&type=tcp&headerType=none#🇬🇧𝖴𝖭𝖨𝖳𝖤𝖣 𝖪𝖨𝖭𝖦𝖣𝖮𝖬
+vless://564082ff-cf3c-48db-9e10-8ad2312847b4@77.239.123.224:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=node20.mxvpn.dev&pbk=TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw&sid=bbc68cec8bb8d2e3&type=tcp&headerType=none#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
+vless://522acf98-1c86-447c-a8aa-5612774e56fb@144.225.65.199:443?encryption=none&security=reality&sni=es-us.finanzas.yahoo.com&fp=chrome&pbk=trwUo_vBd0fSJVmNXWjRSnD8t3vP06WHjEVgit1Vqj0&sid=091e&spx=%2F7ba338a9c3999a1&type=tcp&headerType=none#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
 
 
 
@@ -35,10 +37,10 @@ vless://a5a544bf-e4b3-4651-9ff4-de3461910d87@104.18.32.47:443?encryption=none&se
 vless://a5a544bf-e4b3-4651-9ff4-de3461910d87@104.18.32.47:443?encryption=none&security=tls&sni=uk-cf.aba-hum.store&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=uk-cf.aba-hum.store&path=%2F&extra=%7B%22xPaddingBytes%22%3A%22100-1000%22%7D&fragment=2%2C0-1%2Ctlshello%2Cnull&fm=%7B%22tcp%22%3A%5B%7B%22settings%22%3A%7B%22delay%22%3A%220-1%22%2C%22length%22%3A%222%22%2C%22packets%22%3A%22tlshello%22%7D%2C%22type%22%3A%22fragment%22%7D%5D%7D#%F0%9F%87%AC%F0%9F%87%A7%F0%9D%96%B4%F0%9D%96%AD%F0%9D%96%A8%F0%9D%96%B3%F0%9D%96%A4%F0%9D%96%A3%20%F0%9D%96%AA%F0%9D%96%A8%F0%9D%96%AD%F0%9D%96%A6%F0%9D%96%A3%F0%9D%96%AE%F0%9D%96%AC
 vless://4fddb011-51ce-487d-8e47-1c1c901cd3fc@91.132.162.218:443?encryption=none&security=reality&sni=www.intel.com&fp=firefox&pbk=VnuqDFzedJka4uGk7uMHady2p48E_f-zqiZItFF2pEY&sid=b536806a&type=grpc&mode=gun&authority=&serviceName=#%F0%9F%87%A9%F0%9F%87%AA%F0%9D%96%A6%F0%9D%96%A4%F0%9D%96%B1%F0%9D%96%AC%F0%9D%96%A0%F0%9D%96%AD%F0%9D%96%B8
 
-vless://ba96e146-1da7-40e2-9e9f-65f8fe469d7a@37.77.105.11:445?security=none&type=tcp&headerType=none&path=&host=#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
-vless://ba96e146-1da7-40e2-9e9f-65f8fe469d7a@37.77.105.11:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖣𝖲
-vless://ba96e146-1da7-40e2-9e9f-65f8fe469d7a@37.77.105.11:989?security=none&type=tcp&headerType=none&path=&host=#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
-vless://ba96e146-1da7-40e2-9e9f-65f8fe469d7a@37.77.105.11:443?security=none&type=tcp&headerType=none&path=&host=#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
-vless://ba96e146-1da7-40e2-9e9f-65f8fe469d7a@37.77.105.11:420?security=none&type=tcp&headerType=none&path=&host=#🇸🇪𝖲𝖶𝖤𝖣𝖤𝖭
-vless://ba96e146-1da7-40e2-9e9f-65f8fe469d7a@37.77.105.11:445?security=none&type=tcp&headerType=none&path=&host=#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
-ss://YWVzLTI1Ni1nY206c3NfMTc4NjExMDQ5Ng==@37.77.105.11:1080#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+vless://28edda1b-6ade-49aa-b0a9-7eaf61b6db1d@37.77.105.11:445?security=none&type=tcp&headerType=none&path=&host=#🇹🇲𝖳𝖴𝖱𝖪𝖬𝖤𝖭𝖨𝖲𝖳𝖠𝖭
+vless://28edda1b-6ade-49aa-b0a9-7eaf61b6db1d@37.77.105.11:898?security=none&type=tcp&headerType=none&path=&host=#🇳🇱𝖭𝖤𝖳𝖧𝖤𝖱𝖫𝖠𝖭𝖣𝖲
+vless://28edda1b-6ade-49aa-b0a9-7eaf61b6db1d@37.77.105.11:989?security=none&type=tcp&headerType=none&path=&host=#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
+vless://28edda1b-6ade-49aa-b0a9-7eaf61b6db1d@37.77.105.11:443?security=none&type=tcp&headerType=none&path=&host=#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
+vless://28edda1b-6ade-49aa-b0a9-7eaf61b6db1d@37.77.105.11:420?security=none&type=tcp&headerType=none&path=&host=#🇸🇪𝖲𝖶𝖤𝖣𝖤𝖭
+vless://28edda1b-6ade-49aa-b0a9-7eaf61b6db1d@37.77.105.11:445?security=none&type=tcp&headerType=none&path=&host=#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
+ss://YWVzLTI1Ni1nY206c3NfMTc4NjE3MzYxNQ==@37.77.105.11:1080#🇷🇺𝖱𝖴𝖲𝖲𝖨𝖠
