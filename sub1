@@ -24,6 +24,12 @@ vless://0dbacd35-9159-4648-89ac-c38b741567a8@164.37.111.117:2020?encryption=none
 vless://564082ff-cf3c-48db-9e10-8ad2312847b4@77.239.123.224:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=node20.mxvpn.dev&pbk=TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw&sid=bbc68cec8bb8d2e3&type=tcp&headerType=none#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
 vless://522acf98-1c86-447c-a8aa-5612774e56fb@144.225.65.199:443?encryption=none&security=reality&sni=es-us.finanzas.yahoo.com&fp=chrome&pbk=trwUo_vBd0fSJVmNXWjRSnD8t3vP06WHjEVgit1Vqj0&sid=091e&spx=%2F7ba338a9c3999a1&type=tcp&headerType=none#🇹🇷𝖳𝖴𝖱𝖪𝖤𝖸
 
+vless://313c3c25-5b08-45ae-a489-6af819b7c983@146.75.58.134:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=oh1.global.ssl.fastly.net&path=%2F#🇩🇪𝖦𝖤𝖱𝖬𝖠𝖭𝖸
+vless://313c3c25-5b08-45ae-a489-6af819b7c983@146.75.58.134:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd13.global.ssl.fastly.net&path=%2F#🇰🇿𝖪𝖠𝖹𝖠𝖪𝖧𝖲𝖳𝖠𝖭
+vless://313c3c25-5b08-45ae-a489-6af819b7c983@146.75.58.134:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=oh4.global.ssl.fastly.net&path=%2F#🇧🇪𝖡𝖤𝖫𝖦𝖨𝖴𝖬
+vless://313c3c25-5b08-45ae-a489-6af819b7c983@146.75.58.134:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd11.global.ssl.fastly.net&path=%2F#🇸🇪𝖲𝖶𝖤𝖣𝖤𝖭
+vless://313c3c25-5b08-45ae-a489-6af819b7c983@146.75.58.134:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd5.global.ssl.fastly.net&path=%2F#🇮🇩𝖨𝖭𝖣𝖮𝖭𝖤𝖲𝖨𝖠
+
 
 
 vless://dd8b69d3-5ef6-418c-a94c-2f4f37d88a7f@germanag.online:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=germanag.online&fp=qq&pbk=dGF9csm2FGTtmgL5ZOxfU_wOMVilKOVq60lwD7F-MVw&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AA%F0%9D%96%A6%F0%9D%96%A4%F0%9D%96%B1%F0%9D%96%AC%F0%9D%96%A0%F0%9D%96%AD%F0%9D%96%B8
