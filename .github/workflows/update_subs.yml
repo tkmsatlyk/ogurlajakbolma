@@ -1,0 +1,27 @@
+name: Sub Dosyalarini Guncelle
+
+on:
+  push:
+    paths:
+      - 'KODLARY'
+
+jobs:
+  update-sub-files:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Repoyu Cek
+        uses: actions/checkout@v4
+
+      - name: Python Scriptini Calistir
+        run: python update.py
+
+      - name: Degisiklikleri Git ile Gonder
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.node.red.github.com"
+          git add sub1 sub2 sub3 sub4 sub5
+          git commit -m "Otomatik sub dosyaları güncellendi [skip ci]" || echo "Degisiklik yok"
+          git push
