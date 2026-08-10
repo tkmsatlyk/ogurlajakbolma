@@ -3,7 +3,7 @@
 #profile-update-interval: 0
 #profile-web-page-url: https://telegram.org/img/t_logo.png
 #support-url: https://t.me/osnsisbsbsbsjwnxuxnd
-#announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【📡ULTRA SERVIS✅️】【¹⁰ ᵍᵘⁿ ᵍᵃˡᵈʸ】
+#announce: ❌ VPN İŞLEMESE📱BIR AZ GARAŞYP📲OBNAVİT EDIP GORUŇ🦾 【📡ULTRA SERVIS✅️】【⁹ ᵍᵘⁿ ᵍᵃˡᵈʸ】
 #subscription-userinfo: upload=0; download=0; total=0; expire=1798752000
 #subscriptions-sort-type: without
 #subscription-pin: true
@@ -16,14 +16,12 @@
 #profile-icon: https://telegram.org/img/t_logo.png
 
 
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpCY2xqY1BIa3lveTRHbXBaWGNXQzVn@20.120.216.130:1080#🇷🇺 Russia
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpCY2xqY1BIa3lveTRHbXBaWGNXQzVn@20.120.216.130:1080#🇪🇺 European Union
-vless://77042938-8bfa-4361-a25a-8bbec0de6591@20.120.216.130:445?security=none&type=tcp&headerType=&path=&host=#🇦🇿 Azerbaijan
-vless://77042938-8bfa-4361-a25a-8bbec0de6591@146.75.58.18:443?security=tls&type=xhttp&headerType=&path=%2FcreatorX31&host=ricotm.global.ssl.fastly.net&mode=auto&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h2%2Chttp%2F1.1#🇲🇰 North Macedonia
-vless://77042938-8bfa-4361-a25a-8bbec0de6591@8.6.112.0:443?security=tls&type=xhttp&headerType=&path=%2FcreatorX31&host=vpn.viptm.site&mode=auto&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=vpn.viptm.site&fp=chrome&alpn=h2%2Chttp%2F1.1#🇫🇷 France
-vless://77042938-8bfa-4361-a25a-8bbec0de6591@20.120.216.130:81?security=none&type=grpc&headerType=&serviceName=gprc&authority=&mode=gun#🇬🇧 United Kingdom
-trojan://tPRfrij4ONf2-UFgQR0ibw@20.120.216.130:3554?security=none&type=tcp&headerType=&path=&host=#🇫🇷 France
-vmess://eyJhZGQiOiAiMjAuMTIwLjIxNi4xMzAiLCAiYWlkIjogIjAiLCAiaG9zdCI6ICIiLCAiaWQiOiAiYTNkYjAzNjMtYzZhOC00MTA4LTkzYzgtNmJiMzI0NGM3MzllIiwgIm5ldCI6ICJ0Y3AiLCAicGF0aCI6ICIvIiwgInBvcnQiOiA4MDgxLCAicHMiOiAiXHVkODNjXHVkZGY5XHVkODNjXHVkZGYyIFx1MDQxZVx1MDQ0MVx1MDQzZFx1MDQzZVx1MDQzMlx1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzYlx1MDQ0YzogQFRtUHJvZHVjdGlvbiBcdWQ4M2RcdWRlMGUiLCAic2N5IjogImF1dG8iLCAidGxzIjogIm5vbmUiLCAidHlwZSI6ICJub25lIiwgInYiOiAiMiJ9#🇹🇲 Turkmenistan
+vless://91c17bb8-a154-46d8-a670-18e3eea78969@8.6.112.0:443?encryption=none&security=tls&sni=vpn.viptm.site&alpn=h2%2C%20http%2F1.1&fp=chrome&type=xhttp&mode=auto&host=vpn.viptm.site&path=%2FcreatorX31&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇫🇷 France
+vless://91c17bb8-a154-46d8-a670-18e3eea78969@8.6.112.0:443?encryption=none&security=tls&sni=vpn.viptm.site&alpn=h2%2C%20http%2F1.1&fp=chrome&type=xhttp&mode=auto&host=vpn.viptm.site&path=%2FcreatorX31&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇹🇲 Turkmenistan
+vless://91c17bb8-a154-46d8-a670-18e3eea78969@8.6.112.0:443?encryption=none&security=tls&sni=vpn.viptm.site&alpn=h2%2C%20http%2F1.1&fp=chrome&type=xhttp&mode=auto&host=vpn.viptm.site&path=%2FcreatorX31&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇷🇺 Russia
+vless://91c17bb8-a154-46d8-a670-18e3eea78969@8.6.112.0:443?encryption=none&security=tls&sni=vpn.viptm.site&alpn=h2%2C%20http%2F1.1&fp=chrome&type=xhttp&mode=auto&host=vpn.viptm.site&path=%2FcreatorX31&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇱🇺 Luxembourg
+vless://91c17bb8-a154-46d8-a670-18e3eea78969@8.6.112.0:443?encryption=none&security=tls&sni=vpn.viptm.site&alpn=h2%2C%20http%2F1.1&fp=chrome&type=xhttp&mode=auto&host=vpn.viptm.site&path=%2FcreatorX31&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇧🇷 Brazil
+
 
 
 vless://28cc8037-6c3b-485d-82d2-bee730fadfd9@20.120.216.130:445?encryption=none&security=none&type=tcp&headerType=none#🇦🇿 Azerbaijan
