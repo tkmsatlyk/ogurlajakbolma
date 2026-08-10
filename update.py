@@ -9,7 +9,7 @@ HEADER_TEXT = """#providerid: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
 #profile-update-interval: 0
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
-#announce: 🦾𝑲𝑶𝑫 𝑰𝑺𝑳𝑬𝑴𝑬𝑺𝑬 𝟏 𝟐 𝑴𝑰𝑵𝑼𝑻📲𝑮𝑨𝑹𝑨𝑺𝒀𝑷 𝑶𝑩𝑵𝑨𝑽𝑰𝑻 𝑬𝑫𝑰Ň✅️【00-DAY】
+#announce: 🦾𝑲𝑶𝑫 𝑰𝑺𝑳𝑬𝑴𝑬𝑺𝑬 𝟏 𝟐 𝑴𝑰𝑵𝑼𝑻📲𝑮𝑨𝑹𝑨𝑺𝒀𝑷 𝑶𝑩𝑵𝑨𝑽𝑰𝑻 𝑬𝑫𝑰Ň✅️
 #subscription-userinfo: upload=0; download=0; total=0; expire=0"""
 
 def update_sub_files(input_file=INPUT_FILE, num_subs=5, output_prefix="sub"):
