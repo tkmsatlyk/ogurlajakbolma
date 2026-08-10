@@ -28,18 +28,17 @@ def main():
     for i in range(num_subs):
         filename = f"{output_prefix}{i + 1}"
         
-        # Mevcut sub dosyasının ilk 12 satırını oku ve koru
+        # Mevcut sub dosyasının ilk 8 satırını oku ve koru
         existing_header_lines = []
         if os.path.exists(filename):
             try:
                 with open(filename, "r", encoding="utf-8", errors="ignore") as existing_file:
                     lines = existing_file.readlines()
-                    # İlk 12 satırı koru
-                    existing_header_lines = [line.rstrip('\r\n') for line in lines[:12]]
+                    existing_header_lines = [line.rstrip('\r\n') for line in lines[:8]]
             except Exception as e:
                 print(f"Uyarı ({filename} okunurken): {e}")
 
-        # İlk 12 satır ile TÜM linkleri birleştir
+        # İlk 8 satır ile TÜM linkleri birleştir (bölüştürmeden, her sub dosyasına aynısını yaz)
         new_content_lines = existing_header_lines + links
 
         # Dosyayı güncelle
