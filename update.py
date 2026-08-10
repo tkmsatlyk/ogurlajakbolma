@@ -25,13 +25,7 @@ def main():
         print("HATA: KODLARY dosyası boş veya içinde geçerli satır yok!")
         sys.exit(1)
 
-    chunk_size = (len(links) + num_subs - 1) // num_subs
-
     for i in range(num_subs):
-        start_idx = i * chunk_size
-        end_idx = (i + 1) * chunk_size
-        chunk = links[start_idx:end_idx]
-
         filename = f"{output_prefix}{i + 1}"
         
         # Mevcut sub dosyasının ilk 8 satırını oku ve koru
@@ -44,14 +38,14 @@ def main():
             except Exception as e:
                 print(f"Uyarı ({filename} okunurken): {e}")
 
-        # İlk 8 satır ile yeni linkleri birleştir
-        new_content_lines = existing_header_lines + chunk
+        # İlk 8 satır ile TÜM linkleri birleştir (bölüştürmeden, her sub dosyasına aynısını yaz)
+        new_content_lines = existing_header_lines + links
 
         # Dosyayı güncelle
         try:
             with open(filename, "w", encoding="utf-8") as out_f:
                 out_f.write("\n".join(new_content_lines) + ("\n" if new_content_lines else ""))
-            print(f"-> '{filename}' başarıyla güncellendi. Eklenen link sayısı: {len(chunk)}")
+            print(f"-> '{filename}' başarıyla güncellendi. Eklenen link sayısı: {len(links)}")
         except Exception as e:
             print(f"HATA ({filename} yazılırken): {e}")
             sys.exit(1)
