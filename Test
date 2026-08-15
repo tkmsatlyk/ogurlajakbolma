@@ -1,27 +1,15 @@
-
-#providerid: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
-#profile-title: ​𓅓 VØRÐR™︎ˢᵉʳᵛⁱᶜᵉ 🔱​
+#profile-title: base64:VGc6IEBSaWNobWFuX3ZwbnM=
+#subscription-userinfo: expire=1786820697
+#announce: base64:TGlrZSBneXNnYW5tYcOxIPCfmIk=
+#profile-web-page-url: t.me/Richman_king
+#support-url: https://t.me/Richman_vpns
 #profile-update-interval: 0
-#profile-web-page-url: https://t.me/xylen_111
-#support-url: https://t.me/xylen_111
-#announce: base64:4bSh4bSHyp/htIThtI/htI3htIcg4bSb4bSPIOKAi/CThZMg4bSgw5jKgMOQyoDihKLvuI7LouG1icqz4bWb4oGx4bac4bWJIPCflLHigIsgIOG0vsqz4bWJ4bWQ4oGx4bWY4bWQIOG0oOG0mMm0IOKAi+KAiyANCuKcpiDqnLDhtIDqnLHhtJvJqsm0yaIg4pymIOKAi+qcseG0m+G0gMqZyarKn8mq4bSbyo8g4pymIMmqybTqnLDJqsm0yarhtJvKjyDinKY=
-#subscription-userinfo: upload=0; download=0; total=0; 
-#subscriptions-sort-type: without
-#subscription-pin: true
-#subscription-auto-update-open-enable: false
-#subscriptions-collapse: false
-#ping-result: time
-#hide-settings:  true
-#ping-type: proxy
-#check-url-via-proxy: http://clients3.google.com/generate_204
-#profile-icon: https://telegram.org/img/t_logo.png
+#ping-type: tcp
+#check-url-via-proxy: http://cp.cloudflare.com
+#providerid oenhsoll
 
-
-
-
-
-
-vless://d8b42cd5-a149-4356-9e61-000000000000@91.221.116.38:1027?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B3%F0%9F%87%B1%20Netherlands%2C%20TCP
-vless://d8b42cd5-a149-4356-9e61-000000000000@91.221.116.38:1027?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B3%F0%9F%87%B1%20Netherlands%2C%20TCP
-vless://d8b42cd5-a149-4356-9e61-000000000000@91.221.116.38:1027?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20TCP
-vless://d8b42cd5-a149-4356-9e61-000000000000@85.115.210.242:903?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AA%20Germany%2C%20TCP
+vless://bfdf7292-273c-4ca5-a9f1-b24a1bf8a8c7@151.101.111.38:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd9.global.ssl.fastly.net&path=%2F#%F0%9F%87%A8%F0%9F%87%BF%20%5BCZ%5D%E2%97%8F%20ALL%20%F0%9F%9F%A2
+vless://bfdf7292-273c-4ca5-a9f1-b24a1bf8a8c7@151.101.111.38:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=oh1.global.ssl.fastly.net&path=%2F#%F0%9F%87%A9%F0%9F%87%AA%20%5BDE%5D%20-%20TG%3A%20%40Richman_vpns
+vless://bfdf7292-273c-4ca5-a9f1-b24a1bf8a8c7@151.101.111.38:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=oh4.global.ssl.fastly.net&path=%2F#%F0%9F%87%A7%F0%9F%87%AA%20%5BBL%5D%E2%97%8F%20ALL%20%F0%9F%9F%A2
+vless://bfdf7292-273c-4ca5-a9f1-b24a1bf8a8c7@151.101.111.38:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd8.global.ssl.fastly.net&path=%2F#%F0%9F%87%B7%F0%9F%87%B4%20%5BRM%5D%E2%97%8F%20ALL%20%F0%9F%9F%A2
+vless://bfdf7292-273c-4ca5-a9f1-b24a1bf8a8c7@151.101.111.38:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd7.global.ssl.fastly.net&path=%2F#%F0%9F%87%A6%F0%9F%87%B9%20%5BAU%5D%E2%97%8F%20ALL%20%F0%9F%9F%A2
