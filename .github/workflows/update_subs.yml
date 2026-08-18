@@ -4,24 +4,20 @@ on:
   push:
     paths:
       - 'KODLARY'
+      - 'CONFIG'
 
 jobs:
-  update-sub-files:
+  update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
-      - name: Repoyu Cek
-        uses: actions/checkout@v4
-
-      - name: Python Scriptini Calistir
-        run: python update.py
-
-      - name: Degisiklikleri Git ile Gonder
-        run: |
+      - uses: actions/checkout@v4
+      - run: python update.py
+      - run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.node.red.github.com"
-          git add sub1 sub2 sub3 sub4 sub5
-          git commit -m "Otomatik sub dosyaları güncellendi [skip ci]"
+          git pull origin main --rebase || true
+          git add .
+          git commit -m "${COMMIT_MSG:-Guncellendi [skip ci]}" || echo "Degisiklik yok"
           git push
