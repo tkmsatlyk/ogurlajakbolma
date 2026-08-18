@@ -5,6 +5,9 @@ on:
     paths:
       - 'KODLARY'
       - 'CONFIG'
+  schedule:
+    # Süresi dolanları otomatik silmesi için her gün gece yarısı (UTC) çalışır
+    - cron: '0 0 * * *'
 
 jobs:
   update:
@@ -13,11 +16,15 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - run: python update.py
-      - run: |
+      
+      - name: Python Scriptini Calistir
+        run: python update.py
+        
+      - name: Degisiklikleri Kaydet ve Pushla
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.node.red.github.com"
           git pull origin main --rebase || true
           git add .
-          git commit -m "${COMMIT_MSG:-Guncellendi [skip ci]}" || echo "Degisiklik yok"
+          git commit -m "${COMMIT_MSG:-Otomatik guncelleme [skip ci]}" || echo "Degisiklik yok"
           git push
