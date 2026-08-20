@@ -12,6 +12,16 @@ vless://caec0d8d-ab2f-4247-b97d-7fb1a34ab195@180.178.60.254:10000?security=&encr
 vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDEiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiZTdkNzJhOGQtMjZmMi00YjU0LWIzNjYtMGM0M2UwYmNiYTdkIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IlNvdXRoIEtvcmVhIFtCcmF3bCBTdGFyc10g8J+MiCIsInNjeSI6ImF1dG8iLCJzbmniOiIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=
 ss://YWVzLTI1Ni1nY206Z2oxK1hLdWxLVjBubXc2SVRoY2tPa2tKaDVEU003K0M@45.207.207.25:443#United Kingdom [PUBG Mobile] 🇬🇧
 
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpIUDNILVk4SlFneUl1UmlKUnRKUWJ3@4.182.133.0:1080#Russia [Brawl Stars] 🇷🇺
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpIUDNILVk4SlFneUl1UmlKUnRKUWJ3@4.182.133.0:1080#Estonia [PUBG Mobile] 🇪🇪
+vless://625db10e-4d7e-46aa-9a8e-37d5a25cf949@4.182.133.0:445?security=none&type=tcp&headerType=&path=&host=#Azerbaijan [Clash Royale] 🇦🇿
+vless://625db10e-4d7e-46aa-9a8e-37d5a25cf949@188.241.54.107:443?security=tls&type=xhttp&headerType=&path=%2FcreatorX31&host=vpn.viptm.site&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=vpn.viptm.site&fp=chrome&alpn=h2%2Chttp%2F1.1#North Macedonia [Clash of Clans] 🇲🇰
+vless://625db10e-4d7e-46aa-9a8e-37d5a25cf949@49.44.38.231:443?security=tls&type=xhttp&headerType=&path=%2FcreatorX31&host=ricotm.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h2%2Chttp%2F1.1#Uzbekistan [Mobile Legends] 🇺🇿
+vless://625db10e-4d7e-46aa-9a8e-37d5a25cf949@4.182.133.0:81?security=none&type=grpc&headerType=&serviceName=gprc&authority=&mode=gun#United States [Free Fire] 🇺🇸
+trojan://pL64AlfOtZVEkec253t_lA@4.182.133.0:3554?security=none&type=tcp&headerType=&path=&host=#North Macedonia [COD Mobile] 🇵🇰
+vmess://eyJhZGQiOiI0LjE4Mi4xMzMuMCIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiIzODI2ZWM2My02MGYwLTQ3NWUtYWIzMy0yNzc4Yjc2NGRjY2oiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOjgwODEsInBzIjoiVHVya21lbnN0YW4gW0NhciBQYXJraW5nXSDwn5qKIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ==
+
+
 vless://b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb@103.109.234.113:443?encryption=none&security=reality&sni=api.getsavesafe.space&fp=firefox&pbk=fkYk0Ow--0GYExpBFb2wZjooymT7uASOQLw9ESC3DF8&sid=62b6d6e64d461d78&type=xhttp&mode=auto&path=%2F#Singapore [Brawl Stars] 🇸🇬
 vless://7eb234e9-d47e-4dfe-bff3-a0d41a0c4e1d@91.132.160.56:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=app.prostocalc.com&fp=firefox&pbk=OzJXUo4K_Oh5PyARRhThSGPoV0XVbPqdTyYnP7t3qg8&sid=2314b31f3c5137ec&spx=%2F&type=tcp&headerType=none#France [PUBG Mobile] 🇫🇷
 vmess://eyJhZGQiOiI2Ny4yMjAuOTUuMyIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiJmOGM4ZGMzZC0wZDM3LTQ2YjAtOGIzNC1hNzIzMjg4MmZjZmUiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjE4MDAwIiwicHMiOiJVbml0ZWQgU3RhdGVzIFtDbGFzaCBSb3lhbGVdIPCfjIguc2N5IjoiYWVzLTEyOC1nY20iLCJzbmniOiIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=
