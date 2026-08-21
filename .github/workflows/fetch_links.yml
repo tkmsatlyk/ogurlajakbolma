@@ -14,10 +14,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Clone Decryptor Repo
-        uses: actions/checkout@v4
-        with:
-          repository: 'LeeeeT/happ-decryptor'
-          path: 'happ-decryptor'
+        run: |
+          git clone https://github.com/LeeeeT/happ-decryptor.git happ-decryptor
 
       - name: Set up Python
         uses: actions/setup-python@v5
