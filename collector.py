@@ -1,6 +1,5 @@
 import urllib.request
 import urllib.parse
-import json
 import re
 import html
 
@@ -11,7 +10,7 @@ except ImportError:
     HAS_CURL_CFFI = False
 
 def main():
-    print("--- Detaylı Debug Destekli Bot Başlatıldı ---")
+    print("--- Buton Tetiklemeli Gelişmiş Bot Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -38,22 +37,26 @@ def main():
     latest_happ = all_happ[-1].replace('&amp;', '&').replace('&quot;', '').strip()
     print(f"Bulunan Crypt Link: {latest_happ}")
 
-    # 2. Adım: Decoder'a istek at ve JSON/HTML olarak çözümle
+    # 2. Adım: Decoder'a buton ve form tetikleyicileriyle birlikte istek at
     decoder_url = "https://happy-decoder.cc/"
+    
     form_data = {
         'url': latest_happ,
         'encrypt': 'crypt5',
         'user-agent': 'Happ/3.24.1',
-        'hwid': 'on'
+        'hwid': 'on',
+        'submit': '1',
+        'action': 'decode'
     }
 
     vpn_nodes = []
     response_text = ""
 
-    print("Decoder sitesine istek gönderiliyor...")
+    print("Decoder sitesine tetiklemeli istek gönderiliyor...")
     try:
         if HAS_CURL_CFFI:
             session = c_requests.Session()
+            # Önce çerez/oturum al
             session.get(decoder_url, impersonate="chrome120", timeout=20)
             resp = session.post(
                 decoder_url, 
@@ -62,28 +65,12 @@ def main():
                     'Referer': decoder_url,
                     'Origin': 'https://happy-decoder.cc',
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Accept': 'application/json, text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                    'Cache-Control': 'max-age=0'
                 },
                 impersonate="chrome120", 
                 timeout=25
             )
             response_text = resp.text
-            
-            # JSON yanıt gelme ihtimaline karşı kontrol
-            try:
-                json_data = resp.json()
-                print("JSON Yanıt Yakalandı:", json_data)
-                if isinstance(json_data, dict):
-                    for k, v in json_data.items():
-                        if isinstance(v, str):
-                            if 'vless://' in v or 'vmess://' in v or 'ss://' in v:
-                                vpn_nodes.append(v)
-                            elif v.startswith('http') and 'happy-decoder.cc' not in v:
-                                sub_resp = session.get(v, impersonate="chrome120", timeout=15)
-                                found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_resp.text)
-                                vpn_nodes.extend(found)
-            except:
-                pass
         else:
             data = urllib.parse.urlencode(form_data).encode('utf-8')
             req_dec = urllib.request.Request(
@@ -101,37 +88,49 @@ def main():
         print(f"Decoder İstek Hatası: {e}")
         return
 
-    # Eğer JSON'dan gelmediyse HTML içinden ayıkla
-    if not vpn_nodes and response_text:
+    # Gelen yanıtı çözümle
+    if response_text:
         decoded_html = html.unescape(response_text)
         
-        # Doğrudan node'lar
-        found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_html)
-        vpn_nodes.extend(found)
-        
-        # Sayfadaki tüm linkleri tara
+        # A) Doğrudan vless/vmess node'larını ara
+        found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_html)
+        vpn_nodes.extend(found_nodes)
+
+        # B) <textarea> etiketlerinin içini tara
+        textareas = re.findall(r'<textarea[^>]*>(.*?)</textarea>', decoded_html, re.DOTALL | re.IGNORECASE)
+        for ta in textareas:
+            ta_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', ta)
+            vpn_nodes.extend(ta_nodes)
+
+        # C) Sayfadaki sub linklerini bul ve içeriğine git
         if not vpn_nodes:
+            print("Abonelik (sub) linkleri taranıyor...")
             urls = re.findall(r'https?://[^\s<>"\']+', decoded_html)
             for u in urls:
                 clean_u = u.strip().rstrip('"\'>')
-                if 'happy-decoder.cc' not in clean_u and 'cloudflare' not in clean_u and 'schema' not in clean_u:
+                if 'happy-decoder.cc' not in clean_u and 'cloudflare' not in clean_u and 'schema' not in clean_u and 'w3.org' not in clean_u:
                     print(f"Aday Sub Link Deneniyor: {clean_u}")
                     try:
-                        req_sub = urllib.request.Request(clean_u, headers={'User-Agent': 'Mozilla/5.0'})
-                        with urllib.request.urlopen(req_sub, timeout=15) as sub_r:
-                            sub_text = sub_r.read().decode('utf-8', errors='ignore')
-                            sub_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_text)
-                            if sub_nodes:
-                                vpn_nodes.extend(sub_nodes)
-                                break
+                        if HAS_CURL_CFFI:
+                            sub_resp = c_requests.get(clean_u, impersonate="chrome120", timeout=15)
+                            sub_text = sub_resp.text
+                        else:
+                            req_sub = urllib.request.Request(clean_u, headers={'User-Agent': 'Mozilla/5.0'})
+                            with urllib.request.urlopen(req_sub, timeout=15) as sub_r:
+                                sub_text = sub_r.read().decode('utf-8', errors='ignore')
+                        
+                        sub_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_text)
+                        if sub_nodes:
+                            vpn_nodes.extend(sub_nodes)
+                            break
                     except Exception as sub_err:
-                        print(f"Sub link hata: {sub_err}")
+                        print(f"Sub link çekilirken hata: {sub_err}")
 
     if not vpn_nodes:
         print("--- DEBUG: Yanıt İçeriği (İlk 1000 Karakter) ---")
         print(response_text[:1000])
         print("---------------------------------------------")
-        print("Kritik Hata: İstek başarılı ancak node veya sub link çıkarılamadı.")
+        print("Kritik Hata: İstek gönderildi ancak hâlâ node çıkarılamadı.")
         return
 
     # Tekrarlanan linkleri temizle
