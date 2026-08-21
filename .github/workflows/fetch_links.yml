@@ -13,9 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Clone Decryptor Repo
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Clone and Build Decryptor Repo
         run: |
+          rm -rf happ-decryptor
           git clone https://github.com/LeeeeT/happ-decryptor.git happ-decryptor
+          cd happ-decryptor
+          npm install
+          npm run build
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,7 +38,12 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Run Local Decryption Collector
-        run: python collector.py
+        run: |
+          cd happ-decryptor
+          npm run preview &
+          sleep 4
+          cd ..
+          python collector.py
 
       - name: Commit and push changes
         run: |
