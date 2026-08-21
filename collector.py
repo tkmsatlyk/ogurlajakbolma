@@ -10,7 +10,7 @@ except ImportError:
     HAS_CURL_CFFI = False
 
 def main():
-    print("--- Tam Uyumlu Gelişmiş Decoder Bot Başlatıldı ---")
+    print("--- Oturumlu ve Güvenlik Korumalı Decoder Bot Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -37,7 +37,7 @@ def main():
     latest_happ = all_happ[-1].replace('&amp;', '&').replace('&quot;', '').strip()
     print(f"Bulunan Crypt Link: {latest_happ}")
 
-    # 2. Adım: Sitenin beklediği tüm form parametreleriyle decoder'a POST at
+    # 2. Adım: Oturum açarak (Cookie/Session) decoder sitesine istek at
     decoder_url = "https://happy-decoder.cc/"
     dec_html = ""
     
@@ -48,11 +48,26 @@ def main():
         'hwid': 'on'
     }
 
-    print("Decoder'a tam parametrelerle istek gönderiliyor...")
+    print("Decoder sitesine oturum başlatılarak istek gönderiliyor...")
     try:
         if HAS_CURL_CFFI:
-            resp = c_requests.post(decoder_url, data=form_data, impersonate="chrome120", timeout=25)
+            # Oturum nesnesi oluşturup önce ana sayfayı ziyaret ediyoruz (Çerez ve oturum almak için)
+            session = c_requests.Session()
+            session.get(decoder_url, impersonate="chrome120", timeout=20)
+            
+            resp = session.post(
+                decoder_url, 
+                data=form_data, 
+                headers={
+                    'Referer': decoder_url,
+                    'Origin': 'https://happy-decoder.cc',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                impersonate="chrome120", 
+                timeout=25
+            )
             dec_html = resp.text
+            print(f"Decoder Yanıt Kodu: {resp.status_code}, Uzunluk: {len(dec_html)}")
         else:
             data = urllib.parse.urlencode(form_data).encode('utf-8')
             req_dec = urllib.request.Request(
@@ -60,11 +75,13 @@ def main():
                 data=data, 
                 headers={
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0',
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Referer': decoder_url
                 }
             )
             with urllib.request.urlopen(req_dec, timeout=25) as dec_resp:
                 dec_html = dec_resp.read().decode('utf-8', errors='ignore')
+            print(f"Decoder Yanıt Uzunluğu: {len(dec_html)}")
     except Exception as e:
         print(f"Decoder İstek Hatası: {e}")
         return
@@ -75,14 +92,14 @@ def main():
         found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', dec_html)
         vpn_nodes = [l.replace('&amp;', '&').replace('&quot;', '').strip() for l in found_nodes]
 
-        # B) Doğrudan çıkmadıysa, ekran görüntüsündeki РАСШИФРОВАННЫЙ URL (sub linki) yakala ve içeriğini çek
+        # B) Sub linkini ara ve içeriğine git
         if not vpn_nodes:
-            print("Doğrudan node çıkmadı, sub link aranıyor...")
+            print("Doğrudan node çıkmadı, HTML içindeki sub linkleri taranıyor...")
             all_urls = re.findall(r'https?://[^\s<>"\']+', dec_html)
             for sub_url in all_urls:
-                clean_sub = urllib.parse.unquote(sub_url.replace('&amp;', '&').replace('&quot;', '').strip())
-                if 'happy-decoder.cc' not in clean_sub and ('exec?' in clean_sub or 'sub' in clean_sub or 'http' in clean_sub):
-                    print(f"Sub Link Bulundu, içeriği çekiliyor: {clean_sub}")
+                clean_sub = urllib.parse.unquote(sub_url.replace('&amp;', '&').replace('&quot;', '').strip().rstrip('"\'>'))
+                if 'happy-decoder.cc' not in clean_sub and 'cloudflare' not in clean_sub:
+                    print(f"Aday Sub Link Bulundu: {clean_sub}")
                     try:
                         if HAS_CURL_CFFI:
                             sub_resp = c_requests.get(clean_sub, impersonate="chrome120", timeout=25)
@@ -93,8 +110,9 @@ def main():
                                 sub_text = sub_r.read().decode('utf-8', errors='ignore')
                         
                         sub_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_text)
-                        vpn_nodes.extend([l.replace('&amp;', '&').replace('&quot;', '').strip() for l in sub_nodes])
-                        if vpn_nodes:
+                        if sub_nodes:
+                            vpn_nodes.extend([l.replace('&amp;', '&').replace('&quot;', '').strip() for l in sub_nodes])
+                            print(f"Sub linkten {len(sub_nodes)} adet VPN node'u çekildi!")
                             break
                     except Exception as sub_err:
                         print(f"Sub link açılırken hata: {sub_err}")
@@ -103,7 +121,8 @@ def main():
         print(f"İçerik Çözümleme Hatası: {e}")
 
     if not vpn_nodes:
-        print("Kritik Hata: Hiçbir şekilde VPN linki elde edilemedi.")
+        print("Kritik Hata: İstek atıldı ancak VPN linki elde edilemedi.")
+        print(f"Gelen HTML'in ilk 300 karakteri: {dec_html[:300]}")
         return
 
     # Tekrarlanan linkleri temizle
@@ -120,4 +139,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
