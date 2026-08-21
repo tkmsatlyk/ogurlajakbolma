@@ -6,7 +6,13 @@ import socket
 import time
 import http.client
 
-# KOTALAR: 15 + 10 = 25 Link (3 kez testten geçen %100 sağlamlar)
+try:
+    from curl_cffi import requests as c_requests
+    HAS_CURL_CFFI = True
+except ImportError:
+    HAS_CURL_CFFI = False
+
+# KOTALAR: happvpn (happy-decoder destekli) + LonUp_M
 CHANNELS = {
     "happvpn": {"url": "https://t.me/s/happvpn", "limit": 15},
     "LonUp_M": {"url": "https://t.me/s/LonUp_M", "limit": 10}
@@ -14,7 +20,7 @@ CHANNELS = {
 
 COUNTRY_NAMES = [
     "🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦",
-    "🇫🇷 𝐅𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
+    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
     "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
     "🇧🇬 𝐁𝐮𝐥𝐠𝐚𝐫𝐢𝐚", "🇦🇹 🇦𝐮𝐬𝐭𝐫𝐢𝐚", "🇨🇦 𝐊𝐚𝐧𝐚𝐝𝐚", "🇸🇬 𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
     "🇯🇵 𝐉𝐚𝐩𝐚𝐧", "🇰🇷 𝐒𝐨𝐮𝐭𝐡 𝐊𝐨𝐫𝐞𝐚", "🇦🇪 𝐔𝐧𝐢𝐭𝐞𝐝 𝐀𝐫𝐚𝐛 𝐄𝐦𝐢𝐫𝐚𝐭𝐞𝐬",
@@ -65,7 +71,7 @@ def extract_host_port(url):
     return None, None
 
 def test_node_triple_ping(url):
-    """Her link için arka arkaya 3 kez MS/bağlantı testi yapar. 3'ü de başarılı olmalıdır."""
+    """Her link için arka arkaya 3 kez MS/bağlantı testi yapar."""
     host, port = extract_host_port(url)
     if not host or not port:
         return False
@@ -78,28 +84,31 @@ def test_node_triple_ping(url):
             success_count += 1
         except:
             pass
-        time.sleep(0.15) # testler arası mini bekleme
+        time.sleep(0.15)
         
-    # 3 testin 3'ünde de başarılı olduysa sağlamdır
     return success_count == 3
 
 def decode_happ_link(happ_url):
     try:
         decoder_url = "https://happy-decoder.cc/"
-        data = urllib.parse.urlencode({'url': happ_url}).encode('utf-8')
         
-        req = urllib.request.Request(
-            decoder_url,
-            data=data,
-            headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Referer': 'https://happy-decoder.cc/'
-            }
-        )
-        
-        with urllib.request.urlopen(req, timeout=15) as response:
-            html = response.read().decode('utf-8', errors='ignore')
+        # curl_cffi kullanarak Cloudflare engeli aşılıyor
+        if HAS_CURL_CFFI:
+            response = c_requests.post(decoder_url, data={'url': happ_url}, impersonate="chrome120", timeout=15)
+            html = response.text
+        else:
+            data = urllib.parse.urlencode({'url': happ_url}).encode('utf-8')
+            req = urllib.request.Request(
+                decoder_url,
+                data=data,
+                headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Referer': 'https://happy-decoder.cc/'
+                }
+            )
+            with urllib.request.urlopen(req, timeout=15) as response:
+                html = response.read().decode('utf-8', errors='ignore')
             
         textarea_match = re.search(r'<textarea[^>]*>(.*?)</textarea>', html, re.DOTALL)
         if not textarea_match:
@@ -139,19 +148,17 @@ def get_links_from_channel(ch_data):
                     break
                 fixed_line = clean_and_fix_link(line)
                 if is_clean_link(fixed_line) and fixed_line not in links:
-                    # 3 KEZ TEST ET
                     if test_node_triple_ping(fixed_line):
                         links.append(fixed_line)
         else:
             if is_clean_link(cleaned_url) and cleaned_url not in links:
-                # 3 KEZ TEST ET
                 if test_node_triple_ping(cleaned_url):
                     links.append(cleaned_url)
                     
     return links[:ch_data["limit"]]
 
 def main():
-    # 1. İlk 12 satırı kesinlikle koru
+    # 1. İlk 12 satırı koru
     header_lines = []
     if os.path.exists("KODLARY"):
         try:
@@ -161,12 +168,12 @@ def main():
         except:
             pass
 
-    # 2. 3'lü testten geçen kusursuz linkleri topla
+    # 2. Kanallardan taze linkleri topla
     final_pool = []
     for ch_name, data in CHANNELS.items():
-        print(f"{ch_name} kanalından 3'lü MS testi ile taranıyor...")
+        print(f"{ch_name} kanalından taranıyor...")
         channel_links = get_links_from_channel(data)
-        print(f"{ch_name} kanalından 3 testide geçen sağlam link sayısı: {len(channel_links)}")
+        print(f"{ch_name} kanalından alınan sağlam link sayısı: {len(channel_links)}")
         final_pool.extend(channel_links)
         
     if len(final_pool) < 2:
@@ -180,14 +187,14 @@ def main():
         country = COUNTRY_NAMES[i % len(COUNTRY_NAMES)]
         formatted_links.append(f"{clean_link}#{urllib.parse.quote(country)}")
 
-    # 4. İlk 12 satır başlık + altlarına %100 çalışan testli linkler
+    # 4. Dosyaya yaz
     combined_content = header_lines + formatted_links
 
     tmp_file = "KODLARY.tmp"
     with open(tmp_file, "w", encoding="utf-8") as f:
         f.write("\n".join(combined_content))
     os.replace(tmp_file, "KODLARY")
-    print("BAŞARILI: Tüm linkler 3 kez test edildi, patlak olanlar elendi ve liste güncellendi!")
+    print("BAŞARILI: İşlem tamamlandı, KODLARY dosyası güncellendi!")
 
 if __name__ == "__main__":
     main()
