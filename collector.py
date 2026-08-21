@@ -62,28 +62,29 @@ def decode_happ(happ_url):
                 html = resp.read().decode('utf-8', errors='ignore')
         
         match = re.search(r'<textarea[^>]*>(.*?)</textarea>', html, re.DOTALL)
-        if not match:
-            return []
-        found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', match.group(1))
+        search_text = match.group(1) if match else html
+        found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', search_text)
         return [clean_link(l) for l in found if is_valid(clean_link(l))]
     except Exception as e:
         print(f"[Decoder Error] {e}")
         return []
 
 def main():
-    print("--- VPN Toplayıcı Başlatıldı ---")
+    print("--- VPN Toplayıcı Gelişmiş Sürüm Başlatıldı ---")
     
+    # İlk 12 satırlık header kısmını güvenle alıyoruz
     header_lines = []
     if os.path.exists("KODLARY"):
         try:
             with open("KODLARY", "r", encoding="utf-8") as f:
-                header_lines = f.read().splitlines()[:12]
+                lines = f.read().splitlines()
+                header_lines = lines[:12]
         except:
             pass
 
     final_pool = []
     
-    # 1. ares_happ kanalından tam 15 tane al
+    # 1. ares_happ kanalından 15 tane al
     print("ares_happ taranıyor (Hedef: 15)...")
     html_ares = fetch_url(CHANNELS["ares_happ"]["url"])
     if html_ares:
@@ -99,38 +100,50 @@ def main():
                 final_pool.append(cl)
                 print(f"[ares_happ] Eklendi. Toplam: {len(final_pool)}")
 
-    # 2. happvpn kanalından son linki çöz ve 10 tane al
+    # 2. happvpn kanalındaki happ:// linklerini sondan geriye doğru dene (Çözülebilen ilk sağlam linki yakala)
     print("happvpn taranıyor (Hedef: 10)...")
     html_happ = fetch_url(CHANNELS["happvpn"]["url"])
+    happ_added = 0
     if html_happ:
         msg_blocks_happ = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html_happ, re.DOTALL)
         combined_happ = " ".join(msg_blocks_happ)
         clean_happ_text = re.sub(r'<[^>]+>', ' ', combined_happ)
         happ_links = re.findall(r'happ://[^\s<>"\']+', clean_happ_text)
+        
         if happ_links:
-            latest = happ_links[-1]
-            print(f"En son happ linki çözülüyor: {latest}")
-            decoded = decode_happ(latest)
-            happ_count = 0
-            for link in decoded:
-                if happ_count >= CHANNELS["happvpn"]["limit"]:
+            # En son paylaşılandan geriye doğru tarayarak çalışan şifreli linki buluyoruz
+            for latest in reversed(happ_links):
+                if happ_added >= CHANNELS["happvpn"]["limit"]:
                     break
-                cl = clean_link(link)
-                if is_valid(cl) and cl not in final_pool:
-                    final_pool.append(cl)
-                    happ_count += 1
-                    print(f"[happvpn] Eklendi. Happ Sayısı: {happ_count}")
+                print(f"Denenen happ linki çözülmeye çalışılıyor: {latest}")
+                decoded = decode_happ(latest)
+                if decoded:
+                    print(f"Başarılı! Bu linkten {len(decoded)} node çıkarıldı.")
+                    for link in decoded:
+                        if happ_added >= CHANNELS["happvpn"]["limit"]:
+                            break
+                        cl = clean_link(link)
+                        if is_valid(cl) and cl not in final_pool:
+                            final_pool.append(cl)
+                            happ_added += 1
+                            print(f"[happvpn] Eklendi. Happ Sayısı: {happ_added}")
+                    if happ_added > 0:
+                        break # Yeterli node toplandıysa döngüyü kır
+                else:
+                    print("Bu happ linki çözülemedi (şifresi kırılmadı), bir önceki deneniyor...")
 
     if not final_pool:
         print("Hiç node bulunamadı, mevcut dosya korunuyor.")
         return
 
+    # Bayrak/İsim formatlaması
     formatted = []
     for i, link in enumerate(final_pool):
         clean_l = link.split('#')[0]
         country = COUNTRY_NAMES[i % len(COUNTRY_NAMES)]
         formatted.append(f"{clean_l}#{urllib.parse.quote(country)}")
 
+    # İlk 12 satır sabit kalır, altındaki tüm eski linkler silinip yenileri yazılır
     combined_content = header_lines + formatted
     with open("KODLARY.tmp", "w", encoding="utf-8") as f:
         f.write("\n".join(combined_content))
@@ -139,3 +152,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
