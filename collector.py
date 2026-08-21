@@ -10,7 +10,7 @@ except ImportError:
     HAS_CURL_CFFI = False
 
 def main():
-    print("--- Hub Crypt Deşifre ve Aktarım Aracı Başlatıldı ---")
+    print("--- Toplanan_linkler.txt Güncelleyici Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -25,7 +25,7 @@ def main():
         print(f"Kanal çekilemedi: {e}")
         return
 
-    # Sayfadaki tüm happ:// (crypt) linklerini ve href içindekileri yakala
+    # Sayfadaki tüm happ:// crypt linklerini ve href içindekileri yakala
     happ_links = re.findall(r'happ://[^\s<>"\']+', html)
     href_happ = re.findall(r'href="([^"]+happ://[^"]+)"', html)
     all_happ = list(set(happ_links + href_happ))
@@ -42,10 +42,9 @@ def main():
     decoded_nodes = []
     try:
         decoder_url = "https://happy-decoder.cc/"
-        print("Crypt link decoder'a gönderilip deşifre ediliyor...")
+        print("Crypt link deşifre ediliyor...")
         
         if HAS_CURL_CFFI:
-            # Tarayıcı taklidi yaparak engellenmeden kırıyoruz
             resp = c_requests.post(decoder_url, data={'url': latest_happ}, impersonate="chrome120", timeout=25)
             dec_html = resp.text
         else:
@@ -61,7 +60,6 @@ def main():
             with urllib.request.urlopen(req_dec, timeout=25) as dec_resp:
                 dec_html = dec_resp.read().decode('utf-8', errors='ignore')
 
-        # Çözülen metnin içinden gerçek VPN linklerini al
         match = re.search(r'<textarea[^>]*>(.*?)</textarea>', dec_html, re.DOTALL)
         search_target = match.group(1) if match else dec_html
         found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', search_target)
@@ -76,20 +74,12 @@ def main():
 
     print(f"Başarıyla deşifre edilen node sayısı: {len(decoded_nodes)}")
 
-    # 1. KODLARY dosyasını tamamen sıfırla / temizle
-    if os.path.exists("KODLARY"):
-        try:
-            with open("KODLARY", "w", encoding="utf-8") as f:
-                f.write("")
-            print("KODLARY dosyası tamamen sıfırlandı.")
-        except Exception as e:
-            print(f"KODLARY temizlenirken hata: {e}")
-
-    # 2. Deşifre edilen VPN linklerini 'toplanan linkler' dosyasına aktar
+    # KODLARY dosyasına KESİNLİKLE DOKUNULMUYOR.
+    # Deşifre edilen linkler sadece Toplanan_linkler.txt dosyasına yazılıyor.
     try:
-        with open("toplanan linkler", "w", encoding="utf-8") as f:
+        with open("Toplanan_linkler.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(decoded_nodes))
-        print("Deşifre edilen linkler başarıyla 'toplanan linkler' dosyasına aktarıldı.")
+        print("Linkler başarıyla sadece 'Toplanan_linkler.txt' dosyasına aktarıldı. KODLARY dosyasına el sürülmedi.")
     except Exception as e:
         print(f"Dosya yazma hatası: {e}")
 
