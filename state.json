@@ -4,11 +4,6 @@
         "days": 12,
         "start_date": "2026-08-18"
     },
-    "sub2": {
-        "customer": "notot",
-        "days": 7,
-        "start_date": "2026-08-20"
-    },
     "sub3": {
         "customer": "sponsor",
         "days": 10,
