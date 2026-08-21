@@ -13,6 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Clone Decryptor Repo
+        uses: actions/checkout@v4
+        with:
+          repository: 'LeeeeT/happ-decryptor'
+          path: 'happ-decryptor'
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -21,10 +27,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install playwright curl-cffi
+          pip install playwright
           playwright install --with-deps chromium
 
-      - name: Run Pro Collector
+      - name: Run Local Decryption Collector
         run: python collector.py
 
       - name: Commit and push changes
@@ -32,5 +38,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add Toplanan_linkler.txt
-          git commit -m "Auto-update VPN nodes via Playwright [skip ci]" || exit 0
+          git commit -m "Auto-update VPN nodes via local happ-decryptor [skip ci]" || exit 0
           git push
