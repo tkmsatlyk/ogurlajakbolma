@@ -18,13 +18,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Clone and Build Decryptor Repo
+      - name: Download Decryptor Cleanly
         run: |
           rm -rf happ-decryptor
-          git clone https://github.com/LeeeeT/happ-decryptor.git happ-decryptor
-          cd happ-decryptor
-          npm install
-          npm run build
+          npx degit LeeeeT/happ-decryptor happ-decryptor
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,8 +37,9 @@ jobs:
       - name: Run Local Decryption Collector
         run: |
           cd happ-decryptor
-          npm run preview &
-          sleep 4
+          npm install
+          npm run build &
+          sleep 5
           cd ..
           python collector.py
 
