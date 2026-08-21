@@ -4,7 +4,7 @@ import urllib.request
 from playwright.sync_api import sync_playwright
 
 def main():
-    print("--- Yerel Kaynaklı Kesin Çözüm Başlatıldı ---")
+    print("--- Yerel Sunucu Tabanlı Kesin Çözüm Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -33,14 +33,10 @@ def main():
 
     vpn_nodes = []
     
-    # Klonlanan yerel decrypter aracının yolu
-    local_index_path = os.path.abspath("happ-decryptor/index.html")
-    
-    if not os.path.exists(local_index_path):
-        print(f"Hata: Yerel decoder dosyası bulunamadı: {local_index_path}")
-        return
+    # Yerel Vite preview sunucusunun adresi
+    decoder_url = "http://localhost:4173/"
 
-    print("Yerel Tarayıcı ile Şifre Çözülüyor...")
+    print("Yerel Sunucu üzerinden Playwright ile Şifre Çözülüyor...")
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch(
@@ -49,8 +45,8 @@ def main():
             )
             page = browser.new_page()
             
-            # İnternete çıkmadan doğrudan yerel dosyayı açıyoruz!
-            page.goto(f"file://{local_index_path}", timeout=30000)
+            # Yerel Node sunucusuna bağlanıyoruz
+            page.goto(decoder_url, timeout=30000)
             
             # Input / Textarea alanına crypt kodunu yaz
             input_selector = "textarea, input[type='text'], input"
@@ -63,7 +59,7 @@ def main():
             except:
                 page.press(input_selector, "Enter")
             
-            # Çözülme süresi için kısa bir bekleme
+            # Şifrenin çözülmesi için bekleme payı
             page.wait_for_timeout(5000)
             
             content = page.content()
