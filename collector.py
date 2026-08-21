@@ -12,7 +12,6 @@ try:
 except ImportError:
     HAS_CURL_CFFI = False
 
-# PROSESYONEL KANAL HAVUZU (Cloudflare Korumalı ve Düz Hatlar)
 CHANNELS = {
     "happvpn": {"url": "https://t.me/s/happvpn", "limit": 15},
     "LonUp_M": {"url": "https://t.me/s/LonUp_M", "limit": 15}
@@ -40,7 +39,7 @@ def fetch_url(url):
         with urllib.request.urlopen(req, timeout=15) as response:
             return response.read().decode('utf-8', errors='ignore')
     except Exception as e:
-        print(f"[Net Error] {url} adresine ulaşılamadı: {e}")
+        print(f"[Net Error] {url}: {e}")
         return ''
 
 def clean_and_fix_link(link):
@@ -70,7 +69,6 @@ def extract_host_port(url):
     return None, None
 
 def test_node_triple_ping(url):
-    """Profesyonel 3'lü TCP El Sıkışma (Ping) Testi"""
     host, port = extract_host_port(url)
     if not host or not port:
         return False
@@ -114,7 +112,7 @@ def decode_happ_link(happ_url):
         pure_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', search_space)
         return [clean_and_fix_link(l) for l in pure_links if is_clean_link(clean_and_fix_link(l))]
     except Exception as e:
-        print(f"[Decoder Warning] Happ linki çözülemedi: {e}")
+        print(f"[Decoder Error] {e}")
         return []
 
 def get_links_from_channel(ch_data):
@@ -122,9 +120,20 @@ def get_links_from_channel(ch_data):
     if not html:
         return []
         
-    href_links = re.findall(r'href="([^"]+)"', html)
-    text_links = re.findall(r'(?:happ|vless|vmess|ss|trojan)://[^\s<>"\']+', html)
-    all_found = href_links + text_links
+    # Telegram mesaj kutularını doğrudan metin olarak hedefle
+    message_blocks = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html, re.DOTALL)
+    combined_text = " ".join(message_blocks)
+    
+    # HTML etiketlerini temizle
+    clean_text = re.sub(r'<[^>]+>', ' ', combined_text)
+    
+    # Metin içindeki happ:// ve doğrudan vpn linklerini yakala
+    happ_links = re.findall(r'happ://[^\s<>"\']+', clean_text)
+    direct_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', clean_text)
+    
+    print(f"[DEBUG] {ch_data['url']} -> Bulunan happ:// sayısı: {len(happ_links)}, Doğrudan link sayısı: {len(direct_links)}")
+    
+    all_found = happ_links + direct_links
     
     links = []
     for url in all_found:
@@ -132,9 +141,7 @@ def get_links_from_channel(ch_data):
             break
             
         cleaned_url = clean_and_fix_link(url)
-        if any(x in cleaned_url for x in ['t.me/s/', 't.me/iv', 't.me/share', 'telegram.dog']):
-            continue
-            
+        
         if cleaned_url.startswith('happ://'):
             decoded_lines = decode_happ_link(cleaned_url)
             for line in decoded_lines:
