@@ -19,8 +19,8 @@ CHANNELS = {
 
 COUNTRY_NAMES = [
     "🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦",
-    "🇫🇷 𝐅𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
-    "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 🇮𝐭𝐚𝐥𝐲",
+    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 🇹𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 🇷𝐨𝐦𝐚𝐧𝐢𝐚",
+    "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
     "🇧🇬 𝐁𝐮𝐥𝐠𝐚𝐫𝐢𝐚", "🇦🇹 🇦𝐮𝐬𝐭𝐫𝐢𝐚", "🇨🇦 𝐊𝐚𝐧𝐚𝐝𝐚", "🇸🇬 𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
     "🇯🇵 𝐉𝐚𝐩𝐚𝐧", "🇰🇷 𝐒𝐨𝐮𝐭𝐡 𝐊𝐨𝐫𝐞𝐚", "🇦🇪 𝐔𝐧𝐢𝐭𝐞𝐝 𝐀𝐫𝐚𝐛 𝐄𝐦𝐢𝐫𝐚𝐭𝐞𝐬",
     "🇰🇿 𝐊𝐚𝐳𝐚𝐤𝐡𝐬𝐭𝐚𝐧", "🇦🇺 🇦𝐮𝐬𝐭𝐫𝐚𝐥𝐢𝐚", "🇭🇰 𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠", "🇳🇴 🇳𝐨𝐫𝐰𝐚𝐲",
@@ -120,30 +120,21 @@ def get_links_from_channel(ch_data):
     if not html:
         return []
         
-    # Telegram mesaj kutularını doğrudan metin olarak hedefle
     message_blocks = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html, re.DOTALL)
     combined_text = " ".join(message_blocks)
-    
-    # HTML etiketlerini temizle
     clean_text = re.sub(r'<[^>]+>', ' ', combined_text)
     
-    # Metin içindeki happ:// ve doğrudan vpn linklerini yakala
     happ_links = re.findall(r'happ://[^\s<>"\']+', clean_text)
     direct_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', clean_text)
     
-    print(f"[DEBUG] {ch_data['url']} -> Bulunan happ:// sayısı: {len(happ_links)}, Doğrudan link sayısı: {len(direct_links)}")
-    
-    all_found = happ_links + direct_links
-    
     links = []
-    for url in all_found:
-        if len(links) >= ch_data["limit"]:
-            break
-            
-        cleaned_url = clean_and_fix_link(url)
-        
-        if cleaned_url.startswith('happ://'):
-            decoded_lines = decode_happ_link(cleaned_url)
+    
+    # happvpn için sadece EN SON (en güncel) paylaşılan happ:// linkini seçiyoruz
+    if "happvpn" in ch_data["url"]:
+        if happ_links:
+            latest_happ = happ_links[-1]  # En sondaki/en yeni link
+            print(f"[DEBUG] happvpn en son paylaşılan happ:// linki yakalandı: {latest_happ}")
+            decoded_lines = decode_happ_link(latest_happ)
             for line in decoded_lines:
                 if len(links) >= ch_data["limit"]:
                     break
@@ -151,11 +142,27 @@ def get_links_from_channel(ch_data):
                 if is_clean_link(fixed_line) and fixed_line not in links:
                     if test_node_triple_ping(fixed_line):
                         links.append(fixed_line)
-        else:
-            if is_clean_link(cleaned_url) and cleaned_url not in links:
-                if test_node_triple_ping(cleaned_url):
-                    links.append(cleaned_url)
-                    
+    else:
+        # Diğer kanallar için standart tarama
+        all_found = happ_links + direct_links
+        for url in all_found:
+            if len(links) >= ch_data["limit"]:
+                break
+            cleaned_url = clean_and_fix_link(url)
+            if cleaned_url.startswith('happ://'):
+                decoded_lines = decode_happ_link(cleaned_url)
+                for line in decoded_lines:
+                    if len(links) >= ch_data["limit"]:
+                        break
+                    fixed_line = clean_and_fix_link(line)
+                    if is_clean_link(fixed_line) and fixed_line not in links:
+                        if test_node_triple_ping(fixed_line):
+                            links.append(fixed_line)
+            else:
+                if is_clean_link(cleaned_url) and cleaned_url not in links:
+                    if test_node_triple_ping(cleaned_url):
+                        links.append(cleaned_url)
+                        
     return links[:ch_data["limit"]]
 
 def main():
