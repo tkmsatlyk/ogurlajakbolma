@@ -1,5 +1,6 @@
 import urllib.request
 import urllib.parse
+import json
 import re
 import html
 
@@ -9,24 +10,8 @@ try:
 except ImportError:
     HAS_CURL_CFFI = False
 
-def fetch_sub_nodes(sub_url):
-    try:
-        if HAS_CURL_CFFI:
-            sub_resp = c_requests.get(sub_url, impersonate="chrome120", timeout=25)
-            sub_text = sub_resp.text
-        else:
-            req_sub = urllib.request.Request(sub_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req_sub, timeout=25) as sub_r:
-                sub_text = sub_r.read().decode('utf-8', errors='ignore')
-        
-        nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_text)
-        return [l.replace('&amp;', '&').replace('&quot;', '').strip() for l in nodes]
-    except Exception as e:
-        print(f"Sub link çekilemedi ({sub_url}): {e}")
-        return []
-
 def main():
-    print("--- HTML Ayrıştırıcılı Profesyonel Bot Başlatıldı ---")
+    print("--- Detaylı Debug Destekli Bot Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -53,16 +38,17 @@ def main():
     latest_happ = all_happ[-1].replace('&amp;', '&').replace('&quot;', '').strip()
     print(f"Bulunan Crypt Link: {latest_happ}")
 
-    # 2. Adım: Decoder'a oturumlu istek at
+    # 2. Adım: Decoder'a istek at ve JSON/HTML olarak çözümle
     decoder_url = "https://happy-decoder.cc/"
-    dec_html = ""
-    
     form_data = {
         'url': latest_happ,
         'encrypt': 'crypt5',
         'user-agent': 'Happ/3.24.1',
         'hwid': 'on'
     }
+
+    vpn_nodes = []
+    response_text = ""
 
     print("Decoder sitesine istek gönderiliyor...")
     try:
@@ -75,12 +61,29 @@ def main():
                 headers={
                     'Referer': decoder_url,
                     'Origin': 'https://happy-decoder.cc',
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json, text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
                 },
                 impersonate="chrome120", 
                 timeout=25
             )
-            dec_html = resp.text
+            response_text = resp.text
+            
+            # JSON yanıt gelme ihtimaline karşı kontrol
+            try:
+                json_data = resp.json()
+                print("JSON Yanıt Yakalandı:", json_data)
+                if isinstance(json_data, dict):
+                    for k, v in json_data.items():
+                        if isinstance(v, str):
+                            if 'vless://' in v or 'vmess://' in v or 'ss://' in v:
+                                vpn_nodes.append(v)
+                            elif v.startswith('http') and 'happy-decoder.cc' not in v:
+                                sub_resp = session.get(v, impersonate="chrome120", timeout=15)
+                                found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_resp.text)
+                                vpn_nodes.extend(found)
+            except:
+                pass
         else:
             data = urllib.parse.urlencode(form_data).encode('utf-8')
             req_dec = urllib.request.Request(
@@ -93,57 +96,42 @@ def main():
                 }
             )
             with urllib.request.urlopen(req_dec, timeout=25) as dec_resp:
-                dec_html = dec_resp.read().decode('utf-8', errors='ignore')
+                response_text = dec_resp.read().decode('utf-8', errors='ignore')
     except Exception as e:
         print(f"Decoder İstek Hatası: {e}")
         return
 
-    vpn_nodes = []
-    try:
-        decoded_html = html.unescape(dec_html)
-
-        # A) Sayfa genelinde direkt vless/vmess var mı bak
-        found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_html)
-        vpn_nodes.extend(found_nodes)
-
-        # B) <textarea> etiketlerinin içini tara (Sonuçların basıldığı ana yer)
-        textareas = re.findall(r'<textarea[^>]*>(.*?)</textarea>', decoded_html, re.DOTALL | re.IGNORECASE)
-        for ta in textareas:
-            ta_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', ta)
-            vpn_nodes.extend(ta_nodes)
-            
-            ta_urls = re.findall(r'https?://[^\s<>"\']+', ta)
-            for u in ta_urls:
-                if 'happy-decoder.cc' not in u:
-                    clean_u = u.strip().rstrip('"\'>')
-                    print(f"Textarea içinde sub link bulundu: {clean_u}")
-                    vpn_nodes.extend(fetch_sub_nodes(clean_u))
-
-        # C) Input value özniteliklerini tara (Abonelik linklerinin gizlendiği yer)
-        input_values = re.findall(r'value=["\'](https?://[^"\']+)["\']', decoded_html, re.IGNORECASE)
-        for val in input_values:
-            if 'happy-decoder.cc' not in val and 'cloudflare' not in val:
-                print(f"Input value içinde sub link bulundu: {val}")
-                vpn_nodes.extend(fetch_sub_nodes(val))
-
-        # D) Genel arama
+    # Eğer JSON'dan gelmediyse HTML içinden ayıkla
+    if not vpn_nodes and response_text:
+        decoded_html = html.unescape(response_text)
+        
+        # Doğrudan node'lar
+        found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_html)
+        vpn_nodes.extend(found)
+        
+        # Sayfadaki tüm linkleri tara
         if not vpn_nodes:
-            print("Genel URL havuzu taranıyor...")
-            all_urls = re.findall(r'https?://[^\s<>"\']+', decoded_html)
-            for sub_url in all_urls:
-                clean_sub = urllib.parse.unquote(sub_url.replace('&amp;', '&').replace('&quot;', '').strip().rstrip('"\'>'))
-                if 'happy-decoder.cc' not in clean_sub and 'cloudflare' not in clean_sub and 'schema' not in clean_sub:
-                    print(f"Aday Sub Link Deneniyor: {clean_sub}")
-                    sub_nodes = fetch_sub_nodes(clean_sub)
-                    if sub_nodes:
-                        vpn_nodes.extend(sub_nodes)
-                        break
-
-    except Exception as e:
-        print(f"İçerik Çözümleme Hatası: {e}")
+            urls = re.findall(r'https?://[^\s<>"\']+', decoded_html)
+            for u in urls:
+                clean_u = u.strip().rstrip('"\'>')
+                if 'happy-decoder.cc' not in clean_u and 'cloudflare' not in clean_u and 'schema' not in clean_u:
+                    print(f"Aday Sub Link Deneniyor: {clean_u}")
+                    try:
+                        req_sub = urllib.request.Request(clean_u, headers={'User-Agent': 'Mozilla/5.0'})
+                        with urllib.request.urlopen(req_sub, timeout=15) as sub_r:
+                            sub_text = sub_r.read().decode('utf-8', errors='ignore')
+                            sub_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_text)
+                            if sub_nodes:
+                                vpn_nodes.extend(sub_nodes)
+                                break
+                    except Exception as sub_err:
+                        print(f"Sub link hata: {sub_err}")
 
     if not vpn_nodes:
-        print("Kritik Hata: HTML alındı ancak node veya sub link çıkarılamadı.")
+        print("--- DEBUG: Yanıt İçeriği (İlk 1000 Karakter) ---")
+        print(response_text[:1000])
+        print("---------------------------------------------")
+        print("Kritik Hata: İstek başarılı ancak node veya sub link çıkarılamadı.")
         return
 
     # Tekrarlanan linkleri temizle
