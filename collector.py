@@ -4,18 +4,17 @@ import re
 import os
 import socket
 import time
-import random
 import http.client
 
-# KOTALAR: 15 + 10 = 25 Link
+# KOTALAR: 15 + 10 = 25 Link (Sadece gerçekten çalışan test edilmiş linkler alınır)
 CHANNELS = {
-    "happvpn": {"url": "https://t.me/s/happvpn", "limit": 15, "max_ms": 1500},
-    "LonUp_M": {"url": "https://t.me/s/LonUp_M", "limit": 10, "max_ms": 700}
+    "happvpn": {"url": "https://t.me/s/happvpn", "limit": 15},
+    "LonUp_M": {"url": "https://t.me/s/LonUp_M", "limit": 10}
 }
 
 COUNTRY_NAMES = [
     "🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦",
-    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 🇹𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
+    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
     "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
     "🇧🇬 𝐁𝐮𝐥𝐠𝐚𝐫𝐢𝐚", "🇦🇹 🇦𝐮𝐬𝐭𝐫𝐢𝐚", "🇨🇦 𝐊𝐚𝐧𝐚𝐝𝐚", "🇸🇬 𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
     "🇯🇵 𝐉𝐚𝐩𝐚𝐧", "🇰🇷 𝐒𝐨𝐮𝐭𝐡 𝐊𝐨𝐫𝐞𝐚", "🇦🇪 𝐔𝐧𝐢𝐭𝐞𝐝 𝐀𝐫𝐚𝐛 𝐄𝐦𝐢𝐫𝐚𝐭𝐞𝐬",
@@ -49,6 +48,33 @@ def is_clean_link(link):
         return False
     return True
 
+def extract_host_port(url):
+    try:
+        without_proto = url.split('://', 1)[1]
+        base_part = without_proto.split('?')[0].split('#')[0]
+        if '@' in base_part:
+            host_port_part = base_part.rsplit('@', 1)[1]
+        else:
+            host_port_part = base_part
+        if ':' in host_port_part:
+            host, port = host_port_part.rsplit(':', 1)
+            port = port.split('/')[0]
+            return host, int(port)
+    except:
+        pass
+    return None, None
+
+def test_node_live(url):
+    host, port = extract_host_port(url)
+    if not host or not port:
+        return False
+    try:
+        s = socket.create_connection((host, port), timeout=1.5)
+        s.close()
+        return True
+    except:
+        return False
+
 def decode_happ_link(happ_url):
     try:
         decoder_url = "https://happy-decoder.cc/"
@@ -81,7 +107,6 @@ def get_links_from_channel(ch_data):
     if not html:
         return []
         
-    # Sınıf filtresini kaldırdık: Sayfanın TÜMÜNDE geçen linkleri ve href leri doğrudan topluyoruz
     href_links = re.findall(r'href="([^"]+)"', html)
     text_links = re.findall(r'(?:happ|vless|vmess|ss|trojan)://[^\s<>"\']+', html)
     
@@ -94,7 +119,6 @@ def get_links_from_channel(ch_data):
             
         cleaned_url = clean_and_fix_link(url)
         
-        # Telegram t.me yönlendirme linklerini atla
         if any(x in cleaned_url for x in ['t.me/s/', 't.me/iv', 't.me/share', 'telegram.dog']):
             continue
             
@@ -105,10 +129,14 @@ def get_links_from_channel(ch_data):
                     break
                 fixed_line = clean_and_fix_link(line)
                 if is_clean_link(fixed_line) and fixed_line not in links:
-                    links.append(fixed_line)
+                    # CANLI BAĞLANTI TESTİ
+                    if test_node_live(fixed_line):
+                        links.append(fixed_line)
         else:
             if is_clean_link(cleaned_url) and cleaned_url not in links:
-                links.append(cleaned_url)
+                # CANLI BAĞLANTI TESTİ
+                if test_node_live(cleaned_url):
+                    links.append(cleaned_url)
                     
     return links[:ch_data["limit"]]
 
@@ -123,16 +151,16 @@ def main():
         except:
             pass
 
-    # 2. Kanallardan taze linkleri global olarak topla
+    # 2. Sadece gerçekten canlı ve çalışan linkleri topla
     final_pool = []
     for ch_name, data in CHANNELS.items():
-        print(f"{ch_name} kanalının genel kaynağı taranıyor...")
+        print(f"{ch_name} kanalından canlı çalışan linkler taranıyor...")
         channel_links = get_links_from_channel(data)
-        print(f"{ch_name} kanalından alınan temiz link sayısı: {len(channel_links)}")
+        print(f"{ch_name} kanalından testten geçen sağlam link sayısı: {len(channel_links)}")
         final_pool.extend(channel_links)
         
-    if len(final_pool) < 3:
-        print("HATA: Yeterli link bulunamadı, dosya korunuyor.")
+    if len(final_pool) < 2:
+        print("HATA: Canlı çalışan yeterli link bulunamadı, dosya korunuyor.")
         return
 
     # 3. Estetik ülke isimleriyle etiketle
@@ -142,14 +170,14 @@ def main():
         country = COUNTRY_NAMES[i % len(COUNTRY_NAMES)]
         formatted_links.append(f"{clean_link}#{urllib.parse.quote(country)}")
 
-    # 4. İlk 12 satır başlık + altlarına yeni linkler
+    # 4. İlk 12 satır başlık + altlarına sadece testten geçen canlı linkler
     combined_content = header_lines + formatted_links
 
     tmp_file = "KODLARY.tmp"
     with open(tmp_file, "w", encoding="utf-8") as f:
         f.write("\n".join(combined_content))
     os.replace(tmp_file, "KODLARY")
-    print("BAŞARILI: Global tarama tamamlandı, liste güncellendi!")
+    print("BAŞARILI: Ölü linkler elendi, sadece canlı çalışanlar KODLARY dosyasına yazıldı!")
 
 if __name__ == "__main__":
     main()
