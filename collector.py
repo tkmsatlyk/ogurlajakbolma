@@ -2,8 +2,6 @@ import urllib.request
 import urllib.parse
 import re
 import os
-import socket
-import time
 
 try:
     from curl_cffi import requests as c_requests
@@ -13,13 +11,13 @@ except ImportError:
 
 CHANNELS = {
     "happvpn": {"url": "https://t.me/s/happvpn", "limit": 10},
-    "LonUp_M": {"url": "https://t.me/s/LonUp_M", "limit": 15}
+    "ares_happ": {"url": "https://t.me/s/ares_happ", "limit": 15}
 }
 
 COUNTRY_NAMES = [
     "🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦",
-    "🇫🇷 𝐅𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
-    "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 🇵𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
+    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
+    "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
     "🇧🇬 𝐁𝐮𝐥𝐠𝐚𝐫𝐢𝐚", "🇦🇹 🇦𝐮𝐬𝐭𝐫𝐢𝐚", "🇨🇦 𝐊𝐚𝐧𝐚𝐝𝐚", "🇸🇬 𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
     "🇯🇵 𝐉𝐚𝐩𝐚𝐧", "🇰🇷 𝐒𝐨𝐮𝐭𝐡 𝐊𝐨𝐫𝐞𝐚", "🇦🇪 𝐔𝐧𝐢𝐭𝐞𝐝 𝐀𝐫𝐚𝐛 𝐄𝐦𝐢𝐫𝐚𝐭𝐞𝐬",
     "🇰🇿 𝐊𝐚𝐳𝐚𝐤𝐡𝐬𝐭𝐚𝐧", "🇦🇺 🇦𝐮𝐬𝐭𝐫𝐚𝐥𝐢𝐚", "🇭🇰 𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠", "🇳🇴 🇳𝐨𝐫𝐰𝐚𝐲",
@@ -51,25 +49,6 @@ def is_valid(link):
         return False
     return True
 
-def get_latency_ms(url):
-    """TCP el sıkışma süresini milisaniye (ms) cinsinden ölçer"""
-    try:
-        without_proto = url.split('://', 1)[1]
-        base_part = without_proto.split('?')[0].split('#')[0]
-        host_port = base_part.rsplit('@', 1)[1] if '@' in base_part else base_part
-        host, port = host_port.rsplit(':', 1)
-        port = int(port.split('/')[0])
-        
-        start_time = time.time()
-        s = socket.create_connection((host, port), timeout=1.5)
-        s.close()
-        end_time = time.time()
-        
-        latency = (end_time - start_time) * 1000
-        return latency
-    except:
-        return None
-
 def decode_happ(happ_url):
     try:
         decoder_url = "https://happy-decoder.cc/"
@@ -92,7 +71,7 @@ def decode_happ(happ_url):
         return []
 
 def main():
-    print("--- VPN Altyapı MS Filtreli Başlatıldı ---")
+    print("--- VPN Toplayıcı Başlatıldı ---")
     
     header_lines = []
     if os.path.exists("KODLARY"):
@@ -104,30 +83,25 @@ def main():
 
     final_pool = []
     
-    # 1. LonUp_M kanalından linkleri al (Limit: 15, Max MS: 1000)
-    print("LonUp_M taranıyor (Limit: 15, Max MS: 1000)...")
-    html_lon = fetch_url(CHANNELS["LonUp_M"]["url"])
-    lon_added = 0
-    if html_lon:
-        msg_blocks_lon = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html_lon, re.DOTALL)
-        combined_lon = " ".join(msg_blocks_lon)
-        clean_lon_text = re.sub(r'<[^>]+>', ' ', combined_lon)
-        lon_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', clean_lon_text)
-        for link in lon_links:
-            if lon_added >= CHANNELS["LonUp_M"]["limit"]:
+    # 1. ares_happ kanalından tam 15 tane al
+    print("ares_happ taranıyor (Hedef: 15)...")
+    html_ares = fetch_url(CHANNELS["ares_happ"]["url"])
+    if html_ares:
+        msg_blocks_ares = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html_ares, re.DOTALL)
+        combined_ares = " ".join(msg_blocks_ares)
+        clean_ares_text = re.sub(r'<[^>]+>', ' ', combined_ares)
+        ares_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', clean_ares_text)
+        for link in ares_links:
+            if len(final_pool) >= CHANNELS["ares_happ"]["limit"]:
                 break
             cl = clean_link(link)
             if is_valid(cl) and cl not in final_pool:
-                lat = get_latency_ms(cl)
-                if lat is not None and lat < 1000:
-                    final_pool.append(cl)
-                    lon_added += 1
-                    print(f"[LonUp_M] Eklendi (MS: {lat:.1f})")
+                final_pool.append(cl)
+                print(f"[ares_happ] Eklendi. Toplam: {len(final_pool)}")
 
-    # 2. happvpn kanalından en son happ:// linkini al ve çöz (Limit: 10, Max MS: 1000)
-    print("happvpn taranıyor (Limit: 10, Max MS: 1000)...")
+    # 2. happvpn kanalından son linki çöz ve 10 tane al
+    print("happvpn taranıyor (Hedef: 10)...")
     html_happ = fetch_url(CHANNELS["happvpn"]["url"])
-    happ_added = 0
     if html_happ:
         msg_blocks_happ = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html_happ, re.DOTALL)
         combined_happ = " ".join(msg_blocks_happ)
@@ -137,16 +111,15 @@ def main():
             latest = happ_links[-1]
             print(f"En son happ linki çözülüyor: {latest}")
             decoded = decode_happ(latest)
+            happ_count = 0
             for link in decoded:
-                if happ_added >= CHANNELS["happvpn"]["limit"]:
+                if happ_count >= CHANNELS["happvpn"]["limit"]:
                     break
                 cl = clean_link(link)
                 if is_valid(cl) and cl not in final_pool:
-                    lat = get_latency_ms(cl)
-                    if lat is not None and lat < 1000:
-                        final_pool.append(cl)
-                        happ_added += 1
-                        print(f"[happvpn] Eklendi (MS: {lat:.1f})")
+                    final_pool.append(cl)
+                    happ_count += 1
+                    print(f"[happvpn] Eklendi. Happ Sayısı: {happ_count}")
 
     if not final_pool:
         print("Hiç node bulunamadı, mevcut dosya korunuyor.")
@@ -162,7 +135,7 @@ def main():
     with open("KODLARY.tmp", "w", encoding="utf-8") as f:
         f.write("\n".join(combined_content))
     os.replace("KODLARY.tmp", "KODLARY")
-    print(f"İşlem tamamlandı! Toplam eklenen node: {len(final_pool)}")
+    print(f"İşlem başarıyla tamamlandı! Toplam node: {len(final_pool)}")
 
 if __name__ == "__main__":
     main()
