@@ -10,7 +10,7 @@ except ImportError:
     HAS_CURL_CFFI = False
 
 def main():
-    print("--- Buton Tetiklemeli Gelişmiş Bot Başlatıldı ---")
+    print("--- Dinamik Form Ayrıştırıcılı Decoder Bot Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -37,74 +37,82 @@ def main():
     latest_happ = all_happ[-1].replace('&amp;', '&').replace('&quot;', '').strip()
     print(f"Bulunan Crypt Link: {latest_happ}")
 
-    # 2. Adım: Decoder'a buton ve form tetikleyicileriyle birlikte istek at
     decoder_url = "https://happy-decoder.cc/"
-    
-    form_data = {
-        'url': latest_happ,
-        'encrypt': 'crypt5',
-        'user-agent': 'Happ/3.24.1',
-        'hwid': 'on',
-        'submit': '1',
-        'action': 'decode'
-    }
-
-    vpn_nodes = []
     response_text = ""
+    vpn_nodes = []
 
-    print("Decoder sitesine tetiklemeli istek gönderiliyor...")
+    print("Decoder ana sayfası yüklenip form alanları taranıyor...")
     try:
         if HAS_CURL_CFFI:
             session = c_requests.Session()
-            # Önce çerez/oturum al
-            session.get(decoder_url, impersonate="chrome120", timeout=20)
+            # 1. GET isteği ile ana sayfayı ve form yapılandırmasını al
+            get_resp = session.get(decoder_url, impersonate="chrome120", timeout=20)
+            main_html = get_resp.text
+            
+            # Form içindeki input alanlarını otomatik bul
+            form_data = {}
+            inputs = re.findall(r'<input[^>]+>', main_html, re.IGNORECASE)
+            for inp in inputs:
+                name_match = re.search(r'name=["\']([^"\']+)["\']', inp, re.IGNORECASE)
+                val_match = re.search(r'value=["\']([^"\']*)["\']', inp, re.IGNORECASE)
+                if name_match:
+                    name = name_match.group(1)
+                    val = val_match.group(1) if val_match else ''
+                    form_data[name] = val
+
+            print(f"Bulunan form alanları: {list(form_data.keys())}")
+
+            # Ana input alanına crypt linkini koy
+            target_key = 'url'
+            for k in form_data.keys():
+                if 'url' in k.lower() or 'code' in k.lower() or 'text' in k.lower() or 'input' in k.lower():
+                    target_key = k
+                    break
+            
+            form_data[target_key] = latest_happ
+            if 'encrypt' in form_data: form_data['encrypt'] = 'crypt5'
+            if 'user-agent' in form_data: form_data['user-agent'] = 'Happ/3.24.1'
+            if 'hwid' in form_data: form_data['hwid'] = 'on'
+
+            # 2. POST isteği gönder
             resp = session.post(
                 decoder_url, 
                 data=form_data, 
                 headers={
                     'Referer': decoder_url,
                     'Origin': 'https://happy-decoder.cc',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Cache-Control': 'max-age=0'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 impersonate="chrome120", 
                 timeout=25
             )
             response_text = resp.text
         else:
-            data = urllib.parse.urlencode(form_data).encode('utf-8')
-            req_dec = urllib.request.Request(
-                decoder_url, 
-                data=data, 
-                headers={
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Referer': decoder_url
-                }
-            )
+            data = urllib.parse.urlencode({'url': latest_happ}).encode('utf-8')
+            req_dec = urllib.request.Request(decoder_url, data=data, headers={'User-Agent': 'Mozilla/5.0', 'Content-Type': 'application/x-www-form-urlencoded'})
             with urllib.request.urlopen(req_dec, timeout=25) as dec_resp:
                 response_text = dec_resp.read().decode('utf-8', errors='ignore')
     except Exception as e:
         print(f"Decoder İstek Hatası: {e}")
         return
 
-    # Gelen yanıtı çözümle
+    # Yanıtı çözümle
     if response_text:
         decoded_html = html.unescape(response_text)
         
-        # A) Doğrudan vless/vmess node'larını ara
+        # A) Doğrudan node'lar
         found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_html)
         vpn_nodes.extend(found_nodes)
 
-        # B) <textarea> etiketlerinin içini tara
+        # B) Textarea taraması
         textareas = re.findall(r'<textarea[^>]*>(.*?)</textarea>', decoded_html, re.DOTALL | re.IGNORECASE)
         for ta in textareas:
             ta_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', ta)
             vpn_nodes.extend(ta_nodes)
 
-        # C) Sayfadaki sub linklerini bul ve içeriğine git
+        # C) Sub link taraması
         if not vpn_nodes:
-            print("Abonelik (sub) linkleri taranıyor...")
+            print("Sub linkler taranıyor...")
             urls = re.findall(r'https?://[^\s<>"\']+', decoded_html)
             for u in urls:
                 clean_u = u.strip().rstrip('"\'>')
@@ -112,7 +120,7 @@ def main():
                     print(f"Aday Sub Link Deneniyor: {clean_u}")
                     try:
                         if HAS_CURL_CFFI:
-                            sub_resp = c_requests.get(clean_u, impersonate="chrome120", timeout=15)
+                            sub_resp = session.get(clean_u, impersonate="chrome120", timeout=15)
                             sub_text = sub_resp.text
                         else:
                             req_sub = urllib.request.Request(clean_u, headers={'User-Agent': 'Mozilla/5.0'})
@@ -130,7 +138,7 @@ def main():
         print("--- DEBUG: Yanıt İçeriği (İlk 1000 Karakter) ---")
         print(response_text[:1000])
         print("---------------------------------------------")
-        print("Kritik Hata: İstek gönderildi ancak hâlâ node çıkarılamadı.")
+        print("Kritik Hata: Dinamik form gönderildi ancak hâlâ node çıkarılamadı.")
         return
 
     # Tekrarlanan linkleri temizle
