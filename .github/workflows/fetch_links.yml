@@ -18,11 +18,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Download Decryptor Cleanly
-        run: |
-          rm -rf happ-decryptor
-          npx degit LeeeeT/happ-decryptor happ-decryptor
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -34,14 +29,8 @@ jobs:
           pip install playwright
           playwright install --with-deps chromium
 
-      - name: Run Local Decryption Collector
-        run: |
-          cd happ-decryptor
-          npm install
-          npm run build &
-          sleep 5
-          cd ..
-          python collector.py
+      - name: Run Collector
+        run: python collector.py
 
       - name: Commit and push changes
         run: |
