@@ -27,9 +27,11 @@ jobs:
       - name: Run Collector
         run: python collector.py
 
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add Toplanan_linkler.txt
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update nodes [skip ci]" && git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main)
+          # Değişiklik yoksa 128 hatası vermeden geç
+          git commit -m "Auto-update nodes" || exit 0
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main || exit 0
