@@ -4,11 +4,11 @@ import urllib.request
 from playwright.sync_api import sync_playwright
 
 def main():
-    print("--- Playwright Tarayıcı Tabanlı Kesin Çözüm Başlatıldı ---")
+    print("--- Yerel Kaynaklı Kesin Çözüm Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
-    # 1. Adım: Kanaldan en taze happ:// crypt kodunu çek
+    # 1. Adım: Telegram kanalından en taze happ:// crypt kodunu çek
     try:
         req = urllib.request.Request(
             channel_url, 
@@ -32,64 +32,68 @@ def main():
     print(f"Bulunan Crypt Link: {latest_happ}")
 
     vpn_nodes = []
-    decoder_url = "https://happy-decoder.cc/"
+    
+    # Klonlanan yerel decrypter aracının yolu
+    local_index_path = os.path.abspath("happ-decryptor/index.html")
+    
+    if not os.path.exists(local_index_path):
+        print(f"Hata: Yerel decoder dosyası bulunamadı: {local_index_path}")
+        return
 
-    # 2. Adım: Playwright ile gerçek tarayıcı simülasyonu çalıştır
-    print("Tarayıcı (Playwright) başlatılıyor...")
+    print("Yerel Tarayıcı ile Şifre Çözülüyor...")
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(
+                headless=True,
+                args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            )
             page = browser.new_page()
             
-            print("Decoder sayfasına gidiliyor...")
-            page.goto(decoder_url, timeout=30000)
+            # İnternete çıkmadan doğrudan yerel dosyayı açıyoruz!
+            page.goto(f"file://{local_index_path}", timeout=30000)
             
-            # Formdaki input / textarea alanını bul
-            input_selector = "input[type='text'], textarea, input[name='url'], input"
+            # Input / Textarea alanına crypt kodunu yaz
+            input_selector = "textarea, input[type='text'], input"
             page.wait_for_selector(input_selector, timeout=10000)
-            
-            print("Crypt kod input alanına yazılıyor...")
             page.fill(input_selector, latest_happ)
             
-            # Çöz / Gönder butonuna tıkla
+            # Çöz butonuna tıkla
             try:
-                page.click("button[type='submit'], input[type='submit'], button", timeout=5000)
+                page.click("button, input[type='submit']", timeout=5000)
             except:
                 page.press(input_selector, "Enter")
             
-            print("Sonuçların yüklenmesi bekleniyor...")
-            page.wait_for_timeout(6000) # Sayfanın JS ile çözmesi için bekleme payı
+            # Çözülme süresi için kısa bir bekleme
+            page.wait_for_timeout(5000)
             
             content = page.content()
             browser.close()
             
-            # A) Sayfadaki tüm vless/vmess node'larını çek
+            # Node'ları ayıkla
             found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', content)
             vpn_nodes.extend(found_nodes)
             
-            # B) Textarea içindeki çözülmüş verileri tara
             textareas = re.findall(r'<textarea[^>]*>(.*?)</textarea>', content, re.DOTALL | re.IGNORECASE)
             for ta in textareas:
                 ta_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', ta)
                 vpn_nodes.extend(ta_nodes)
 
     except Exception as e:
-        print(f"Tarayıcı Otomasyon Hatası: {e}")
+        print(f"Yerel Çözüm Hatası: {e}")
         return
 
     if not vpn_nodes:
-        print("Kritik Hata: Tarayıcı ile de node'lar çözülemedi.")
+        print("Kritik Hata: Yerel araç ile de node'lar çıkarılamadı.")
         return
 
-    # Tekrarlanan linkleri temizle
     vpn_nodes = list(dict.fromkeys(vpn_nodes))
     print(f"Toplam {len(vpn_nodes)} adet VPN linki başarıyla toplandı.")
 
-    # 3. Adım: KODLARY dosyasına KESİNLİKLE DOKUNMA, sadece Toplanan_linkler.txt dosyasına yaz
+    # KODLARY dosyasına KESİNLİKLE dokunulmuyor, sadece Toplanan_linkler.txt güncelleniyor
     try:
         with open("Toplanan_linkler.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(vpn_nodes))
-        print("İşlem başarıyla tamamlandı! Linkler sadece 'Toplanan_linkler.txt' dosyasına yazıldı. KODLARY yerinde duruyor.")
+        print("İşlem başarıyla tamamlandı! Sadece 'Toplanan_linkler.txt' güncellendi.")
     except Exception as e:
         print(f"Dosya yazma hatası: {e}")
 
