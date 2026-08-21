@@ -10,7 +10,7 @@ except ImportError:
     HAS_CURL_CFFI = False
 
 def main():
-    print("--- Senin İstediğin Sistemle Çalışan Bot Başlatıldı ---")
+    print("--- Ekran Görüntüsü Mantığıyla Çalışan Çözücü Başlatıldı ---")
     
     channel_url = "https://t.me/s/happvpn"
     
@@ -35,14 +35,14 @@ def main():
         return
 
     latest_happ = all_happ[-1].replace('&amp;', '&').replace('&quot;', '').strip()
-    print(f"1. Adım Tamam - Bulunan Crypt Link: {latest_happ}")
+    print(f"Bulunan Crypt Link: {latest_happ}")
 
-    # 2. Adım: Decoder'a gönderip çıkan https:// linkini (veya siteyi) al
-    target_https_url = ""
+    # 2. Adım: Decoder'a gönderip çözülmüş sayfayı al
+    vpn_nodes = []
+    decoder_url = "https://happy-decoder.cc/"
+    
     try:
-        decoder_url = "https://happy-decoder.cc/"
-        print("2. Adım - Crypt link decoder'a gönderilip çözülüyor...")
-        
+        print("Crypt link decoder'a gönderiliyor...")
         if HAS_CURL_CFFI:
             resp = c_requests.post(decoder_url, data={'url': latest_happ}, impersonate="chrome120", timeout=25)
             dec_html = resp.text
@@ -59,58 +59,43 @@ def main():
             with urllib.request.urlopen(req_dec, timeout=25) as dec_resp:
                 dec_html = dec_resp.read().decode('utf-8', errors='ignore')
 
-        # Decoder'ın sayfada verdiği https:// linkini bul (<a> etiketleri içinden veya düz metinden)
-        hrefs = re.findall(r'href="([^"]+)"', dec_html)
-        for h in hrefs:
-            if h.startswith('https://') and 'happy-decoder.cc' not in h:
-                target_https_url = h
-                break
-        
-        if not target_https_url:
-            # Eğer href içinde bulamazsa düz metindeki https linklerine bak
-            all_https = re.findall(r'https?://[^\s<>"\']+', dec_html)
-            for u in all_https:
-                if 'happy-decoder.cc' not in u:
-                    target_https_url = u
+        # A) Decoder sayfasının içinde direkt vless:// vmess:// yazıyorsa onları al
+        found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', dec_html)
+        vpn_nodes = [l.replace('&amp;', '&').replace('&quot;', '').strip() for l in found_nodes]
+
+        # B) Eğer doğrudan çıkmadıysa, ekran görüntüsündeki gibi 'РАСШИФРОВАННЫЙ URL' (sub linki) yakalayıp ona istek at
+        if not vpn_nodes:
+            print("Doğrudan node bulunamadı, alt abonelik (sub) linki aranıyor...")
+            sub_links = re.findall(r'https?://[^\s<>"\']+', dec_html)
+            for sub_url in sub_links:
+                if 'happy-decoder.cc' not in sub_url:
+                    clean_sub = sub_url.replace('&amp;', '&').replace('&quot;', '').strip()
+                    print(f"Sub link bulundu, içeriği çekiliyor: {clean_sub}")
+                    
+                    if HAS_CURL_CFFI:
+                        sub_resp = c_requests.get(clean_sub, impersonate="chrome120", timeout=25)
+                        sub_text = sub_resp.text
+                    else:
+                        req_sub = urllib.request.Request(clean_sub, headers={'User-Agent': 'Mozilla/5.0'})
+                        with urllib.request.urlopen(req_sub, timeout=25) as sub_r:
+                            sub_text = sub_r.read().decode('utf-8', errors='ignore')
+                    
+                    sub_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_text)
+                    vpn_nodes.extend([l.replace('&amp;', '&').replace('&quot;', '').strip() for l in sub_nodes])
                     break
 
-        print(f"Decoder'dan çıkan https:// hedef link: {target_https_url}")
-        
     except Exception as e:
-        print(f"Decoder Hatası: {e}")
-
-    if not target_https_url:
-        print("Decoder'dan https linki çıkarılamadı.")
-        return
-
-    # 3. Adım: O çıkan https:// linkine gidip (tarayıcı gibi) aç ve içindeki VPN linklerini al
-    vpn_nodes = []
-    try:
-        print(f"3. Adım - Çıkan https linki açılıyor ve VPN linkleri toplanıyor...")
-        if HAS_CURL_CFFI:
-            resp_page = c_requests.get(target_https_url, impersonate="chrome120", timeout=25)
-            page_html = resp_page.text
-        else:
-            req_page = urllib.request.Request(
-                target_https_url,
-                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0'}
-            )
-            with urllib.request.urlopen(req_page, timeout=25) as page_resp:
-                page_html = page_resp.read().decode('utf-8', errors='ignore')
-
-        found_nodes = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', page_html)
-        vpn_nodes = [l.replace('&amp;', '&').replace('&quot;', '').strip() for l in found_nodes]
-        
-    except Exception as e:
-        print(f"Hedef sayfa açılırken hata: {e}")
+        print(f"Decoder / Çözüm Hatası: {e}")
 
     if not vpn_nodes:
-        print("Açılan sayfada hiç VPN linki bulunamadı.")
+        print("Hiç VPN linki elde edilemedi.")
         return
 
-    print(f"Başarıyla alınan VPN link sayısı: {len(vpn_nodes)}")
+    # Aynı linkleri tekrar yazmamak için temizle
+    vpn_nodes = list(dict.fromkeys(vpn_nodes))
+    print(f"Toplam {len(vpn_nodes)} adet VPN linki başarıyla yakalandı.")
 
-    # 4. Adım: KODLARY dosyasına KESİNLİKLE DOKUNMA, sadece Toplanan_linkler.txt dosyasına yaz
+    # 3. Adım: KODLARY dosyasına KESİNLİKLE DOKUNMA, sadece Toplanan_linkler.txt dosyasına yaz
     try:
         with open("Toplanan_linkler.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(vpn_nodes))
