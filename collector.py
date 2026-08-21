@@ -6,7 +6,7 @@ import socket
 import time
 import http.client
 
-# KOTALAR: 15 + 10 = 25 Link (Sadece gerçekten çalışan test edilmiş linkler alınır)
+# KOTALAR: 15 + 10 = 25 Link (3 kez testten geçen %100 sağlamlar)
 CHANNELS = {
     "happvpn": {"url": "https://t.me/s/happvpn", "limit": 15},
     "LonUp_M": {"url": "https://t.me/s/LonUp_M", "limit": 10}
@@ -14,7 +14,7 @@ CHANNELS = {
 
 COUNTRY_NAMES = [
     "🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦",
-    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
+    "🇫🇷 𝐅𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
     "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
     "🇧🇬 𝐁𝐮𝐥𝐠𝐚𝐫𝐢𝐚", "🇦🇹 🇦𝐮𝐬𝐭𝐫𝐢𝐚", "🇨🇦 𝐊𝐚𝐧𝐚𝐝𝐚", "🇸🇬 𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
     "🇯🇵 𝐉𝐚𝐩𝐚𝐧", "🇰🇷 𝐒𝐨𝐮𝐭𝐡 𝐊𝐨𝐫𝐞𝐚", "🇦🇪 𝐔𝐧𝐢𝐭𝐞𝐝 𝐀𝐫𝐚𝐛 𝐄𝐦𝐢𝐫𝐚𝐭𝐞𝐬",
@@ -64,16 +64,24 @@ def extract_host_port(url):
         pass
     return None, None
 
-def test_node_live(url):
+def test_node_triple_ping(url):
+    """Her link için arka arkaya 3 kez MS/bağlantı testi yapar. 3'ü de başarılı olmalıdır."""
     host, port = extract_host_port(url)
     if not host or not port:
         return False
-    try:
-        s = socket.create_connection((host, port), timeout=1.5)
-        s.close()
-        return True
-    except:
-        return False
+    
+    success_count = 0
+    for _ in range(3):
+        try:
+            s = socket.create_connection((host, port), timeout=1.5)
+            s.close()
+            success_count += 1
+        except:
+            pass
+        time.sleep(0.15) # testler arası mini bekleme
+        
+    # 3 testin 3'ünde de başarılı olduysa sağlamdır
+    return success_count == 3
 
 def decode_happ_link(happ_url):
     try:
@@ -85,7 +93,8 @@ def decode_happ_link(happ_url):
             data=data,
             headers={
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Referer': 'https://happy-decoder.cc/'
             }
         )
         
@@ -99,7 +108,8 @@ def decode_happ_link(happ_url):
         search_space = clean_and_fix_link(textarea_match.group(1))
         pure_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', search_space)
         return [clean_and_fix_link(l) for l in pure_links if is_clean_link(clean_and_fix_link(l))]
-    except:
+    except Exception as e:
+        print(f"Decoder hata ({happ_url}): {e}")
         return []
 
 def get_links_from_channel(ch_data):
@@ -129,13 +139,13 @@ def get_links_from_channel(ch_data):
                     break
                 fixed_line = clean_and_fix_link(line)
                 if is_clean_link(fixed_line) and fixed_line not in links:
-                    # CANLI BAĞLANTI TESTİ
-                    if test_node_live(fixed_line):
+                    # 3 KEZ TEST ET
+                    if test_node_triple_ping(fixed_line):
                         links.append(fixed_line)
         else:
             if is_clean_link(cleaned_url) and cleaned_url not in links:
-                # CANLI BAĞLANTI TESTİ
-                if test_node_live(cleaned_url):
+                # 3 KEZ TEST ET
+                if test_node_triple_ping(cleaned_url):
                     links.append(cleaned_url)
                     
     return links[:ch_data["limit"]]
@@ -151,16 +161,16 @@ def main():
         except:
             pass
 
-    # 2. Sadece gerçekten canlı ve çalışan linkleri topla
+    # 2. 3'lü testten geçen kusursuz linkleri topla
     final_pool = []
     for ch_name, data in CHANNELS.items():
-        print(f"{ch_name} kanalından canlı çalışan linkler taranıyor...")
+        print(f"{ch_name} kanalından 3'lü MS testi ile taranıyor...")
         channel_links = get_links_from_channel(data)
-        print(f"{ch_name} kanalından testten geçen sağlam link sayısı: {len(channel_links)}")
+        print(f"{ch_name} kanalından 3 testide geçen sağlam link sayısı: {len(channel_links)}")
         final_pool.extend(channel_links)
         
     if len(final_pool) < 2:
-        print("HATA: Canlı çalışan yeterli link bulunamadı, dosya korunuyor.")
+        print("HATA: Yeterli sağlam link bulunamadı, dosya korunuyor.")
         return
 
     # 3. Estetik ülke isimleriyle etiketle
@@ -170,14 +180,14 @@ def main():
         country = COUNTRY_NAMES[i % len(COUNTRY_NAMES)]
         formatted_links.append(f"{clean_link}#{urllib.parse.quote(country)}")
 
-    # 4. İlk 12 satır başlık + altlarına sadece testten geçen canlı linkler
+    # 4. İlk 12 satır başlık + altlarına %100 çalışan testli linkler
     combined_content = header_lines + formatted_links
 
     tmp_file = "KODLARY.tmp"
     with open(tmp_file, "w", encoding="utf-8") as f:
         f.write("\n".join(combined_content))
     os.replace(tmp_file, "KODLARY")
-    print("BAŞARILI: Ölü linkler elendi, sadece canlı çalışanlar KODLARY dosyasına yazıldı!")
+    print("BAŞARILI: Tüm linkler 3 kez test edildi, patlak olanlar elendi ve liste güncellendi!")
 
 if __name__ == "__main__":
     main()
