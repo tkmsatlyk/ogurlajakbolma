@@ -2,154 +2,86 @@ import urllib.request
 import urllib.parse
 import re
 import os
+import sys
 
-try:
-    from curl_cffi import requests as c_requests
-    HAS_CURL_CFFI = True
-except ImportError:
-    HAS_CURL_CFFI = False
-
-CHANNELS = {
-    "happvpn": {"url": "https://t.me/s/happvpn", "limit": 10},
-    "ares_happ": {"url": "https://t.me/s/ares_happ", "limit": 15}
-}
-
-COUNTRY_NAMES = [
-    "🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦",
-    "🇫🇷 🇫𝐫𝐚𝐧𝐜𝐞", "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲", "🇷🇺 🇷𝐮𝐬𝐬𝐢𝐚", "🇷🇴 𝐑𝐨𝐦𝐚𝐧𝐢𝐚",
-    "🇨🇭 𝐒𝐰𝐢𝐭𝐳𝐞𝐫𝐥𝐚𝐧𝐝", "🇸🇪 𝐒𝐰𝐞𝐝𝐞𝐧", "🇵🇱 𝐏𝐨𝐥𝐚𝐧𝐝", "🇮🇹 𝐈𝐭𝐚𝐥𝐲",
-    "🇧🇬 𝐁𝐮𝐥𝐠𝐚𝐫𝐢𝐚", "🇦🇹 🇦𝐮𝐬𝐭𝐫𝐢𝐚", "🇨🇦 𝐊𝐚𝐧𝐚𝐝𝐚", "🇸🇬 𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-    "🇯🇵 𝐉𝐚𝐩𝐚𝐧", "🇰🇷 𝐒𝐨𝐮𝐭𝐡 𝐊𝐨𝐫𝐞𝐚", "🇦🇪 𝐔𝐧𝐢𝐭𝐞𝐝 𝐀𝐫𝐚𝐛 𝐄𝐦𝐢𝐫𝐚𝐭𝐞𝐬",
-    "🇰🇿 𝐊𝐚𝐳𝐚𝐤𝐡𝐬𝐭𝐚𝐧", "🇦🇺 🇦𝐮𝐬𝐭𝐫𝐚𝐥𝐢𝐚", "🇭🇰 𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠", "🇳🇴 🇳𝐨𝐫𝐰𝐚𝐲",
-    "🇵🇹 𝐏𝐨𝐫𝐭𝐮𝐠𝐚𝐥", "🇮🇳 🇮𝐧𝐝𝐢𝐚"
-]
-
-def fetch_url(url):
+def fetch_html(url):
     try:
         req = urllib.request.Request(
             url, 
-            headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0',
-                'Accept-Encoding': 'identity'
-            }
+            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0'}
         )
-        with urllib.request.urlopen(req, timeout=15) as response:
-            return response.read().decode('utf-8', errors='ignore')
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return resp.read().decode('utf-8', errors='ignore')
     except Exception as e:
-        print(f"[Net Error] {e}")
-        return ''
+        return ""
 
-def clean_link(link):
-    return link.replace('&amp;', '&').replace('&quot;', '').strip()
-
-def is_valid(link):
-    if not any(link.startswith(p) for p in ['vless://', 'vmess://', 'ss://', 'trojan://']):
-        return False
-    if re.search(r'[<>"\s\']', link):
-        return False
-    return True
-
-def decode_happ(happ_url):
+def decode_crypt(crypt_data):
+    """Her türlü crypt/şifreli veriyi decoder'a gönderip çözen ana fonksiyon"""
     try:
-        decoder_url = "https://happy-decoder.cc/"
-        if HAS_CURL_CFFI:
-            resp = c_requests.post(decoder_url, data={'url': happ_url}, impersonate="chrome120", timeout=15)
-            html = resp.text
-        else:
-            data = urllib.parse.urlencode({'url': happ_url}).encode('utf-8')
-            req = urllib.request.Request(decoder_url, data=data, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                html = resp.read().decode('utf-8', errors='ignore')
-        
-        match = re.search(r'<textarea[^>]*>(.*?)</textarea>', html, re.DOTALL)
-        search_text = match.group(1) if match else html
-        found = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', search_text)
-        return [clean_link(l) for l in found if is_valid(clean_link(l))]
-    except Exception as e:
-        print(f"[Decoder Error] {e}")
+        # Burada senin kullandığın decoder URL'ini kullanıyoruz
+        data = urllib.parse.urlencode({'url': crypt_data}).encode('utf-8')
+        req = urllib.request.Request("https://happy-decoder.cc/", data=data, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=15) as dec_resp:
+            dec_html = dec_resp.read().decode('utf-8', errors='ignore')
+            dec_match = re.search(r'<textarea[^>]*>(.*?)</textarea>', dec_html, re.DOTALL)
+            search_target = dec_match.group(1) if dec_match else dec_html
+            # Çözülmüş linkleri al
+            return re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', search_target)
+    except:
         return []
 
 def main():
-    print("--- VPN Toplayıcı Gelişmiş Sürüm Başlatıldı ---")
+    print("--- Hub Crypt Çözücü Başlatıldı ---")
     
-    # İlk 12 satırlık header kısmını güvenle alıyoruz
-    header_lines = []
+    header = []
     if os.path.exists("KODLARY"):
-        try:
-            with open("KODLARY", "r", encoding="utf-8") as f:
-                lines = f.read().splitlines()
-                header_lines = lines[:12]
-        except:
-            pass
+        with open("KODLARY", "r", encoding="utf-8") as f:
+            header = f.read().splitlines()[:12]
+    else:
+        print("KODLARY dosyası yok!")
+        sys.exit(1)
 
-    final_pool = []
-    
-    # 1. ares_happ kanalından 15 tane al
-    print("ares_happ taranıyor (Hedef: 15)...")
-    html_ares = fetch_url(CHANNELS["ares_happ"]["url"])
-    if html_ares:
-        msg_blocks_ares = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html_ares, re.DOTALL)
-        combined_ares = " ".join(msg_blocks_ares)
-        clean_ares_text = re.sub(r'<[^>]+>', ' ', combined_ares)
-        ares_links = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', clean_ares_text)
-        for link in ares_links:
-            if len(final_pool) >= CHANNELS["ares_happ"]["limit"]:
-                break
-            cl = clean_link(link)
-            if is_valid(cl) and cl not in final_pool:
-                final_pool.append(cl)
-                print(f"[ares_happ] Eklendi. Toplam: {len(final_pool)}")
+    final_nodes = []
+    channels = ["https://t.me/s/ares_happ", "https://t.me/s/happvpn"]
 
-    # 2. happvpn kanalındaki happ:// linklerini sondan geriye doğru dene (Çözülebilen ilk sağlam linki yakala)
-    print("happvpn taranıyor (Hedef: 10)...")
-    html_happ = fetch_url(CHANNELS["happvpn"]["url"])
-    happ_added = 0
-    if html_happ:
-        msg_blocks_happ = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html_happ, re.DOTALL)
-        combined_happ = " ".join(msg_blocks_happ)
-        clean_happ_text = re.sub(r'<[^>]+>', ' ', combined_happ)
-        happ_links = re.findall(r'happ://[^\s<>"\']+', clean_happ_text)
+    for channel in channels:
+        html = fetch_html(channel)
+        if not html: continue
         
-        if happ_links:
-            # En son paylaşılandan geriye doğru tarayarak çalışan şifreli linki buluyoruz
-            for latest in reversed(happ_links):
-                if happ_added >= CHANNELS["happvpn"]["limit"]:
-                    break
-                print(f"Denenen happ linki çözülmeye çalışılıyor: {latest}")
-                decoded = decode_happ(latest)
-                if decoded:
-                    print(f"Başarılı! Bu linkten {len(decoded)} node çıkarıldı.")
-                    for link in decoded:
-                        if happ_added >= CHANNELS["happvpn"]["limit"]:
-                            break
-                        cl = clean_link(link)
-                        if is_valid(cl) and cl not in final_pool:
-                            final_pool.append(cl)
-                            happ_added += 1
-                            print(f"[happvpn] Eklendi. Happ Sayısı: {happ_added}")
-                    if happ_added > 0:
-                        break # Yeterli node toplandıysa döngüyü kır
-                else:
-                    print("Bu happ linki çözülemedi (şifresi kırılmadı), bir önceki deneniyor...")
+        # Mesaj metinlerini bul
+        msg_blocks = re.findall(r'<div[^>]*class="[^"]*tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', html, re.DOTALL)
+        
+        for block in msg_blocks:
+            # 1. Önce doğrudan happ:// linki var mı bak
+            happ_links = re.findall(r'happ://[^\s<>"\']+', block)
+            # 2. Veya "crypt" içerik mi? (Mesajın tamamını tek bir crypt bloğu gibi dene)
+            # Burası önemli: Mesajın içindeki metni doğrudan decoder'a yolluyoruz
+            raw_text = re.sub(r'<[^>]+>', ' ', block).strip()
+            
+            # İçinde link/crypt olan blokları gönder
+            if len(raw_text) > 20: # Kısa mesajları geç
+                decoded = decode_crypt(raw_text)
+                for link in decoded:
+                    clean_l = link.replace('&amp;', '&').replace('&quot;', '').strip()
+                    if clean_l not in final_nodes and not re.search(r'[<>"\s\']', clean_l):
+                        final_nodes.append(clean_l)
+                        if len(final_nodes) >= 30: break
+            if len(final_nodes) >= 30: break
 
-    if not final_pool:
-        print("Hiç node bulunamadı, mevcut dosya korunuyor.")
-        return
-
-    # Bayrak/İsim formatlaması
+    # Formatlama
+    countries = ["🇩🇪 𝐆𝐞𝐫𝐦𝐚𝐧𝐲", "🇳🇱 𝐍𝐞𝐭𝐡𝐞𝐫𝐥𝐚𝐧𝐝𝐬", "🇺🇸 𝐔𝐧𝐢𝐭𝐞𝐝 𝐒𝐭𝐚𝐭𝐞𝐬", "🇬🇧 𝐔𝐧𝐢𝐭𝐞𝐝 𝐊𝐢𝐧𝐠𝐝𝐨𝐦", "🇫🇷 𝐅𝐫𝐚𝐧𝐜𝐞"]
     formatted = []
-    for i, link in enumerate(final_pool):
-        clean_l = link.split('#')[0]
-        country = COUNTRY_NAMES[i % len(COUNTRY_NAMES)]
-        formatted.append(f"{clean_l}#{urllib.parse.quote(country)}")
+    for i, link in enumerate(final_nodes):
+        formatted.append(f"{link.split('#')[0]}#{urllib.parse.quote(countries[i % len(countries)])}")
 
-    # İlk 12 satır sabit kalır, altındaki tüm eski linkler silinip yenileri yazılır
-    combined_content = header_lines + formatted
-    with open("KODLARY.tmp", "w", encoding="utf-8") as f:
-        f.write("\n".join(combined_content))
-    os.replace("KODLARY.tmp", "KODLARY")
-    print(f"İşlem başarıyla tamamlandı! Toplam node: {len(final_pool)}")
+    # Dosyayı 12 satır sabit + yeni linkler şeklinde yaz
+    try:
+        with open("KODLARY.tmp", "w", encoding="utf-8") as f:
+            f.write("\n".join(header + formatted))
+        os.replace("KODLARY.tmp", "KODLARY")
+        print(f"İşlem tamamlandı! {len(formatted)} node eklendi.")
+    except Exception as e:
+        print(f"Dosya hatası: {e}")
 
 if __name__ == "__main__":
     main()
-
