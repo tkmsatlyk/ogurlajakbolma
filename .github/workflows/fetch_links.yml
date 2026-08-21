@@ -1,4 +1,4 @@
-name: Update Links
+name: Pro VPN Node Sync
 
 on:
   push:
@@ -23,11 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install curl_cffi
 
-      - name: Run Collector
+      - name: Run Pro Collector
         run: python collector.py
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Otomatik link güncellemesi"
+          commit_message: "Pro oto-güncelleme: KODLARY yenilendi"
           file_pattern: KODLARY
