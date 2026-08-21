@@ -1,7 +1,6 @@
 name: Pro VPN Node Sync
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '0 */6 * * *'
@@ -9,25 +8,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install curl_cffi
+          pip install playwright curl-cffi
+          playwright install --with-deps chromium
 
       - name: Run Pro Collector
         run: python collector.py
 
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Pro oto-güncelleme: KODLARY yenilendi"
-          file_pattern: KODLARY
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Toplanan_linkler.txt
+          git commit -m "Auto-update VPN nodes via Playwright [skip ci]" || exit 0
+          git push
