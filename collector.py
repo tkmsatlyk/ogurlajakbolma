@@ -1,13 +1,10 @@
-import re
 import os
-import urllib.request
-import zipfile
-import shutil
+import re
+import socket
 import subprocess
 import time
-import socket
 import urllib.parse
-from playwright.sync_api import sync_playwright
+import urllib.request
 
 custom_names = [
     "🔥 Pro-VPN-01",
@@ -19,171 +16,208 @@ custom_names = [
     "🔥 Pro-VPN-07",
     "🚀 Pro-VPN-08",
     "💎 Pro-VPN-09",
-    "🌐 Pro-VPN-10"
+    "🌐 Pro-VPN-10",
 ]
 
-def setup_decryptor():
-    zip_url = "https://github.com/LeeeeT/happ-decryptor/archive/refs/heads/main.zip"
-    zip_path = "decryptor.zip"
-    print("Decrypter deposu ZIP olarak indiriliyor...")
-    urllib.request.urlretrieve(zip_url, zip_path)
-    
-    if os.path.exists("happ-decryptor"):
-        shutil.rmtree("happ-decryptor", ignore_errors=True)
-        
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall("temp_extract")
-        
-    extracted_folder = os.path.join("temp_extract", "happ-decryptor-main")
-    shutil.move(extracted_folder, "happ-decryptor")
-    shutil.rmtree("temp_extract", ignore_errors=True)
-    if os.path.exists(zip_path):
-        os.remove(zip_path)
-        
-    print("NPM paketleri yükleniyor ve proje derleniyor...")
-    os.chdir("happ-decryptor")
-    subprocess.run(["npm", "install"], check=True)
-    subprocess.run(["npm", "run", "build"], check=True)
-    
-    print("Yerel preview sunucusu başlatılıyor...")
-    server_process = subprocess.Popen(["npm", "run", "preview"])
-    os.chdir("..")
-    time.sleep(5)
-    return server_process
-
-def ping_node(node_url):
-    try:
-        parsed = urllib.parse.urlparse(node_url)
-        host = parsed.hostname
-        port = parsed.port
-        if not host or not port:
-            return 9999
-        
-        start = time.time()
-        with socket.create_connection((host, port), timeout=1.5):
-            return int((time.time() - start) * 1000)
-    except:
-        return 9999
 
 def fetch_url(url):
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        return resp.read().decode('utf-8', errors='ignore')
+  req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+  with urllib.request.urlopen(req, timeout=20) as resp:
+    return resp.read().decode("utf-8", errors="ignore")
+
+
+def ping_node(node_url):
+  try:
+    parsed = urllib.parse.urlparse(node_url)
+    host = parsed.hostname
+    port = parsed.port
+    if not host or not port:
+      return 9999
+
+    start = time.time()
+    with socket.create_connection((host, port), timeout=1.5):
+      return int((time.time() - start) * 1000)
+  except:
+    return 9999
+
 
 def main():
-    server_process = None
+  print("--- Decryptor Reposu Kontrol Ediliyor ---")
+  if not os.path.exists("happ-decryptor"):
+    subprocess.run(
+        [
+            "git",
+            "clone",
+            "https://github.com/LeeeeT/happ-decryptor.git",
+            "happ-decryptor",
+        ],
+        check=True,
+    )
+
+  print("--- Telegram Kanalı Taranıyor ---")
+  try:
+    tg_html = fetch_url("https://t.me/s/happvpn")
+  except Exception as e:
+    print(f"Telegram bağlantı hatası: {e}")
+    return
+
+  happ_matches = re.findall(r"happ://[^\s<>\"']+", tg_html)
+  if not happ_matches:
+    print("Hiç happ linki bulunamadı.")
+    return
+
+  latest_happ = happ_matches[-1].replace("&amp;", "&").strip()
+  print(f"Bulunan son happ link: {latest_happ}")
+
+  # happ-decryptor içindeki gerçek decoder mantığını Node.js ile çalıştıran köprü kod
+  js_runner_code = """
+import fs from 'fs';
+import path from 'path';
+import { pathToFileURL } from 'url';
+
+async function run() {
+    const happLink = process.argv[2];
+    try {
+        const pkgPath = path.resolve('happ-decryptor/package.json');
+        let mainFile = 'src/index.js';
+        if (fs.existsSync(pkgPath)) {
+            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+            if (pkg.main) mainFile = pkg.main;
+        }
+        
+        const possiblePaths = [
+            path.resolve('happ-decryptor', mainFile),
+            path.resolve('happ-decryptor/src/utils/decoder.js'),
+            path.resolve('happ-decryptor/src/decoder.js'),
+            path.resolve('happ-decryptor/index.js')
+        ];
+        
+        let decoded = "";
+        for (let p of possiblePaths) {
+            if (fs.existsSync(p)) {
+                const mod = await import(pathToFileURL(p).href);
+                const decryptFn = mod.decrypt || mod.default || (typeof mod === 'function' ? mod : null);
+                if (decryptFn) {
+                    decoded = decryptFn(happLink);
+                    break;
+                }
+            }
+        }
+        
+        console.log("DECODED_OUTPUT_START");
+        console.log(typeof decoded === 'object' ? JSON.stringify(decoded) : decoded);
+        console.log("DECODED_OUTPUT_END");
+    } catch (err) {
+        console.log("DECODED_OUTPUT_START");
+        console.log("HATA: " + err.message);
+        console.log("DECODED_OUTPUT_END");
+    }
+}
+run();
+"""
+
+  with open("temp_decoder.js", "w", encoding="utf-8") as f:
+    f.write(js_runner_code)
+
+  print("Repodaki gerçek decoder çalıştırılıyor...")
+  decrypted_text = ""
+  try:
+    result = subprocess.run(
+        ["node", "temp_decoder.js", latest_happ],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    output = result.stdout
+    if "DECODED_OUTPUT_START" in output and "DECODED_OUTPUT_END" in output:
+      decrypted_text = output.split("DECODED_OUTPUT_START")[1].split(
+          "DECODED_OUTPUT_END"
+      )[0]
+  except Exception as e:
+    print(f"Decoder çalıştırma hatası: {e}")
+  finally:
+    if os.path.exists("temp_decoder.js"):
+      os.remove("temp_decoder.js")
+
+  decrypted_text = decrypted_text.strip()
+  print(
+      "Çözülen Veri Önizlemesi:"
+      f" {decrypted_text[:100]}..."
+  )
+
+  # Çözülen metinden https abonelik linkini yakala
+  target_url = None
+  https_matches = re.findall(r"https?://[^\s<>\"']+", decrypted_text)
+  if https_matches:
+    for u in https_matches:
+      if (
+          "t.me" not in u
+          and "github" not in u
+          and "googleapis" not in u
+          and "localhost" not in u
+      ):
+        target_url = u
+        break
+
+  sub_content = ""
+  if target_url:
+    print(f"Bulunan abonelik URL'si: {target_url}")
     try:
-        server_process = setup_decryptor()
-        
-        print("--- Telegram Kanalı Taranıyor ---")
-        try:
-            tg_html = fetch_url("https://t.me/s/happvpn")
-        except Exception as e:
-            print(f"Telegram bağlantı hatası: {e}")
-            return
+      sub_content = fetch_url(target_url)
+    except Exception as e:
+      print(f"Abonelik URL çekilemedi: {e}")
+  else:
+    sub_content = decrypted_text
 
-        happ_matches = re.findall(r'happ://[^\s<>"\']+', tg_html)
-        if not happ_matches:
-            print("Hiç happ linki bulunamadı.")
-            return
+  # Çekilen abonelik içeriğindeki node'ları ayıkla
+  raw_configs = re.findall(
+      r"(?:vless|vmess|ss|trojan)://[^\s<>\"']+", sub_content
+  )
+  if not raw_configs:
+    # Eğer düz metinde çıkmazsa belki base64 encoded donduruyordur abonelik
+    try:
+      import base64
 
-        latest_happ = happ_matches[-1].replace('&amp;', '&').strip()
-        print(f"Bulunan son happ link: {latest_happ}")
+      decoded_sub = base64.b64decode(sub_content.strip()).decode("utf-8")
+      raw_configs = re.findall(
+          r"(?:vless|vmess|ss|trojan)://[^\s<>\"']+", decoded_sub
+      )
+    except:
+      pass
 
-        print("Yerel Decryptor ile şifre çözülüyor...")
-        decoder_url = "http://localhost:4173/"
-        decoded_text = ""
-        
-        with sync_playwright() as p:
-            browser = p.chromium.launch(
-                headless=True,
-                args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-            )
-            page = browser.new_page()
-            page.goto(decoder_url, timeout=30000)
-            
-            input_selector = "textarea, input[type='text'], input"
-            page.wait_for_selector(input_selector, timeout=10000)
-            page.fill(input_selector, latest_happ)
-            
-            try:
-                page.click("button, input[type='submit']", timeout=5000)
-            except:
-                page.press(input_selector, "Enter")
-            
-            page.wait_for_timeout(5000)
-            
-            # Arayüzün tamamı yerine sadece textarea / output alanlarındaki metinleri alıyoruz
-            textareas = page.locator("textarea").all()
-            for ta in textareas:
-                val = ta.input_value() or ta.inner_text()
-                if val and len(val) > 20:
-                    decoded_text += "\n" + val
-                    
-            if not decoded_text.strip():
-                # Eğer textarea bulunamazsa sayfa içeriğini al ama font/css linklerini filtrele
-                page_content = page.content()
-                decoded_text = page_content
+  print(f"Toplam ham node sayısı: {len(raw_configs)}")
+  if not raw_configs:
+    print("Hiç node bulunamadı.")
+    return
 
-            browser.close()
+  print("Ping testleri başlatılıyor (< 1500ms)...")
+  tested_nodes = []
+  for config in raw_configs:
+    ping = ping_node(config)
+    if ping < 1500:
+      tested_nodes.append((ping, config))
+      print(f"[PASS] Ping: {ping}ms")
 
-        # Doğrudan node'ları arayalım
-        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_text)
-        
-        # Eğer doğrudan node çıkmadıysa gerçek bir abonelik URL'si arayalım (google fonts harici)
-        if not raw_configs:
-            https_matches = re.findall(r'https?://[^\s<>"\']+', decoded_text)
-            target_url = None
-            for u in https_matches:
-                if "t.me" not in u and "github" not in u and "localhost" not in u and "googleapis" not in u and "cloudflare" not in u:
-                    target_url = u
-                    break
-            
-            if target_url:
-                print(f"Bulunan abonelik URL'si: {target_url}")
-                try:
-                    sub_content = fetch_url(target_url)
-                    try:
-                        import base64
-                        decoded_sub = base64.b64decode(sub_content.strip()).decode('utf-8')
-                        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_sub)
-                    except:
-                        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_content)
-                except Exception as e:
-                    print(f"Abonelik URL çekilemedi: {e}")
+  tested_nodes.sort(key=lambda x: x[0])
 
-        print(f"Toplam ham node sayısı: {len(raw_configs)}")
-        if not raw_configs:
-            print("Hiç node bulunamadı.")
-            return
+  final_links = []
+  for index, (ping, config) in enumerate(tested_nodes[:10]):
+    clean_config = config.split("#")[0]
+    assigned_name = (
+        custom_names[index] if index < len(custom_names) else f"Pro-Node-{index + 1}"
+    )
+    final_links.append(f"{clean_config}#{urllib.parse.quote(assigned_name)}")
 
-        print("Ping testleri başlatılıyor (< 1500ms)...")
-        tested_nodes = []
-        for config in raw_configs:
-            ping = ping_node(config)
-            if ping < 1500:
-                tested_nodes.append((ping, config))
-                print(f"[PASS] Ping: {ping}ms")
+  if final_links:
+    with open("Toplanan_linkler.txt", "w", encoding="utf-8") as f:
+      f.write("\n".join(final_links))
+    print(
+        f"BAŞARILI: Toplam {len(final_links)} adet optimize node dosyaya"
+        " yazıldı."
+    )
+  else:
+    print("1500ms altında uygun node bulunamadı.")
 
-        tested_nodes.sort(key=lambda x: x[0])
-
-        final_links = []
-        for index, (ping, config) in enumerate(tested_nodes[:10]):
-            clean_config = config.split('#')[0]
-            assigned_name = customNames[index] if index < len(customNames) else f"Pro-Node-{index + 1}"
-            renamed_config = f"{clean_config}#{urllib.parse.quote(assigned_name)}"
-            final_links.append(renamed_config)
-
-        if final_links:
-            with open("Toplanan_linkler.txt", "w", encoding="utf-8") as f:
-                f.write("\n".join(final_links))
-            print(f"BAŞARILI: Toplam {len(final_links)} adet optimize node dosyaya yazıldı.")
-        else:
-            print("1500ms altında uygun node bulunamadı.")
-
-    finally:
-        if server_process:
-            server_process.terminate()
 
 if __name__ == "__main__":
-    main()
+  main()
