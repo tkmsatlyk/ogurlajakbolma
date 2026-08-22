@@ -3,41 +3,22 @@ import json
 import re
 from datetime import datetime, date
 
-CONFIG_FILE = "CONFIG"
 STATE_FILE = "state.json"
 INPUT_FILE = "KODLARY"
 
 def main():
-    print("Sistem kontrolü başlatıldı...")
+    print("Dosya adından okuyan profesyonel sayaç sistemi başlatıldı...")
     
-    # 1. KODLARY (Link deposu) oku
+    # 1. KODLARY link deposunu oku
     links = []
     if os.path.exists(INPUT_FILE):
         try:
             with open(INPUT_FILE, "r", encoding="utf-8", errors="ignore") as f:
                 links = [line.strip() for line in f if line.strip()]
         except Exception as e:
-            print(f"Link dosyası okunamadı: {e}")
+            print(f"Link okuma hatası: {e}")
 
-    # 2. CONFIG oku: [slot] [musteri] [gun]
-    config_entries = {}
-    if os.path.exists(CONFIG_FILE):
-        try:
-            with open(CONFIG_FILE, "r", encoding="utf-8") as f:
-                for line in f:
-                    parts = line.strip().split()
-                    if len(parts) >= 3:
-                        slot = parts[0]
-                        customer = parts[1]
-                        try:
-                            days = int(parts[2])
-                            config_entries[slot] = {"customer": customer, "days": days}
-                        except ValueError:
-                            pass
-        except Exception as e:
-            print(f"CONFIG dosyası okunamadı: {e}")
-
-    # 3. State verisini oku
+    # 2. State (hafıza) verisini oku
     state_data = {}
     if os.path.exists(STATE_FILE):
         try:
@@ -50,26 +31,36 @@ def main():
     any_expired = False
     expired_subs = []
 
-    # Yönetilecek slotlar
-    all_slots = ["sub1", "sub2", "sub3", "sub4", "sub5"]
-    for s in config_entries.keys():
-        if s not in all_slots:
-            all_slots.append(s)
+    slots = ["sub1", "sub2", "sub3", "sub4", "sub5"]
 
-    # 4. Her slotu işle
-    for slot in all_slots:
+    # 3. Her slotu ve dosya adını tara
+    for slot in slots:
         target_filename = None
+        customer = None
+        target_days = None
+
+        # Klasörde sub1, sub2 vb. ile başlayan dosyayı bul (Örn: sub1 rahmanguly 12)
         for f in os.listdir('.'):
             if os.path.isfile(f) and (f == slot or f.startswith(slot + " ") or f.startswith(slot + "_") or f.startswith(slot + "-")):
                 target_filename = f
                 break
         
-        # Dosya yoksa pas geç
         if not target_filename:
             continue
 
-        # Dosyanın içini oku, sadece ilk 12 satırı header (başlık) olarak al
-        lines = []
+        # Dosya adını parçala: Örn "sub1 rahmanguly 12" -> slot="sub1", customer="rahmanguly", days=12
+        parts = target_filename.replace('_', ' ').replace('-', ' ').split()
+        if len(parts) >= 3:
+            customer = parts[1]
+            try:
+                target_days = int(parts[2])
+            except ValueError:
+                target_days = None
+
+        if not customer or target_days is None:
+            continue
+
+        # Dosyanın ilk 12 satırlık başlığını (anonsunu) oku
         try:
             with open(target_filename, "r", encoding="utf-8", errors="ignore") as f:
                 lines = f.readlines()
@@ -78,50 +69,40 @@ def main():
         
         existing_header = [line.rstrip('\r\n') for line in lines[:12]]
 
-        if slot in config_entries:
-            cfg = config_entries[slot]
-            customer = cfg["customer"]
-            target_days = cfg["days"]
+        # State (sayaç) kontrolü: İsim veya gün sayısı değiştiyse süreyi sıfırla
+        sub_state = state_data.get(slot, {})
+        if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
+            state_data[slot] = {
+                "customer": customer,
+                "days": target_days,
+                "start_date": today_str
+            }
+            sub_state = state_data[slot]
+            print(f"-> {slot} ({customer}) için yeni kayıt algılandı. Sayaç sıfırlandı.")
 
-            sub_state = state_data.get(slot, {})
-            # Yeni müşteri geldiğinde süreyi sıfırla
-            if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
-                state_data[slot] = {
-                    "customer": customer,
-                    "days": target_days,
-                    "start_date": today_str
-                }
-                sub_state = state_data[slot]
-                print(f"-> {slot} ({customer}) için yeni kayıt oluşturuldu.")
+        # Geçen günleri hesapla ve kalanı bul
+        start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
+        elapsed = (date.today() - start_date).days
+        remaining_days = max(target_days - elapsed, 0)
 
-            start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
-            elapsed = (date.today() - start_date).days
-            remaining_days = max(target_days - elapsed, 0)
-
-            # Anons (header) içerisindeki gün sayısını [X-DAY] formatında güncelle
-            updated_header = []
-            for line in existing_header:
-                if "-DAY" in line.upper() or "-GÜN" in line.upper():
-                    # Köşeli parantez içindeki sayıyı güncelle
-                    new_line = re.sub(r'\[(\d+)(-DAY|-G[uü]N)\]', f'[{remaining_days}\\2]', line, flags=re.IGNORECASE)
-                    updated_header.append(new_line)
-                else:
-                    updated_header.append(line)
-
-            # Link yönetimi: Süre dolduysa sadece 12 satırı yaz, dolmadıysa linkleri ekle
-            if elapsed >= target_days:
-                print(f"-> {slot} süresi doldu. Linkler temizlendi.")
-                content = updated_header
-                any_expired = True
-                expired_subs.append(f"{slot}({customer})")
+        # Anons içindeki [11-DAY] veya [11-GÜN] gibi ifadeleri kalan gün ile değiştir
+        updated_header = []
+        for line in existing_header:
+            if "-DAY" in line.upper() or "-GÜN" in line.upper():
+                new_line = re.sub(r'\[(\d+)(-DAY|-G[uü]N)\]', f'[{remaining_days}\\2]', line, flags=re.IGNORECASE)
+                updated_header.append(new_line)
             else:
-                print(f"-> {slot} ({customer}) aktif. Kalan gün: {remaining_days}")
-                content = updated_header + links
+                updated_header.append(line)
+
+        # Süre dolduysa linkleri temizle (sadece ilk 12 satır kalsın), dolmadıysa linkleri ekle
+        if elapsed >= target_days:
+            print(f"-> {slot} ({customer}) süresi doldu! Linkler temizlendi.")
+            content = updated_header
+            any_expired = True
+            expired_subs.append(f"{slot}({customer})")
         else:
-            # Config'de olmayan dosyayı olduğu gibi bırak (linklere dokunma)
-            content = existing_header + lines[12:]
-            if slot in state_data:
-                del state_data[slot]
+            print(f"-> {slot} ({customer}) aktif. Kalan gün: {remaining_days}")
+            content = updated_header + links
 
         # Dosyayı güncelle
         try:
@@ -130,14 +111,14 @@ def main():
         except Exception as e:
             print(f"Yazma hatası ({target_filename}): {e}")
 
-    # State dosyasını kaydet
+    # Hafızayı (state.json) kaydet
     try:
         with open(STATE_FILE, "w", encoding="utf-8") as f:
             json.dump(state_data, f, indent=4, ensure_ascii=False)
     except Exception as e:
         print(f"State kaydedilemedi: {e}")
 
-    # GitHub Action Commit mesajı
+    # GitHub Actions Commit mesajı
     github_env = os.getenv("GITHUB_ENV")
     if github_env:
         with open(github_env, "a", encoding="utf-8") as f:
