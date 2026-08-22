@@ -11,6 +11,7 @@ def main():
   with open("latest_happ.txt", "r", encoding="utf-8") as f:
     latest_happ = f.read().strip()
 
+  # Repoyu klonla ve eksik npm paketlerini yükle
   if not os.path.exists("happ-decryptor"):
     print("Decryptor deposu klonlanıyor...")
     subprocess.run(
@@ -23,7 +24,10 @@ def main():
         check=True,
     )
 
-  # Node.js yardımıyla repodaki decoder motorunu çalıştıran geçici köprü script
+  print("Decryptor bağımlılıkları yükleniyor (npm install)...")
+  subprocess.run(["npm", "install"], cwd="happ-decryptor", check=True)
+
+  # Node.js yardımıyla repodaki decoder motorunu çalıştıran köprü script
   js_runner_code = f"""
 import fs from 'fs';
 import path from 'path';
@@ -37,7 +41,7 @@ async function run() {{
         if (fs.existsSync(pkgPath)) {{
             const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
             if (pkg.main) mainFile = pkg.main;
-        }
+        }}
         
         const possiblePaths = [
             path.resolve('happ-decryptor', mainFile),
@@ -99,4 +103,3 @@ run();
 
 if __name__ == "__main__":
   main()
-
