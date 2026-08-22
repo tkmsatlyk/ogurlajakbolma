@@ -14,21 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.10'
+          node-version: '20'
 
       - name: Install dependencies
-        run: |
-          pip install playwright
-          playwright install --with-deps chromium
+        run: npm install
 
       - name: Run Collector
-        run: python collector.py
+        run: node collector.js
 
       - name: Commit and push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-update nodes"
+          commit_message: "Auto-update, ping-test & rename VPN nodes"
           file_pattern: 'Toplanan_linkler.txt'
