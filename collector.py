@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import time
 import socket
+import urllib.parse
 from playwright.sync_api import sync_playwright
 
 custom_names = [
@@ -52,8 +53,6 @@ def setup_decryptor():
 
 def ping_node(node_url):
     try:
-        match = re.search(r'@[^:]+:(\d+)', node_url) or re.search(r'//[^:]+:(\d+)', node_url)
-        # Basit host ve port çıkarma
         parsed = urllib.parse.urlparse(node_url)
         host = parsed.hostname
         port = parsed.port
@@ -62,8 +61,7 @@ def ping_node(node_url):
         
         start = time.time()
         with socket.create_connection((host, port), timeout=1.5):
-            latency = int((time.time() - start) * 1000)
-            return latency
+            return int((time.time() - start) * 1000)
     except:
         return 9999
 
@@ -94,7 +92,7 @@ def main():
 
         print("Yerel Decryptor ile şifre çözülüyor...")
         decoder_url = "http://localhost:4173/"
-        decoded_content = ""
+        decoded_text = ""
         
         with sync_playwright() as p:
             browser = p.chromium.launch(
@@ -114,33 +112,45 @@ def main():
                 page.press(input_selector, "Enter")
             
             page.wait_for_timeout(5000)
-            decoded_content = page.content()
+            
+            # Arayüzün tamamı yerine sadece textarea / output alanlarındaki metinleri alıyoruz
+            textareas = page.locator("textarea").all()
+            for ta in textareas:
+                val = ta.input_value() or ta.inner_text()
+                if val and len(val) > 20:
+                    decoded_text += "\n" + val
+                    
+            if not decoded_text.strip():
+                # Eğer textarea bulunamazsa sayfa içeriğini al ama font/css linklerini filtrele
+                page_content = page.content()
+                decoded_text = page_content
+
             browser.close()
 
-        # Çözülen veriden https linkini yakala
-        https_matches = re.findall(r'https?://[^\s<>"\']+', decoded_content)
-        target_url = None
-        for u in https_matches:
-            if "t.me" not in u and "github" not in u and "localhost" not in u:
-                target_url = u
-                break
+        # Doğrudan node'ları arayalım
+        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_text)
         
-        # Eğer doğrudan node çıktıysa onları al, çıkmadıysa https linkini çek
-        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_content)
-        
-        if not raw_configs and target_url:
-            print(f"Bulunan abonelik URL'si: {target_url}")
-            try:
-                sub_content = fetch_url(target_url)
-                # Base64 decode denemesi
+        # Eğer doğrudan node çıkmadıysa gerçek bir abonelik URL'si arayalım (google fonts harici)
+        if not raw_configs:
+            https_matches = re.findall(r'https?://[^\s<>"\']+', decoded_text)
+            target_url = None
+            for u in https_matches:
+                if "t.me" not in u and "github" not in u and "localhost" not in u and "googleapis" not in u and "cloudflare" not in u:
+                    target_url = u
+                    break
+            
+            if target_url:
+                print(f"Bulunan abonelik URL'si: {target_url}")
                 try:
-                    import base64
-                    decoded_sub = base64.b64decode(sub_content.strip()).decode('utf-8')
-                    raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_sub)
-                except:
-                    raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_content)
-            except Exception as e:
-                print(f"Abonelik URL çekilemedi: {e}")
+                    sub_content = fetch_url(target_url)
+                    try:
+                        import base64
+                        decoded_sub = base64.b64decode(sub_content.strip()).decode('utf-8')
+                        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', decoded_sub)
+                    except:
+                        raw_configs = re.findall(r'(?:vless|vmess|ss|trojan)://[^\s<>"\']+', sub_content)
+                except Exception as e:
+                    print(f"Abonelik URL çekilemedi: {e}")
 
         print(f"Toplam ham node sayısı: {len(raw_configs)}")
         if not raw_configs:
@@ -155,14 +165,12 @@ def main():
                 tested_nodes.append((ping, config))
                 print(f"[PASS] Ping: {ping}ms")
 
-        # Pinge göre sırala
         tested_nodes.sort(key=lambda x: x[0])
 
         final_links = []
         for index, (ping, config) in enumerate(tested_nodes[:10]):
             clean_config = config.split('#')[0]
             assigned_name = customNames[index] if index < len(customNames) else f"Pro-Node-{index + 1}"
-            import urllib.parse
             renamed_config = f"{clean_config}#{urllib.parse.quote(assigned_name)}"
             final_links.append(renamed_config)
 
