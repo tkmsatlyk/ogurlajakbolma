@@ -13,5 +13,10 @@
         "customer": "didar",
         "days": 30,
         "start_date": "2026-08-21"
+    },
+    "sub2": {
+        "customer": "M",
+        "days": 7,
+        "start_date": "2026-08-22"
     }
 }
