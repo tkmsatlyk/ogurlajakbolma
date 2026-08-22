@@ -3,15 +3,16 @@ import subprocess
 
 
 def main():
-  print("--- 2. Adım: Kod Deşifre Ediliyor ---")
+  print("--- 2. Adım: Kod Deşifre Ediliyor (Debug) ---")
   if not os.path.exists("latest_happ.txt"):
-    print("Hata: latest_happ.txt dosyası bulunamadı!")
+    print("HATA: latest_happ.txt dosyası bulunamadı!")
     return
 
   with open("latest_happ.txt", "r", encoding="utf-8") as f:
     latest_happ = f.read().strip()
 
-  # Repoyu klonla ve eksik npm paketlerini yükle
+  print(f"Okunan happ linki: {latest_happ}")
+
   if not os.path.exists("happ-decryptor"):
     print("Decryptor deposu klonlanıyor...")
     subprocess.run(
@@ -27,7 +28,7 @@ def main():
   print("Decryptor bağımlılıkları yükleniyor (npm install)...")
   subprocess.run(["npm", "install"], cwd="happ-decryptor", check=True)
 
-  # Node.js yardımıyla repodaki decoder motorunu çalıştıran köprü script
+  # İçeriği ve olası export'ları detaylı test eden köprü script
   js_runner_code = f"""
 import fs from 'fs';
 import path from 'path';
@@ -36,38 +37,40 @@ import {{ pathToFileURL }} from 'url';
 async function run() {{
     const happLink = "{latest_happ}";
     try {{
-        const pkgPath = path.resolve('happ-decryptor/package.json');
+        const decFolder = path.resolve('happ-decryptor');
+        const files = fs.readdirSync(decFolder);
+        console.log("Klonlanan repo dosyaları:", files);
+
+        const pkgPath = path.join(decFolder, 'package.json');
         let mainFile = 'src/index.js';
         if (fs.existsSync(pkgPath)) {{
             const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+            console.log("Package.json main:", pkg.main);
             if (pkg.main) mainFile = pkg.main;
         }}
         
-        const possiblePaths = [
-            path.resolve('happ-decryptor', mainFile),
-            path.resolve('happ-decryptor/src/utils/decoder.js'),
-            path.resolve('happ-decryptor/src/decoder.js'),
-            path.resolve('happ-decryptor/index.js')
-        ];
-        
-        let decoded = "";
-        for (let p of possiblePaths) {{
-            if (fs.existsSync(p)) {{
-                const mod = await import(pathToFileURL(p).href);
-                const decryptFn = mod.decrypt || mod.default || (typeof mod === 'function' ? mod : null);
-                if (decryptFn) {{
-                    decoded = decryptFn(happLink);
-                    break;
-                }}
+        const targetPath = path.resolve(decFolder, mainFile);
+        console.log("Yüklenmeye çalışılan ana dosya:", targetPath);
+
+        if (fs.existsSync(targetPath)) {{
+            const mod = await import(pathToFileURL(targetPath).href);
+            console.log("Modül export anahtarları:", Object.keys(mod));
+            
+            const decryptFn = mod.decrypt || mod.default || (typeof mod === 'function' ? mod : null);
+            if (decryptFn) {{
+                const decoded = decryptFn(happLink);
+                console.log("DECODE_OK_START");
+                console.log(typeof decoded === 'object' ? JSON.stringify(decoded) : decoded);
+                console.log("DECODE_OK_END");
+            }} else {{
+                console.log("HATA: Modül içinde uygun decrypt fonksiyonu bulunamadı!");
             }}
+        }} else {{
+            console.log("HATA: Ana dosya diskte bulunamadı!");
         }}
-        
-        console.log("DECODE_OK_START");
-        console.log(typeof decoded === 'object' ? JSON.stringify(decoded) : decoded);
-        console.log("DECODE_OK_END");
     }} catch (err) {{
         console.log("DECODE_OK_START");
-        console.log("HATA: " + err.message);
+        console.log("JS HATA: " + err.message + " | Stack: " + err.stack);
         console.log("DECODE_OK_END");
     }}
 }}
@@ -83,22 +86,25 @@ run();
     result = subprocess.run(
         ["node", "temp_decoder.js"], capture_output=True, text=True, check=True
     )
+    print("--- Node.js Ham Çıktısı Başlangıcı ---")
+    print(result.stdout)
+    print("--- Node.js Ham Çıktısı Sonu ---")
+
     output = result.stdout
     if "DECODE_OK_START" in output and "DECODE_OK_END" in output:
       decoded_text = output.split("DECODE_OK_START")[1].split("DECODE_OK_END")[
           0
       ].strip()
   except Exception as e:
-    print(f"Çalıştırma hatası: {e}")
+    print(f"Python Subprocess Hatası: {e}")
   finally:
     if os.path.exists("temp_decoder.js"):
       os.remove("temp_decoder.js")
 
-  # Deşifre edilen sonucu diğer dosyaya aktar
   with open("decoded_result.txt", "w", encoding="utf-8") as f:
     f.write(decoded_text)
 
-  print("Başarılı: Deşifre edilen veri decoded_result.txt dosyasına yazıldı.")
+  print(f"Yazılan decoded_text uzunluğu: {len(decoded_text)}")
 
 
 if __name__ == "__main__":
