@@ -2,8 +2,11 @@ name: Otomatik Happ Link Toplayıcı
 
 on:
   schedule:
-    - cron: '0 * * * *' # Her saat başı otomatik çalışır
-  workflow_dispatch: # GitHub panelinden elle test etmek için buton çıkarır
+    - cron: '0 * * * *' # Her saat başı çalışır
+  workflow_dispatch: # Elle tetiklemek için
+
+permissions:
+  contents: write  # <-- Hatanın çözümü burası! Git push yetkisi verir.
 
 jobs:
   update-links:
@@ -23,11 +26,11 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Scripti Çalıştır
-        run: python happ_processor.py
+        run: python update.py
 
       - name: Değişiklikleri Kaydet ve GitHub'a Gönder
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.name"
-          git add Toplanan_linkler.txt
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Toplanan linkler otomatik güncellendi [Skip CI]" && git push)
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Otomatik güncellendi [Skip CI]" && git push)
