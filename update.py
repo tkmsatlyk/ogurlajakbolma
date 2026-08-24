@@ -1,177 +1,198 @@
-import base64
 import os
+import json
 import re
-import requests
-from bs4 import BeautifulSoup
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.serialization import load_pem_private_key
+from datetime import datetime, date
 
+STATE_FILE = "state.json"
+INPUT_FILE = "KODLARY"
+CONFIG_FILE = "CONFIG"
 
-def decrypt_happ_with_rsa(crypt_link):
-  """LeeeeT/happ-decryptor reposundaki RSA mantığıyla happ://crypt kodunu
-
-  gerçekten çözer.
-  Repoda 'private.pem' veya 'key.pem' adında RSA private key dosyası olmalıdır.
-  """
-  if not crypt_link.startswith("happ://"):
-    return crypt_link
-
-  try:
-    # Linkin payload kısmını al
-    parts = crypt_link.split("://")
-    if len(parts) < 2:
-      return crypt_link
-
-    sub_part = parts[1]
-    payload = sub_part.split("/", 1)[1] if "/" in sub_part else sub_part
-
-    # Base64 URL-safe decode
-    padding_needed = len(payload) % 4
-    if padding_needed:
-      payload += "=" * (4 - padding_needed)
-    encrypted_bytes = base64.urlsafe_b64decode(payload)
-
-    # Repo içindeki RSA Private Key dosyasını ara
-    key_files = ["private.pem", "key.pem", "rsa_private.pem", "private_key.pem"]
-    private_key_obj = None
-
-    for kf in key_files:
-      if os.path.exists(kf):
-        with open(kf, "rb") as key_file:
-          private_key_obj = load_pem_private_key(key_file.read(), password=None)
-        break
-
-    if private_key_obj:
-      # RSA PKCS1v15 veya OAEP (happ-decryptor reposunda hangisi kullanılıyorsa) ile çöz
-      try:
-        decrypted_bytes = private_key_obj.decrypt(
-            encrypted_bytes,
-            padding.PKCS1v15(),  # veya OAEP gerekiyorsa burası güncellenir
-        )
-        res_text = decrypted_bytes.decode("utf-8", errors="ignore")
-        match = re.search(r"https?://[^\s<>'\"]+", res_text)
-        if match:
-          return match.group(0)
-      except Exception as rsa_err:
-        print(f"RSA deşifreleme hatası: {rsa_err}")
-
-    # Eğer key dosyası yoksa ya da doğrudan çözülebildiyse düz metin/base64 dönüşü dener
-    return decoded_bytes.decode("utf-8", errors="ignore")
-
-  except Exception as e:
-    print(f"Happ link çözme genel hata: {e}")
-    return crypt_link
-
-
-def update_links():
-  channel_url = "https://t.me/s/happvpn"
-  print(f"Kanal taranıyor: {channel_url}")
-
-  headers = {
-      "User-Agent": (
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,"
-          " like Gecko) Chrome/120.0.0.0 Safari/537.36"
-      )
-  }
-
-  try:
-    response = requests.get(channel_url, headers=headers, timeout=15)
-    if response.status_code != 200:
-      print(f"Kanala erişilemedi. Kod: {response.status_code}")
-      return
-
-    soup = BeautifulSoup(response.text, "html.parser")
-    messages = soup.find_all("div", class_="tgme_widget_message_text")
-
-    all_found_links = []
-    for message in reversed(messages):
-      text = message.get_text()
-      urls = re.findall(
-          r"(happ://[^\s<>'\"]+|https?://[^\s<>'\"]+|vless://[^\s<>'\"]+|vmess://[^\s<>'\"]+|trojan://[^\s<>'\"]+|ss://[^\s<>'\"]+)",
-          text,
-      )
-      for u in urls:
-        if u not in all_found_links:
-          all_found_links.append(u)
-
-    raw_proxy_lines = []
-
-    for item in all_found_links:
-      # happ://crypt kodunu RSA ile kır ve https aboneliğini al
-      if item.startswith("happ://"):
-        resolved_url = decrypt_happ_with_rsa(item)
-        print(f"Çözülen link: {item} -> {resolved_url}")
-        item = resolved_url
-
-      # Elde edilen https:// aboneliğinin içine gir
-      if item.startswith("http://") or item.startswith("https://"):
+def safe_read_lines(path):
+    """Dosyayı UTF-8 olarak okur. Bozuk karakter varsa SESSİZCE silmez,
+    uyarı basar ve o karakteri görünür bir işaretle değiştirir."""
+    try:
+        with open(path, "rb") as f:
+            raw = f.read()
         try:
-          sub_res = requests.get(item, headers=headers, timeout=10)
-          if sub_res.status_code == 200:
-            content = sub_res.text
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError as e:
+            print(f"UYARI: '{path}' dosyasında bozuk karakter bulundu ({e}). "
+                  f"Karakter(ler) '?' ile değiştirilecek, dosyayı kontrol et.")
+            text = raw.decode("utf-8", errors="replace")
+        return text.splitlines(keepends=True)
+    except Exception as e:
+        print(f"Okuma hatası ({path}): {e}")
+        return []
+
+def main():
+    print("CONFIG panelinden okuyan profesyonel sayaç sistemi başlatıldı...")
+
+    # 1. KODLARY link deposunu oku
+    links = []
+    if os.path.exists(INPUT_FILE):
+        for line in safe_read_lines(INPUT_FILE):
+            line = line.strip()
+            if line:
+                links.append(line)
+
+    # 2. State (hafıza) verisini oku
+    state_data = {}
+    if os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, "r", encoding="utf-8") as f:
+                state_data = json.load(f)
+        except:
+            state_data = {}
+
+    # 3. CONFIG dosyasını oku -> "panel" burası.
+    # Örnek satır: "sub3 Muhammet 30"  -> slot=sub3, customer=Muhammet, days=30
+    # Örnek satır: "sub1"              -> boş, henüz müşteri atanmamış
+    config_info = {}  # { "sub3": (customer, days), ... }
+    if os.path.exists(CONFIG_FILE):
+        for raw_line in safe_read_lines(CONFIG_FILE):
+            line = raw_line.strip()
+            if not line:
+                continue
+            parts = line.replace('_', ' ').replace('-', ' ').split()
+            if len(parts) < 3:
+                continue  # "sub1" gibi boş satır, atlanır
+            slot_name = parts[0]
             try:
-              decoded_sub = base64.b64decode(content.strip())
-              content = decoded_sub.decode("utf-8", errors="ignore")
-            except Exception:
-              pass
+                c_days = int(parts[-1])
+            except ValueError:
+                print(f"UYARI: CONFIG satırı çözümlenemedi: '{line}'")
+                continue
+            c_customer = " ".join(parts[1:-1])
+            if not c_customer:
+                continue
+            config_info[slot_name] = (c_customer, c_days)
 
-            for line in content.splitlines():
-              line = line.strip()
-              if line and "://" in line:
-                raw_proxy_lines.append(line)
+    today_str = date.today().isoformat()
+    any_expired = False
+    expired_subs = []
+
+    slots = ["sub1", "sub2", "sub3", "sub4", "sub5"]
+
+    # 4. Her slotu tara
+    for slot in slots:
+        customer = None
+        target_days = None
+        source = None  # nereden okunduğunu takip etmek için (CONFIG mi, dosya adı mı)
+
+        # 4a. Önce CONFIG'e bak (panel önceliği)
+        if slot in config_info:
+            customer, target_days = config_info[slot]
+            source = "CONFIG"
+
+        # 4b. Klasörde bu slot'a ait fiziksel dosyayı bul
+        matches = sorted(
+            f for f in os.listdir('.')
+            if os.path.isfile(f) and (
+                f == slot or f.startswith(slot + " ") or
+                f.startswith(slot + "_") or f.startswith(slot + "-")
+            )
+        )
+        if len(matches) > 1:
+            print(f"UYARI: {slot} için birden fazla dosya bulundu: {matches}. "
+                  f"'{matches[0]}' kullanılacak, diğerlerini silmeyi düşün.")
+        if not matches:
+            print(f"-> {slot} için hiç dosya bulunamadı, atlanıyor.")
+            continue
+
+        target_filename = matches[0]
+
+        # 4c. Dosya adından da isim/gün çözmeyi dene (fark var mı kontrolü için her zaman deniyoruz)
+        file_customer, file_days = None, None
+        fname_parts = target_filename.replace('_', ' ').replace('-', ' ').split()
+        if len(fname_parts) >= 3:
+            try:
+                file_days = int(fname_parts[-1])
+                file_customer = " ".join(fname_parts[1:-1])
+            except ValueError:
+                file_customer, file_days = None, None
+
+        if customer is None or target_days is None:
+            # CONFIG'te bilgi yoktu, dosya adından al
+            customer, target_days = file_customer, file_days
+            source = "dosya adı"
+        elif file_customer and file_days is not None:
+            # Hem CONFIG hem dosya adında bilgi var -> çelişiyor mu kontrol et
+            if file_customer != customer or file_days != target_days:
+                print(f"UYARI: {slot} için CONFIG ('{customer} {target_days}') ile dosya adı "
+                      f"('{file_customer} {file_days}') FARKLI! CONFIG değeri kullanılacak. "
+                      f"İkisini eşitlemeni öneririm.")
+
+        # Ne CONFIG'te ne dosya adında bilgi varsa -> bu slot boş, atla
+        if not customer or target_days is None:
+            print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
+            continue
+
+        # Dosyanın ilk 12 satırlık başlığını (anonsunu) oku
+        lines = safe_read_lines(target_filename)
+        existing_header = [line.rstrip('\r\n') for line in lines[:12]]
+
+        # State (sayaç) kontrolü: İsim veya gün sayısı değiştiyse süreyi sıfırla
+        sub_state = state_data.get(slot, {})
+        if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
+            state_data[slot] = {
+                "customer": customer,
+                "days": target_days,
+                "start_date": today_str
+            }
+            sub_state = state_data[slot]
+            print(f"-> {slot} ({customer}, kaynak: {source}) için yeni kayıt algılandı. Sayaç sıfırlandı.")
+
+        # Geçen günleri hesapla ve kalanı bul
+        start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
+        elapsed = (date.today() - start_date).days
+        remaining_days = max(target_days - elapsed, 0)
+
+        # Anons içindeki 【7-DAY】 / [7-DAY] / 【7-GÜN】 gibi ifadeleri kalan gün ile değiştir.
+        updated_header = []
+        for line in existing_header:
+            if "-DAY" in line.upper() or "-GÜN" in line.upper() or "-GUN" in line.upper():
+                new_line = re.sub(
+                    r'[\[【](\d+)(-DAY|-G[UÜ]N)[\]】]',
+                    lambda m: f'【{remaining_days}{m.group(2)}】',
+                    line,
+                    flags=re.IGNORECASE
+                )
+                updated_header.append(new_line)
+            else:
+                updated_header.append(line)
+
+        # Süre dolduysa linkleri temizle (sadece ilk 12 satır kalsın), dolmadıysa linkleri ekle
+        if elapsed >= target_days:
+            print(f"-> {slot} ({customer}) süresi doldu! Linkler temizlendi.")
+            content = updated_header
+            any_expired = True
+            expired_subs.append(f"{slot}({customer})")
+        else:
+            print(f"-> {slot} ({customer}) aktif. Kalan gün: {remaining_days}")
+            content = updated_header + links
+
+        # Dosyayı güncelle
+        try:
+            with open(target_filename, "w", encoding="utf-8") as f:
+                f.write("\n".join(content) + ("\n" if content else ""))
         except Exception as e:
-          print(f"Abonelik dosyası indirilemedi: {e}")
+            print(f"Yazma hatası ({target_filename}): {e}")
 
-      elif any(
-          item.startswith(p)
-          for p in ["vless://", "vmess://", "trojan://", "ss://", "ssr://"]
-      ):
-        raw_proxy_lines.append(item)
+    # Hafızayı (state.json) kaydet
+    try:
+        with open(STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump(state_data, f, indent=4, ensure_ascii=False)
+    except Exception as e:
+        print(f"State kaydedilemedi: {e}")
 
-    protocol_pattern = re.compile(
-        r"^(vless|vmess|trojan|ss|ssr|tuic|hysteria2|socks5)://", re.IGNORECASE
-    )
-    valid_links = [
-        line for line in raw_proxy_lines if protocol_pattern.match(line)
-    ]
-
-    # Yukarıdan aşağıya tam 10 tane seç
-    top_10_links = valid_links[:10]
-
-    if not top_10_links:
-      print("Hiç geçerli link bulunamadı!")
-      return
-
-    ulke_isimleri = [
-        "🇺🇸 𝗨𝗡𝗜𝗧𝗘𝗗 𝗦𝗧𝗔𝗧𝗘𝗦",
-        "🇯🇵 𝗝𝗔𝗣𝗔𝗡",
-        "🇰🇷 𝗦𝗢𝗨𝗧𝗛 🇰𝗢𝗥𝗘𝗔",
-        "🇦🇪 𝗨𝗡𝗜𝗧𝗘𝗗 🇦𝗥𝗔𝗕 𝗘𝗠𝗜𝗥𝗔𝗧𝗘𝗦",
-        "🇨🇭 𝗦𝗪𝗜𝗧𝗭𝗘𝗥𝗟𝗔𝗡𝗗",
-        "🇸🇬 𝗦𝗜𝗡𝗚𝗔𝗣𝗢𝗥𝗘",
-        "🇮🇸 𝗜𝗖𝗘𝗟𝗔𝗡𝗗",
-        "🇨🇦 𝗖𝗔𝗡𝗔𝗗𝗔",
-        "🇳🇴 🇳𝗢𝗥𝗪𝗔𝗬",
-        "🇸🇪 🇸𝗪𝗘𝗗𝗘𝗡",
-    ]
-
-    processed_links = []
-    for index, link in enumerate(top_10_links):
-      base_link = link.split("#")[0] if "#" in link else link
-      secilen_isim = ulke_isimleri[index % len(ulke_isimleri)]
-      processed_links.append(f"{base_link}#{secilen_isim}")
-
-    with open("Toplanan_linkler.txt", "w", encoding="utf-8") as f:
-      f.write("\n".join(processed_links) + "\n")
-
-    print(
-        "İşlem tamam! Toplanan_linkler.txt dosyasına 10 adet link aktarıldı."
-    )
-
-  except Exception as e:
-    print(f"Hata oluştu: {e}")
-
+    # GitHub Actions Commit mesajı
+    github_env = os.getenv("GITHUB_ENV")
+    if github_env:
+        with open(github_env, "a", encoding="utf-8") as f:
+            if any_expired:
+                f.write(f"COMMIT_MSG=Süresi dolanlar temizlendi: {', '.join(expired_subs)}\n")
+            else:
+                f.write("COMMIT_MSG=Anons gun sayaci otomatik guncellendi [skip ci]\n")
 
 if __name__ == "__main__":
-  update_links()
+    main()
