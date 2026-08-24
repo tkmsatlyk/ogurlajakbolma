@@ -1,12 +1,18 @@
-name: Otomatik Happ Link Toplayıcı
+name: Otomatik Happ Link ToplayÄ±cÄ±
 
 on:
   schedule:
-    - cron: '0 * * * *' # Her saat başı çalışır
-  workflow_dispatch: # Elle tetiklemek için
+    - cron: '0 * * * *' # Her saat baÅŸÄ± Ã§alÄ±ÅŸÄ±r
+  workflow_dispatch: # Elle tetiklemek iÃ§in
+  push:
+    branches:
+      - main
+    paths:
+      - 'KODLARY'
+      - 'CONFIG'
 
 permissions:
-  contents: write  # <-- Hatanın çözümü burası! Git push yetkisi verir.
+  contents: write  # <-- HatanÄ±n Ã§Ã¶zÃ¼mÃ¼ burasÄ±! Git push yetkisi verir.
 
 jobs:
   update-links:
@@ -20,17 +26,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Kütüphaneleri Yükle
+      - name: KÃ¼tÃ¼phaneleri YÃ¼kle
         run: |
           pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Scripti Çalıştır
+      - name: Scripti Ã‡alÄ±ÅŸtÄ±r
         run: python update.py
 
-      - name: Değişiklikleri Kaydet ve GitHub'a Gönder
+      - name: DeÄŸiÅŸiklikleri Kaydet ve GitHub'a GÃ¶nder
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.name"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Otomatik güncellendi [Skip CI]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Otomatik gÃ¼ncellendi [Skip CI]" && git push)
