@@ -1,30 +1,33 @@
-name: Sub Dosyalarini Guncelle
+name: Otomatik Happ Link Toplayıcı
 
 on:
-  push:
-    paths:
-      - 'KODLARY'
-      - 'CONFIG'
   schedule:
-    # Süresi dolanları otomatik silmesi için her gün gece yarısı (UTC) çalışır
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *' # Her saat başı otomatik çalışır
+  workflow_dispatch: # GitHub panelinden elle test etmek için buton çıkarır
 
 jobs:
-  update:
+  update-links:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Python Scriptini Calistir
-        run: python update.py
-        
-      - name: Degisiklikleri Kaydet ve Pushla
+      - name: Repoyu Kopyala (Checkout)
+        uses: actions/checkout@v4
+
+      - name: Python Kurulumu
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Kütüphaneleri Yükle
+        run: |
+          pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Scripti Çalıştır
+        run: python happ_processor.py
+
+      - name: Değişiklikleri Kaydet ve GitHub'a Gönder
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.node.red.github.com"
-          git pull origin main --rebase || true
-          git add .
-          git commit -m "${COMMIT_MSG:-Otomatik guncelleme [skip ci]}" || echo "Degisiklik yok"
-          git push
+          git config --global user.email "41898282+github-actions[bot]@users.name"
+          git add Toplanan_linkler.txt
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Toplanan linkler otomatik güncellendi [Skip CI]" && git push)
