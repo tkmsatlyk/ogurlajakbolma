@@ -1,0 +1,50 @@
+🇺🇸 United States 1 • CDNRoute
+🇺🇸 United States 2 • Google
+🇩🇪 Germany 1 • CDNRoute
+🇩🇪 Germany 2 • Cloudflare
+🇫🇷 France 1 • Google
+🇫🇷 France 2 • CDNRoute
+🇬🇧 United Kingdom 1 • Cloudflare
+🇬🇧 United Kingdom 2 • CDNRoute
+🇳🇱 Netherlands 1 • Google
+🇳🇱 Netherlands 2 • CDNRoute
+🇨🇦 Canada 1 • CDNRoute
+🇨🇦 Canada 2 • Cloudflare
+🇯🇵 Japan 1 • Google
+🇯🇵 Japan 2 • CDNRoute
+🇸🇬 Singapore 1 • Cloudflare
+🇸🇬 Singapore 2 • CDNRoute
+🇦🇺 Australia 1 • Google
+🇦🇺 Australia 2 • CDNRoute
+🇰🇷 South Korea 1 • CDNRoute
+🇰🇷 South Korea 2 • Cloudflare
+🇨🇭 Switzerland 1 • Google
+🇨🇭 Switzerland 2 • CDNRoute
+🇸🇪 Sweden 1 • Cloudflare
+🇸🇪 Sweden 2 • CDNRoute
+🇮🇹 Italy 1 • Google
+🇮🇹 Italy 2 • CDNRoute
+🇪🇸 Spain 1 • CDNRoute
+🇪🇸 Spain 2 • Cloudflare
+🇵🇱 Poland 1 • Google
+🇵🇱 Poland 2 • CDNRoute
+🇫🇮 Finland 1 • Cloudflare
+🇫🇮 Finland 2 • CDNRoute
+🇳🇴 Norway 1 • Google
+🇳🇴 Norway 2 • CDNRoute
+🇩🇰 Denmark 1 • CDNRoute
+🇩🇰 Denmark 2 • Cloudflare
+🇦🇹 Austria 1 • Google
+🇦🇹 Austria 2 • CDNRoute
+🇧🇪 Belgium 1 • Cloudflare
+🇧🇪 Belgium 2 • CDNRoute
+🇮🇪 Ireland 1 • Google
+🇮🇪 Ireland 2 • CDNRoute
+🇹🇷 Turkey 1 • CDNRoute
+🇹🇷 Turkey 2 • Cloudflare
+🇷🇴 Romania 1 • Google
+🇷🇴 Romania 2 • CDNRoute
+🇨🇿 Czechia 1 • Cloudflare
+🇨🇿 Czechia 2 • CDNRoute
+🇧🇬 Bulgaria 1 • Google
+🇰🇿 Kazakhstan 1 • CDNRoute
