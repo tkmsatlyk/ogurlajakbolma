@@ -1,2 +1,149 @@
-# Test başarılı
-# Güncelleme: 2026-08-29T17:54:52.572907+00:00
+🇺🇸 United States 1 • CDNRoute
+# TEST_CONFIG
+
+🇺🇸 United States 2 • Google
+# TEST_CONFIG
+
+🇩🇪 Germany 1 • CDNRoute
+# TEST_CONFIG
+
+🇩🇪 Germany 2 • Cloudflare
+# TEST_CONFIG
+
+🇫🇷 France 1 • Google
+# TEST_CONFIG
+
+🇫🇷 France 2 • CDNRoute
+# TEST_CONFIG
+
+🇬🇧 United Kingdom 1 • Cloudflare
+# TEST_CONFIG
+
+🇬🇧 United Kingdom 2 • CDNRoute
+# TEST_CONFIG
+
+🇳🇱 Netherlands 1 • Google
+# TEST_CONFIG
+
+🇳🇱 Netherlands 2 • CDNRoute
+# TEST_CONFIG
+
+🇨🇦 Canada 1 • CDNRoute
+# TEST_CONFIG
+
+🇨🇦 Canada 2 • Cloudflare
+# TEST_CONFIG
+
+🇯🇵 Japan 1 • Google
+# TEST_CONFIG
+
+🇯🇵 Japan 2 • CDNRoute
+# TEST_CONFIG
+
+🇸🇬 Singapore 1 • Cloudflare
+# TEST_CONFIG
+
+🇸🇬 Singapore 2 • CDNRoute
+# TEST_CONFIG
+
+🇦🇺 Australia 1 • Google
+# TEST_CONFIG
+
+🇦🇺 Australia 2 • CDNRoute
+# TEST_CONFIG
+
+🇰🇷 South Korea 1 • CDNRoute
+# TEST_CONFIG
+
+🇰🇷 South Korea 2 • Cloudflare
+# TEST_CONFIG
+
+🇨🇭 Switzerland 1 • Google
+# TEST_CONFIG
+
+🇨🇭 Switzerland 2 • CDNRoute
+# TEST_CONFIG
+
+🇸🇪 Sweden 1 • Cloudflare
+# TEST_CONFIG
+
+🇸🇪 Sweden 2 • CDNRoute
+# TEST_CONFIG
+
+🇮🇹 Italy 1 • Google
+# TEST_CONFIG
+
+🇮🇹 Italy 2 • CDNRoute
+# TEST_CONFIG
+
+🇪🇸 Spain 1 • CDNRoute
+# TEST_CONFIG
+
+🇪🇸 Spain 2 • Cloudflare
+# TEST_CONFIG
+
+🇵🇱 Poland 1 • Google
+# TEST_CONFIG
+
+🇵🇱 Poland 2 • CDNRoute
+# TEST_CONFIG
+
+🇫🇮 Finland 1 • Cloudflare
+# TEST_CONFIG
+
+🇫🇮 Finland 2 • CDNRoute
+# TEST_CONFIG
+
+🇳🇴 Norway 1 • Google
+# TEST_CONFIG
+
+🇳🇴 Norway 2 • CDNRoute
+# TEST_CONFIG
+
+🇩🇰 Denmark 1 • CDNRoute
+# TEST_CONFIG
+
+🇩🇰 Denmark 2 • Cloudflare
+# TEST_CONFIG
+
+🇦🇹 Austria 1 • Google
+# TEST_CONFIG
+
+🇦🇹 Austria 2 • CDNRoute
+# TEST_CONFIG
+
+🇧🇪 Belgium 1 • Cloudflare
+# TEST_CONFIG
+
+🇧🇪 Belgium 2 • CDNRoute
+# TEST_CONFIG
+
+🇮🇪 Ireland 1 • Google
+# TEST_CONFIG
+
+🇮🇪 Ireland 2 • CDNRoute
+# TEST_CONFIG
+
+🇹🇷 Turkey 1 • CDNRoute
+# TEST_CONFIG
+
+🇹🇷 Turkey 2 • Cloudflare
+# TEST_CONFIG
+
+🇷🇴 Romania 1 • Google
+# TEST_CONFIG
+
+🇷🇴 Romania 2 • CDNRoute
+# TEST_CONFIG
+
+🇨🇿 Czechia 1 • Cloudflare
+# TEST_CONFIG
+
+🇨🇿 Czechia 2 • CDNRoute
+# TEST_CONFIG
+
+🇧🇬 Bulgaria 1 • Google
+# TEST_CONFIG
+
+🇰🇿 Kazakhstan 1 • CDNRoute
+# TEST_CONFIG
