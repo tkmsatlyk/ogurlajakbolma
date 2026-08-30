@@ -23,17 +23,17 @@ jobs:
       - name: Node.js kur
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: npm paketlerini kur
         run: npm install
 
       - name: Rust kur
-        uses: actions-rust-lang/setup-rust-toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
 
       - name: hpwnr kur
         run: |
-          cargo install hpwnr --locked
+          cargo install --git https://github.com/Omegaplexx/hpwnr.git --locked
 
       - name: crypt5 test
         env:
@@ -42,7 +42,8 @@ jobs:
           python scripts/test_crypt5.py
 
       - name: Happ decryptor paketini test et
-        run: node scripts/test_happ.js
+        run: |
+          node scripts/test_happ.js
 
       - name: Python kur
         uses: actions/setup-python@v5
@@ -50,7 +51,8 @@ jobs:
           python-version: "3.12"
 
       - name: Python scriptini çalıştır
-        run: python scripts/update.py
+        run: |
+          python scripts/update.py
 
       - name: Değişiklikleri GitHub'a kaydet
         run: |
