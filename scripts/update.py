@@ -1,40 +1,48 @@
-from pathlib import Path
+import re
+import requests
 
-NAMES_FILE = Path("names.txt")
-OUTPUT_FILE = Path("output/configs.txt")
+CHANNELS = [
+    "https://t.me/s/ares_happ",
+    "https://t.me/s/Richman_vpns",
+]
 
+OUTPUT_FILE = "output/found_happ.txt"
 
-def load_names():
-    if not NAMES_FILE.exists():
-        raise FileNotFoundError("names.txt bulunamadı.")
+HEADERS = {
+    "User-Agent": "Mozilla/5.0"
+}
 
-    return [
-        line.strip()
-        for line in NAMES_FILE.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+PATTERN = re.compile(r"happ://crypt5/[^\s<>'\"`]+")
 
 
 def main():
-    names = load_names()
+    found = []
+    seen = set()
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    for channel in CHANNELS:
+        print(f"Taranıyor: {channel}")
 
-    # Eski configs.txt tamamen silinir ve yeniden oluşturulur.
-    lines = []
+        response = requests.get(
+            channel,
+            headers=HEADERS,
+            timeout=20
+        )
 
-    for name in names:
-        lines.append(name)
-        lines.append("# TEST_CONFIG")
-        lines.append("")
+        response.raise_for_status()
 
-    OUTPUT_FILE.write_text(
-        "\n".join(lines),
-        encoding="utf-8"
-    )
+        links = PATTERN.findall(response.text)
 
-    print(f"{len(names)} isim işlendi.")
-    print(f"Yeni dosya oluşturuldu: {OUTPUT_FILE}")
+        for link in links:
+            if link not in seen:
+                seen.add(link)
+                found.append(link)
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
+        for link in found:
+            file.write(link + "\n")
+
+    print(f"Bulunan crypt5 linki: {len(found)}")
+    print(f"Kaydedildi: {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
