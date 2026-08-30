@@ -28,6 +28,19 @@ jobs:
       - name: npm paketlerini kur
         run: npm install
 
+      - name: Rust kur
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: hpwnr kur
+        run: |
+          cargo install hpwnr --locked
+
+      - name: crypt5 test
+        env:
+          HAPP_TEST_LINK: ${{ secrets.HAPP_TEST_LINK }}
+        run: |
+          python scripts/test_crypt5.py
+
       - name: Happ decryptor paketini test et
         run: node scripts/test_happ.js
 
