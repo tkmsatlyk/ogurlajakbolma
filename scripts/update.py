@@ -1,14 +1,15 @@
+import base64
+import html
 import os
 import re
-import base64
 import subprocess
-import tempfile
-import requests
+import urllib.request
+import urllib.error
 
 
-# =========================================================
+# ============================================================
 # AYARLAR
-# =========================================================
+# ============================================================
 
 CHANNELS = [
     "https://t.me/s/ares_happ",
@@ -17,8 +18,6 @@ CHANNELS = [
 
 OUTPUT_FILE = "Toplanan_linkler.txt"
 
-
-# Linklere sırayla verilecek isimler
 NAMES = [
     "🇺🇸 UNITED STATES",
     "🇯🇵 JAPAN",
@@ -32,66 +31,188 @@ NAMES = [
     "🇸🇪 SWEDEN",
 ]
 
-
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Linux; Android 10) "
-        "AppleWebKit/537.36 "
-        "(KHTML, like Gecko) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/120.0.0.0 Mobile Safari/537.36"
     )
 }
 
 
-CRYPT5_PATTERN = re.compile(
-    r"happ://crypt5/[A-Za-z0-9_\-+/=]+",
-    re.IGNORECASE
-)
+# ============================================================
+# LINK PATTERNLERİ
+# ============================================================
 
+HAPP_PATTERN = re.compile(
+    r'happ://(?:crypt|crypt2|crypt3|crypt4|crypt5)/[^\s<>"\']+',
+    re.IGNORECASE,
+)
 
 VPN_PATTERN = re.compile(
-    r"(?:"
-    r"vless://[^\s<>'\"]+|"
-    r"vmess://[^\s<>'\"]+|"
-    r"trojan://[^\s<>'\"]+|"
-    r"ss://[^\s<>'\"]+|"
-    r"ssr://[^\s<>'\"]+|"
-    r"tuic://[^\s<>'\"]+|"
-    r"hysteria2://[^\s<>'\"]+|"
-    r"hy2://[^\s<>'\"]+"
-    r")",
-    re.IGNORECASE
+    r'(?:'
+    r'vless://[^\s<>"\']+'
+    r'|vmess://[^\s<>"\']+'
+    r'|trojan://[^\s<>"\']+'
+    r'|ss://[^\s<>"\']+'
+    r'|ssr://[^\s<>"\']+'
+    r'|tuic://[^\s<>"\']+'
+    r'|hysteria2://[^\s<>"\']+'
+    r'|hy2://[^\s<>"\']+'
+    r'|socks5://[^\s<>"\']+'
+    r')',
+    re.IGNORECASE,
 )
 
 
-# =========================================================
-# HPWNR
-# =========================================================
+# ============================================================
+# GENEL YARDIMCI FONKSİYONLAR
+# ============================================================
 
-def hpwnr_command(*args, cwd=None):
+def clean_link(link):
+    """HTML'den gelen linkin gereksiz karakterlerini temizler."""
+
+    link = html.unescape(link)
+
+    link = link.strip()
+
+    # Telegram HTML'sinden gelebilecek son karakterler
+    link = link.rstrip('.,;:!?)]}\'"<>')
+
+    return link
+
+
+def http_get(url):
+    """requests kullanmadan HTTP GET."""
+
+    request = urllib.request.Request(
+        url,
+        headers=HEADERS,
+    )
+
+    with urllib.request.urlopen(request, timeout=30) as response:
+        data = response.read()
+
+        charset = response.headers.get_content_charset() or "utf-8"
+
+        return data.decode(charset, errors="ignore")
+
+
+# ============================================================
+# TELEGRAM KANALINI TARA
+# ============================================================
+
+def get_channel_happ_links(channel_url):
+
+    print()
+    print("=" * 60)
+    print(f"KANAL TARANIYOR: {channel_url}")
+    print("=" * 60)
+
+    try:
+
+        content = http_get(channel_url)
+
+        links = HAPP_PATTERN.findall(content)
+
+        cleaned = []
+
+        for link in links:
+
+            link = clean_link(link)
+
+            if link not in cleaned:
+                cleaned.append(link)
+
+        print(f"Bulunan HAPP linkleri: {len(cleaned)}")
+
+        for link in cleaned:
+            print(f"  {link}")
+
+        return cleaned
+
+    except Exception as error:
+
+        print(f"Telegram kanalı okunamadı: {error}")
+
+        return []
+
+
+# ============================================================
+# HAPP / CRYPT5 ÇÖZ
+# ============================================================
+
+def decrypt_happ(happ_link):
+
+    print()
+    print("-" * 60)
+    print("HAPP ÇÖZÜLÜYOR")
+    print("-" * 60)
+
+    print(happ_link)
 
     try:
 
         result = subprocess.run(
-            ["hpwnr", *args],
-            cwd=cwd,
+            ["hpwnr", happ_link],
             capture_output=True,
             text=True,
-            timeout=60
+            timeout=60,
         )
+
+        stdout = result.stdout.strip()
+        stderr = result.stderr.strip()
 
         if result.returncode != 0:
 
-            print("hpwnr hata:")
-            print(result.stderr.strip())
+            print("HAPP çözülemedi.")
+
+            if stderr:
+                print("Hata:")
+                print(stderr)
 
             return None
 
-        return result.stdout.strip()
+        if not stdout:
+
+            print("hpwnr boş sonuç döndürdü.")
+
+            return None
+
+        print("hpwnr sonucu:")
+        print(stdout)
+
+        # Sonuç içinde https/http ara
+        url_match = re.search(
+            r'https?://[^\s<>"\']+',
+            stdout,
+            re.IGNORECASE,
+        )
+
+        if url_match:
+
+            resolved = clean_link(url_match.group(0))
+
+            print()
+            print("ÇÖZÜLEN HTTPS:")
+            print(resolved)
+
+            return resolved
+
+        # Bazı durumlarda çıktı doğrudan URL olabilir
+        if stdout.startswith(("http://", "https://")):
+
+            return clean_link(stdout)
+
+        print("Çözüm sonucunda HTTPS bulunamadı.")
+
+        return None
 
     except FileNotFoundError:
 
-        print("HATA: hpwnr bulunamadı.")
+        print()
+        print("HATA: hpwnr bulunamadı!")
+        print("GitHub Actions içinde hpwnr kurulum adımını kontrol et.")
 
         return None
 
@@ -101,366 +222,244 @@ def hpwnr_command(*args, cwd=None):
 
         return None
 
-    except Exception as e:
+    except Exception as error:
 
-        print(f"hpwnr çalıştırma hatası: {e}")
+        print(f"HAPP çözme hatası: {error}")
 
         return None
 
 
-# =========================================================
-# TELEGRAM'DAN CRYPT5 TOPLA
-# =========================================================
+# ============================================================
+# BASE64 KONTROLÜ
+# ============================================================
 
-def get_crypt5_links(channel_url):
+def try_base64_decode(text):
 
-    print()
-    print("=" * 60)
-    print("KANAL:", channel_url)
-    print("=" * 60)
+    text = text.strip()
+
+    if not text:
+        return text
 
     try:
 
-        response = requests.get(
-            channel_url,
-            headers=HEADERS,
-            timeout=30
+        # URL-safe base64 de destekle
+        decoded = base64.b64decode(
+            text + "=" * (-len(text) % 4),
+            validate=False,
         )
 
-        print("HTTP:", response.status_code)
-
-        if response.status_code != 200:
-            return []
-
-        found = CRYPT5_PATTERN.findall(
-            response.text
+        decoded_text = decoded.decode(
+            "utf-8",
+            errors="ignore",
         )
 
-        result = []
+        # Gerçekten anlamlı bir sonuçsa kullan
+        if "://" in decoded_text:
 
-        for link in found:
+            return decoded_text
 
-            link = link.rstrip(
-                ".,;:!?)]}>'\""
-            )
+    except Exception:
+        pass
 
-            if link not in result:
-                result.append(link)
+    return text
 
-        print(
-            f"Bulunan crypt5: {len(result)}"
-        )
 
-        return result
+# ============================================================
+# HTTPS ABONELİĞİNİ AÇ
+# ============================================================
 
-    except Exception as e:
+def get_subscription(url):
 
-        print(
-            f"Telegram kanal hatası: {e}"
-        )
+    print()
+    print("-" * 60)
+    print("HTTPS ABONELİĞİ AÇILIYOR")
+    print("-" * 60)
+
+    print(url)
+
+    try:
+
+        content = http_get(url)
+
+        print(f"İndirilen veri: {len(content)} karakter")
+
+        # Önce normal içerikte link ara
+        links = VPN_PATTERN.findall(content)
+
+        if links:
+
+            print(f"Doğrudan bulunan VPN linki: {len(links)}")
+
+            return links
+
+        # Base64 ise çözmeyi dene
+        decoded = try_base64_decode(content)
+
+        if decoded != content:
+
+            links = VPN_PATTERN.findall(decoded)
+
+            if links:
+
+                print(
+                    f"Base64 çözüldükten sonra bulunan VPN linki: "
+                    f"{len(links)}"
+                )
+
+                return links
+
+        print("Bu HTTPS içinde VPN linki bulunamadı.")
+
+        return []
+
+    except urllib.error.HTTPError as error:
+
+        print(f"HTTP hatası: {error.code}")
+
+        return []
+
+    except urllib.error.URLError as error:
+
+        print(f"Bağlantı hatası: {error}")
+
+        return []
+
+    except Exception as error:
+
+        print(f"Abonelik okuma hatası: {error}")
 
         return []
 
 
-# =========================================================
-# CRYPT5 ÇÖZ
-# =========================================================
+# ============================================================
+# TEK LİNKİ İŞLE
+# ============================================================
 
-def decrypt_crypt5(crypt5):
+def process_happ_link(happ_link):
 
-    print()
-    print("Crypt5 çözülüyor:")
-    print(crypt5)
+    resolved_url = decrypt_happ(happ_link)
 
-    result = hpwnr_command(
-        crypt5
-    )
+    if not resolved_url:
+        return []
 
-    if not result:
-        return None
+    if not resolved_url.startswith(
+        ("http://", "https://")
+    ):
+        print("Çözülmüş değer HTTPS değil.")
 
-    # hpwnr çıktısından HTTPS bul
-    match = re.search(
-        r"https?://[^\s<>'\"]+",
-        result
-    )
+        return []
 
-    if not match:
+    vpn_links = get_subscription(resolved_url)
 
-        print(
-            "HTTPS adresi bulunamadı."
-        )
-
-        return None
-
-    url = match.group(0).rstrip(
-        ".,;:!?)]}>'\""
-    )
-
-    print(
-        "Çözülen URL:",
-        url
-    )
-
-    return url
+    return vpn_links
 
 
-# =========================================================
-# ABONELİĞİ HPWNR İLE ÇEK
-# =========================================================
-
-def fetch_subscription(url):
-
-    """
-    hpwnr ile aboneliği indirir.
-
-    Happ aboneliklerinde gerekli response
-    şifrelemesi varsa hpwnr bunu da çözebilir.
-    """
-
-    print()
-    print("Abonelik indiriliyor:")
-    print(url)
-
-    with tempfile.TemporaryDirectory() as temp_dir:
-
-        result = hpwnr_command(
-            url,
-            "fetch",
-            "ua",
-            "happ",
-            cwd=temp_dir
-        )
-
-        # Küçük cevap stdout'ta olabilir
-        content = result or ""
-
-        # Büyük cevaplarda hpwnr dosya oluşturabilir
-        try:
-
-            files = os.listdir(temp_dir)
-
-            for filename in files:
-
-                if filename.startswith(
-                    "hpwnresp_"
-                ):
-
-                    filepath = os.path.join(
-                        temp_dir,
-                        filename
-                    )
-
-                    with open(
-                        filepath,
-                        "r",
-                        encoding="utf-8",
-                        errors="ignore"
-                    ) as f:
-
-                        content = f.read()
-
-                    break
-
-        except Exception:
-            pass
-
-        if not content:
-            print(
-                "Abonelik içeriği boş."
-            )
-            return ""
-
-        # Base64 abonelikse çözmeyi dene
-        stripped = content.strip()
-
-        try:
-
-            decoded = base64.b64decode(
-                stripped,
-                validate=True
-            )
-
-            decoded_text = decoded.decode(
-                "utf-8",
-                errors="ignore"
-            )
-
-            # Gerçekten okunabilir bir içerikse kullan
-            if "://" in decoded_text:
-
-                content = decoded_text
-
-        except Exception:
-            pass
-
-        print(
-            "Abonelik alındı."
-        )
-
-        return content
-
-
-# =========================================================
-# VPN LINKLERİNİ ÇIKAR
-# =========================================================
-
-def extract_vpn_links(content):
-
-    links = VPN_PATTERN.findall(
-        content
-    )
-
-    result = []
-
-    for link in links:
-
-        link = link.strip().rstrip(
-            ".,;:!?)]}>'\""
-        )
-
-        # Mevcut # ismini kaldır
-        link = link.split("#", 1)[0]
-
-        if link not in result:
-
-            result.append(link)
-
-    return result
-
-
-# =========================================================
-# ANA PROGRAM
-# =========================================================
+# ============================================================
+# ANA İŞLEM
+# ============================================================
 
 def main():
 
-    all_crypt5 = []
-    seen_crypt5 = set()
+    print()
+    print("=" * 60)
+    print("HAPP -> CRYPT5 -> HTTPS -> VPN TOPLAYICI")
+    print("=" * 60)
 
-    # -----------------------------------------------------
-    # 1. Telegram kanallarını tara
-    # -----------------------------------------------------
+    all_happ_links = []
+    all_vpn_links = []
+
+    # --------------------------------------------------------
+    # 1. Telegram kanallarından HAPP linklerini al
+    # --------------------------------------------------------
 
     for channel in CHANNELS:
 
-        links = get_crypt5_links(
-            channel
-        )
+        links = get_channel_happ_links(channel)
 
         for link in links:
 
-            if link not in seen_crypt5:
-
-                seen_crypt5.add(link)
-                all_crypt5.append(link)
+            if link not in all_happ_links:
+                all_happ_links.append(link)
 
     print()
-    print(
-        "TOPLAM CRYPT5:",
-        len(all_crypt5)
-    )
+    print("=" * 60)
+    print(f"TOPLAM HAPP LINKİ: {len(all_happ_links)}")
+    print("=" * 60)
 
-    if not all_crypt5:
+    # --------------------------------------------------------
+    # 2. HAPP linklerini çöz
+    # 3. İçindeki HTTPS adresine gir
+    # 4. VPN linklerini al
+    # --------------------------------------------------------
 
+    for index, happ_link in enumerate(
+        all_happ_links,
+        start=1,
+    ):
+
+        print()
         print(
-            "Hiç crypt5 bulunamadı."
+            f"[{index}/{len(all_happ_links)}] "
+            "İŞLENİYOR"
         )
 
-        return
-
-    # -----------------------------------------------------
-    # 2. Crypt5 -> HTTPS
-    # -----------------------------------------------------
-
-    subscription_urls = []
-    seen_urls = set()
-
-    for crypt5 in all_crypt5:
-
-        url = decrypt_crypt5(
-            crypt5
-        )
-
-        if url and url not in seen_urls:
-
-            seen_urls.add(url)
-            subscription_urls.append(url)
-
-    print()
-    print(
-        "ÇÖZÜLEN HTTPS:",
-        len(subscription_urls)
-    )
-
-    # -----------------------------------------------------
-    # 3. HTTPS aboneliklerine gir
-    # -----------------------------------------------------
-
-    all_vpn_links = []
-    seen_vpn = set()
-
-    for url in subscription_urls:
-
-        content = fetch_subscription(
-            url
-        )
-
-        if not content:
-            continue
-
-        vpn_links = extract_vpn_links(
-            content
-        )
-
-        print(
-            "Bulunan VPN:",
-            len(vpn_links)
-        )
+        vpn_links = process_happ_link(happ_link)
 
         for link in vpn_links:
 
-            if link not in seen_vpn:
+            link = clean_link(link)
 
-                seen_vpn.add(link)
+            if link not in all_vpn_links:
+
                 all_vpn_links.append(link)
 
-    # -----------------------------------------------------
-    # 4. İsimleri sırayla ekle
-    # -----------------------------------------------------
+    # --------------------------------------------------------
+    # 5. İsimleri sırayla ver
+    # --------------------------------------------------------
 
-    final_links = []
+    print()
+    print("=" * 60)
+    print(f"TOPLAM VPN LINKİ: {len(all_vpn_links)}")
+    print("=" * 60)
 
-    for index, link in enumerate(
-        all_vpn_links
-    ):
+    if not all_vpn_links:
 
-        name = NAMES[
-            index % len(NAMES)
-        ]
+        print()
+        print("HİÇ VPN LINKİ BULUNAMADI.")
+        print()
+        return
 
-        final_links.append(
-            f"{link}#{name}"
-        )
+    processed_links = []
 
-    # -----------------------------------------------------
-    # 5. Dosyaya yaz
-    # -----------------------------------------------------
+    for index, link in enumerate(all_vpn_links):
+
+        name = NAMES[index % len(NAMES)]
+
+        # Eski #etiket varsa kaldır
+        link = link.split("#", 1)[0]
+
+        final_link = f"{link}#{name}"
+
+        processed_links.append(final_link)
+
+    # --------------------------------------------------------
+    # 6. Dosyaya yaz
+    # --------------------------------------------------------
 
     with open(
         OUTPUT_FILE,
         "w",
-        encoding="utf-8"
+        encoding="utf-8",
     ) as file:
 
-        for link in final_links:
+        for link in processed_links:
 
             file.write(link)
             file.write("\n")
 
-    # -----------------------------------------------------
-    # SONUÇ
-    # -----------------------------------------------------
+    # --------------------------------------------------------
+    # 7. Sonuç
+    # --------------------------------------------------------
 
     print()
     print("=" * 60)
@@ -468,27 +467,19 @@ def main():
     print("=" * 60)
 
     print(
-        "Crypt5:",
-        len(all_crypt5)
+        f"Toplam VPN linki: {len(processed_links)}"
     )
 
     print(
-        "HTTPS:",
-        len(subscription_urls)
-    )
-
-    print(
-        "VPN:",
-        len(final_links)
-    )
-
-    print(
-        "Dosya:",
-        OUTPUT_FILE
+        f"Çıktı dosyası: {OUTPUT_FILE}"
     )
 
     print("=" * 60)
 
+
+# ============================================================
+# ÇALIŞTIR
+# ============================================================
 
 if __name__ == "__main__":
     main()
