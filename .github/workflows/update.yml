@@ -7,6 +7,7 @@ on:
       - "scripts/**"
       - ".github/workflows/update.yml"
       - "package.json"
+      - "names.txt"
 
 permissions:
   contents: write
@@ -23,7 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: npm paketlerini kur
         run: npm install
