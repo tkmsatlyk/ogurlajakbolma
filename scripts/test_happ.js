@@ -1,4 +1,8 @@
-import * as happ from "node-happ-decryptor";
+import HappProcessor from "node-happ-decryptor";
 
-console.log("node-happ-decryptor başarıyla yüklendi.");
-console.log("Exportlar:", Object.keys(happ));
+console.log("Paket başarıyla yüklendi.");
+console.log("Constructor:", typeof HappProcessor);
+console.log(
+  "Prototype metodları:",
+  Object.getOwnPropertyNames(HappProcessor.prototype)
+);
