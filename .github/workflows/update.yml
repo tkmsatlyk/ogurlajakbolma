@@ -6,6 +6,7 @@ on:
     paths:
       - "scripts/**"
       - ".github/workflows/update.yml"
+      - "package.json"
 
 permissions:
   contents: write
@@ -18,12 +19,24 @@ jobs:
       - name: Repository'yi indir
         uses: actions/checkout@v4
 
-      - name: Python'u kur
+      - name: Node.js kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: npm paketlerini kur
+        run: npm install
+
+      - name: Happ decryptor paketini test et
+        run: node scripts/test_happ.js
+
+      - name: Python kur
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Script'i çalıştır
+      - name: Python scriptini çalıştır
         run: python scripts/update.py
 
       - name: Değişiklikleri GitHub'a kaydet
