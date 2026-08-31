@@ -69,7 +69,7 @@ def main():
     any_expired = False
     expired_subs = []
 
-    slots = ["sub1", "sub2", "sub3", "sub4", "sub5"]
+    slots = ["sub1", "sub2", "sub3", "sub4", "sub5", "sub6", "sub7", "sub8", "sub9", "sub10"]
 
     for slot in slots:
         customer = None
