@@ -48,3 +48,103 @@
 🇨🇿 Czechia 2 • CDNRoute
 🇧🇬 Bulgaria 1 • Google
 🇰🇿 Kazakhstan 1 • CDNRoute
+🇳🇱 Amsterdam • Cloud
+🇩🇪 Berlin • Direct
+🇫🇷 Paris • CF
+🇬🇧 London • WIFI
+🇫🇮 Helsinki • Cloud
+🇸🇪 Stockholm • Direct
+🇨🇭 Zurich • CF
+🇮🇹 Milan • WIFI
+🇪🇸 Madrid • Cloud
+🇦🇹 Vienna • Direct
+🇧🇪 Brussels • CF
+🇩🇰 Copenhagen • WIFI
+🇳🇴 Oslo • Cloud
+🇮🇪 Dublin • Direct
+🇵🇱 Warsaw • CF
+🇨🇿 Prague • WIFI
+🇵🇹 Lisbon • Cloud
+🇬🇷 Athens • Direct
+🇷🇴 Bucharest • CF
+🇭🇺 Budapest • WIFI
+🇪🇪 Tallinn • Cloud
+🇱🇻 Riga • Direct
+🇱🇹 Vilnius • CF
+🇫🇷 Marseille • WIFI
+🇩🇪 Frankfurt • Cloud
+🇩🇪 Munich • Direct
+🇳🇱 Rotterdam • CF
+🇧🇪 Antwerp • WIFI
+🇨🇭 Geneva • Cloud
+🇮🇹 Rome • Direct
+🇪🇸 Barcelona • CF
+🇵🇱 Krakow • WIFI
+🇨🇿 Brno • Cloud
+🇦🇹 Salzburg • Direct
+🇩🇰 Aarhus • CF
+🇸🇪 Gothenburg • WIFI
+🇳🇴 Bergen • Cloud
+🇫🇮 Tampere • Direct
+🇮🇪 Cork • CF
+🇵🇹 Porto • WIFI
+🇬🇧 Manchester • Cloud
+🇬🇧 Birmingham • Direct
+🇫🇷 Lyon • CF
+🇫🇷 Nice • WIFI
+🇩🇪 Hamburg • Cloud
+🇩🇪 Düsseldorf • Direct
+🇳🇱 Eindhoven • CF
+🇮🇹 Turin • WIFI
+🇮🇹 Naples • Cloud
+🇪🇸 Valencia • Direct
+🇺🇸 New York • CF
+🇺🇸 Los Angeles • WIFI
+🇺🇸 Chicago • Cloud
+🇨🇦 Toronto • Direct
+🇨🇦 Vancouver • CF
+🇯🇵 Tokyo • WIFI
+🇸🇬 Singapore • Cloud
+🇰🇷 Seoul • Direct
+🇦🇺 Sydney • CF
+🇳🇿 Auckland • WIFI
+🇦🇪 Dubai • Cloud
+🇹🇷 Istanbul • Direct
+🇹🇷 Ankara • CF
+🇮🇱 Tel Aviv • WIFI
+🇮🇳 Mumbai • Cloud
+🇮🇳 Delhi • Direct
+🇧🇷 São Paulo • CF
+🇲🇽 Mexico City • WIFI
+🇦🇷 Buenos Aires • Cloud
+🇨🇱 Santiago • Direct
+🇿🇦 Cape Town • CF
+🇮🇸 Reykjavik • WIFI
+🇱🇺 Luxembourg • Cloud
+🇸🇮 Ljubljana • Direct
+🇸🇰 Bratislava • CF
+🇭🇷 Zagreb • WIFI
+🇧🇬 Sofia • Cloud
+🇷🇸 Belgrade • Direct
+🇲🇹 Valletta • CF
+🇨🇾 Nicosia • WIFI
+🇺🇦 Kyiv • Cloud
+🇬🇪 Tbilisi • Direct
+🇦🇲 Yerevan • CF
+🇰🇿 Almaty • WIFI
+🇺🇿 Tashkent • Cloud
+🇹🇭 Bangkok • Direct
+🇻🇳 Hanoi • CF
+🇲🇾 Kuala Lumpur • WIFI
+🇮🇩 Jakarta • Cloud
+🇵🇭 Manila • Direct
+🇹🇼 Taipei • CF
+🇭🇰 Hong Kong • WIFI
+🇨🇳 Shanghai • Cloud
+🇯🇵 Osaka • Direct
+🇰🇷 Busan • CF
+🇨🇦 Montreal • WIFI
+🇺🇸 Seattle • Cloud
+🇺🇸 Miami • Direct
+🇦🇺 Melbourne • CF
+🇳🇿 Wellington • WIFI
