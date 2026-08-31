@@ -1,1 +1,7 @@
-
+vless://281f1e74-e72e-4624-8014-cfa3a88e0dc4@185.96.80.216:445?encryption=mlkem768x25519plus.native.0rtt.9tAA-pCmRkXfXFhQI8S22J9Z7O7WWNoqFziR66xMZEI&security=none&type=tcp&headerType=none#🇺🇸 UNITED STATES
+vless://281f1e74-e72e-4624-8014-cfa3a88e0dc4@185.96.80.216:445?encryption=mlkem768x25519plus.native.0rtt.9tAA-pCmRkXfXFhQI8S22J9Z7O7WWNoqFziR66xMZEI&security=none&type=tcp&headerType=none#🇯🇵 JAPAN
+vless://281f1e74-e72e-4624-8014-cfa3a88e0dc4@185.96.80.216:445?encryption=mlkem768x25519plus.native.0rtt.9tAA-pCmRkXfXFhQI8S22J9Z7O7WWNoqFziR66xMZEI&security=none&type=tcp&headerType=none#🇰🇷 SOUTH KOREA
+vless://281f1e74-e72e-4624-8014-cfa3a88e0dc4@185.96.80.216:443?encryption=mlkem768x25519plus.native.0rtt.9tAA-pCmRkXfXFhQI8S22J9Z7O7WWNoqFziR66xMZEI&security=none&type=tcp&headerType=none&host=107.161.174.229#🇦🇪 UNITED ARAB EMIRATES
+vless://281f1e74-e72e-4624-8014-cfa3a88e0dc4@185.96.80.216:445?encryption=mlkem768x25519plus.native.0rtt.9tAA-pCmRkXfXFhQI8S22J9Z7O7WWNoqFziR66xMZEI&security=none&type=tcp&headerType=none#🇨🇭 SWITZERLAND
+vless://281f1e74-e72e-4624-8014-cfa3a88e0dc4@185.96.80.216:445?encryption=mlkem768x25519plus.native.0rtt.9tAA-pCmRkXfXFhQI8S22J9Z7O7WWNoqFziR66xMZEI&security=none&type=tcp&headerType=none#🇸🇬 SINGAPORE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpMQmhYTnRmU2hXcVlhTVl4cEo0bjVvZWdkSUl2WFhWWA==@185.96.80.216:1080#🇮🇸 ICELAND
