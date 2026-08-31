@@ -1,7 +1,7 @@
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotNHNMc2JkbTdyNHM0cUMxZ3dSNElkV0ExWHk4Vkl2cw==@193.233.217.83:1080#🇺🇸 United States 1 • CDNRoute
-vless://3517f15a-d7d9-4185-88a4-be5b725b2127@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇺🇸 United States 2 • Google
-vless://3517f15a-d7d9-4185-88a4-be5b725b2127@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇩🇪 Germany 1 • CDNRoute
-vless://3517f15a-d7d9-4185-88a4-be5b725b2127@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇩🇪 Germany 2 • Cloudflare
-vless://3517f15a-d7d9-4185-88a4-be5b725b2127@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇫🇷 France 1 • Google
-vless://3517f15a-d7d9-4185-88a4-be5b725b2127@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇫🇷 France 2 • CDNRoute
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotNHNMc2JkbTdyNHM0cUMxZ3dSNElkV0ExWHk4Vkl2cw==@193.233.217.83:1080#🇬🇧 United Kingdom 1 • Cloudflare
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp1WndydmYyMHVIaUhNeHFnc2FucS1qYmhvd2JQUUJ6dQ==@193.233.217.83:1080#🇺🇸 United States 1 • CDNRoute
+vless://b503ce7f-b320-4c21-b525-eafcc0558784@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇺🇸 United States 2 • Google
+vless://b503ce7f-b320-4c21-b525-eafcc0558784@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇩🇪 Germany 1 • CDNRoute
+vless://b503ce7f-b320-4c21-b525-eafcc0558784@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇩🇪 Germany 2 • Cloudflare
+vless://b503ce7f-b320-4c21-b525-eafcc0558784@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇫🇷 France 1 • Google
+vless://b503ce7f-b320-4c21-b525-eafcc0558784@193.233.217.83:445?encryption=mlkem768x25519plus.native.0rtt.bwwOqbFLxnBL1wLNJUUEJzOBmKvObnjfvo7O0qf8hnM&security=none&type=tcp&headerType=none#🇫🇷 France 2 • CDNRoute
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp1WndydmYyMHVIaUhNeHFnc2FucS1qYmhvd2JQUUJ6dQ==@193.233.217.83:1080#🇬🇧 United Kingdom 1 • Cloudflare
