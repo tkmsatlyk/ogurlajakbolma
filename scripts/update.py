@@ -12,32 +12,62 @@ from datetime import datetime
 # ============================================================
 
 CHANNELS = [
+    "https://t.me/s/happvpn",
     "https://t.me/s/ares_happ",
     "https://t.me/s/Richman_vpns",
 ]
 
 OUTPUT_FILE = "Toplanan_linkler.txt"
 
-NAMES = [
-    "🇺🇸 UNITED STATES",
-    "🇯🇵 JAPAN",
-    "🇰🇷 SOUTH KOREA",
-    "🇦🇪 UNITED ARAB EMIRATES",
-    "🇨🇭 SWITZERLAND",
-    "🇸🇬 SINGAPORE",
-    "🇮🇸 ICELAND",
-    "🇨🇦 CANADA",
-    "🇳🇴 NORWAY",
-    "🇸🇪 SWEDEN",
-]
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Linux; Android 10) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Mobile Safari/537.36"
-    )
-}
+# ============================================================
+# names.txt DOSYASINDAN İSİMLERİ OKU
+# ============================================================
+
+def load_names():
+
+    try:
+
+        with open(
+            "names.txt",
+            "r",
+            encoding="utf-8",
+        ) as file:
+
+            names = [
+                line.strip()
+                for line in file
+                if line.strip()
+            ]
+
+        if not names:
+
+            print()
+            print(
+                "UYARI: names.txt boş!"
+            )
+
+            return []
+
+        print()
+        print(
+            f"names.txt içinden "
+            f"{len(names)} isim yüklendi."
+        )
+
+        return names
+
+    except FileNotFoundError:
+
+        print()
+        print(
+            "HATA: names.txt bulunamadı!"
+        )
+
+        return []
+
+
+NAMES = load_names()
 
 
 # ============================================================
@@ -75,7 +105,9 @@ VPN_PATTERN = re.compile(
 # ============================================================
 
 def clean_link(link):
+
     link = html.unescape(link)
+
     link = link.strip()
 
     link = link.rstrip(
@@ -86,6 +118,7 @@ def clean_link(link):
 
 
 def http_get(url):
+
     request = urllib.request.Request(
         url,
         headers=HEADERS,
@@ -110,18 +143,34 @@ def http_get(url):
 
 
 # ============================================================
+# HTTP HEADERS
+# ============================================================
+
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Linux; Android 10) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Mobile Safari/537.36"
+    )
+}
+
+
+# ============================================================
 # TELEGRAM MESAJ PARSER
 # ============================================================
 
 class TelegramMessageParser(HTMLParser):
 
     def __init__(self):
+
         super().__init__(
             convert_charrefs=True
         )
 
         self.message_depth = 0
+
         self.current_message = None
+
         self.messages = []
 
     def handle_starttag(
@@ -161,6 +210,7 @@ class TelegramMessageParser(HTMLParser):
 
             # Mesajın içindeki div
             if self.message_depth > 0:
+
                 self.message_depth += 1
 
         # Mesaj zamanı
@@ -179,6 +229,7 @@ class TelegramMessageParser(HTMLParser):
                     "datetime"
                 ] is None
             ):
+
                 self.current_message[
                     "datetime"
                 ] = value
@@ -195,7 +246,9 @@ class TelegramMessageParser(HTMLParser):
                     value
                 ):
 
-                    link = clean_link(link)
+                    link = clean_link(
+                        link
+                    )
 
                     if (
                         link
@@ -206,18 +259,23 @@ class TelegramMessageParser(HTMLParser):
 
                         self.current_message[
                             "links"
-                        ].append(link)
+                        ].append(
+                            link
+                        )
 
     def handle_data(self, data):
 
         if self.message_depth <= 0:
+
             return
 
         for link in CRYPT5_PATTERN.findall(
             data
         ):
 
-            link = clean_link(link)
+            link = clean_link(
+                link
+            )
 
             if (
                 link
@@ -228,7 +286,9 @@ class TelegramMessageParser(HTMLParser):
 
                 self.current_message[
                     "links"
-                ].append(link)
+                ].append(
+                    link
+                )
 
     def handle_endtag(self, tag):
 
@@ -236,6 +296,7 @@ class TelegramMessageParser(HTMLParser):
             self.message_depth <= 0
             or tag != "div"
         ):
+
             return
 
         self.message_depth -= 1
@@ -263,23 +324,31 @@ def get_latest_crypt5_from_all_channels():
     for channel in CHANNELS:
 
         print()
+
         print("=" * 60)
+
         print(
             f"KANAL TARANIYOR: {channel}"
         )
+
         print("=" * 60)
 
         try:
 
-            content = http_get(channel)
+            content = http_get(
+                channel
+            )
 
             parser = TelegramMessageParser()
 
-            parser.feed(content)
+            parser.feed(
+                content
+            )
 
             for message in parser.messages:
 
                 if not message["links"]:
+
                     continue
 
                 message_datetime = None
@@ -300,6 +369,7 @@ def get_latest_crypt5_from_all_channels():
                         )
 
                     except ValueError:
+
                         message_datetime = None
 
                 for link in message["links"]:
@@ -328,6 +398,7 @@ def get_latest_crypt5_from_all_channels():
     if not candidates:
 
         print()
+
         print(
             "HİÇ happ://crypt5 LINKİ BULUNAMADI."
         )
@@ -343,7 +414,7 @@ def get_latest_crypt5_from_all_channels():
 
     if with_dates:
 
-        # GERÇEKTEN EN YENİ MESAJ
+        # Gerçekten en yeni mesaj
         latest = max(
             with_dates,
             key=lambda item: item[
@@ -357,8 +428,13 @@ def get_latest_crypt5_from_all_channels():
         latest = candidates[-1]
 
     print()
+
     print("=" * 60)
-    print("SADECE EN YENİ CRYPT5 KULLANILACAK")
+
+    print(
+        "SADECE EN YENİ CRYPT5 KULLANILACAK"
+    )
+
     print("=" * 60)
 
     print(
@@ -393,11 +469,16 @@ def get_latest_crypt5_from_all_channels():
 def decrypt_happ(happ_link):
 
     print()
-    print("-" * 60)
-    print("HAPP ÇÖZÜLÜYOR")
+
     print("-" * 60)
 
-    print(happ_link)
+    print("HAPP ÇÖZÜLÜYOR")
+
+    print("-" * 60)
+
+    print(
+        happ_link
+    )
 
     try:
 
@@ -412,6 +493,7 @@ def decrypt_happ(happ_link):
         )
 
         stdout = result.stdout.strip()
+
         stderr = result.stderr.strip()
 
         if result.returncode != 0:
@@ -422,8 +504,13 @@ def decrypt_happ(happ_link):
 
             if stderr:
 
-                print("Hata:")
-                print(stderr)
+                print(
+                    "Hata:"
+                )
+
+                print(
+                    stderr
+                )
 
             return None
 
@@ -439,7 +526,9 @@ def decrypt_happ(happ_link):
             "hpwnr sonucu:"
         )
 
-        print(stdout)
+        print(
+            stdout
+        )
 
         # HTTPS bul
         url_match = re.search(
@@ -455,11 +544,14 @@ def decrypt_happ(happ_link):
             )
 
             print()
+
             print(
                 "ÇÖZÜLEN HTTPS:"
             )
 
-            print(resolved)
+            print(
+                resolved
+            )
 
             return resolved
 
@@ -484,6 +576,7 @@ def decrypt_happ(happ_link):
     except FileNotFoundError:
 
         print()
+
         print(
             "HATA: hpwnr bulunamadı!"
         )
@@ -521,6 +614,7 @@ def try_base64_decode(text):
     text = text.strip()
 
     if not text:
+
         return text
 
     try:
@@ -542,6 +636,7 @@ def try_base64_decode(text):
             return decoded_text
 
     except Exception:
+
         pass
 
     return text
@@ -554,15 +649,24 @@ def try_base64_decode(text):
 def get_subscription(url):
 
     print()
-    print("-" * 60)
-    print("HTTPS ABONELİĞİ AÇILIYOR")
+
     print("-" * 60)
 
-    print(url)
+    print(
+        "HTTPS ABONELİĞİ AÇILIYOR"
+    )
+
+    print("-" * 60)
+
+    print(
+        url
+    )
 
     try:
 
-        content = http_get(url)
+        content = http_get(
+            url
+        )
 
         print(
             f"İndirilen veri: "
@@ -646,6 +750,7 @@ def process_happ_link(happ_link):
     )
 
     if not resolved_url:
+
         return []
 
     if not resolved_url.startswith(
@@ -673,12 +778,34 @@ def process_happ_link(happ_link):
 def main():
 
     print()
+
     print("=" * 60)
+
     print(
         "SADECE EN YENİ "
         "HAPP://CRYPT5 -> HTTPS -> VPN"
     )
+
     print("=" * 60)
+
+    # ========================================================
+    # 0. names.txt KONTROLÜ
+    # ========================================================
+
+    if not NAMES:
+
+        print()
+
+        print(
+            "names.txt içinde kullanılabilir "
+            "isim yok."
+        )
+
+        print(
+            "Toplanan_linkler.txt DEĞİŞTİRİLMEDİ."
+        )
+
+        return
 
     # ========================================================
     # 1. SADECE EN YENİ CRYPT5
@@ -691,6 +818,7 @@ def main():
     if not latest_happ:
 
         print()
+
         print(
             "CRYPT5 bulunamadı."
         )
@@ -715,6 +843,7 @@ def main():
     if not vpn_links:
 
         print()
+
         print(
             "Yeni CRYPT5'ten VPN linki alınamadı."
         )
@@ -734,7 +863,9 @@ def main():
 
     for link in vpn_links:
 
-        link = clean_link(link)
+        link = clean_link(
+            link
+        )
 
         if link not in all_vpn_links:
 
@@ -743,15 +874,18 @@ def main():
             )
 
     print()
+
     print("=" * 60)
+
     print(
         "YENİ VPN LINK SAYISI: "
         f"{len(all_vpn_links)}"
     )
+
     print("=" * 60)
 
     # ========================================================
-    # 4. İSİMLERİ EKLE
+    # 4. names.txt'DEKİ İSİMLERİ SIRAYLA EKLE
     # ========================================================
 
     processed_links = []
@@ -790,16 +924,26 @@ def main():
 
         for link in processed_links:
 
-            file.write(link)
-            file.write("\n")
+            file.write(
+                link
+            )
+
+            file.write(
+                "\n"
+            )
 
     # ========================================================
     # 6. SONUÇ
     # ========================================================
 
     print()
+
     print("=" * 60)
-    print("İŞLEM TAMAMLANDI")
+
+    print(
+        "İŞLEM TAMAMLANDI"
+    )
+
     print("=" * 60)
 
     print(
@@ -821,6 +965,11 @@ def main():
     )
 
     print(
+        f"Kullanılan isim sayısı: "
+        f"{len(NAMES)}"
+    )
+
+    print(
         f"Çıktı dosyası: "
         f"{OUTPUT_FILE}"
     )
@@ -833,4 +982,5 @@ def main():
 # ============================================================
 
 if __name__ == "__main__":
+
     main()
