@@ -2,6 +2,10 @@ name: Update configs
 
 on:
   workflow_dispatch:
+
+  schedule:
+    - cron: "0 * * * *"
+
   push:
     paths:
       - "scripts/**"
