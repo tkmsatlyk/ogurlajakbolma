@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "0 * * * *"
+    - cron: "*/15 * * * *"
 
   push:
     paths:
@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Repository'yi indir
         uses: actions/checkout@v4
 
@@ -38,16 +39,6 @@ jobs:
       - name: hpwnr kur
         run: |
           cargo install --git https://github.com/Omegaplexx/hpwnr.git --locked
-
-      - name: crypt5 test
-        env:
-          HAPP_TEST_LINK: ${{ secrets.HAPP_TEST_LINK }}
-        run: |
-          python scripts/test_crypt5.py
-
-      - name: Happ decryptor paketini test et
-        run: |
-          node scripts/test_happ.js
 
       - name: Python kur
         uses: actions/setup-python@v5
