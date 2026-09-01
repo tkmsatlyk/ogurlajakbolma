@@ -4,12 +4,12 @@ import re
 from datetime import datetime, date
 
 STATE_FILE = "state.json"
-INPUT_FILE = "KODLARY"
+KODLARY_FILE = "KODLARY"
+TOPLANAN_FILE = "Toplanan_linkler.txt"
 CONFIG_FILE = "CONFIG"
 
 def safe_read_lines(path):
-    """Dosyayı UTF-8 olarak okur. Bozuk karakter varsa SESSİZCE silmez,
-    uyarı basar ve o karakteri görünür bir işaretle değiştirir."""
+    """Dosyayı UTF-8 olarak okur. Bozuk karakter varsa uyarı basar, sessizce silmez."""
     try:
         with open(path, "rb") as f:
             raw = f.read()
@@ -24,18 +24,58 @@ def safe_read_lines(path):
         print(f"Okuma hatası ({path}): {e}")
         return []
 
-def main():
-    print("CONFIG panelinden okuyan profesyonel sayaç sistemi başlatıldı...")
-
-    # 1. KODLARY link deposunu oku
+def load_links(path):
     links = []
-    if os.path.exists(INPUT_FILE):
-        for line in safe_read_lines(INPUT_FILE):
+    if os.path.exists(path):
+        for line in safe_read_lines(path):
             line = line.strip()
             if line:
                 links.append(line)
+    else:
+        print(f"UYARI: '{path}' dosyası bulunamadı, boş kabul edilecek.")
+    return links
 
-    # 2. State (hafıza) verisini oku
+def parse_flag(token):
+    up = token.upper()
+    if up in ("T", "K"):
+        return up
+    if up in ("TK", "KT"):
+        return "TK"
+    return None
+
+def parse_definition(parts):
+    """parts[0] slot adı; geri kalanı customer + days (+ opsiyonel T/K/TK).
+    Dönüş: (customer, days, flag) veya None"""
+    if len(parts) < 3:
+        return None
+
+    flag = parse_flag(parts[-1])
+    if flag:
+        if len(parts) < 4:
+            return None
+        try:
+            days = int(parts[-2])
+        except ValueError:
+            return None
+        customer = " ".join(parts[1:-2])
+    else:
+        flag = "K"  # harf yoksa eski satırlarla uyumlu -> varsayılan KODLARY
+        try:
+            days = int(parts[-1])
+        except ValueError:
+            return None
+        customer = " ".join(parts[1:-1])
+
+    if not customer:
+        return None
+    return customer, days, flag
+
+def main():
+    print("CONFIG panelinden okuyan (T/K/TK destekli) sayaç sistemi başlatıldı...")
+
+    kodlary_links = load_links(KODLARY_FILE)
+    toplanan_links = load_links(TOPLANAN_FILE)
+
     state_data = {}
     if os.path.exists(STATE_FILE):
         try:
@@ -44,40 +84,37 @@ def main():
         except:
             state_data = {}
 
-    # 3. CONFIG dosyasını oku -> "panel" burası.
-    config_info = {}  # { "sub3": (customer, days), ... }
+    # CONFIG dosyasını oku -> panel burası
+    config_info = {}  # { "sub3": (customer, days, flag), ... }
     if os.path.exists(CONFIG_FILE):
         for raw_line in safe_read_lines(CONFIG_FILE):
             line = raw_line.strip()
             if not line:
                 continue
             parts = line.replace('_', ' ').replace('-', ' ').split()
-            if len(parts) < 3:
+            parsed = parse_definition(parts)
+            if parsed is None:
+                if len(parts) >= 3:
+                    print(f"UYARI: CONFIG satırı çözümlenemedi: '{line}'")
                 continue
             slot_name = parts[0]
-            try:
-                c_days = int(parts[-1])
-            except ValueError:
-                print(f"UYARI: CONFIG satırı çözümlenemedi: '{line}'")
-                continue
-            c_customer = " ".join(parts[1:-1])
-            if not c_customer:
-                continue
-            config_info[slot_name] = (c_customer, c_days)
+            config_info[slot_name] = parsed
 
     today_str = date.today().isoformat()
     any_expired = False
     expired_subs = []
 
-    slots = ["sub1", "sub2", "sub3", "sub4", "sub5", "sub6", "sub7", "sub8", "sub9", "sub10"]
+    slots = ["sub1", "sub2", "sub3", "sub4", "sub5",
+              "sub6", "sub7", "sub8", "sub9", "sub10"]
 
     for slot in slots:
         customer = None
         target_days = None
+        flag = None
         source = None
 
         if slot in config_info:
-            customer, target_days = config_info[slot]
+            customer, target_days, flag = config_info[slot]
             source = "CONFIG"
 
         matches = sorted(
@@ -96,26 +133,34 @@ def main():
 
         target_filename = matches[0]
 
-        file_customer, file_days = None, None
+        # Dosya adından da çözmeyi dene (çelişki kontrolü için)
         fname_parts = target_filename.replace('_', ' ').replace('-', ' ').split()
-        if len(fname_parts) >= 3:
-            try:
-                file_days = int(fname_parts[-1])
-                file_customer = " ".join(fname_parts[1:-1])
-            except ValueError:
-                file_customer, file_days = None, None
+        file_parsed = parse_definition(fname_parts)
 
         if customer is None or target_days is None:
-            customer, target_days = file_customer, file_days
-            source = "dosya adı"
-        elif file_customer and file_days is not None:
-            if file_customer != customer or file_days != target_days:
-                print(f"UYARI: {slot} için CONFIG ('{customer} {target_days}') ile dosya adı "
-                      f"('{file_customer} {file_days}') FARKLI! CONFIG değeri kullanılacak.")
+            if file_parsed:
+                customer, target_days, flag = file_parsed
+                source = "dosya adı"
+        elif file_parsed:
+            f_customer, f_days, f_flag = file_parsed
+            if f_customer != customer or f_days != target_days:
+                print(f"UYARI: {slot} için CONFIG ('{customer} {target_days} {flag}') ile "
+                      f"dosya adı ('{f_customer} {f_days} {f_flag}') FARKLI! CONFIG değeri kullanılacak.")
 
         if not customer or target_days is None:
             print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
             continue
+
+        if flag is None:
+            flag = "K"
+
+        # Hangi link havuzu kullanılacak
+        if flag == "T":
+            chosen_links = toplanan_links
+        elif flag == "K":
+            chosen_links = kodlary_links
+        else:  # TK
+            chosen_links = toplanan_links + kodlary_links
 
         lines = safe_read_lines(target_filename)
         existing_header = [line.rstrip('\r\n') for line in lines[:12]]
@@ -128,7 +173,7 @@ def main():
                 "start_date": today_str
             }
             sub_state = state_data[slot]
-            print(f"-> {slot} ({customer}, kaynak: {source}) için yeni kayıt algılandı. Sayaç sıfırlandı.")
+            print(f"-> {slot} ({customer}, kaynak: {source}, mod: {flag}) için yeni kayıt algılandı. Sayaç sıfırlandı.")
 
         start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
         elapsed = (date.today() - start_date).days
@@ -153,8 +198,9 @@ def main():
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
         else:
-            print(f"-> {slot} ({customer}) aktif. Kalan gün: {remaining_days}")
-            content = updated_header + links
+            print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. "
+                  f"{len(chosen_links)} link eklendi.")
+            content = updated_header + chosen_links
 
         try:
             with open(target_filename, "w", encoding="utf-8") as f:
