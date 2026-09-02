@@ -49,7 +49,7 @@ jobs:
 
       - name: hpwnr kur
         run: |
-          cargo install hpwnr --locked
+          cargo install --git https://github.com/Omegaplexx/hpwnr.git --locked
           echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
           hpwnr --help
 
