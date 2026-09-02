@@ -1,22 +1,23 @@
-name: Update configs
+name: Telegram Config Updater
 
 on:
   workflow_dispatch:
+
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
+
+concurrency:
+  group: telegram-config-updater
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-
-      # =========================================================
-      # REPOSITORY
-      # =========================================================
 
       - name: Repository'yi indir
         uses: actions/checkout@v4
@@ -25,9 +26,10 @@ jobs:
           ref: main
           persist-credentials: true
 
-      # =========================================================
-      # NODE.JS
-      # =========================================================
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
       - name: Node.js kur
         uses: actions/setup-node@v4
@@ -42,71 +44,36 @@ jobs:
             echo "package.json yok, npm kurulumu atlandı."
           fi
 
-      # =========================================================
-      # RUST
-      # =========================================================
-
       - name: Rust kur
         uses: dtolnay/rust-toolchain@stable
-
-      # =========================================================
-      # HPWNR
-      # =========================================================
 
       - name: hpwnr kur
         run: |
           cargo install hpwnr --locked
-
           echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
-
           hpwnr --help
 
-      # =========================================================
-      # PYTHON
-      # =========================================================
-
-      - name: Python kur
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      # =========================================================
-      # PYTHON SCRIPT
-      # =========================================================
-
-      - name: Python scriptini çalıştır
+      - name: Telegram kanallarını tara
         run: |
           python scripts/update.py
 
-      # =========================================================
-      # GITHUB'A KAYDET
-      # =========================================================
-
-      - name: Değişiklikleri GitHub'a kaydet
+      - name: Değişiklikleri GitHub'a gönder
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          echo "Git durumu:"
-          git status --short
-
           git add Toplanan_linkler.txt
 
           if git diff --cached --quiet; then
-            echo "Kaydedilecek değişiklik yok."
+            echo "Yeni değişiklik yok."
             exit 0
           fi
 
-          git commit -m "Update configs"
-
-          echo "Remote güncelleniyor..."
+          git commit -m "Update Telegram configs"
 
           git fetch origin main
-
           git rebase origin/main
-
-          echo "GitHub'a gönderiliyor..."
 
           git push origin HEAD:main
 
-          echo "Başarıyla GitHub'a gönderildi."
+          echo "Yeni sonuç GitHub'a gönderildi."
