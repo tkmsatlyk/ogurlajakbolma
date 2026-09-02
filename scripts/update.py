@@ -17,11 +17,9 @@ CHANNELS = [
     "https://t.me/s/Richman_vpns",
     "https://t.me/s/happvpn",
     "https://t.me/s/expensive_vpn",
-    "https://t.me/s/aron58",
 ]
 
 OUTPUT_FILE = "Toplanan_linkler.txt"
-MAX_MESSAGES_TO_SCAN = 100
 NAMES_FILE = "names.txt"
 
 HEADERS = {
@@ -54,11 +52,6 @@ VPN_PATTERN = re.compile(
     r'|hy2://[^\s<>"\']+'
     r'|socks5://[^\s<>"\']+'
     r')',
-    re.IGNORECASE,
-)
-
-HTTPS_PATTERN = re.compile(
-    r'https?://[^\s<>"\']+',
     re.IGNORECASE,
 )
 
@@ -186,7 +179,6 @@ class TelegramMessageParser(HTMLParser):
                     "crypt5": [],
                     "ss": [],
                     "vpn": [],
-                    "https": [],
                 }
 
                 return
@@ -266,9 +258,22 @@ class TelegramMessageParser(HTMLParser):
                 ].append(link)
 
         # ----------------------------------------------------
-        # SS
+        # TÜM VPN LİNKLERİ
         # ----------------------------------------------------
 
+        for link in VPN_PATTERN.findall(text):
+
+            link = clean_link(link)
+
+            if link not in self.current_message[
+                "vpn"
+            ]:
+
+                self.current_message[
+                    "vpn"
+                ].append(link)
+
+        # SS ayrıca ayrı tutulur; çünkü önceliği vardır.
         for link in SS_PATTERN.findall(text):
 
             link = clean_link(link)
@@ -280,16 +285,6 @@ class TelegramMessageParser(HTMLParser):
                 self.current_message[
                     "ss"
                 ].append(link)
-
-        for link in VPN_PATTERN.findall(text):
-            link = clean_link(link)
-            if link not in self.current_message["vpn"]:
-                self.current_message["vpn"].append(link)
-
-        for link in HTTPS_PATTERN.findall(text):
-            link = clean_link(link)
-            if link not in self.current_message["https"]:
-                self.current_message["https"].append(link)
 
     def handle_endtag(self, tag):
 
@@ -318,33 +313,100 @@ class TelegramMessageParser(HTMLParser):
 # KANALIN EN SON MESAJINI BUL
 # ============================================================
 
-def get_channel_messages(channel):
+def get_latest_message(channel):
+
     print()
     print("=" * 70)
-    print(f"KANAL: {channel}")
+    print(
+        f"KANAL: {channel}"
+    )
     print("=" * 70)
+
     try:
+
         content = http_get(channel)
+
         parser = TelegramMessageParser()
+
         parser.feed(content)
+
         if not parser.messages:
-            print("Telegram mesajı bulunamadı.")
-            return False, []
-        dated = []
+
+            print(
+                "Telegram mesajı bulunamadı."
+            )
+
+            return None
+
+        # Telegram sayfasındaki mesajların
+        # içinden gerçekten en yenisini seç.
+        dated_messages = []
+
         for message in parser.messages:
-            dt = parse_datetime(message["datetime"])
+
+            dt = parse_datetime(
+                message["datetime"]
+            )
+
             if dt is not None:
-                dated.append((dt, message))
-        if dated:
-            dated.sort(key=lambda item: item[0], reverse=True)
-            messages = [item[1] for item in dated]
+
+                dated_messages.append(
+                    (
+                        dt,
+                        message,
+                    )
+                )
+
+        if dated_messages:
+
+            latest = max(
+                dated_messages,
+                key=lambda item: item[0],
+            )[1]
+
         else:
-            messages = list(reversed(parser.messages))
-        print(f"Toplam mesaj: {len(messages)}")
-        return True, messages
+
+            # Tarih alınamazsa Telegram HTML
+            # sırasındaki son mesajı kullan.
+            latest = parser.messages[-1]
+
+        print(
+            "EN SON MESAJ BULUNDU"
+        )
+
+        if latest["datetime"]:
+
+            print(
+                f"Zaman: {latest['datetime']}"
+            )
+
+        if latest["post"]:
+
+            print(
+                f"Mesaj: {latest['post']}"
+            )
+
+        print(
+            f"SS sayısı: {len(latest['ss'])}"
+        )
+
+        print(
+            f"CRYPT5 sayısı: {len(latest['crypt5'])}"
+        )
+
+        print(
+            f"VPN sayısı: {len(latest.get("vpn", []))}"
+        )
+
+        return latest
+
     except Exception as error:
-        print(f"Kanal okunamadı: {error}")
-        return False, []
+
+        print(
+            f"Kanal okunamadı: {error}"
+        )
+
+        return None
 
 
 # ============================================================
@@ -507,68 +569,18 @@ def try_base64_decode(text):
 # ============================================================
 
 def get_subscription(url):
-    """
-    Çözülen HTTPS aboneliğini alır ve içindeki TÜM VPN linklerini çıkarır.
 
-    Önce hpwnr ile 'uri' dönüşümü denenir. Böylece Xray/JSON/Base64/
-    şifreli subscription profilleri doğrudan proxy URI'larına çevrilebilir.
-    hpwnr başarısız olursa normal HTTP + Base64 ayrıştırmasına geri düşülür.
-    """
     print()
     print("-" * 70)
-    print("CRYPT5 SONRASI ABONELİK OKUNUYOR")
+    print(
+        "HTTPS ABONELİĞİ OKUNUYOR"
+    )
     print("-" * 70)
+
     print(url)
 
-    # ------------------------------------------------------------
-    # 1) hpwnr ile FETCH + URI CONVERT
-    # ------------------------------------------------------------
     try:
-        result = subprocess.run(
-            ["hpwnr", url, "uri"],
-            capture_output=True,
-            text=True,
-            timeout=90,
-        )
 
-        stdout = result.stdout.strip()
-        stderr = result.stderr.strip()
-
-        if result.returncode == 0 and stdout:
-            converted_links = VPN_PATTERN.findall(stdout)
-
-            cleaned = []
-            for link in converted_links:
-                link = clean_link(link)
-                if link and link not in cleaned:
-                    cleaned.append(link)
-
-            if cleaned:
-                print(
-                    f"hpwnr ile çıkarılan TÜM VPN linki: "
-                    f"{len(cleaned)}"
-                )
-                return cleaned
-
-            print(
-                "hpwnr başarılı fakat stdout içinde VPN URI bulunamadı."
-            )
-
-        elif stderr:
-            print("hpwnr uri çıktısı:")
-            print(stderr)
-
-    except FileNotFoundError:
-        print("HATA: hpwnr bulunamadı.")
-    except subprocess.TimeoutExpired:
-        print("hpwnr uri zaman aşımına uğradı.")
-    except Exception as error:
-        print(f"hpwnr uri hatası: {error}")
-
-    # ------------------------------------------------------------
-    # 2) NORMAL HTTP OKUMA
-    # ------------------------------------------------------------
-    try:
         content = http_get(url)
 
         print(
@@ -576,59 +588,88 @@ def get_subscription(url):
             f"{len(content)} karakter"
         )
 
-        # Direkt VPN URI'ları
-        links = VPN_PATTERN.findall(content)
+        # Direkt linkler
+        links = VPN_PATTERN.findall(
+            content
+        )
 
-        cleaned = []
-        if success:
-            successful_channels += 1
-
-        for link in links:
-            link = clean_link(link)
-            if link and link not in cleaned:
-                cleaned.append(link)
-
-        if cleaned:
-            print(
-                f"HTTP içinden bulunan TÜM VPN linki: "
-                f"{len(cleaned)}"
-            )
-            return cleaned
-
-        # --------------------------------------------------------
-        # 3) BASE64 DENEMESİ
-        # --------------------------------------------------------
-        decoded = try_base64_decode(content)
-
-        if decoded != content:
-            links = VPN_PATTERN.findall(decoded)
+        if links:
 
             cleaned = []
+
             for link in links:
+
                 link = clean_link(link)
-                if link and link not in cleaned:
+
+                if link not in cleaned:
+
+                    cleaned.append(link)
+
+            print(
+                f"Bulunan VPN linki: "
+                f"{len(cleaned)}"
+            )
+
+            return cleaned
+
+        # Base64 dene
+        decoded = try_base64_decode(
+            content
+        )
+
+        if decoded != content:
+
+            links = VPN_PATTERN.findall(
+                decoded
+            )
+
+            cleaned = []
+
+            for link in links:
+
+                link = clean_link(link)
+
+                if link not in cleaned:
+
                     cleaned.append(link)
 
             if cleaned:
+
                 print(
-                    "Base64 sonrası TÜM VPN linki: "
+                    "Base64 sonrası VPN linki: "
                     f"{len(cleaned)}"
                 )
+
                 return cleaned
 
-        print("Abonelik içinde VPN linki bulunamadı.")
+        print(
+            "HTTPS içinde VPN linki bulunamadı."
+        )
+
         return []
 
     except urllib.error.HTTPError as error:
-        print(f"HTTP hatası: {error.code}")
+
+        print(
+            f"HTTP hatası: {error.code}"
+        )
+
         return []
 
     except urllib.error.URLError as error:
-        print(f"Bağlantı hatası: {error}")
+
+        print(
+            f"Bağlantı hatası: {error}"
+        )
+
         return []
 
     except Exception as error:
-        print(f"Abonelik okuma hatası: {error}")
+
+        print(
+            f"Abonelik okuma hatası: {error}"
+        )
+
         return []
 
 
@@ -683,60 +724,102 @@ def load_names():
 # ============================================================
 
 def process_channel(channel):
-    success, messages = get_channel_messages(channel)
-    if not success:
-        return False, []
-    limit = min(len(messages), MAX_MESSAGES_TO_SCAN)
-    print(f"Yeni -> eski tarama: en fazla {limit} mesaj")
-    for i in range(limit):
-        message = messages[i]
+
+    latest = get_latest_message(channel)
+
+    if not latest:
+        return []
+
+    # ========================================================
+    # KURAL 1:
+    # EN SON MESAJDA SS VARSA SS AL
+    # ========================================================
+
+    if latest["ss"]:
+
         print()
-        print("-" * 70)
-        print(f"{i + 1}. MESAJ KONTROL EDİLİYOR")
-        if message.get("datetime"):
-            print(f"Zaman: {message['datetime']}")
+        print("SON MESAJDA SS BULUNDU.")
+        print("CRYPT5 İŞLENMEYECEK.")
 
-        # SS öncelikli
-        if message.get("ss"):
-            links = unique_links(message["ss"])
-            if links:
-                print(f"SS bulundu: {len(links)}")
-                return True, links
+        result = []
 
-        # CRYPT5
-        for happ_link in message.get("crypt5", []):
-            resolved = decrypt_happ(happ_link)
-            if not resolved:
-                continue
-            if isinstance(resolved, list):
-                links = unique_links(resolved)
-                if links:
-                    return True, links
-            else:
-                for url in resolved if isinstance(resolved, list) else [resolved]:
-                    if isinstance(url, str) and url.startswith(("http://", "https://")):
-                        links = get_subscription(clean_link(url))
-                        if links:
-                            return True, unique_links(links)
+        for link in latest["ss"]:
 
-        # Direkt VPN URI
-        direct = [x for x in unique_links(message.get("vpn", [])) if not x.lower().startswith("ss://")]
-        if direct:
-            print(f"Doğrudan VPN bulundu: {len(direct)}")
-            return True, direct
+            link = clean_link(link)
 
-        # HTTPS subscription
-        for url in message.get("https", []):
-            url = clean_link(url)
-            if url.startswith(("http://", "https://")):
-                links = get_subscription(url)
-                if links:
-                    return True, unique_links(links)
+            if link not in result:
+                result.append(link)
 
-        print("Bu mesajda VPN yok -> bir önceki mesaja geçiliyor.")
+        print(f"Alınan SS sayısı: {len(result)}")
 
-    print("Tarama sınırında kullanılabilir VPN bulunamadı.")
-    return True, []
+        return result
+
+    # ========================================================
+    # KURAL 2:
+    # SS YOKSA CRYPT5 VARSA CRYPT5 ÇÖZ
+    # ========================================================
+
+    if latest["crypt5"]:
+
+        print()
+        print("SON MESAJDA SS YOK.")
+        print("CRYPT5 BULUNDU.")
+
+        happ_link = latest["crypt5"][0]
+
+        print(f"Kullanılacak CRYPT5: {happ_link}")
+
+        resolved_url = decrypt_happ(happ_link)
+
+        if not resolved_url:
+            return []
+
+        if not resolved_url.startswith(
+            (
+                "http://",
+                "https://",
+            )
+        ):
+            print("Çözülen değer HTTPS değil.")
+            return []
+
+        return get_subscription(resolved_url)
+
+    # ========================================================
+    # KURAL 3:
+    # SS VE CRYPT5 YOKSA, EN SON MESAJDA DOĞRUDAN
+    # VPN LİNKİ VARSA ONU AL.
+    # ========================================================
+
+    if latest.get("vpn"):
+
+        print()
+        print("SON MESAJDA SS VE CRYPT5 YOK.")
+        print("DOĞRUDAN VPN LİNKİ BULUNDU.")
+
+        result = []
+
+        for link in latest["vpn"]:
+
+            link = clean_link(link)
+
+            if link not in result:
+                result.append(link)
+
+        print(f"Alınan doğrudan VPN sayısı: {len(result)}")
+
+        return result
+
+    # ========================================================
+    # KURAL 4:
+    # SON MESAJDA İLGİLİ HİÇBİR LINK YOK
+    # ========================================================
+
+    print()
+    print("SON MESAJDA SS, CRYPT5 VE VPN LİNKİ YOK.")
+    print("BU KANALDAN HİÇBİR LINK ALINMAYACAK.")
+
+    return []
 
 
 # ============================================================
@@ -748,7 +831,7 @@ def main():
     print()
     print("=" * 70)
     print(
-        "5 KANAL GERİYE DOĞRU OTOMATİK VPN TOPLAYICI"
+        "4 KANAL OTOMATİK VPN TOPLAYICI"
     )
     print("=" * 70)
 
@@ -763,15 +846,14 @@ def main():
         return
 
     all_links = []
-    successful_channels = 0
 
     # ========================================================
-    # 5 KANAL
+    # 4 KANAL
     # ========================================================
 
     for channel in CHANNELS:
 
-        success, links = process_channel(
+        links = process_channel(
             channel
         )
 
@@ -783,28 +865,21 @@ def main():
 
                 all_links.append(link)
 
-    if successful_channels == 0:
-        print("Hiçbir kanal okunamadı. Mevcut çıktı korunuyor.")
-        return
+    # ========================================================
+    # YENİ LINK YOKSA DOSYAYI DEĞİŞTİRME
+    # ========================================================
 
-    # ========================================================
-    # ÇIKTIYI HER ÇALIŞMADA YENİDEN OLUŞTUR
-    # ========================================================
-    # Böylece eski/stale VPN linkleri dosyada kalmaz.
-    # Son mesajlarda hiçbir ilgili link yoksa dosya boşaltılır.
     if not all_links:
+
         print()
         print("=" * 70)
-        print("SON MESAJLARDAN HİÇBİR VPN LINKİ BULUNAMADI.")
-        print("Toplanan_linkler.txt boş olarak yeniden yazılacak.")
+        print(
+            "HİÇBİR VPN LİNKİ BULUNAMADI."
+        )
+        print(
+            "Toplanan_linkler.txt DEĞİŞTİRİLMEYECEK."
+        )
         print("=" * 70)
-
-        with open(
-            OUTPUT_FILE,
-            "w",
-            encoding="utf-8",
-        ) as file:
-            file.write("")
 
         return
 
@@ -886,5 +961,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
