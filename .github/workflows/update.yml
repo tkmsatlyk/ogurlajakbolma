@@ -2,16 +2,8 @@ name: Update configs
 
 on:
   workflow_dispatch:
-
   schedule:
-    - cron: "*/1 * * * *"
-
-  push:
-    paths:
-      - "scripts/**"
-      - ".github/workflows/update.yml"
-      - "package.json"
-      - "names.txt"
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
@@ -22,8 +14,20 @@ jobs:
 
     steps:
 
+      # =========================================================
+      # REPOSITORY
+      # =========================================================
+
       - name: Repository'yi indir
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+          persist-credentials: true
+
+      # =========================================================
+      # NODE.JS
+      # =========================================================
 
       - name: Node.js kur
         uses: actions/setup-node@v4
@@ -31,34 +35,78 @@ jobs:
           node-version: "22"
 
       - name: npm paketlerini kur
-        run: npm install
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "package.json yok, npm kurulumu atlandı."
+          fi
+
+      # =========================================================
+      # RUST
+      # =========================================================
 
       - name: Rust kur
         uses: dtolnay/rust-toolchain@stable
 
+      # =========================================================
+      # HPWNR
+      # =========================================================
+
       - name: hpwnr kur
         run: |
-          cargo install --git https://github.com/Omegaplexx/hpwnr.git --locked
+          cargo install hpwnr --locked
+
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+
+          hpwnr --help
+
+      # =========================================================
+      # PYTHON
+      # =========================================================
 
       - name: Python kur
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      # =========================================================
+      # PYTHON SCRIPT
+      # =========================================================
+
       - name: Python scriptini çalıştır
         run: |
           python scripts/update.py
+
+      # =========================================================
+      # GITHUB'A KAYDET
+      # =========================================================
 
       - name: Değişiklikleri GitHub'a kaydet
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          echo "Git durumu:"
+          git status --short
+
           git add Toplanan_linkler.txt
 
           if git diff --cached --quiet; then
-            echo "Yeni değişiklik yok."
-          else
-            git commit -m "Update configs"
-            git push
+            echo "Kaydedilecek değişiklik yok."
+            exit 0
           fi
+
+          git commit -m "Update configs"
+
+          echo "Remote güncelleniyor..."
+
+          git fetch origin main
+
+          git rebase origin/main
+
+          echo "GitHub'a gönderiliyor..."
+
+          git push origin HEAD:main
+
+          echo "Başarıyla GitHub'a gönderildi."
