@@ -4,7 +4,6 @@ import re
 import ssl
 import subprocess
 import urllib.request
-import urllib.error
 from html.parser import HTMLParser
 from datetime import datetime
 
@@ -44,7 +43,7 @@ VPN_PATTERN = re.compile(
 
 
 def clean_link(link):
-    return html.unescape(link).strip().rstrip('.,;:!?)]}\'"<>'):
+    return html.unescape(link).strip().rstrip('.,;:!?)]}\'"<>')
 
 
 def unique_links(links):
@@ -176,7 +175,6 @@ class TelegramMessageParser(HTMLParser):
         ):
 
             self.current["text"] += data
-
             self.find_links(data)
 
     def find_links(self, text):
@@ -189,7 +187,6 @@ class TelegramMessageParser(HTMLParser):
             link = clean_link(link)
 
             if link not in self.current["ss"]:
-
                 self.current["ss"].append(link)
 
         for link in CRYPT5_PATTERN.findall(text):
@@ -197,16 +194,11 @@ class TelegramMessageParser(HTMLParser):
             link = clean_link(link)
 
             if link not in self.current["crypt5"]:
-
                 self.current["crypt5"].append(link)
 
     def handle_endtag(self, tag):
 
-        if (
-            self.depth <= 0
-            or tag != "div"
-        ):
-
+        if self.depth <= 0 or tag != "div":
             return
 
         self.depth -= 1
@@ -262,7 +254,6 @@ def get_channel_messages(channel):
             return False, []
 
     parser = TelegramMessageParser()
-
     parser.feed(content)
 
     if not parser.messages:
@@ -412,7 +403,6 @@ def try_base64_decode(text):
         )
 
         if "://" in value:
-
             return value
 
     except Exception:
@@ -496,7 +486,6 @@ def get_subscription(url):
             )
 
     if content is None:
-
         return []
 
     links = unique_links(
@@ -512,9 +501,7 @@ def get_subscription(url):
 
         return links
 
-    decoded = try_base64_decode(
-        content
-    )
+    decoded = try_base64_decode(content)
 
     if decoded != content:
 
@@ -570,13 +557,10 @@ def process_channel(channel):
     )
 
     if not success:
-
         return False, []
 
-    # ========================================================
-    # SADECE SS VE CRYPT5 ARANIYOR
+    # SADECE SS VE CRYPT5 ARANIYOR.
     # Direkt vless/vmess/trojan vb. ALINMIYOR.
-    # ========================================================
 
     for index, message in enumerate(
         messages[:MAX_MESSAGES_TO_SCAN],
@@ -590,9 +574,9 @@ def process_channel(channel):
             "kontrol ediliyor..."
         )
 
-        # ----------------------------------------------------
-        # 1. SS
-        # ----------------------------------------------------
+        # ==================================================
+        # 1. SS VARSA -> SADECE SS AL
+        # ==================================================
 
         ss_links = unique_links(
             message.get("ss", [])
@@ -608,9 +592,9 @@ def process_channel(channel):
 
             return True, ss_links
 
-        # ----------------------------------------------------
-        # 2. HAPP://CRYPT5
-        # ----------------------------------------------------
+        # ==================================================
+        # 2. HAPP://CRYPT5 VARSA -> ÇÖZ
+        # ==================================================
 
         crypt5_links = unique_links(
             message.get("crypt5", [])
@@ -625,14 +609,20 @@ def process_channel(channel):
                 )
 
                 if not resolved:
-
                     continue
 
-                # Crypt5 doğrudan VPN URI döndürdüyse
+                # Crypt5 doğrudan VPN URI döndürürse
+                # içindeki TÜM linkleri al.
+
                 direct = unique_links([
                     x
                     for x in resolved
                     if isinstance(x, str)
+                    and re.match(
+                        r'^[a-z0-9+.-]+://',
+                        x,
+                        re.I
+                    )
                     and not x.lower().startswith(
                         (
                             "http://",
@@ -645,7 +635,9 @@ def process_channel(channel):
 
                     return True, direct
 
-                # Crypt5 HTTPS subscription döndürdüyse
+                # Crypt5 HTTPS abonelik döndürdüyse
+                # aboneliğin içindeki TÜM VPN linklerini al.
+
                 all_subscription_links = []
 
                 for url in resolved:
@@ -679,13 +671,13 @@ def process_channel(channel):
 
                     return True, all_subscription_links
 
-        # ----------------------------------------------------
-        # 3. Hiçbiri yoksa eski mesaja geç
-        # ----------------------------------------------------
+        # ==================================================
+        # 3. SS/CRYPT5 YOKSA -> ESKİ MESAJ
+        # ==================================================
 
         print(
-            "SS/CRYPT5 yok veya çalışmadı."
-            " -> Eski mesaja geçiliyor."
+            "SS/CRYPT5 yok veya çalışmadı"
+            " -> eski mesaja geçiliyor."
         )
 
     print(
@@ -699,21 +691,17 @@ def process_channel(channel):
 def main():
 
     print("=" * 70)
-
     print(
         "SADECE SS + HAPP://CRYPT5 VPN TOPLAYICI"
     )
-
     print("=" * 70)
 
     names = load_names()
 
     if not names:
-
         return
 
     all_links = []
-
     successful_channels = 0
 
     for channel in CHANNELS:
@@ -723,16 +711,15 @@ def main():
         )
 
         if success:
-
             successful_channels += 1
 
         for link in unique_links(links):
 
             if link not in all_links:
-
                 all_links.append(link)
 
-    # Tüm kanallar okunamadıysa eski dosyayı koru.
+    # Hiçbir kanal okunamadıysa
+    # eski çıktı korunur.
 
     if successful_channels == 0:
 
@@ -743,7 +730,7 @@ def main():
 
         return
 
-    # Eski sonuçları silip güncel sonuçları yaz.
+    # Güncel sonuçları yaz.
 
     with open(
         OUTPUT_FILE,
@@ -761,11 +748,8 @@ def main():
             )[0]
 
             if index < len(names):
-
                 name = names[index]
-
             else:
-
                 name = f"VPN {index + 1}"
 
             file.write(
@@ -774,21 +758,15 @@ def main():
 
     print()
     print("=" * 70)
-
-    print(
-        "TAMAMLANDI"
-    )
-
+    print("TAMAMLANDI")
     print(
         "Toplam link:",
         len(all_links)
     )
-
     print(
         "Çıktı:",
         OUTPUT_FILE
     )
-
     print("=" * 70)
 
 
