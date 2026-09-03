@@ -28,5 +28,10 @@
         "customer": "tana",
         "days": 10,
         "start_date": "2026-09-02"
+    },
+    "sub8": {
+        "customer": "kanal",
+        "days": 5,
+        "start_date": "2026-09-03"
     }
 }
