@@ -37,14 +37,12 @@ def load_links(path):
 
 def parse_flag(token):
     up = token.upper()
-    if up in ("T", "K"):
+    if up in ("T", "K", "TK", "KT"):
         return up
-    if up in ("TK", "KT"):
-        return "TK"
     return None
 
 def parse_definition(parts):
-    """parts[0] slot adı; geri kalanı customer + days (+ opsiyonel T/K/TK).
+    """parts[0] slot adı; geri kalanı customer + days (+ opsiyonel T/K/TK/KT).
     Dönüş: (customer, days, flag) veya None"""
     if len(parts) < 3:
         return None
@@ -71,7 +69,7 @@ def parse_definition(parts):
     return customer, days, flag
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/TK destekli) sayaç sistemi başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/TK/KT destekli) sayaç sistemi başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
@@ -154,13 +152,15 @@ def main():
         if flag is None:
             flag = "K"
 
-        # Hangi link havuzu kullanılacak
+        # Hangi link havuzu / hangi sırayla kullanılacak
         if flag == "T":
             chosen_links = toplanan_links
         elif flag == "K":
             chosen_links = kodlary_links
-        else:  # TK
-            chosen_links = toplanan_links + kodlary_links
+        elif flag == "TK":
+            chosen_links = toplanan_links + kodlary_links   # önce Toplanan, sonra KODLARY
+        else:  # KT
+            chosen_links = kodlary_links + toplanan_links   # önce KODLARY, sonra Toplanan
 
         lines = safe_read_lines(target_filename)
         existing_header = [line.rstrip('\r\n') for line in lines[:12]]
