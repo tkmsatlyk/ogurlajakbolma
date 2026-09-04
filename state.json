@@ -20,9 +20,9 @@
         "start_date": "2026-08-29"
     },
     "sub6": {
-        "customer": "kanal",
-        "days": 5,
-        "start_date": "2026-09-01"
+        "customer": "grim",
+        "days": 15,
+        "start_date": "2026-09-04"
     },
     "sub7": {
         "customer": "tana",
@@ -32,6 +32,11 @@
     "sub8": {
         "customer": "kanal",
         "days": 8,
+        "start_date": "2026-09-04"
+    },
+    "sub5": {
+        "customer": "maşik",
+        "days": 15,
         "start_date": "2026-09-04"
     }
 }
