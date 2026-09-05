@@ -1,12 +1,19 @@
 import os
 import json
 import re
+import base64
+import requests
 from datetime import datetime, date
 
 STATE_FILE = "state.json"
 KODLARY_FILE = "KODLARY"
+KODLARY_V2_FILE = "KODLARY V2"
+KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
 CONFIG_FILE = "CONFIG"
+
+PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
+VALID_FLAG_LETTERS = ("T", "K", "V")
 
 def safe_read_lines(path):
     """Dosyayı UTF-8 olarak okur. Bozuk karakter varsa uyarı basar, sessizce silmez."""
@@ -35,14 +42,85 @@ def load_links(path):
         print(f"UYARI: '{path}' dosyası bulunamadı, boş kabul edilecek.")
     return links
 
+def extract_protocol_lines(text):
+    found = []
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if line.startswith(PROTOCOL_PREFIXES):
+            found.append(line)
+    return found
+
+def fetch_subscription(url):
+    """Bir subscription URL'sine gidip içindeki linkleri döndürür.
+    Önce düz metin arar, olmazsa base64 çözmeyi dener."""
+    try:
+        resp = requests.get(url, timeout=15)
+        resp.raise_for_status()
+        raw_text = resp.text.strip()
+    except Exception as e:
+        print(f"UYARI: '{url}' adresine bağlanılamadı: {e}")
+        return []
+
+    direct = extract_protocol_lines(raw_text)
+    if direct:
+        return direct
+
+    try:
+        padded = raw_text + "=" * (-len(raw_text) % 4)
+        decoded = base64.b64decode(padded).decode("utf-8", errors="ignore")
+        decoded_links = extract_protocol_lines(decoded)
+        if decoded_links:
+            return decoded_links
+        print(f"UYARI: '{url}' base64 çözüldü ama içinde tanınan bir VPN linki bulunamadı.")
+        return []
+    except Exception as e:
+        print(f"UYARI: '{url}' ne düz metin ne base64 olarak çözülebildi: {e}")
+        return []
+
+def load_v2_links():
+    """KODLARY V2'deki subscription URL'lerini çekip kendi ayrı havuzunu döndürür.
+    KODLARY dosyasına HİÇ dokunmaz, sadece bilgi amaçlı KODLARY_V2_SONUC.txt'ye yazar."""
+    if not os.path.exists(KODLARY_V2_FILE):
+        return []
+
+    sub_urls = [u.strip() for u in safe_read_lines(KODLARY_V2_FILE) if u.strip()]
+    if not sub_urls:
+        return []
+
+    all_links = []
+    for url in sub_urls:
+        if not url.startswith("http://") and not url.startswith("https://"):
+            print(f"UYARI: '{url}' bir HTTP/HTTPS linki gibi görünmüyor, atlanıyor.")
+            continue
+        links = fetch_subscription(url)
+        print(f"-> (V havuzu) '{url}' üzerinden {len(links)} link çekildi.")
+        all_links.extend(links)
+
+    if all_links:
+        try:
+            with open(KODLARY_V2_OUTPUT, "w", encoding="utf-8") as f:
+                f.write("\n".join(all_links) + "\n")
+        except Exception as e:
+            print(f"Yazma hatası ({KODLARY_V2_OUTPUT}): {e}")
+    else:
+        print("UYARI: KODLARY V2'deki hiçbir subscription'dan link çekilemedi. V havuzu boş.")
+
+    return all_links
+
 def parse_flag(token):
+    """T, K, V harflerinden oluşan, her harf en fazla 1 kere geçen bir kombinasyon.
+    Örnek geçerli: T, K, V, TK, KT, TV, VT, KV, VK, TKV, VKT, ..."""
     up = token.upper()
-    if up in ("T", "K", "TK", "KT"):
-        return up
-    return None
+    if not up or len(up) > 3:
+        return None
+    if any(ch not in VALID_FLAG_LETTERS for ch in up):
+        return None
+    if len(set(up)) != len(up):  # aynı harf tekrar etmesin
+        return None
+    return up
 
 def parse_definition(parts):
-    """parts[0] slot adı; geri kalanı customer + days (+ opsiyonel T/K/TK/KT).
+    """parts[0] slot adı; geri kalanı customer + days (+ opsiyonel T/K/V kombinasyonu).
     Dönüş: (customer, days, flag) veya None"""
     if len(parts) < 3:
         return None
@@ -69,10 +147,13 @@ def parse_definition(parts):
     return customer, days, flag
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/TK/KT destekli) sayaç sistemi başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V destekli) sayaç sistemi başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
+    v2_links = load_v2_links()
+
+    pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links}
 
     state_data = {}
     if os.path.exists(STATE_FILE):
@@ -82,7 +163,6 @@ def main():
         except:
             state_data = {}
 
-    # CONFIG dosyasını oku -> panel burası
     config_info = {}  # { "sub3": (customer, days, flag), ... }
     if os.path.exists(CONFIG_FILE):
         for raw_line in safe_read_lines(CONFIG_FILE):
@@ -131,7 +211,6 @@ def main():
 
         target_filename = matches[0]
 
-        # Dosya adından da çözmeyi dene (çelişki kontrolü için)
         fname_parts = target_filename.replace('_', ' ').replace('-', ' ').split()
         file_parsed = parse_definition(fname_parts)
 
@@ -152,15 +231,10 @@ def main():
         if flag is None:
             flag = "K"
 
-        # Hangi link havuzu / hangi sırayla kullanılacak
-        if flag == "T":
-            chosen_links = toplanan_links
-        elif flag == "K":
-            chosen_links = kodlary_links
-        elif flag == "TK":
-            chosen_links = toplanan_links + kodlary_links   # önce Toplanan, sonra KODLARY
-        else:  # KT
-            chosen_links = kodlary_links + toplanan_links   # önce KODLARY, sonra Toplanan
+        # Harflerin yazıldığı sırayla havuzları birleştir (örn. "KV" -> önce K sonra V)
+        chosen_links = []
+        for ch in flag:
+            chosen_links.extend(pools.get(ch, []))
 
         lines = safe_read_lines(target_filename)
         existing_header = [line.rstrip('\r\n') for line in lines[:12]]
