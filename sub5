@@ -3,7 +3,7 @@
 #profile-update-interval: 0
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
-#announce: 🦾𝑲𝑶𝑫 𝑰𝑺𝑳𝑬𝑴𝑬𝑺𝑬 𝟏 𝟐 𝑴𝑰𝑵𝑼𝑻📲𝑮𝑨𝑹𝑨𝑺𝒀𝑷 𝑶𝑩𝑵𝑨𝑽𝑰𝑻 𝑬𝑫𝑰Ň✅️【15-DAY】
+#announce: 🦾𝑲𝑶𝑫 𝑰𝑺𝑳𝑬𝑴𝑬𝑺𝑬 𝟏 𝟐 𝑴𝑰𝑵𝑼𝑻📲𝑮𝑨𝑹𝑨𝑺𝒀𝑷 𝑶𝑩𝑵𝑨𝑽𝑰𝑻 𝑬𝑫𝑰Ň✅️【14-DAY】
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 
 
@@ -70,20 +70,32 @@ vless://bced48b2-9e1d-42cb-ba1e-a75db41278ac@199.232.98.11:443?security=tls&type
 vless://bced48b2-9e1d-42cb-ba1e-a75db41278ac@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2F&host=polshaov.ochmaybrooooo.online&sni=polshaov.ochmaybrooooo.online&fp=chrome&alpn=http%2F1.1#🇫🇮 Finland ● FiberX
 vless://0764541b-3e57-4b47-954b-51e996fae5fc@78.159.247.123:7444?encryption=none&flow=xtls-rprx-vision&pbk=-P8DgKISSG4jnLuj6ihZDqZs1_zt-juBrhVhTylHiAo&security=reality&sni=akamai.com&type=raw#🇵🇱 Poland ● SkyCloud
 vless://0764541b-3e57-4b47-954b-51e996fae5fc@78.159.247.166:7444?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=-P8DgKISSG4jnLuj6ihZDqZs1_zt-juBrhVhTylHiAo&security=reality&sni=akamai.com&type=raw#🇦🇪 United Arab Emirates ● SkyCloud
-vless://0dc1fc26-b8e9-4296-9870-0996de3c2333@46.149.68.186:443?encryption=none&flow=xtls-rprx-vision&fp=safari&pbk=4t-8LeQkH7txTsku5dNet3yRZ_9910XFa9AT0DPi4mQ&security=reality&sni=tw-1.kihsuyhf8jkiugsxb.cfd&type=raw#🇹🇷 Turkey ● EdgeNet
-vless://6d60c73d-5915-4cf8-b155-e522dfd863bb@31.128.37.67:16560?encryption=none&security=none&type=raw#🇨🇭 Switzerland ● EdgeNet
-vless://2dd5713c-5dff-4dc5-b2c9-cae0e4873c87@87.242.95.198:4443?encryption=none&flow=xtls-rprx-vision&fp=edge&pbk=uYiZWRgbowvS9uOhVZTe0FBS1pLzA3QMyQ_NfDh4_h8&security=reality&sid=f4463a89cbd4ba4c&sni=fr-c63e107f41.sishka.network&type=raw#🇷🇺 Russia ● CloudWave
-vless://cf222b71-f3a2-44b9-8535-5c725b22eac4@185.178.208.176:443?alpn=h3%2Ch2&encryption=none&fp=chrome&host=founders-blog.online&path=%2Fstream%2F615428%2Fsocket&security=tls&sni=founders-blog.online&type=ws#🇹🇭 Thailand ● CloudWave
-vless://cf222b71-f3a2-44b9-8535-5c725b22eac4@87.242.127.240:443?encryption=none&fp=firefox&mode=gun&pbk=mK6jUHK0Iv4jpVqpvs4oadjh2Pifkz4QwrOdhWHJ9U0&security=reality&sni=360.yandex.ru&type=grpc#🇮🇩 Indonesia ● HyperLink
-vless://41f4cb15-5a3f-3934-89fe-b4177146adf4@193.53.126.91:443?encryption=none&flow=xtls-rprx-vision&type=raw&security=tls&sni=u643766u53fe439es2358.gogocs.xyz&alpn=h2%2Chttp%2F1.1&headertype=none&fp=safari#🇻🇳 Vietnam ● HyperLink
-vless://b3a11068-1a7e-4643-85de-7c82cce46943@51.250.98.44:33743?encryption=none&pbk=wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY&security=reality&serviceName=TunService&sni=www.google.com&type=grpc&fp=firefox#🇨🇿 Czechia ● FastNet
-vless://39d927a4-b8c7-4dc7-91f1-8b2e05d8b6b6@ns.o11111o.club:443?encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&serviceName=vless-grpc-reality&sni=id.vk.com&type=grpc&fp=ios#🇦🇹 Austria ● FastNet
-vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@95.143.190.125:9895?encryption=none&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&security=reality&serviceName=grpc-tunnel&sid=aabb&sni=dl.google.com&type=grpc&fp=safari#🇧🇪 Belgium ● PowerCloud
-vless://5a92a9d2-3067-49cd-bfc5-989bbdfc5d52@78.159.247.214:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=NsTRRl4ofT64w0VwmkpOWE8yfiXLcEqgwgi-9SGnXTA&security=reality&sid=a1b2c3d4&sni=kinopoisk.ru&type=raw#🇸🇪 Sweden ● PowerCloud
-vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@82.202.143.37:9830?type=grpc&security=reality&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&sid=aabb&sni=dl.google.com&serviceName=grpc-tunnel&fp=ios#🇳🇴 Norway ● SkyNet
-vless://39d927a4-b8c7-4dc7-91f1-8b2e05d8b6b6@78.159.240.41:443?encryption=none&fp=safari&mode=gun&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&serviceName=vless-grpc-reality&sni=id.vk.com&type=grpc#🇩🇰 Denmark ● SkyNet
-vless://2c7f1414-87ae-4a01-9796-a02c067891a6@176.109.88.216:443?encryption=none&flow=xtls-rprx-vision&fp=qq&pbk=oqRus6Z_Q1jqJaTEPu7ENbRL0-XKOw54K0jwCCGLtEk&security=reality&sid=a9c4f17e3b62d8&sni=api-maps.yandex.ru&type=raw#🇮🇪 Ireland ● CloudPrime
-vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@94.241.143.161:9871?encryption=none&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&security=reality&serviceName=grpc-tunnel&sid=aabbccdd&sni=dl.google.com&type=grpc&fp=qq#🇵🇹 Portugal ● CloudPrime
-vless://39d927a4-b8c7-4dc7-91f1-8b2e05d8b6b6@91.107.122.217:443?encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&serviceName=vless-grpc-reality&sni=id.vk.com&type=grpc&fp=qq#🇪🇸 Spain ● FiberCloud
-vless://5a92a9d2-3067-49cd-bfc5-989bbdfc5d52@78.159.247.170:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=NsTRRl4ofT64w0VwmkpOWE8yfiXLcEqgwgi-9SGnXTA&security=reality&sid=a1b2c3d4&sni=kinopoisk.ru&type=raw#🇮🇹 Italy ● FiberCloud
-ss://bced48b2-9e1d-42cb-ba1e-a75db41278ac@199.232.98.11:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd5.global.ssl.fastly.net&path=%2F#🇭🇺 Hungary ● NovaCloud
+vless://4eb4d166-42c7-4e06-b71f-243a2fc0a432@46.243.142.184:4443?encryption=none&fp=firefox&host=k7vqz.nodes.ac&mode=stream-one&path=%2Fx&pbk=h4ykk3TnjOoph-89y4vL9A_V9nQB1yp1WMN344yhU3I&security=reality&sid=791176388131b7e2&sni=k7vqz.nodes.ac&type=xhttp#🇹🇷 Turkey ● EdgeNet
+vless://abbbee7f-8d57-4639-b1e4-2da523e70a42@37.9.4.128:443?alpn=h2%2Chttp%2F1.1&encryption=none&fp=firefox&host=api1.madapp.cc&mode=packet-up&path=%2Fapi%2Fv2%2F&security=tls&sni=api1.madapp.cc&type=xhttp#🇨🇭 Switzerland ● EdgeNet
+vless://abbbee7f-8d57-4639-b1e4-2da523e70a42@188.68.218.160:443?alpn=h2%2Chttp%2F1.1&encryption=none&fp=firefox&host=host10.pushbyte.cc&mode=packet-up&path=%2Fapi%2Fv2%2F&security=tls&sni=host10.pushbyte.cc&type=xhttp#🇷🇺 Russia ● CloudWave
+vless://abbbee7f-8d57-4639-b1e4-2da523e70a42@31.129.42.37:443?alpn=h2%2Chttp%2F1.1&encryption=none&fp=firefox&host=api10.datapull.cc&mode=packet-up&path=%2Fapi%2Fv2%2F&security=tls&sni=api10.datapull.cc&type=xhttp#🇹🇭 Thailand ● CloudWave
+vless://abbbee7f-8d57-4639-b1e4-2da523e70a42@188.68.218.110:443?alpn=h2%2Chttp%2F1.1&encryption=none&fp=firefox&host=cache.datapull.cc&mode=packet-up&path=%2Fapi%2Fv2%2F&security=tls&sni=cache.datapull.cc&type=xhttp#🇮🇩 Indonesia ● HyperLink
+vless://2aa7f4b1-e859-46d0-b8ac-8587811ab7b1@212.67.9.113:2200?encryption=none&path=%2Fv1&security=none&type=ws#🇻🇳 Vietnam ● HyperLink
+vless://6d4767ac-89d3-4251-84b5-207204bae98a@185.86.144.101:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY&security=reality&sni=yandex.ru&type=raw#🇨🇿 Czechia ● FastNet
+vless://2c7f1414-87ae-4a01-9796-a02c067891a6@176.109.88.216:443?encryption=none&flow=xtls-rprx-vision&fp=qq&pbk=oqRus6Z_Q1jqJaTEPu7ENbRL0-XKOw54K0jwCCGLtEk&security=reality&sid=a9c4f17e3b62d8&sni=api-maps.yandex.ru&type=raw#🇦🇹 Austria ● FastNet
+vless://5a1e5ffe-13ba-42c7-abb3-ada617ea1e29@87.242.95.198:4443?encryption=none&flow=xtls-rprx-vision&fp=edge&pbk=uYiZWRgbowvS9uOhVZTe0FBS1pLzA3QMyQ_NfDh4_h8&security=reality&sid=dd4968db2495895d&sni=fr-c63e107f41.sishka.network&type=raw#🇧🇪 Belgium ● PowerCloud
+vless://4eb4d166-42c7-4e06-b71f-243a2fc0a432@95.129.236.216:443?alpn=http%2F1.1&encryption=none&fp=firefox&host=cdnguard.org&path=%2Forigin%2F190546791%2Ffetch&security=tls&sni=cdnguard.org&type=ws#🇸🇪 Sweden ● PowerCloud
+vless://27c60527-eb73-45fb-b354-d419c980b48d@185.178.208.176:443?alpn=h3%2Ch2&encryption=none&fp=chrome&host=founders-blog.online&path=%2Fstream%2F615428%2Fsocket&security=tls&sni=founders-blog.online&type=ws#🇳🇴 Norway ● SkyNet
+vless://4eb4d166-42c7-4e06-b71f-243a2fc0a432@46.243.142.89:9443?encryption=none&fp=firefox&host=wl-pl-1.nodes.ac&mode=stream-one&path=%2Fx&pbk=5hhzoP441DrGa2l5YlwizPSA5chdY2VjRP7CiEfLLA0&security=reality&sid=eea4ab7bddaeea39&sni=pl-1.nodes.ac&type=xhttp#🇩🇰 Denmark ● SkyNet
+vless://4eb4d166-42c7-4e06-b71f-243a2fc0a432@46.243.142.42:8443?encryption=none&fp=firefox&host=wl-pl-1.nodes.ac&mode=stream-one&path=%2Fx&pbk=5hhzoP441DrGa2l5YlwizPSA5chdY2VjRP7CiEfLLA0&security=reality&sid=eea4ab7bddaeea39&sni=pl-1.nodes.ac&type=xhttp#🇮🇪 Ireland ● CloudPrime
+vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@82.202.143.37:9830?type=grpc&security=reality&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&sid=aabbccdd&sni=dl.google.com&serviceName=grpc-tunnel&fp=ios#🇵🇹 Portugal ● CloudPrime
+vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@95.143.190.125:9895?encryption=none&pbk=bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU&security=reality&serviceName=grpc-tunnel&sni=dl.google.com&type=grpc&fp=firefox#🇪🇸 Spain ● FiberCloud
+vless://98351e0c-8fe6-4c17-aed3-ff2830ae1c5e@217.16.27.113:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=AiG06E-jizo9xtBbulKQvdQqhZfobZJBTQIKkaDjaiU&security=reality&sid=a1b2c3d4e5&sni=eh.vk.com&type=raw#🇮🇹 Italy ● FiberCloud
+vless://6d4767ac-89d3-4251-84b5-207204bae98a@213.219.214.33:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=PL09r78ubjFaOILv5x6HPsCZeTdwhlRb3tuDY5vASwQ&security=reality&sni=yandex.ru&type=raw#🇭🇺 Hungary ● NovaCloud
+vless://39d927a4-b8c7-4dc7-91f1-8b2e05d8b6b6@ns.o11111o.club:443?encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&serviceName=vless-grpc-reality&sni=id.vk.com&type=grpc&fp=safari#🇧🇬 Bulgaria ● NovaCloud
+vless://76186f1e-3062-4a2b-98c2-fab3c61a9511@188.124.47.34:9891?encryption=none&pbk=Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0&security=reality&serviceName=grpc-tunnel&sid=aabbccdd&sni=dl.google.com&type=grpc&fp=edge#🇭🇷 Croatia ● EdgeCloud
+vless://0dc1fc26-b8e9-4296-9870-0996de3c2333@5.188.115.119:8443?encryption=none&flow=xtls-rprx-vision&fp=safari&pbk=aVmuYo7bRHD_fitsWFFVpBx-l6vcaUyrR_12xYSHVzo&security=reality&sid=4fb6032b378d19d5&sni=api-maps.yandex.ru&type=raw#🇷🇸 Serbia ● EdgeCloud
+vless://0dc1fc26-b8e9-4296-9870-0996de3c2333@188.225.62.97:443?encryption=none&flow=xtls-rprx-vision&fp=ios&pbk=aVmuYo7bRHD_fitsWFFVpBx-l6vcaUyrR_12xYSHVzo&security=reality&sid=4fb6032b378d19d5&sni=api-maps.yandex.ru&type=raw#🇬🇷 Greece ● HyperCloud
+vless://39d927a4-b8c7-4dc7-91f1-8b2e05d8b6b6@91.107.122.141:443?encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&serviceName=vless-grpc-reality&sni=id.vk.com&type=grpc&fp=safari#🇮🇱 Israel ● HyperCloud
+vless://6d60c73d-5915-4cf8-b155-e522dfd863bb@31.128.37.67:16560?encryption=none&security=none&type=raw#🇲🇽 Mexico ● CloudPro
+vless://27c60527-eb73-45fb-b354-d419c980b48d@87.242.127.240:443?encryption=none&fp=firefox&mode=gun&pbk=mK6jUHK0Iv4jpVqpvs4oadjh2Pifkz4QwrOdhWHJ9U0&security=reality&sni=360.yandex.ru&type=grpc#🇧🇷 Brazil ● CloudPro
+vless://39d927a4-b8c7-4dc7-91f1-8b2e05d8b6b6@78.159.240.41:443?encryption=none&fp=ios&mode=gun&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&serviceName=vless-grpc-reality&sni=id.vk.com&type=grpc#🇦🇷 Argentina ● FiberPro
+vless://1636fed9-2774-4c7b-b0cc-d34176ddc33a@185.40.153.217:443?encryption=none&fp=qq&mode=gun&pbk=1vSZjvhZO01oAEH3b7eebR1qF5dLU1Dq2E7xu8pwGSs&security=reality&serviceName=grpc-vk&sid=428ef87fd47a3a52&sni=ads.x5.ru&spx=%2F&type=grpc#🇨🇱 Chile ● FiberPro
+vless://5a92a9d2-3067-49cd-bfc5-989bbdfc5d52@78.159.247.170:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=NsTRRl4ofT64w0VwmkpOWE8yfiXLcEqgwgi-9SGnXTA&security=reality&sid=a1b2c3d4&sni=kinopoisk.ru&type=raw#🇨🇴 Colombia ● SkyPro
+vless://5a92a9d2-3067-49cd-bfc5-989bbdfc5d52@78.159.247.214:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=NsTRRl4ofT64w0VwmkpOWE8yfiXLcEqgwgi-9SGnXTA&security=reality&sid=a1b2c3d4&sni=kinopoisk.ru&type=raw#🇵🇪 Peru ● SkyPro
+ss://bced48b2-9e1d-42cb-ba1e-a75db41278ac@199.232.98.11:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd5.global.ssl.fastly.net&path=%2F#🇿🇦 South Africa ● FastPro
