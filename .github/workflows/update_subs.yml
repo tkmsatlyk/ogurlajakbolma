@@ -10,6 +10,8 @@ on:
     paths:
       - 'KODLARY'
       - 'CONFIG'
+      - 'Toplanan_linkler.txt'
+      - 'KODLARY_V2'
 
 permissions:
   contents: write  # <-- HatanÄ±n Ã§Ã¶zÃ¼mÃ¼ burasÄ±! Git push yetkisi verir.
