@@ -7,7 +7,7 @@ from datetime import datetime, date
 
 STATE_FILE = "state.json"
 KODLARY_FILE = "KODLARY"
-KODLARY_V2_FILE = "KODLARY V2"
+KODLARY_V2_FILE = "KODLARY_V2"
 KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
 CONFIG_FILE = "CONFIG"
@@ -43,6 +43,8 @@ def load_links(path):
     return links
 
 def extract_protocol_lines(text):
+    """Sadece vless/vmess/trojan/ss/hysteria/tuic ile başlayan satırları alır,
+    #profile-title, #announce gibi başlık satırlarını hiç almaz."""
     found = []
     for raw_line in text.splitlines():
         line = raw_line.strip()
@@ -78,13 +80,15 @@ def fetch_subscription(url):
         return []
 
 def load_v2_links():
-    """KODLARY V2'deki subscription URL'lerini çekip kendi ayrı havuzunu döndürür.
+    """KODLARY_V2'deki subscription URL'lerini çekip kendi ayrı havuzunu döndürür.
     KODLARY dosyasına HİÇ dokunmaz, sadece bilgi amaçlı KODLARY_V2_SONUC.txt'ye yazar."""
     if not os.path.exists(KODLARY_V2_FILE):
+        print(f"UYARI: '{KODLARY_V2_FILE}' dosyası bulunamadı, V havuzu boş kalacak.")
         return []
 
     sub_urls = [u.strip() for u in safe_read_lines(KODLARY_V2_FILE) if u.strip()]
     if not sub_urls:
+        print(f"UYARI: '{KODLARY_V2_FILE}' boş, V havuzu boş kalacak.")
         return []
 
     all_links = []
@@ -103,7 +107,7 @@ def load_v2_links():
         except Exception as e:
             print(f"Yazma hatası ({KODLARY_V2_OUTPUT}): {e}")
     else:
-        print("UYARI: KODLARY V2'deki hiçbir subscription'dan link çekilemedi. V havuzu boş.")
+        print("UYARI: KODLARY_V2'deki hiçbir subscription'dan link çekilemedi. V havuzu boş.")
 
     return all_links
 
