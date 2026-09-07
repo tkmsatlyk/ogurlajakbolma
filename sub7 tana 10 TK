@@ -10,48 +10,22 @@ vless://90eb3405-0eff-4395-9346-b39234eac059@199.232.86.46:443?security=tls&type
 vless://90eb3405-0eff-4395-9346-b39234eac059@199.232.86.46:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh3.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇺🇸 United States 2 • Google
 vless://90eb3405-0eff-4395-9346-b39234eac059@199.232.86.46:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇩🇪 Germany 1 • CDNRoute
 vless://90eb3405-0eff-4395-9346-b39234eac059@104.21.10.161:443?security=tls&type=xhttp&headerType=&path=%2F&host=145.baklajann.ru&mode=packet-up&sni=145.baklajann.ru&fp=chrome&alpn=h3&fragment=3%2C1%2Ctlshello#🇩🇪 Germany 2 • Cloudflare
-vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇯🇵 Japan ● CloudX
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇺🇸 United States ● CloudX
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇸🇬 Singapore ● HyperWiFi
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇭🇰 Hong Kong ● HyperWiFi
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇳🇱 Netherlands ● CloudLine
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇹🇼 Taiwan ● CloudLine
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇰🇷 South Korea ● HyperNet
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBOVZJaU8wMGZzcGZ1bEZWMEJfRXluYW80ZXB1WVd2OQ==@193.233.219.28:1080#🇨🇦 Canada ● HyperNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh1.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇦🇺 Australia ● PowerNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@8.6.112.0:443?security=tls&type=xhttp&headerType=&path=%2F&host=51.baklajann.ru&mode=packet-up&sni=51.baklajann.ru&fp=chrome&alpn=h3&fragment=3%2C1%2Ctlshello#🇬🇧 United Kingdom ● PowerNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh3.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇩🇪 Germany ● FastCloud
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇫🇷 France ● FastCloud
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh6.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇮🇳 India ● NovaNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇲🇾 Malaysia ● NovaNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@216.24.57.1:443?security=tls&type=xhttp&headerType=&path=%2F&host=kan7.gaipidor.ru&mode=packet-up&sni=kan7.gaipidor.ru&fp=chrome&alpn=h3&fragment=3%2C1%2Ctlshello#🇷🇴 Romania ● FiberX
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇫🇮 Finland ● FiberX
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇵🇱 Poland ● SkyCloud
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇦🇪 United Arab Emirates ● SkyCloud
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇹🇷 Turkey ● EdgeNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇨🇭 Switzerland ● EdgeNet
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇷🇺 Russia ● CloudWave
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=ov1.global.ssl.fastly.net&mode=packet-up&sni=api.fastly.com&fp=chrome&alpn=h3#🇹🇭 Thailand ● CloudWave
-vless://cc4496b3-59db-4f40-b18c-6fa1c79985a0@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2F&host=polshaov.ochmaybrooooo.online&sni=polshaov.ochmaybrooooo.online&fp=chrome&alpn=http%2F1.1#🇮🇩 Indonesia ● HyperLink
-vless://8d1a1b09-12d6-4b76-82f0-893cc805d9c0@46.173.25.146:443?encryption=none&flow=xtls-rprx-vision&fp=qq&pbk=djTtGqd0XWqtt_WHukU7BTPQSn9o7gIpAosAxMy8tUo&security=reality&sid=ea1058117be12087&sni=ru.crunch-crunch.com&type=raw#🇻🇳 Vietnam ● HyperLink
-vless://4e358a16-f113-4779-8691-d88acd1d2395@201.24.117.25:19210?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=rvcGpldftiQ1_SD8XFNLq2L9VkU0yME0YYgTw6guHhE&security=reality&sid=5b&sni=travel.yandex.com&type=raw#🇨🇿 Czechia ● FastNet
-vless://56cba26b-efcb-40d0-838a-d66df2dd516f@83.147.255.88:443?security=tls&sni=sni.868001.xyz&type=ws&headerType=none&host=sni.868001.xyz&path=%2Fproxyip%3Dtw.william.us.ci%3Fuuid%3D82bc2875-3fee-49d1-ab29-e108a7b1e5f9&fp=safari#🇦🇹 Austria ● FastNet
-vless://633f424e-2b11-48da-a6b3-a849dd71456f@45.12.75.242:26424?encryption=none&fp=firefox&pbk=l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0&security=reality&sid=23103e1e&sni=ya.ru&type=raw#🇧🇪 Belgium ● PowerCloud
-vless://b7797db2-27fa-4127-a9f7-18ae181a1cb7@79.174.92.85:6443?encryption=none&fp=edge&mode=gun&pbk=lU1yF2A1b0lM9DZbXWPpLfoU7_KQpXOYX0NFrPEIJy8&security=reality&serviceName=grpc&sid=bad5722c72a0&sni=iv.kommersant.ru&type=grpc#🇸🇪 Sweden ● PowerCloud
-vless://ecf728d9-1555-4e12-b178-1d8bd98465e4@217.19.122.47:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=0UUWi4Ds_Rp889_u0YNOX9PAiP10MLzetKrxS_Nhejc&security=reality&sni=rulte.horizonless.pro&spx=%2F&type=raw#🇳🇴 Norway ● SkyNet
-vless://af9c2bcf-fe68-4379-9c78-6e5f1b4af0e2@217.16.31.162:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw&security=reality&sid=e7&sni=max.ru&type=raw#🇩🇰 Denmark ● SkyNet
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇮🇪 Ireland ● CloudPrime
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇵🇹 Portugal ● CloudPrime
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇪🇸 Spain ● FiberCloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇮🇹 Italy ● FiberCloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇭🇺 Hungary ● NovaCloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇧🇬 Bulgaria ● NovaCloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoa3BKcEFkRGFraXZIVmltVHQzMno0b1F3LUVaZGZDUQ==@193.233.219.28:1080#🇭🇷 Croatia ● EdgeCloud
-ss://chacha20-ietf-poly1305:IihZeI4m_wLomzfBncxLpt517Egp3vq8@193.233.220.248:1080#🇷🇸 Serbia ● EdgeCloud
-vless://08c84ad4-ead0-4619-979f-b2e2cd6d7550@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=goldrone-rextare.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1%2C3%2Ctlshello#🇬🇷 Greece ● HyperCloud
-vless://08c84ad4-ead0-4619-979f-b2e2cd6d7550@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=goldrone-rextare.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1%2C3%2Ctlshello#🇮🇱 Israel ● HyperCloud
-vless://08c84ad4-ead0-4619-979f-b2e2cd6d7550@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=goldrone-rextare.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1%2C3%2Ctlshello#🇲🇽 Mexico ● CloudPro
-vless://08c84ad4-ead0-4619-979f-b2e2cd6d7550@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=goldrone-rextare.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1%2C3%2Ctlshello#🇧🇷 Brazil ● CloudPro
-vless://08c84ad4-ead0-4619-979f-b2e2cd6d7550@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=goldrone-rextare.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1%2C3%2Ctlshello#🇦🇷 Argentina ● FiberPro
-vless://08c84ad4-ead0-4619-979f-b2e2cd6d7550@199.232.96.12:443?security=tls&type=xhttp&headerType=&path=%2F&host=goldrone-rextare.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1%2C3%2Ctlshello#🇨🇱 Chile ● FiberPro
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇯🇵 Japan ● CloudX
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇺🇸 United States ● CloudX
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇸🇬 Singapore ● HyperWiFi
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇭🇰 Hong Kong ● HyperWiFi
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇳🇱 Netherlands ● CloudLine
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇹🇼 Taiwan ● CloudLine
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@193.233.219.28:1080#🇰🇷 South Korea ● HyperNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxcU9yWWpGZmJNcEFhc245eFNJVldoUDRESXZVYmlicQ==@94.228.167.221:1080#🇨🇦 Canada ● HyperNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇦🇺 Australia ● PowerNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇬🇧 United Kingdom ● PowerNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇩🇪 Germany ● FastCloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇫🇷 France ● FastCloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇮🇳 India ● NovaNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇲🇾 Malaysia ● NovaNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@193.233.219.28:1080#🇷🇴 Romania ● FiberX
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3ZVhzVlB5SjU0eURHWmtlUXRoZDR0NGxvYm5nZ3pmYw==@94.228.167.221:1080#🇫🇮 Finland ● FiberX
+ss://YWVzLTEyOC1nY206TVRCMWMySndkWHBDVEdScVpEUklTVUZHUkVaalJUTlpUVXRaYUdrNWFHNWxZV2M1U0ZacFYySnJTRkpQTkdoM2VXVjFOWEJ3WTNoVVRrUkVRbWRLY0E9PUAyMDAuMTY5LjE4MC4xOTU6MTY0NzM#🇵🇱 Poland ● SkyCloud
+ss://31f062b6-e694-47b3-bca0-0c2b05dfecda@199.232.96.12:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=ovd10.global.ssl.fastly.net&path=%2F#🇦🇪 United Arab Emirates ● SkyCloud
 👍
