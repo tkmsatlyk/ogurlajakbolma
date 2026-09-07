@@ -7,73 +7,138 @@ import urllib.request
 from html.parser import HTMLParser
 from datetime import datetime
 
+
+# ============================================================
+# AYARLAR
+# ============================================================
+
 CHANNELS = [
     "https://t.me/s/ares_happ",
     "https://t.me/s/Richman_vpns",
+    "https://t.me/s/happvpn",
     "https://t.me/s/expensive_vpn",
     "https://t.me/s/aron58",
 ]
 
 OUTPUT_FILE = "Toplanan_linkler.txt"
 NAMES_FILE = "names.txt"
+
 MAX_MESSAGES_TO_SCAN = 100
 
+
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120.0.0.0 Mobile Safari/537.36"
+    "User-Agent": (
+        "Mozilla/5.0 "
+        "(Linux; Android 10) "
+        "AppleWebKit/537.36 "
+        "Chrome/120.0.0.0 "
+        "Mobile Safari/537.36"
+    )
 }
 
-CRYPT5_PATTERN = re.compile(r'happ://crypt5/[^\s<>"\']+', re.I)
-SS_PATTERN = re.compile(r'ss://[^\s<>"\']+', re.I)
 
-VPN_PATTERN = re.compile(
-    r'(?:'
-    r'vless://[^\s<>"\']+'
-    r'|vmess://[^\s<>"\']+'
-    r'|trojan://[^\s<>"\']+'
-    r'|ss://[^\s<>"\']+'
-    r'|ssr://[^\s<>"\']+'
-    r'|tuic://[^\s<>"\']+'
-    r'|hysteria2://[^\s<>"\']+'
-    r'|hy2://[^\s<>"\']+'
-    r'|socks5://[^\s<>"\']+'
-    r')',
-    re.I,
+# ============================================================
+# PATTERNLER
+# ============================================================
+
+CRYPT5_PATTERN = re.compile(
+    r"happ://crypt5/[^\s<>\"']+",
+    re.IGNORECASE,
 )
 
 
+HTTP_PATTERN = re.compile(
+    r"https?://[^\s<>\"']+",
+    re.IGNORECASE,
+)
+
+
+VPN_PATTERN = re.compile(
+    r"(?:"
+    r"vless://[^\s<>\"']+"
+    r"|vmess://[^\s<>\"']+"
+    r"|trojan://[^\s<>\"']+"
+    r"|ss://[^\s<>\"']+"
+    r"|ssr://[^\s<>\"']+"
+    r"|tuic://[^\s<>\"']+"
+    r"|hysteria://[^\s<>\"']+"
+    r"|hysteria2://[^\s<>\"']+"
+    r"|hy2://[^\s<>\"']+"
+    r"|socks://[^\s<>\"']+"
+    r"|socks5://[^\s<>\"']+"
+    r")",
+    re.IGNORECASE,
+)
+
+
+# ============================================================
+# YARDIMCI FONKSİYONLAR
+# ============================================================
+
 def clean_link(link):
-    return html.unescape(link).strip().rstrip('.,;:!?)]}\'"<>')
+
+    link = html.unescape(link)
+    link = link.strip()
+
+    return link.rstrip(
+        ".,;:!?)]}'\"<>"
+    )
 
 
 def unique_links(links):
+
     result = []
     seen = set()
 
-    for link in links or []:
+    for link in links:
+
+        if not link:
+            continue
+
         link = clean_link(link)
 
         if link and link not in seen:
+
             seen.add(link)
             result.append(link)
 
     return result
 
 
-def http_get(url, verify_ssl=True):
+def extract_vpn_links(text):
+
+    if not text:
+        return []
+
+    return unique_links(
+        VPN_PATTERN.findall(text)
+    )
+
+
+# ============================================================
+# HTTP GET
+# ============================================================
+
+def http_get(
+    url,
+    verify_ssl=True
+):
+
     request = urllib.request.Request(
         url,
-        headers=HEADERS
+        headers=HEADERS,
     )
 
     context = None
 
     if not verify_ssl:
+
         context = ssl._create_unverified_context()
 
     with urllib.request.urlopen(
         request,
         timeout=30,
-        context=context
+        context=context,
     ) as response:
 
         data = response.read()
@@ -85,241 +150,155 @@ def http_get(url, verify_ssl=True):
 
         return data.decode(
             charset,
-            errors="ignore"
+            errors="ignore",
         )
 
 
-def parse_datetime(value):
-    if not value:
+# ============================================================
+# BASE64 ÇÖZ
+# ============================================================
+
+def try_base64_decode(text):
+
+    if not text:
         return None
 
     try:
-        return datetime.fromisoformat(
-            value.replace("Z", "+00:00")
-        )
-    except ValueError:
-        return None
 
+        value = text.strip()
 
-class TelegramMessageParser(HTMLParser):
-
-    def __init__(self):
-        super().__init__(
-            convert_charrefs=True
+        decoded = base64.b64decode(
+            value
+            + "=" * (-len(value) % 4),
+            validate=False,
         )
 
-        self.depth = 0
-        self.current = None
-        self.messages = []
+        decoded_text = decoded.decode(
+            "utf-8",
+            errors="ignore",
+        )
 
-    def handle_starttag(self, tag, attrs):
+        if "://" in decoded_text:
 
-        attrs = dict(attrs)
+            return decoded_text
 
-        if tag == "div":
+    except Exception:
 
-            classes = attrs.get(
-                "class",
-                ""
-            ).split()
+        pass
 
-            if (
-                self.depth == 0
-                and "tgme_widget_message" in classes
-            ):
-
-                self.depth = 1
-
-                self.current = {
-                    "datetime": None,
-                    "text": "",
-                    "ss": [],
-                    "crypt5": [],
-                }
-
-                return
-
-            if self.depth > 0:
-                self.depth += 1
-
-        if (
-            self.depth > 0
-            and tag == "time"
-            and self.current
-        ):
-
-            value = attrs.get(
-                "datetime"
-            )
-
-            if (
-                value
-                and not self.current["datetime"]
-            ):
-
-                self.current["datetime"] = value
-
-        if self.depth > 0 and self.current:
-
-            for value in attrs.values():
-
-                if value:
-                    self.find_links(value)
-
-    def handle_data(self, data):
-
-        if (
-            self.depth > 0
-            and self.current
-        ):
-
-            self.current["text"] += data
-            self.find_links(data)
-
-    def find_links(self, text):
-
-        if not self.current:
-            return
-
-        for link in SS_PATTERN.findall(text):
-
-            link = clean_link(link)
-
-            if link not in self.current["ss"]:
-                self.current["ss"].append(link)
-
-        for link in CRYPT5_PATTERN.findall(text):
-
-            link = clean_link(link)
-
-            if link not in self.current["crypt5"]:
-                self.current["crypt5"].append(link)
-
-    def handle_endtag(self, tag):
-
-        if self.depth <= 0 or tag != "div":
-            return
-
-        self.depth -= 1
-
-        if (
-            self.depth == 0
-            and self.current
-        ):
-
-            self.messages.append(
-                self.current
-            )
-
-            self.current = None
+    return None
 
 
-def get_channel_messages(channel):
+# ============================================================
+# HTTPS / HTTP ABONELİK KONTROL
+# ============================================================
+
+def get_links_from_http(url):
+
+    url = clean_link(url)
 
     print()
-    print("=" * 70)
-    print("KANAL:", channel)
-    print("=" * 70)
+    print(
+        "HTTPS/HTTP kontrol ediliyor:"
+    )
+    print(url)
 
-    try:
+    content = None
 
-        content = http_get(channel)
-
-    except Exception as error:
-
-        print(
-            "Normal bağlantı başarısız:",
-            error
-        )
+    for verify_ssl in (
+        True,
+        False
+    ):
 
         try:
 
             content = http_get(
-                channel,
-                verify_ssl=False
+                url,
+                verify_ssl=verify_ssl,
             )
+
+            break
+
+        except Exception as error:
 
             print(
-                "SSL doğrulaması kapatılarak bağlantı başarılı."
+                "Bağlantı hatası:",
+                error,
             )
 
-        except Exception as error2:
+    if content is None:
 
-            print(
-                "Kanal okunamadı:",
-                error2
-            )
+        return []
 
-            return False, []
+    # --------------------------------------------------------
+    # 1. DİREKT VPN LINKLERİ
+    # --------------------------------------------------------
 
-    parser = TelegramMessageParser()
-    parser.feed(content)
-
-    if not parser.messages:
-
-        print(
-            "Telegram mesajı bulunamadı."
-        )
-
-        return True, []
-
-    dated = []
-
-    for message in parser.messages:
-
-        dt = parse_datetime(
-            message["datetime"]
-        )
-
-        if dt:
-
-            dated.append(
-                (dt, message)
-            )
-
-    if dated:
-
-        dated.sort(
-            key=lambda x: x[0],
-            reverse=True
-        )
-
-        messages = [
-            x[1]
-            for x in dated
-        ]
-
-    else:
-
-        messages = list(
-            reversed(parser.messages)
-        )
-
-    print(
-        "Bulunan mesaj:",
-        len(messages)
+    direct_links = extract_vpn_links(
+        content
     )
 
-    return True, messages
+    if direct_links:
 
+        print(
+            "HTTP içinden VPN bulundu:",
+            len(direct_links),
+        )
+
+        return direct_links
+
+    # --------------------------------------------------------
+    # 2. BASE64 ÇÖZ
+    # --------------------------------------------------------
+
+    decoded = try_base64_decode(
+        content
+    )
+
+    if decoded:
+
+        decoded_links = extract_vpn_links(
+            decoded
+        )
+
+        if decoded_links:
+
+            print(
+                "Base64 içinden VPN bulundu:",
+                len(decoded_links),
+            )
+
+            return decoded_links
+
+    print(
+        "Bu HTTP/HTTPS linki VPN içermiyor."
+    )
+
+    return []
+
+
+# ============================================================
+# HAPP CRYPT5 ÇÖZ
+# ============================================================
 
 def decrypt_happ(happ_link):
 
+    print()
     print(
-        "CRYPT5 çözülüyor:",
-        happ_link
+        "CRYPT5 çözülüyor:"
     )
+    print(happ_link)
 
     try:
 
         result = subprocess.run(
             [
                 "hpwnr",
-                happ_link
+                happ_link,
             ],
             capture_output=True,
             text=True,
-            timeout=60
+            timeout=60,
         )
 
     except FileNotFoundError:
@@ -339,125 +318,341 @@ def decrypt_happ(happ_link):
         return []
 
     output = (
-        result.stdout or ""
-    ) + "\n" + (
-        result.stderr or ""
+        (result.stdout or "")
+        + "\n"
+        + (result.stderr or "")
     )
 
     if result.returncode != 0:
 
         print(
-            "hpwnr hata verdi:",
+            "CRYPT5 çözme hatası:"
+        )
+
+        print(
             output.strip()
         )
 
         return []
 
-    urls = re.findall(
-        r'https?://[^\s<>"\']+',
-        output,
-        re.I
+    # --------------------------------------------------------
+    # CRYPT5 ÇIKTISINDA DOĞRUDAN VPN
+    # --------------------------------------------------------
+
+    direct_vpn = extract_vpn_links(
+        output
     )
 
-    urls = unique_links(urls)
-
-    if urls:
+    if direct_vpn:
 
         print(
-            "Çözülen abonelik URL sayısı:",
-            len(urls)
+            "CRYPT5 içinden direkt VPN bulundu:",
+            len(direct_vpn),
         )
 
-        return urls
+        return direct_vpn
 
-    direct = unique_links(
-        VPN_PATTERN.findall(output)
+    # --------------------------------------------------------
+    # CRYPT5 ÇIKTISINDA HTTP / HTTPS
+    # --------------------------------------------------------
+
+    urls = unique_links(
+        HTTP_PATTERN.findall(output)
     )
 
-    if direct:
+    all_links = []
 
-        print(
-            "CRYPT5 içinden doğrudan VPN sayısı:",
-            len(direct)
+    for url in urls:
+
+        links = get_links_from_http(
+            url
         )
 
-    return direct
-
-
-def try_base64_decode(text):
-
-    try:
-
-        stripped = text.strip()
-
-        decoded = base64.b64decode(
-            stripped
-            + "=" * (-len(stripped) % 4),
-            validate=False
+        all_links.extend(
+            links
         )
 
-        value = decoded.decode(
-            "utf-8",
-            errors="ignore"
-        )
-
-        if "://" in value:
-            return value
-
-    except Exception:
-
-        pass
-
-    return text
-
-
-def get_subscription(url):
-
-    print(
-        "Abonelik okunuyor:",
-        url
+    return unique_links(
+        all_links
     )
 
-    try:
 
-        result = subprocess.run(
-            [
-                "hpwnr",
-                url,
-                "uri"
-            ],
-            capture_output=True,
-            text=True,
-            timeout=90
+# ============================================================
+# TELEGRAM PARSER
+# ============================================================
+
+class TelegramMessageParser(HTMLParser):
+
+    def __init__(self):
+
+        super().__init__(
+            convert_charrefs=True
         )
 
-        if result.returncode == 0:
+        self.depth = 0
 
-            links = unique_links(
-                VPN_PATTERN.findall(
-                    result.stdout or ""
-                )
+        self.current = None
+
+        self.messages = []
+
+
+    def handle_starttag(
+        self,
+        tag,
+        attrs,
+    ):
+
+        attrs = dict(attrs)
+
+        if tag == "div":
+
+            classes = attrs.get(
+                "class",
+                "",
+            ).split()
+
+            if (
+                self.depth == 0
+                and "tgme_widget_message"
+                in classes
+            ):
+
+                self.depth = 1
+
+                self.current = {
+                    "datetime": None,
+                    "text": "",
+                    "vpn": [],
+                    "crypt5": [],
+                    "http": [],
+                }
+
+                return
+
+            if self.depth > 0:
+
+                self.depth += 1
+
+        # ----------------------------------------------------
+        # TARİH
+        # ----------------------------------------------------
+
+        if (
+            self.depth > 0
+            and tag == "time"
+            and self.current
+        ):
+
+            value = attrs.get(
+                "datetime"
             )
 
-            if links:
+            if (
+                value
+                and not self.current[
+                    "datetime"
+                ]
+            ):
 
-                print(
-                    "Bulunan VPN linki:",
-                    len(links)
+                self.current[
+                    "datetime"
+                ] = value
+
+        # ----------------------------------------------------
+        # ATTRIBUTELERDE LINK ARA
+        # ----------------------------------------------------
+
+        if (
+            self.depth > 0
+            and self.current
+        ):
+
+            for value in attrs.values():
+
+                if value:
+
+                    self.find_links(
+                        value
+                    )
+
+
+    def handle_data(
+        self,
+        data,
+    ):
+
+        if (
+            self.depth > 0
+            and self.current
+        ):
+
+            self.current[
+                "text"
+            ] += data
+
+            self.find_links(
+                data
+            )
+
+
+    def find_links(
+        self,
+        text,
+    ):
+
+        if not self.current:
+
+            return
+
+        # VPN
+
+        for link in extract_vpn_links(
+            text
+        ):
+
+            if (
+                link
+                not in self.current[
+                    "vpn"
+                ]
+            ):
+
+                self.current[
+                    "vpn"
+                ].append(
+                    link
                 )
 
-                return links
+        # CRYPT5
 
-    except Exception as error:
+        for link in CRYPT5_PATTERN.findall(
+            text
+        ):
 
-        print(
-            "hpwnr uri hatası:",
-            error
+            link = clean_link(
+                link
+            )
+
+            if (
+                link
+                not in self.current[
+                    "crypt5"
+                ]
+            ):
+
+                self.current[
+                    "crypt5"
+                ].append(
+                    link
+                )
+
+        # HTTP / HTTPS
+
+        for link in HTTP_PATTERN.findall(
+            text
+        ):
+
+            link = clean_link(
+                link
+            )
+
+            # Telegram sayfasını tekrar
+            # abonelik gibi işlemeye çalışma.
+
+            if "t.me/" in link.lower():
+
+                continue
+
+            if (
+                link
+                not in self.current[
+                    "http"
+                ]
+            ):
+
+                self.current[
+                    "http"
+                ].append(
+                    link
+                )
+
+
+    def handle_endtag(
+        self,
+        tag,
+    ):
+
+        if (
+            self.depth <= 0
+            or tag != "div"
+        ):
+
+            return
+
+        self.depth -= 1
+
+        if (
+            self.depth == 0
+            and self.current
+        ):
+
+            self.messages.append(
+                self.current
+            )
+
+            self.current = None
+
+
+# ============================================================
+# TARİH ÇÖZ
+# ============================================================
+
+def parse_datetime(value):
+
+    if not value:
+
+        return None
+
+    try:
+
+        return datetime.fromisoformat(
+            value.replace(
+                "Z",
+                "+00:00",
+            )
         )
+
+    except ValueError:
+
+        return None
+
+
+# ============================================================
+# KANAL MESAJLARINI AL
+# ============================================================
+
+def get_channel_messages(channel):
+
+    print()
+    print(
+        "=" * 70
+    )
+
+    print(
+        "KANAL:"
+    )
+
+    print(
+        channel
+    )
+
+    print(
+        "=" * 70
+    )
 
     content = None
 
-    for verify in (
+    for verify_ssl in (
         True,
         False
     ):
@@ -465,64 +660,258 @@ def get_subscription(url):
         try:
 
             content = http_get(
-                url,
-                verify_ssl=verify
+                channel,
+                verify_ssl=verify_ssl,
             )
-
-            if not verify:
-
-                print(
-                    "Abonelik SSL doğrulaması kapatılarak okundu."
-                )
 
             break
 
         except Exception as error:
 
             print(
-                "Abonelik bağlantı hatası:",
-                error
+                "Kanal bağlantı hatası:",
+                error,
             )
 
     if content is None:
-        return []
 
-    links = unique_links(
-        VPN_PATTERN.findall(content)
+        return False, []
+
+    parser = TelegramMessageParser()
+
+    parser.feed(
+        content
     )
 
-    if links:
+    messages = parser.messages
 
-        print(
-            "HTTP içinden VPN linki:",
-            len(links)
+    dated = []
+
+    for message in messages:
+
+        dt = parse_datetime(
+            message.get(
+                "datetime"
+            )
         )
 
-        return links
+        if dt:
 
-    decoded = try_base64_decode(content)
-
-    if decoded != content:
-
-        links = unique_links(
-            VPN_PATTERN.findall(decoded)
-        )
-
-        if links:
-
-            print(
-                "Base64 içinden VPN linki:",
-                len(links)
+            dated.append(
+                (
+                    dt,
+                    message,
+                )
             )
 
-            return links
+    if dated:
+
+        dated.sort(
+            key=lambda item: item[0],
+            reverse=True,
+        )
+
+        messages = [
+            item[1]
+            for item in dated
+        ]
+
+    else:
+
+        messages = list(
+            reversed(
+                messages
+            )
+        )
 
     print(
-        "Abonelikte VPN linki bulunamadı."
+        "Bulunan mesaj:",
+        len(messages),
     )
 
-    return []
+    return True, messages
 
+
+# ============================================================
+# BİR KANALI İŞLE
+# ============================================================
+
+def process_channel(channel):
+
+    success, messages = (
+        get_channel_messages(
+            channel
+        )
+    )
+
+    if not success:
+
+        return False, []
+
+    print()
+    print(
+        "EN YENİ MESAJDAN BAŞLAYARAK TARAMA..."
+    )
+
+    for index, message in enumerate(
+        messages[
+            :MAX_MESSAGES_TO_SCAN
+        ],
+        start=1,
+    ):
+
+        print()
+        print(
+            "-" * 60
+        )
+
+        print(
+            f"MESAJ {index} KONTROL EDİLİYOR"
+        )
+
+        print(
+            "-" * 60
+        )
+
+        # ----------------------------------------------------
+        # 1. DOĞRUDAN VPN
+        # ----------------------------------------------------
+
+        direct_vpn = unique_links(
+            message.get(
+                "vpn",
+                [],
+            )
+        )
+
+        if direct_vpn:
+
+            print(
+                "DOĞRUDAN VPN BULUNDU:"
+            )
+
+            print(
+                len(direct_vpn)
+            )
+
+            return True, direct_vpn
+
+        # ----------------------------------------------------
+        # 2. HAPP CRYPT5
+        # ----------------------------------------------------
+
+        crypt5_links = unique_links(
+            message.get(
+                "crypt5",
+                [],
+            )
+        )
+
+        if crypt5_links:
+
+            print(
+                "CRYPT5 bulundu."
+            )
+
+            all_links = []
+
+            for crypt5 in crypt5_links:
+
+                links = decrypt_happ(
+                    crypt5
+                )
+
+                all_links.extend(
+                    links
+                )
+
+            all_links = unique_links(
+                all_links
+            )
+
+            if all_links:
+
+                print(
+                    "CRYPT5 içinden VPN bulundu:",
+                    len(all_links),
+                )
+
+                return True, all_links
+
+            print(
+                "CRYPT5 çalışmadı veya VPN vermedi."
+            )
+
+        # ----------------------------------------------------
+        # 3. HTTP / HTTPS
+        # ----------------------------------------------------
+
+        http_links = unique_links(
+            message.get(
+                "http",
+                [],
+            )
+        )
+
+        if http_links:
+
+            print(
+                "HTTP/HTTPS linkleri kontrol ediliyor."
+            )
+
+            all_links = []
+
+            for url in http_links:
+
+                links = get_links_from_http(
+                    url
+                )
+
+                all_links.extend(
+                    links
+                )
+
+            all_links = unique_links(
+                all_links
+            )
+
+            if all_links:
+
+                print(
+                    "HTTPS içinden VPN bulundu:",
+                    len(all_links),
+                )
+
+                return True, all_links
+
+            print(
+                "HTTPS linkleri VPN içermiyor."
+            )
+
+        # ----------------------------------------------------
+        # HİÇBİR ŞEY YOK
+        # ----------------------------------------------------
+
+        print(
+            "VPN/CRYPT5/geçerli HTTPS yok."
+        )
+
+        print(
+            "Eski mesaja geçiliyor..."
+        )
+
+    print()
+    print(
+        "Bu kanalda kullanılabilir"
+        " VPN mesajı bulunamadı."
+    )
+
+    return True, []
+
+
+# ============================================================
+# NAMES.TXT OKU
+# ============================================================
 
 def load_names():
 
@@ -531,14 +920,21 @@ def load_names():
         with open(
             NAMES_FILE,
             "r",
-            encoding="utf-8"
+            encoding="utf-8",
         ) as file:
 
-            return [
+            names = [
                 line.strip()
                 for line in file
                 if line.strip()
             ]
+
+        print(
+            "İsim sayısı:",
+            len(names),
+        )
+
+        return names
 
     except FileNotFoundError:
 
@@ -549,159 +945,46 @@ def load_names():
         return []
 
 
-def process_channel(channel):
-
-    success, messages = get_channel_messages(
-        channel
-    )
-
-    if not success:
-        return False, []
-
-    # SADECE SS VE CRYPT5 ARANIYOR.
-    # Direkt vless/vmess/trojan vb. ALINMIYOR.
-
-    for index, message in enumerate(
-        messages[:MAX_MESSAGES_TO_SCAN],
-        1
-    ):
-
-        print()
-        print(
-            "Mesaj",
-            index,
-            "kontrol ediliyor..."
-        )
-
-        # ==================================================
-        # 1. SS VARSA -> SADECE SS AL
-        # ==================================================
-
-        ss_links = unique_links(
-            message.get("ss", [])
-        )
-
-        if ss_links:
-
-            print(
-                "SS bulundu ->",
-                len(ss_links),
-                "link alındı."
-            )
-
-            return True, ss_links
-
-        # ==================================================
-        # 2. HAPP://CRYPT5 VARSA -> ÇÖZ
-        # ==================================================
-
-        crypt5_links = unique_links(
-            message.get("crypt5", [])
-        )
-
-        if crypt5_links:
-
-            for crypt5 in crypt5_links:
-
-                resolved = decrypt_happ(
-                    crypt5
-                )
-
-                if not resolved:
-                    continue
-
-                # Crypt5 doğrudan VPN URI döndürürse
-                # içindeki TÜM linkleri al.
-
-                direct = unique_links([
-                    x
-                    for x in resolved
-                    if isinstance(x, str)
-                    and re.match(
-                        r'^[a-z0-9+.-]+://',
-                        x,
-                        re.I
-                    )
-                    and not x.lower().startswith(
-                        (
-                            "http://",
-                            "https://"
-                        )
-                    )
-                ])
-
-                if direct:
-
-                    return True, direct
-
-                # Crypt5 HTTPS abonelik döndürdüyse
-                # aboneliğin içindeki TÜM VPN linklerini al.
-
-                all_subscription_links = []
-
-                for url in resolved:
-
-                    if (
-                        isinstance(url, str)
-                        and url.lower().startswith(
-                            (
-                                "http://",
-                                "https://"
-                            )
-                        )
-                    ):
-
-                        all_subscription_links.extend(
-                            get_subscription(
-                                clean_link(url)
-                            )
-                        )
-
-                all_subscription_links = unique_links(
-                    all_subscription_links
-                )
-
-                if all_subscription_links:
-
-                    print(
-                        "CRYPT5 içinden toplam VPN:",
-                        len(all_subscription_links)
-                    )
-
-                    return True, all_subscription_links
-
-        # ==================================================
-        # 3. SS/CRYPT5 YOKSA -> ESKİ MESAJ
-        # ==================================================
-
-        print(
-            "SS/CRYPT5 yok veya çalışmadı"
-            " -> eski mesaja geçiliyor."
-        )
-
-    print(
-        "Bu kanalda kullanılabilir"
-        " SS/CRYPT5 bulunamadı."
-    )
-
-    return True, []
-
+# ============================================================
+# ANA PROGRAM
+# ============================================================
 
 def main():
 
-    print("=" * 70)
+    print()
     print(
-        "SADECE SS + HAPP://CRYPT5 VPN TOPLAYICI"
+        "=" * 70
     )
-    print("=" * 70)
+
+    print(
+        "TELEGRAM VPN TOPLAYICI"
+    )
+
+    print(
+        "VPN + CRYPT5 + HTTPS + BASE64"
+    )
+
+    print(
+        "=" * 70
+    )
 
     names = load_names()
 
     if not names:
+
+        print(
+            "İsimler yüklenemedi."
+        )
+
         return
 
     all_links = []
+
     successful_channels = 0
+
+    # --------------------------------------------------------
+    # TÜM KANALLAR
+    # --------------------------------------------------------
 
     for channel in CHANNELS:
 
@@ -710,64 +993,107 @@ def main():
         )
 
         if success:
+
             successful_channels += 1
 
-        for link in unique_links(links):
+        for link in unique_links(
+            links
+        ):
 
             if link not in all_links:
-                all_links.append(link)
 
-    # Hiçbir kanal okunamadıysa
-    # eski çıktı korunur.
+                all_links.append(
+                    link
+                )
+
+    # --------------------------------------------------------
+    # HİÇ KANAL OKUNAMADIYSA
+    # --------------------------------------------------------
 
     if successful_channels == 0:
 
+        print()
         print(
             "Hiçbir kanal okunamadı."
-            " Mevcut çıktı korunuyor."
+        )
+
+        print(
+            "Eski çıktı korunuyor."
         )
 
         return
 
-    # Güncel sonuçları yaz.
+    # --------------------------------------------------------
+    # ÇIKTI
+    # --------------------------------------------------------
+
+    print()
+    print(
+        "=" * 70
+    )
+
+    print(
+        "TOPLAM VPN LİNKİ:",
+        len(all_links),
+    )
+
+    print(
+        "=" * 70
+    )
 
     with open(
         OUTPUT_FILE,
         "w",
-        encoding="utf-8"
+        encoding="utf-8",
     ) as file:
 
         for index, link in enumerate(
             all_links
         ):
 
+            # Eski #isim varsa kaldır
+
             link = link.split(
                 "#",
-                1
+                1,
             )[0]
 
+            # İsim seç
+
             if index < len(names):
+
                 name = names[index]
+
             else:
-                name = f"VPN {index + 1}"
+
+                name = (
+                    f"VPN {index + 1}"
+                )
 
             file.write(
                 f"{link}#{name}\n"
             )
 
     print()
-    print("=" * 70)
-    print("TAMAMLANDI")
+    print(
+        "TAMAMLANDI"
+    )
+
+    print(
+        "Çıktı dosyası:",
+        OUTPUT_FILE,
+    )
+
     print(
         "Toplam link:",
-        len(all_links)
+        len(all_links),
     )
-    print(
-        "Çıktı:",
-        OUTPUT_FILE
-    )
-    print("=" * 70)
 
+
+# ============================================================
+# ÇALIŞTIR
+# ============================================================
 
 if __name__ == "__main__":
+
     main()
