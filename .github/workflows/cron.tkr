@@ -3,7 +3,7 @@ name: Auto Multi-File Updater
 on:
   push:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/1 * * * *'
   workflow_dispatch:
 
 permissions:
