@@ -2,7 +2,7 @@ name: Otomatik Happ Link ToplayÄ±cÄ±
 
 on:
   schedule:
-    - cron: '0 * * * *' # Her saat baÅŸÄ± Ã§alÄ±ÅŸÄ±r
+    - cron: '*/15 * * * *' # Her 15 dakikada bir çalışır # Her saat baÅŸÄ± Ã§alÄ±ÅŸÄ±r
   workflow_dispatch: # Elle tetiklemek iÃ§in
   push:
     branches:
