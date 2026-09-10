@@ -1,842 +1,376 @@
-🇯🇵 Japan ● CloudX
-🇺🇸 United States ● CloudX
-🇸🇬 Singapore ● HyperWiFi
-🇭🇰 Hong Kong ● HyperWiFi
-🇳🇱 Netherlands ● CloudLine
-🇹🇼 Taiwan ● CloudLine
-🇰🇷 South Korea ● HyperNet
-🇨🇦 Canada ● HyperNet
-🇦🇺 Australia ● PowerNet
-🇬🇧 United Kingdom ● PowerNet
-🇩🇪 Germany ● FastCloud
-🇫🇷 France ● FastCloud
-🇮🇳 India ● NovaNet
-🇲🇾 Malaysia ● NovaNet
-🇷🇴 Romania ● FiberX
-🇫🇮 Finland ● FiberX
-🇵🇱 Poland ● SkyCloud
-🇦🇪 United Arab Emirates ● SkyCloud
-🇹🇷 Turkey ● EdgeNet
-🇨🇭 Switzerland ● EdgeNet
-🇷🇺 Russia ● CloudWave
-🇹🇭 Thailand ● CloudWave
-🇮🇩 Indonesia ● HyperLink
-🇻🇳 Vietnam ● HyperLink
-🇨🇿 Czechia ● FastNet
-🇦🇹 Austria ● FastNet
-🇧🇪 Belgium ● PowerCloud
-🇸🇪 Sweden ● PowerCloud
-🇳🇴 Norway ● SkyNet
-🇩🇰 Denmark ● SkyNet
-🇮🇪 Ireland ● CloudPrime
-🇵🇹 Portugal ● CloudPrime
-🇪🇸 Spain ● FiberCloud
-🇮🇹 Italy ● FiberCloud
-🇭🇺 Hungary ● NovaCloud
-🇧🇬 Bulgaria ● NovaCloud
-🇭🇷 Croatia ● EdgeCloud
-🇷🇸 Serbia ● EdgeCloud
-🇬🇷 Greece ● HyperCloud
-🇮🇱 Israel ● HyperCloud
-🇲🇽 Mexico ● CloudPro
-🇧🇷 Brazil ● CloudPro
-🇦🇷 Argentina ● FiberPro
-🇨🇱 Chile ● FiberPro
-🇨🇴 Colombia ● SkyPro
-🇵🇪 Peru ● SkyPro
-🇿🇦 South Africa ● FastPro
-🇪🇬 Egypt ● FastPro
-🇲🇦 Morocco ● NovaPro
-🇸🇦 Saudi Arabia ● NovaPro
-🇶🇦 Qatar ● EdgePro
-🇰🇼 Kuwait ● EdgePro
-🇧🇭 Bahrain ● PowerPro
-🇴🇲 Oman ● PowerPro
-🇵🇭 Philippines ● HyperPro
-🇵🇰 Pakistan ● HyperPro
-🇧🇩 Bangladesh ● CloudOne
-🇮🇷 Iran ● CloudOne
-🇮🇶 Iraq ● FiberOne
-🇯🇴 Jordan ● FiberOne
-🇱🇧 Lebanon ● SkyOne
-🇰🇿 Kazakhstan ● SkyOne
-🇺🇦 Ukraine ● FastOne
-🇬🇪 Georgia ● FastOne
-🇦🇲 Armenia ● NovaOne
-🇦🇿 Azerbaijan ● NovaOne
-🇺🇿 Uzbekistan ● EdgeOne
-🇰🇬 Kyrgyzstan ● EdgeOne
-🇹🇯 Tajikistan ● PowerOne
-🇲🇳 Mongolia ● PowerOne
-🇳🇵 Nepal ● HyperOne
-🇱🇰 Sri Lanka ● HyperOne
-🇲🇻 Maldives ● CloudMax
-🇮🇸 Iceland ● CloudMax
-🇱🇺 Luxembourg ● FiberMax
-🇱🇮 Liechtenstein ● FiberMax
-🇲🇹 Malta ● SkyMax
-🇨🇾 Cyprus ● SkyMax
-🇸🇮 Slovenia ● FastMax
-🇸🇰 Slovakia ● FastMax
-🇲🇪 Montenegro ● NovaMax
-🇲🇰 North Macedonia ● NovaMax
-🇧🇦 Bosnia and Herzegovina ● EdgeMax
-🇦🇱 Albania ● EdgeMax
-🇽🇰 Kosovo ● PowerMax
-🇲🇩 Moldova ● PowerMax
-🇧🇾 Belarus ● HyperMax
-🇱🇹 Lithuania ● HyperMax
-🇱🇻 Latvia ● CloudUltra
-🇪🇪 Estonia ● CloudUltra
-🇬🇧 United Kingdom ● FiberUltra
-🇩🇪 Germany ● FiberUltra
-🇫🇷 France ● SkyUltra
-🇳🇱 Netherlands ● SkyUltra
-🇺🇸 United States ● FastUltra
-🇨🇦 Canada ● FastUltra
-🇯🇵 Japan ● NovaUltra
-🇸🇬 Singapore ● NovaUltra
-🇦🇺 Australia ● EdgeUltra
-🇳🇿 New Zealand ● EdgeUltra
-🇹🇼 Taiwan ● PowerUltra
-🇭🇰 Hong Kong ● PowerUltra
-🇰🇷 South Korea ● HyperUltra
-🇮🇩 Indonesia ● HyperUltra
-🇻🇳 Vietnam ● CloudSpeed
-🇹🇭 Thailand ● CloudSpeed
-🇮🇳 India ● FiberSpeed
-🇵🇰 Pakistan ● FiberSpeed
-🇸🇦 Saudi Arabia ● SkySpeed
-🇦🇪 United Arab Emirates ● SkySpeed
-🇶🇦 Qatar ● FastSpeed
-🇮🇱 Israel ● FastSpeed
-🇹🇷 Turkey ● NovaSpeed
-🇬🇷 Greece ● NovaSpeed
-🇷🇺 Russia ● EdgeSpeed
-🇺🇦 Ukraine ● EdgeSpeed
-🇵🇱 Poland ● PowerSpeed
-🇨🇿 Czechia ● PowerSpeed
-🇦🇹 Austria ● HyperSpeed
-🇨🇭 Switzerland ● HyperSpeed
-🇮🇹 Italy ● CloudCore
-🇪🇸 Spain ● CloudCore
-🇵🇹 Portugal ● FiberCore
-🇮🇪 Ireland ● FiberCore
-🇸🇪 Sweden ● SkyCore
-🇳🇴 Norway ● SkyCore
-🇩🇰 Denmark ● FastCore
-🇫🇮 Finland ● FastCore
-🇧🇪 Belgium ● NovaCore
-🇷🇴 Romania ● NovaCore
-🇭🇺 Hungary ● EdgeCore
-🇧🇬 Bulgaria ● EdgeCore
-🇭🇷 Croatia ● PowerCore
-🇷🇸 Serbia ● PowerCore
-🇧🇷 Brazil ● HyperCore
-🇲🇽 Mexico ● HyperCore
-🇦🇷 Argentina ● CloudPlus
-🇨🇱 Chile ● CloudPlus
-🇨🇴 Colombia ● FiberPlus
-🇵🇪 Peru ● FiberPlus
-🇺🇾 Uruguay ● SkyPlus
-🇵🇾 Paraguay ● SkyPlus
-🇧🇴 Bolivia ● FastPlus
-🇪🇨 Ecuador ● FastPlus
-🇨🇷 Costa Rica ● NovaPlus
-🇵🇦 Panama ● NovaPlus
-🇩🇴 Dominican Republic ● EdgePlus
-🇯🇲 Jamaica ● EdgePlus
-🇹🇹 Trinidad and Tobago ● PowerPlus
-🇧🇸 Bahamas ● PowerPlus
-🇧🇧 Barbados ● HyperPlus
-🇵🇷 Puerto Rico ● HyperPlus
-🇬🇹 Guatemala ● CloudNet
-🇭🇳 Honduras ● CloudNet
-🇸🇻 El Salvador ● FiberNet
-🇳🇮 Nicaragua ● FiberNet
-🇧🇿 Belize ● SkyNet
-🇨🇺 Cuba ● SkyNet
-🇭🇹 Haiti ● FastNet
-🇩🇲 Dominica ● FastNet
-🇬🇩 Grenada ● NovaNet
-🇱🇨 Saint Lucia ● NovaNet
-🇻🇨 Saint Vincent and the Grenadines ● EdgeNet
-🇰🇳 Saint Kitts and Nevis ● EdgeNet
-🇦🇬 Antigua and Barbuda ● PowerNet
-🇬🇾 Guyana ● PowerNet
-🇸🇷 Suriname ● HyperLink
-🇻🇪 Venezuela ● HyperLink
-🇵🇦 Panama ● CloudWave
-🇪🇨 Ecuador ● CloudWave
-🇵🇾 Paraguay ● FiberWave
-🇺🇾 Uruguay ● FiberWave
-🇧🇴 Bolivia ● SkyWave
-🇨🇷 Costa Rica ● SkyWave
-🇬🇹 Guatemala ● FastWave
-🇭🇳 Honduras ● FastWave
-🇲🇽 Mexico ● NovaWave
-🇧🇷 Brazil ● NovaWave
-🇨🇱 Chile ● EdgeWave
-🇦🇷 Argentina ● EdgeWave
-🇨🇴 Colombia ● PowerWave
-🇵🇪 Peru ● PowerWave
-🇪🇬 Egypt ● HyperWave
-🇲🇦 Morocco ● HyperWave
-🇩🇿 Algeria ● CloudCore
-🇹🇳 Tunisia ● CloudCore
-🇱🇾 Libya ● FiberCore
-🇸🇩 Sudan ● FiberCore
-🇪🇹 Ethiopia ● SkyCore
-🇰🇪 Kenya ● SkyCore
-🇳🇬 Nigeria ● FastCore
-🇬🇭 Ghana ● FastCore
-🇹🇿 Tanzania ● NovaCore
-🇺🇬 Uganda ● NovaCore
-🇷🇼 Rwanda ● EdgeCore
-🇿🇦 South Africa ● EdgeCore
-🇳🇦 Namibia ● PowerCore
-🇧🇼 Botswana ● PowerCore
-🇿🇲 Zambia ● HyperCore
-🇿🇼 Zimbabwe ● HyperCore
-🇲🇺 Mauritius ● CloudPlus
-🇸🇨 Seychelles ● CloudPlus
-🇲🇬 Madagascar ● FiberPlus
-🇲🇿 Mozambique ● FiberPlus
-🇦🇴 Angola ● SkyPlus
-🇨🇲 Cameroon ● SkyPlus
-🇸🇳 Senegal ● FastPlus
-🇨🇮 Ivory Coast ● FastPlus
-🇬🇦 Gabon ● NovaPlus
-🇨🇬 Republic of the Congo ● NovaPlus
-🇨🇩 Democratic Republic of the Congo ● EdgePlus
-🇧🇯 Benin ● EdgePlus
-🇹🇬 Togo ● PowerPlus
-🇧🇫 Burkina Faso ● PowerPlus
-🇲🇱 Mali ● HyperPlus
-🇳🇪 Niger ● HyperPlus
-🇹🇩 Chad ● CloudNet
-🇨🇫 Central African Republic ● CloudNet
-🇬🇳 Guinea ● FiberNet
-🇬🇼 Guinea-Bissau ● FiberNet
-🇸🇱 Sierra Leone ● SkyNet
-🇱🇷 Liberia ● SkyNet
-🇬🇲 Gambia ● FastNet
-🇲🇷 Mauritania ● FastNet
-🇸🇴 Somalia ● NovaNet
-🇩🇯 Djibouti ● NovaNet
-🇪🇷 Eritrea ● EdgeNet
-🇸🇸 South Sudan ● EdgeNet
-🇾🇪 Yemen ● PowerNet
-🇸🇾 Syria ● PowerNet
-🇦🇫 Afghanistan ● HyperLink
-🇹🇲 Turkmenistan ● HyperLink
-🇰🇭 Cambodia ● CloudWave
-🇱🇦 Laos ● CloudWave
-🇲🇲 Myanmar ● FiberWave
-🇧🇳 Brunei ● FiberWave
-🇧🇹 Bhutan ● SkyWave
-🇲🇴 Macau ● SkyWave
-🇫🇯 Fiji ● FastWave
-🇼🇸 Samoa ● FastWave
-🇹🇴 Tonga ● NovaWave
-🇻🇺 Vanuatu ● NovaWave
-🇸🇧 Solomon Islands ● EdgeWave
-🇵🇬 Papua New Guinea ● EdgeWave
-🇵🇼 Palau ● PowerWave
-🇫🇲 Micronesia ● PowerWave
-🇲🇭 Marshall Islands ● HyperWave
-🇰🇮 Kiribati ● HyperWave
-🇳🇷 Nauru ● CloudSpeed
-🇹🇻 Tuvalu ● CloudSpeed
-🇻🇦 Vatican City ● FiberSpeed
-🇸🇲 San Marino ● FiberSpeed
-🇦🇩 Andorra ● SkySpeed
-🇲🇨 Monaco ● SkySpeed
-🇨🇻 Cabo Verde ● FastSpeed
-🇸🇹 Sao Tome and Principe ● FastSpeed
-🇰🇲 Comoros ● NovaSpeed
-🇸🇨 Seychelles ● NovaSpeed
-🇱🇸 Lesotho ● EdgeSpeed
-🇸🇿 Eswatini ● EdgeSpeed
-🇲🇼 Malawi ● PowerSpeed
-🇧🇮 Burundi ● PowerSpeed
-🇷🇸 Serbia ● HyperSpeed
-🇲🇪 Montenegro ● HyperSpeed
-🇦🇲 Armenia ● CloudCore
-🇬🇪 Georgia ● CloudCore
-🇦🇿 Azerbaijan ● FiberCore
-🇰🇿 Kazakhstan ● FiberCore
-🇺🇿 Uzbekistan ● SkyCore
-🇰🇬 Kyrgyzstan ● SkyCore
-🇹🇯 Tajikistan ● FastCore
-🇲🇳 Mongolia ● FastCore
-🇳🇵 Nepal ● NovaCore
-🇧🇹 Bhutan ● NovaCore
-🇱🇰 Sri Lanka ● EdgeCore
-🇲🇻 Maldives ● EdgeCore
-🇵🇭 Philippines ● PowerCore
-🇮🇩 Indonesia ● PowerCore
-🇲🇾 Malaysia ● HyperCore
-🇹🇭 Thailand ● HyperCore
-🇻🇳 Vietnam ● CloudPlus
-🇹🇼 Taiwan ● CloudPlus
-🇭🇰 Hong Kong ● FiberPlus
-🇸🇬 Singapore ● FiberPlus
-🇯🇵 Japan ● SkyPlus
-🇰🇷 South Korea ● SkyPlus
-🇨🇳 China ● FastPlus
-🇮🇳 India ● FastPlus
-🇵🇰 Pakistan ● NovaPlus
-🇧🇩 Bangladesh ● NovaPlus
-🇱🇰 Sri Lanka ● EdgePlus
-🇰🇭 Cambodia ● EdgePlus
-🇲🇲 Myanmar ● PowerPlus
-🇱🇦 Laos ● PowerPlus
-🇧🇳 Brunei ● HyperPlus
-🇲🇾 Malaysia ● HyperPlus
-🇦🇺 Australia ● CloudNet
-🇳🇿 New Zealand ● CloudNet
-🇫🇯 Fiji ● FiberNet
-🇵🇬 Papua New Guinea ● FiberNet
-🇿🇦 South Africa ● SkyNet
-🇳🇦 Namibia ● SkyNet
-🇰🇪 Kenya ● FastNet
-🇺🇬 Uganda ● FastNet
-🇳🇬 Nigeria ● NovaNet
-🇬🇭 Ghana ● NovaNet
-🇸🇳 Senegal ● EdgeNet
-🇨🇮 Ivory Coast ● EdgeNet
-🇪🇬 Egypt ● PowerNet
-🇹🇳 Tunisia ● PowerNet
-🇲🇦 Morocco ● HyperLink
-🇩🇿 Algeria ● HyperLink
-🇶🇦 Qatar ● CloudWave
-🇧🇭 Bahrain ● CloudWave
-🇰🇼 Kuwait ● FiberWave
-🇴🇲 Oman ● FiberWave
-🇸🇦 Saudi Arabia ● SkyWave
-🇦🇪 United Arab Emirates ● SkyWave
-🇹🇷 Turkey ● FastWave
-🇮🇱 Israel ● FastWave
-🇮🇷 Iran ● NovaWave
-🇮🇶 Iraq ● NovaWave
-🇯🇴 Jordan ● EdgeWave
-🇱🇧 Lebanon ● EdgeWave
-🇷🇺 Russia ● PowerWave
-🇺🇦 Ukraine ● PowerWave
-🇧🇾 Belarus ● HyperWave
-🇲🇩 Moldova ● HyperWave
-🇵🇱 Poland ● CloudSpeed
-🇨🇿 Czechia ● CloudSpeed
-🇩🇪 Germany ● FiberSpeed
-🇦🇹 Austria ● FiberSpeed
-🇫🇷 France ● SkySpeed
-🇧🇪 Belgium ● SkySpeed
-🇳🇱 Netherlands ● FastSpeed
-🇱🇺 Luxembourg ● FastSpeed
-🇬🇧 United Kingdom ● NovaSpeed
-🇮🇪 Ireland ● NovaSpeed
-🇺🇸 United States ● EdgeSpeed
-🇨🇦 Canada ● EdgeSpeed
-🇨🇭 Switzerland ● PowerSpeed
-🇩🇰 Denmark ● PowerSpeed
-🇸🇪 Sweden ● HyperSpeed
-🇳🇴 Norway ● HyperSpeed
-🇫🇮 Finland ● CloudCore
-🇮🇸 Iceland ● CloudCore
-🇮🇹 Italy ● FiberCore
-🇪🇸 Spain ● FiberCore
-🇵🇹 Portugal ● SkyCore
-🇬🇷 Greece ● SkyCore
-🇭🇷 Croatia ● FastCore
-🇸🇮 Slovenia ● FastCore
-🇸🇰 Slovakia ● NovaCore
-🇭🇺 Hungary ● NovaCore
-🇷🇴 Romania ● EdgeCore
-🇧🇬 Bulgaria ● EdgeCore
-🇷🇸 Serbia ● PowerCore
-🇲🇰 North Macedonia ● PowerCore
-🇧🇦 Bosnia and Herzegovina ● HyperCore
-🇦🇱 Albania ● HyperCore
-🇵🇦 Panama ● CloudWave
-🇪🇨 Ecuador ● CloudWave
-🇵🇾 Paraguay ● FiberWave
-🇺🇾 Uruguay ● FiberWave
-🇧🇴 Bolivia ● SkyWave
-🇨🇷 Costa Rica ● SkyWave
-🇬🇹 Guatemala ● FastWave
-🇭🇳 Honduras ● FastWave
-🇲🇽 Mexico ● NovaWave
-🇧🇷 Brazil ● NovaWave
-🇨🇱 Chile ● EdgeWave
-🇦🇷 Argentina ● EdgeWave
-🇨🇴 Colombia ● PowerWave
-🇵🇪 Peru ● PowerWave
-🇪🇬 Egypt ● HyperWave
-🇲🇦 Morocco ● HyperWave
-🇩🇿 Algeria ● CloudCore
-🇹🇳 Tunisia ● CloudCore
-🇱🇾 Libya ● FiberCore
-🇸🇩 Sudan ● FiberCore
-🇪🇹 Ethiopia ● SkyCore
-🇰🇪 Kenya ● SkyCore
-🇳🇬 Nigeria ● FastCore
-🇬🇭 Ghana ● FastCore
-🇹🇿 Tanzania ● NovaCore
-🇺🇬 Uganda ● NovaCore
-🇷🇼 Rwanda ● EdgeCore
-🇿🇦 South Africa ● EdgeCore
-🇳🇦 Namibia ● PowerCore
-🇧🇼 Botswana ● PowerCore
-🇿🇲 Zambia ● HyperCore
-🇿🇼 Zimbabwe ● HyperCore
-🇲🇺 Mauritius ● CloudPlus
-🇸🇨 Seychelles ● CloudPlus
-🇲🇬 Madagascar ● FiberPlus
-🇲🇿 Mozambique ● FiberPlus
-🇦🇴 Angola ● SkyPlus
-🇨🇲 Cameroon ● SkyPlus
-🇸🇳 Senegal ● FastPlus
-🇨🇮 Ivory Coast ● FastPlus
-🇬🇦 Gabon ● NovaPlus
-🇨🇬 Republic of the Congo ● NovaPlus
-🇨🇩 Democratic Republic of the Congo ● EdgePlus
-🇧🇯 Benin ● EdgePlus
-🇹🇬 Togo ● PowerPlus
-🇧🇫 Burkina Faso ● PowerPlus
-🇲🇱 Mali ● HyperPlus
-🇳🇪 Niger ● HyperPlus
-🇹🇩 Chad ● CloudNet
-🇨🇫 Central African Republic ● CloudNet
-🇬🇳 Guinea ● FiberNet
-🇬🇼 Guinea-Bissau ● FiberNet
-🇸🇱 Sierra Leone ● SkyNet
-🇱🇷 Liberia ● SkyNet
-🇬🇲 Gambia ● FastNet
-🇲🇷 Mauritania ● FastNet
-🇸🇴 Somalia ● NovaNet
-🇩🇯 Djibouti ● NovaNet
-🇪🇷 Eritrea ● EdgeNet
-🇸🇸 South Sudan ● EdgeNet
-🇾🇪 Yemen ● PowerNet
-🇸🇾 Syria ● PowerNet
-🇦🇫 Afghanistan ● HyperLink
-🇹🇲 Turkmenistan ● HyperLink
-🇰🇭 Cambodia ● CloudWave
-🇱🇦 Laos ● CloudWave
-🇲🇲 Myanmar ● FiberWave
-🇧🇳 Brunei ● FiberWave
-🇧🇹 Bhutan ● SkyWave
-🇲🇴 Macau ● SkyWave
-🇫🇯 Fiji ● FastWave
-🇼🇸 Samoa ● FastWave
-🇹🇴 Tonga ● NovaWave
-🇻🇺 Vanuatu ● NovaWave
-🇸🇧 Solomon Islands ● EdgeWave
-🇵🇬 Papua New Guinea ● EdgeWave
-🇵🇼 Palau ● PowerWave
-🇫🇲 Micronesia ● PowerWave
-🇲🇭 Marshall Islands ● HyperWave
-🇰🇮 Kiribati ● HyperWave
-🇳🇷 Nauru ● CloudSpeed
-🇹🇻 Tuvalu ● CloudSpeed
-🇻🇦 Vatican City ● FiberSpeed
-🇸🇲 San Marino ● FiberSpeed
-🇦🇩 Andorra ● SkySpeed
-🇲🇨 Monaco ● SkySpeed
-🇨🇻 Cabo Verde ● FastSpeed
-🇸🇹 Sao Tome and Principe ● FastSpeed
-🇰🇲 Comoros ● NovaSpeed
-🇸🇨 Seychelles ● NovaSpeed
-🇱🇸 Lesotho ● EdgeSpeed
-🇸🇿 Eswatini ● EdgeSpeed
-🇲🇼 Malawi ● PowerSpeed
-🇧🇮 Burundi ● PowerSpeed
-🇷🇸 Serbia ● HyperSpeed
-🇲🇪 Montenegro ● HyperSpeed
-🇦🇲 Armenia ● CloudCore
-🇬🇪 Georgia ● CloudCore
-🇦🇿 Azerbaijan ● FiberCore
-🇰🇿 Kazakhstan ● FiberCore
-🇺🇿 Uzbekistan ● SkyCore
-🇰🇬 Kyrgyzstan ● SkyCore
-🇹🇯 Tajikistan ● FastCore
-🇲🇳 Mongolia ● FastCore
-🇳🇵 Nepal ● NovaCore
-🇧🇹 Bhutan ● NovaCore
-🇱🇰 Sri Lanka ● EdgeCore
-🇲🇻 Maldives ● EdgeCore
-🇵🇭 Philippines ● PowerCore
-🇮🇩 Indonesia ● PowerCore
-🇲🇾 Malaysia ● HyperCore
-🇹🇭 Thailand ● HyperCore
-🇻🇳 Vietnam ● CloudPlus
-🇹🇼 Taiwan ● CloudPlus
-🇭🇰 Hong Kong ● FiberPlus
-🇸🇬 Singapore ● FiberPlus
-🇯🇵 Japan ● SkyPlus
-🇰🇷 South Korea ● SkyPlus
-🇨🇳 China ● FastPlus
-🇮🇳 India ● FastPlus
-🇵🇰 Pakistan ● NovaPlus
-🇧🇩 Bangladesh ● NovaPlus
-🇱🇰 Sri Lanka ● EdgePlus
-🇰🇭 Cambodia ● EdgePlus
-🇲🇲 Myanmar ● PowerPlus
-🇱🇦 Laos ● PowerPlus
-🇧🇳 Brunei ● HyperPlus
-🇲🇾 Malaysia ● HyperPlus
-🇦🇺 Australia ● CloudNet
-🇳🇿 New Zealand ● CloudNet
-🇫🇯 Fiji ● FiberNet
-🇵🇬 Papua New Guinea ● FiberNet
-🇿🇦 South Africa ● SkyNet
-🇳🇦 Namibia ● SkyNet
-🇰🇪 Kenya ● FastNet
-🇺🇬 Uganda ● FastNet
-🇳🇬 Nigeria ● NovaNet
-🇬🇭 Ghana ● NovaNet
-🇸🇳 Senegal ● EdgeNet
-🇨🇮 Ivory Coast ● EdgeNet
-🇪🇬 Egypt ● PowerNet
-🇹🇳 Tunisia ● PowerNet
-🇲🇦 Morocco ● HyperLink
-🇩🇿 Algeria ● HyperLink
-🇶🇦 Qatar ● CloudWave
-🇧🇭 Bahrain ● CloudWave
-🇰🇼 Kuwait ● FiberWave
-🇴🇲 Oman ● FiberWave
-🇸🇦 Saudi Arabia ● SkyWave
-🇦🇪 United Arab Emirates ● SkyWave
-🇹🇷 Turkey ● FastWave
-🇮🇱 Israel ● FastWave
-🇮🇷 Iran ● NovaWave
-🇮🇶 Iraq ● NovaWave
-🇯🇴 Jordan ● EdgeWave
-🇱🇧 Lebanon ● EdgeWave
-🇷🇺 Russia ● PowerWave
-🇺🇦 Ukraine ● PowerWave
-🇧🇾 Belarus ● HyperWave
-🇲🇩 Moldova ● HyperWave
-🇵🇱 Poland ● CloudSpeed
-🇨🇿 Czechia ● CloudSpeed
-🇩🇪 Germany ● FiberSpeed
-🇦🇹 Austria ● FiberSpeed
-🇫🇷 France ● SkySpeed
-🇧🇪 Belgium ● SkySpeed
-🇳🇱 Netherlands ● FastSpeed
-🇱🇺 Luxembourg ● FastSpeed
-🇬🇧 United Kingdom ● NovaSpeed
-🇮🇪 Ireland ● NovaSpeed
-🇺🇸 United States ● EdgeSpeed
-🇨🇦 Canada ● EdgeSpeed
-🇨🇭 Switzerland ● PowerSpeed
-🇩🇰 Denmark ● PowerSpeed
-🇸🇪 Sweden ● HyperSpeed
-🇳🇴 Norway ● HyperSpeed
-🇫🇮 Finland ● CloudCore
-🇮🇸 Iceland ● CloudCore
-🇮🇹 Italy ● FiberCore
-🇪🇸 Spain ● FiberCore
-🇵🇹 Portugal ● SkyCore
-🇬🇷 Greece ● SkyCore
-🇭🇷 Croatia ● FastCore
-🇸🇮 Slovenia ● FastCore
-🇸🇰 Slovakia ● NovaCore
-🇭🇺 Hungary ● NovaCore
-🇷🇴 Romania ● EdgeCore
-🇧🇬 Bulgaria ● EdgeCore
-🇷🇸 Serbia ● PowerCore
-🇲🇰 North Macedonia ● PowerCore
-🇧🇦 Bosnia and Herzegovina ● HyperCore
-🇦🇱 Albania ● HyperCore
-🇯🇵 Japan ⬤ CloudX
-🇺🇸 United States ⬤ CloudX
-🇸🇬 Singapore ⬤ HyperWiFi
-🇭🇰 Hong Kong ⬤ HyperWiFi
-🇳🇱 Netherlands ⬤ CloudLine
-🇹🇼 Taiwan ⬤ CloudLine
-🇰🇷 South Korea ⬤ HyperNet
-🇨🇦 Canada ⬤ HyperNet
-🇦🇺 Australia ⬤ PowerNet
-🇬🇧 United Kingdom ⬤ PowerNet
-🇩🇪 Germany ⬤ FastCloud
-🇫🇷 France ⬤ FastCloud
-🇮🇳 India ⬤ NovaNet
-🇲🇾 Malaysia ⬤ NovaNet
-🇷🇴 Romania ⬤ FiberX
-🇫🇮 Finland ⬤ FiberX
-🇵🇱 Poland ⬤ SkyCloud
-🇦🇪 United Arab Emirates ⬤ SkyCloud
-🇹🇷 Turkey ⬤ EdgeNet
-🇨🇭 Switzerland ⬤ EdgeNet
-🇷🇺 Russia ⬤ CloudWave
-🇹🇭 Thailand ⬤ CloudWave
-🇮🇩 Indonesia ⬤ HyperLink
-🇻🇳 Vietnam ⬤ HyperLink
-🇨🇿 Czechia ⬤ FastNet
-🇦🇹 Austria ⬤ FastNet
-🇧🇪 Belgium ⬤ PowerCloud
-🇸🇪 Sweden ⬤ PowerCloud
-🇳🇴 Norway ⬤ SkyNet
-🇩🇰 Denmark ⬤ SkyNet
-🇮🇪 Ireland ⬤ CloudPrime
-🇵🇹 Portugal ⬤ CloudPrime
-🇪🇸 Spain ⬤ FiberCloud
-🇮🇹 Italy ⬤ FiberCloud
-🇭🇺 Hungary ⬤ NovaCloud
-🇧🇬 Bulgaria ⬤ NovaCloud
-🇭🇷 Croatia ⬤ EdgeCloud
-🇷🇸 Serbia ⬤ EdgeCloud
-🇬🇷 Greece ⬤ HyperCloud
-🇮🇱 Israel ⬤ HyperCloud
-🇲🇽 Mexico ⬤ CloudPro
-🇧🇷 Brazil ⬤ CloudPro
-🇦🇷 Argentina ⬤ FiberPro
-🇨🇱 Chile ⬤ FiberPro
-🇨🇴 Colombia ⬤ SkyPro
-🇵🇪 Peru ⬤ SkyPro
-🇿🇦 South Africa ⬤ FastPro
-🇪🇬 Egypt ⬤ FastPro
-🇲🇦 Morocco ⬤ NovaPro
-🇸🇦 Saudi Arabia ⬤ NovaPro
-🇶🇦 Qatar ⬤ EdgePro
-🇰🇼 Kuwait ⬤ EdgePro
-🇧🇭 Bahrain ⬤ PowerPro
-🇴🇲 Oman ⬤ PowerPro
-🇵🇭 Philippines ⬤ HyperPro
-🇵🇰 Pakistan ⬤ HyperPro
-🇧🇩 Bangladesh ⬤ CloudOne
-🇮🇷 Iran ⬤ CloudOne
-🇮🇶 Iraq ⬤ FiberOne
-🇯🇴 Jordan ⬤ FiberOne
-🇱🇧 Lebanon ⬤ SkyOne
-🇰🇿 Kazakhstan ⬤ SkyOne
-🇺🇦 Ukraine ⬤ FastOne
-🇬🇪 Georgia ⬤ FastOne
-🇦🇲 Armenia ⬤ NovaOne
-🇦🇿 Azerbaijan ⬤ NovaOne
-🇺🇿 Uzbekistan ⬤ EdgeOne
-🇰🇬 Kyrgyzstan ⬤ EdgeOne
-🇹🇯 Tajikistan ⬤ PowerOne
-🇲🇳 Mongolia ⬤ PowerOne
-🇳🇵 Nepal ⬤ HyperOne
-🇱🇰 Sri Lanka ⬤ HyperOne
-🇲🇻 Maldives ⬤ CloudMax
-🇮🇸 Iceland ⬤ CloudMax
-🇱🇺 Luxembourg ⬤ FiberMax
-🇱🇮 Liechtenstein ⬤ FiberMax
-🇲🇹 Malta ⬤ SkyMax
-🇨🇾 Cyprus ⬤ SkyMax
-🇸🇮 Slovenia ⬤ FastMax
-🇸🇰 Slovakia ⬤ FastMax
-🇲🇪 Montenegro ⬤ NovaMax
-🇲🇰 North Macedonia ⬤ NovaMax
-🇧🇦 Bosnia and Herzegovina ⬤ EdgeMax
-🇦🇱 Albania ⬤ EdgeMax
-🇽🇰 Kosovo ⬤ PowerMax
-🇲🇩 Moldova ⬤ PowerMax
-🇧🇾 Belarus ⬤ HyperMax
-🇱🇹 Lithuania ⬤ HyperMax
-🇱🇻 Latvia ⬤ CloudUltra
-🇪🇪 Estonia ⬤ CloudUltra
-🇬🇧 United Kingdom ⬤ FiberUltra
-🇩🇪 Germany ⬤ FiberUltra
-🇫🇷 France ⬤ SkyUltra
-🇳🇱 Netherlands ⬤ SkyUltra
-🇺🇸 United States ⬤ FastUltra
-🇨🇦 Canada ⬤ FastUltra
-🇯🇵 Japan ⬤ NovaUltra
-🇸🇬 Singapore ⬤ NovaUltra
-🇦🇺 Australia ⬤ EdgeUltra
-🇳🇿 New Zealand ⬤ EdgeUltra
-🇹🇼 Taiwan ⬤ PowerUltra
-🇭🇰 Hong Kong ⬤ PowerUltra
-🇰🇷 South Korea ⬤ HyperUltra
-🇮🇩 Indonesia ⬤ HyperUltra
-🇻🇳 Vietnam ⬤ CloudSpeed
-🇹🇭 Thailand ⬤ CloudSpeed
-🇮🇳 India ⬤ FiberSpeed
-🇵🇰 Pakistan ⬤ FiberSpeed
-🇸🇦 Saudi Arabia ⬤ SkySpeed
-🇦🇪 United Arab Emirates ⬤ SkySpeed
-🇶🇦 Qatar ⬤ FastSpeed
-🇮🇱 Israel ⬤ FastSpeed
-🇹🇷 Turkey ⬤ NovaSpeed
-🇬🇷 Greece ⬤ NovaSpeed
-🇷🇺 Russia ⬤ EdgeSpeed
-🇺🇦 Ukraine ⬤ EdgeSpeed
-🇵🇱 Poland ⬤ PowerSpeed
-🇨🇿 Czechia ⬤ PowerSpeed
-🇦🇹 Austria ⬤ HyperSpeed
-🇨🇭 Switzerland ⬤ HyperSpeed
-🇮🇹 Italy ⬤ CloudCore
-🇪🇸 Spain ⬤ CloudCore
-🇵🇹 Portugal ⬤ FiberCore
-🇮🇪 Ireland ⬤ FiberCore
-🇸🇪 Sweden ⬤ SkyCore
-🇳🇴 Norway ⬤ SkyCore
-🇩🇰 Denmark ⬤ FastCore
-🇫🇮 Finland ⬤ FastCore
-🇧🇪 Belgium ⬤ NovaCore
-🇷🇴 Romania ⬤ NovaCore
-🇭🇺 Hungary ⬤ EdgeCore
-🇧🇬 Bulgaria ⬤ EdgeCore
-🇭🇷 Croatia ⬤ PowerCore
-🇷🇸 Serbia ⬤ PowerCore
-🇧🇷 Brazil ⬤ HyperCore
-🇲🇽 Mexico ⬤ HyperCore
-🇦🇷 Argentina ⬤ CloudPlus
-🇨🇱 Chile ⬤ CloudPlus
-🇨🇴 Colombia ⬤ FiberPlus
-🇵🇪 Peru ⬤ FiberPlus
-🇺🇾 Uruguay ⬤ SkyPlus
-🇵🇾 Paraguay ⬤ SkyPlus
-🇧🇴 Bolivia ⬤ FastPlus
-🇪🇨 Ecuador ⬤ FastPlus
-🇨🇷 Costa Rica ⬤ NovaPlus
-🇵🇦 Panama ⬤ NovaPlus
-🇩🇴 Dominican Republic ⬤ EdgePlus
-🇯🇲 Jamaica ⬤ EdgePlus
-🇹🇹 Trinidad and Tobago ⬤ PowerPlus
-🇧🇸 Bahamas ⬤ PowerPlus
-🇧🇧 Barbados ⬤ HyperPlus
-🇵🇷 Puerto Rico ⬤ HyperPlus
-🇬🇹 Guatemala ⬤ CloudNet
-🇭🇳 Honduras ⬤ CloudNet
-🇸🇻 El Salvador ⬤ FiberNet
-🇳🇮 Nicaragua ⬤ FiberNet
-🇧🇿 Belize ⬤ SkyNet
-🇨🇺 Cuba ⬤ SkyNet
-🇭🇹 Haiti ⬤ FastNet
-🇩🇲 Dominica ⬤ FastNet
-🇬🇩 Grenada ⬤ NovaNet
-🇱🇨 Saint Lucia ⬤ NovaNet
-🇻🇨 Saint Vincent and the Grenadines ⬤ EdgeNet
-🇰🇳 Saint Kitts and Nevis ⬤ EdgeNet
-🇦🇬 Antigua and Barbuda ⬤ PowerNet
-🇬🇾 Guyana ⬤ PowerNet
-🇸🇷 Suriname ⬤ HyperLink
-🇻🇪 Venezuela ⬤ HyperLink
-🇵🇦 Panama ⬤ CloudWave
-🇪🇨 Ecuador ⬤ CloudWave
-🇵🇾 Paraguay ⬤ FiberWave
-🇺🇾 Uruguay ⬤ FiberWave
-🇧🇴 Bolivia ⬤ SkyWave
-🇨🇷 Costa Rica ⬤ SkyWave
-🇬🇹 Guatemala ⬤ FastWave
-🇭🇳 Honduras ⬤ FastWave
-🇲🇽 Mexico ⬤ NovaWave
-🇧🇷 Brazil ⬤ NovaWave
-🇨🇱 Chile ⬤ EdgeWave
-🇦🇷 Argentina ⬤ EdgeWave
-🇨🇴 Colombia ⬤ PowerWave
-🇵🇪 Peru ⬤ PowerWave
-🇪🇬 Egypt ⬤ HyperWave
-🇲🇦 Morocco ⬤ HyperWave
-🇩🇿 Algeria ⬤ CloudCore
-🇹🇳 Tunisia ⬤ CloudCore
-🇱🇾 Libya ⬤ FiberCore
-🇸🇩 Sudan ⬤ FiberCore
-🇪🇹 Ethiopia ⬤ SkyCore
-🇰🇪 Kenya ⬤ SkyCore
-🇳🇬 Nigeria ⬤ FastCore
-🇬🇭 Ghana ⬤ FastCore
-🇹🇿 Tanzania ⬤ NovaCore
-🇺🇬 Uganda ⬤ NovaCore
-🇷🇼 Rwanda ⬤ EdgeCore
-🇿🇦 South Africa ⬤ EdgeCore
-🇳🇦 Namibia ⬤ PowerCore
-🇧🇼 Botswana ⬤ PowerCore
-🇿🇲 Zambia ⬤ HyperCore
-🇿🇼 Zimbabwe ⬤ HyperCore
-🇲🇺 Mauritius ⬤ CloudPlus
-🇸🇨 Seychelles ⬤ CloudPlus
-🇲🇬 Madagascar ⬤ FiberPlus
-🇲🇿 Mozambique ⬤ FiberPlus
-🇦🇴 Angola ⬤ SkyPlus
-🇨🇲 Cameroon ⬤ SkyPlus
-🇸🇳 Senegal ⬤ FastPlus
-🇨🇮 Ivory Coast ⬤ FastPlus
-🇬🇦 Gabon ⬤ NovaPlus
-🇨🇬 Republic of the Congo ⬤ NovaPlus
-🇨🇩 Democratic Republic of the Congo ⬤ EdgePlus
-🇧🇯 Benin ⬤ EdgePlus
-🇹🇬 Togo ⬤ PowerPlus
-🇧🇫 Burkina Faso ⬤ PowerPlus
-🇲🇱 Mali ⬤ HyperPlus
-🇳🇪 Niger ⬤ HyperPlus
-🇹🇩 Chad ⬤ CloudNet
-🇨🇫 Central African Republic ⬤ CloudNet
-🇬🇳 Guinea ⬤ FiberNet
-🇬🇼 Guinea-Bissau ⬤ FiberNet
-🇸🇱 Sierra Leone ⬤ SkyNet
-🇱🇷 Liberia ⬤ SkyNet
-🇬🇲 Gambia ⬤ FastNet
-🇲🇷 Mauritania ⬤ FastNet
-🇸🇴 Somalia ⬤ NovaNet
-🇩🇯 Djibouti ⬤ NovaNet
-🇪🇷 Eritrea ⬤ EdgeNet
-🇸🇸 South Sudan ⬤ EdgeNet
-🇾🇪 Yemen ⬤ PowerNet
-🇸🇾 Syria ⬤ PowerNet
-🇦🇫 Afghanistan ⬤ HyperLink
-🇹🇲 Turkmenistan ⬤ HyperLink
-🇰🇭 Cambodia ⬤ CloudWave
-🇱🇦 Laos ⬤ CloudWave
-🇲🇲 Myanmar ⬤ FiberWave
-🇧🇳 Brunei ⬤ FiberWave
-🇧🇹 Bhutan ⬤ SkyWave
-🇲🇴 Macau ⬤ SkyWave
-🇫🇯 Fiji ⬤ FastWave
-🇼🇸 Samoa ⬤ FastWave
-🇹🇴 Tonga ⬤ NovaWave
-🇻🇺 Vanuatu ⬤ NovaWave
-🇸🇧 Solomon Islands ⬤ EdgeWave
-🇵🇬 Papua New Guinea ⬤ EdgeWave
-🇵🇼 Palau ⬤ PowerWave
-🇫🇲 Micronesia ⬤ PowerWave
-🇲🇭 Marshall Islands ⬤ HyperWave
-🇰🇮 Kiribati ⬤ HyperWave
-🇳🇷 Nauru ⬤ CloudSpeed
-🇹🇻 Tuvalu ⬤ CloudSpeed
-🇻🇦 Vatican City ⬤ FiberSpeed
-🇸🇲 San Marino ⬤ FiberSpeed
-🇦🇩 Andorra ⬤ SkySpeed
-🇲🇨 Monaco ⬤ SkySpeed
-🇨🇻 Cabo Verde ⬤ FastSpeed
-🇸🇹 Sao Tome and Principe ⬤ FastSpeed
-🇰🇲 Comoros ⬤ NovaSpeed
-🇸🇨 Seychelles ⬤ NovaSpeed
-🇱🇸 Lesotho ⬤ EdgeSpeed
-🇸🇿 Eswatini ⬤ EdgeSpeed
-🇲🇼 Malawi ⬤ PowerSpeed
-🇧🇮 Burundi ⬤ PowerSpeed
-🇷🇸 Serbia ⬤ HyperSpeed
-🇲🇪 Montenegro ⬤ HyperSpeed
-🇦🇲 Armenia ⬤ CloudCore
-🇬🇪 Georgia ⬤ CloudCore
-🇦🇿 Azerbaijan ⬤ FiberCore
-🇰🇿 Kazakhstan ⬤ FiberCore
-🇺🇿 Uzbekistan ⬤ SkyCore
-🇰🇬 Kyrgyzstan ⬤ SkyCore
-🇹🇯 Tajikistan ⬤ FastCore
-🇲🇳 Mongolia ⬤ FastCore
-🇳🇵 Nepal ⬤ NovaCore
-🇧🇹 Bhutan ⬤ NovaCore
-🇱🇰 Sri Lanka ⬤ EdgeCore
-🇲🇻 Maldives ⬤ EdgeCore
-🇵🇭 Philippines ⬤ PowerCore
-🇮🇩 Indonesia ⬤ PowerCore
-🇲🇾 Malaysia ⬤ HyperCore
-🇹🇭 Thailand ⬤ HyperCore
-🇻🇳 Vietnam ⬤ CloudPlus
-🇹🇼 Taiwan ⬤ CloudPlus
-🇭🇰 Hong Kong ⬤ FiberPlus
-🇸🇬 Singapore ⬤ FiberPlus
-🇯🇵 Japan ⬤ SkyPlus
-🇰🇷 South Korea ⬤ SkyPlus
-🇨🇳 China ⬤ FastPlus
-🇮🇳 India ⬤ FastPlus
-🇵🇰 Pakistan ⬤ NovaPlus
-🇧🇩 Bangladesh ⬤ NovaPlus
+🇺🇸 United States • Google
+🇬🇧 United Kingdom • Cloudflare
+🇩🇪 Germany • WiFiWarden
+🇫🇷 France • Claude
+🇯🇵 Japan • Fastly
+🇹🇷 Turkey • AWS
+🇮🇹 Italy • Azure
+🇪🇸 Spain • Oracle
+🇨🇦 Canada • DigitalOcean
+🇦🇺 Australia • Akamai
+🇳🇱 Netherlands • CloudFront
+🇨🇭 Switzerland • Proton
+🇸🇪 Sweden • Google Cloud
+🇳🇴 Norway • Microsoft
+🇫🇮 Finland • Apple
+🇰🇷 South Korea • Samsung Cloud
+🇸🇬 Singapore • Tencent Cloud
+🇦🇪 United Arab Emirates • Alibaba Cloud
+🇧🇷 Brazil • Meta
+🇲🇽 Mexico • GitHub
+🇮🇳 India • Gemini
+🇨🇳 China • Baidu
+🇵🇹 Portugal • OVHcloud
+🇦🇹 Austria • Hetzner
+🇧🇪 Belgium • Vercel
+🇩🇰 Denmark • Netlify
+🇵🇱 Poland • Railway
+🇮🇪 Ireland • Fly.io
+🇬🇷 Greece • Discord
+🇨🇿 Czechia • Telegram
+🇭🇺 Hungary • Reddit
+🇷🇴 Romania • Spotify
+🇧🇬 Bulgaria • Netflix
+🇭🇷 Croatia • YouTube
+🇷🇸 Serbia • TikTok
+🇺🇦 Ukraine • WhatsApp
+🇷🇺 Russia • Yandex
+🇮🇱 Israel • Wix
+🇸🇦 Saudi Arabia • STC Cloud
+🇶🇦 Qatar • Ooredoo Cloud
+🇪🇬 Egypt • Vodafone
+🇿🇦 South Africa • MTN
+🇹🇭 Thailand • LINE
+🇻🇳 Vietnam • Zalo Cloud
+🇮🇩 Indonesia • Gojek
+🇲🇾 Malaysia • Grab
+🇵🇭 Philippines • Globe
+🇳🇿 New Zealand • Spark
+🇦🇷 Argentina • Mercado Libre
+🇨🇱 Chile • Entel
+🇨🇴 Colombia • Claro
+🇵🇪 Peru • Movistar
+🇵🇰 Pakistan • Nayatel
+🇧🇩 Bangladesh • Grameenphone
+🇮🇷 Iran • ArvanCloud
+🇮🇶 Iraq • Asiacell
+🇯🇴 Jordan • Zain
+🇰🇼 Kuwait • Ooredoo
+🇴🇲 Oman • Omantel
+🇲🇦 Morocco • Maroc Telecom
+🇹🇳 Tunisia • Orange
+🇰🇪 Kenya • Safaricom
+🇳🇬 Nigeria • Airtel
+🇬🇭 Ghana • Vodafone Ghana
+🇪🇹 Ethiopia • Ethio Telecom
+🇮🇸 Iceland • CloudNord
+🇱🇺 Luxembourg • LuxConnect
+🇱🇮 Liechtenstein • FiberNet
+🇲🇨 Monaco • Monaco Telecom
+🇲🇹 Malta • Melita
+🇨🇾 Cyprus • Cyta
+🇱🇻 Latvia • Tet
+🇱🇹 Lithuania • Telia
+🇪🇪 Estonia • Elisa
+🇸🇰 Slovakia • Orange SK
+🇸🇮 Slovenia • Telekom
+🇧🇦 Bosnia and Herzegovina • BH Telecom
+🇲🇪 Montenegro • Crnogorski Telekom
+🇦🇱 Albania • One Albania
+🇲🇰 North Macedonia • A1
+🇬🇪 Georgia • Magti
+🇦🇲 Armenia • Ucom
+🇦🇿 Azerbaijan • Azercell
+🇰🇿 Kazakhstan • Kazakhtelecom
+🇺🇿 Uzbekistan • Ucell
+🇲🇳 Mongolia • Mobicom
+🇳🇵 Nepal • WorldLink
+🇱🇰 Sri Lanka • Dialog
+🇲🇻 Maldives • Dhiraagu
+🇫🇯 Fiji • Vodafone Fiji
+🇧🇸 Bahamas • BTC
+🇯🇲 Jamaica • Digicel
+🇨🇺 Cuba • ETECSA
+🇵🇦 Panama • Tigo
+🇨🇷 Costa Rica • Liberty
+🇩🇴 Dominican Republic • Altice
+🇺🇾 Uruguay • Antel
+🇵🇾 Paraguay • Personal
+🇧🇴 Bolivia • Entel Bolivia
+🇦🇫 Afghanistan • Roshan
+🇩🇿 Algeria • Djezzy
+🇦🇩 Andorra • Andorra Telecom
+🇦🇴 Angola • Unitel
+🇦🇬 Antigua and Barbuda • Flow
+🇧🇭 Bahrain • Batelco
+🇧🇧 Barbados • Digicel
+🇧🇾 Belarus • A1 Cloud
+🇧🇿 Belize • Smart
+🇧🇯 Benin • Moov
+🇧🇹 Bhutan • Bhutan Telecom
+🇧🇼 Botswana • Mascom
+🇧🇳 Brunei • Imagine
+🇧🇫 Burkina Faso • Orange
+🇧🇮 Burundi • Lumitel
+🇨🇻 Cape Verde • CV Telecom
+🇰🇭 Cambodia • Smart
+🇨🇲 Cameroon • MTN
+🇨🇫 Central African Republic • Orange
+🇹🇩 Chad • Airtel
+🇰🇲 Comoros • Telma
+🇨🇬 Congo • MTN
+🇨🇩 Democratic Republic of the Congo • Vodacom
+🇨🇮 Côte d'Ivoire • MTN
+🇩🇯 Djibouti • Djibouti Telecom
+🇩🇲 Dominica • Flow
+🇬🇶 Equatorial Guinea • Orange
+🇪🇷 Eritrea • EriTel
+🇸🇿 Eswatini • MTN
+🇬🇦 Gabon • Airtel
+🇬🇲 Gambia • QCell
+🇬🇹 Guatemala • Claro
+🇬🇳 Guinea • Orange
+🇬🇼 Guinea-Bissau • Orange
+🇬🇾 Guyana • GTT
+🇭🇹 Haiti • Digicel
+🇭🇳 Honduras • Tigo
+🇰🇮 Kiribati • Telecom Services
+🇱🇦 Laos • Unitel
+🇱🇧 Lebanon • Alfa
+🇱🇸 Lesotho • Vodacom
+🇱🇷 Liberia • Lonestar
+🇱🇾 Libya • Libyana
+🇲🇬 Madagascar • Telma
+🇲🇼 Malawi • Airtel
+🇲🇱 Mali • Orange
+🇲🇭 Marshall Islands • NTA
+🇲🇷 Mauritania • Mattel
+🇲🇺 Mauritius • Emtel
+🇫🇲 Micronesia • FSM Telecom
+🇲🇩 Moldova • Moldcell
+🇲🇿 Mozambique • Vodacom
+🇲🇲 Myanmar • Ooredoo
+🇳🇦 Namibia • MTC
+🇳🇷 Nauru • Digicel
+🇳🇮 Nicaragua • Claro
+🇳🇪 Niger • Airtel
+🇵🇼 Palau • PalauCel
+🇵🇬 Papua New Guinea • Digicel
+🇷🇼 Rwanda • MTN
+🇰🇳 Saint Kitts and Nevis • Flow
+🇱🇨 Saint Lucia • Digicel
+🇻🇨 Saint Vincent and the Grenadines • Flow
+🇼🇸 Samoa • Digicel
+🇸🇲 San Marino • Telecom Italia
+🇸🇹 São Tomé and Príncipe • CST
+🇸🇳 Senegal • Orange
+🇸🇨 Seychelles • Airtel
+🇸🇱 Sierra Leone • Orange
+🇸🇧 Solomon Islands • Telekom
+🇸🇴 Somalia • Hormuud
+🇸🇸 South Sudan • MTN
+🇸🇩 Sudan • Zain
+🇸🇷 Suriname • Telesur
+🇸🇾 Syria • Syriatel
+🇹🇯 Tajikistan • Tcell
+🇹🇱 Timor-Leste • Telemor
+🇹🇬 Togo • Togocel
+🇹🇴 Tonga • Digicel
+🇹🇹 Trinidad and Tobago • Flow
+🇹🇲 Turkmenistan • Altyn Asyr
+🇹🇻 Tuvalu • Tuvalu Telecom
+🇺🇬 Uganda • MTN
+🇻🇺 Vanuatu • Digicel
+🇻🇦 Vatican City • Vatican Network
+🇻🇪 Venezuela • Movilnet
+🇾🇪 Yemen • Yemen Mobile
+🇿🇲 Zambia • Airtel
+🇿🇼 Zimbabwe • Econet
+🇺🇸 𝙐𝙣𝙞𝙩𝙚𝙙 𝙎𝙩𝙖𝙩𝙚𝙨 • 𝙂𝙤𝙤𝙜𝙡𝙚
+🇬🇧 𝙐𝙣𝙞𝙩𝙚𝙙 𝙆𝙞𝙣𝙜𝙙𝙤𝙢 • 𝘾𝙡𝙤𝙪𝙙𝙛𝙡𝙖𝙧𝙚
+🇩🇪 𝙂𝙚𝙧𝙢𝙖𝙣𝙮 • 𝙒𝙞𝙁𝙞𝙒𝙖𝙧𝙙𝙚𝙣
+🇫🇷 𝙁𝙧𝙖𝙣𝙘𝙚 • 𝘾𝙡𝙖𝙪𝙙𝙚
+🇯🇵 𝙅𝙖𝙥𝙖𝙣 • 𝙁𝙖𝙨𝙩𝙡𝙮
+🇹🇷 𝙏𝙪𝙧𝙠𝙚𝙮 • 𝘼𝙒𝙎
+🇮🇹 𝙄𝙩𝙖𝙡𝙮 • 𝘼𝙯𝙪𝙧𝙚
+🇪🇸 𝙎𝙥𝙖𝙞𝙣 • 𝙊𝙧𝙖𝙘𝙡𝙚
+🇨🇦 𝘾𝙖𝙣𝙖𝙙𝙖 • 𝘿𝙞𝙜𝙞𝙩𝙖𝙡𝙊𝙘𝙚𝙖𝙣
+🇦🇺 𝘼𝙪𝙨𝙩𝙧𝙖𝙡𝙞𝙖 • 𝘼𝙠𝙖𝙢𝙖𝙞
+🇳🇱 𝙉𝙚𝙩𝙝𝙚𝙧𝙡𝙖𝙣𝙙𝙨 • 𝘾𝙡𝙤𝙪𝙙𝙁𝙧𝙤𝙣𝙩
+🇨🇭 𝙎𝙬𝙞𝙩𝙯𝙚𝙧𝙡𝙖𝙣𝙙 • 𝙋𝙧𝙤𝙩𝙤𝙣
+🇸🇪 𝙎𝙬𝙚𝙙𝙚𝙣 • 𝙂𝙤𝙤𝙜𝙡𝙚 𝘾𝙡𝙤𝙪𝙙
+🇳🇴 𝙉𝙤𝙧𝙬𝙖𝙮 • 𝙈𝙞𝙘𝙧𝙤𝙨𝙤𝙛𝙩
+🇫🇮 𝙁𝙞𝙣𝙡𝙖𝙣𝙙 • 𝘼𝙥𝙥𝙡𝙚
+🇰🇷 𝙎𝙤𝙪𝙩𝙝 𝙆𝙤𝙧𝙚𝙖 • 𝙎𝙖𝙢𝙨𝙪𝙣𝙜 𝘾𝙡𝙤𝙪𝙙
+🇸🇬 𝙎𝙞𝙣𝙜𝙖𝙥𝙤𝙧𝙚 • 𝙏𝙚𝙣𝙘𝙚𝙣𝙩 𝘾𝙡𝙤𝙪𝙙
+🇦🇪 𝙐𝙣𝙞𝙩𝙚𝙙 𝘼𝙧𝙖𝙗 𝙀𝙢𝙞𝙧𝙖𝙩𝙚𝙨 • 𝘼𝙡𝙞𝙗𝙖𝙗𝙖 𝘾𝙡𝙤𝙪𝙙
+🇧🇷 𝘽𝙧𝙖𝙯𝙞𝙡 • 𝙈𝙚𝙩𝙖
+🇲🇽 𝙈𝙚𝙭𝙞𝙘𝙤 • 𝙂𝙞𝙩𝙃𝙪𝙗
+🇮🇳 𝙄𝙣𝙙𝙞𝙖 • 𝙂𝙚𝙢𝙞𝙣𝙞
+🇨🇳 𝘾𝙝𝙞𝙣𝙖 • 𝘽𝙖𝙞𝙙𝙪
+🇵🇹 𝙋𝙤𝙧𝙩𝙪𝙜𝙖𝙡 • 𝙊𝙑𝙃𝙘𝙡𝙤𝙪𝙙
+🇦🇹 𝘼𝙪𝙨𝙩𝙧𝙞𝙖 • 𝙃𝙚𝙩𝙯𝙣𝙚𝙧
+🇧🇪 𝘽𝙚𝙡𝙜𝙞𝙪𝙢 • 𝙑𝙚𝙧𝙘𝙚𝙡
+🇩🇰 𝘿𝙚𝙣𝙢𝙖𝙧𝙠 • 𝙉𝙚𝙩𝙡𝙞𝙛𝙮
+🇵🇱 𝙋𝙤𝙡𝙖𝙣𝙙 • 𝙍𝙖𝙞𝙡𝙬𝙖𝙮
+🇮🇪 𝙄𝙧𝙚𝙡𝙖𝙣𝙙 • 𝙁𝙡𝙮.𝙞𝙤
+🇬🇷 𝙂𝙧𝙚𝙚𝙘𝙚 • 𝘿𝙞𝙨𝙘𝙤𝙧𝙙
+🇨🇿 𝘾𝙯𝙚𝙘𝙝𝙞𝙖 • 𝙏𝙚𝙡𝙚𝙜𝙧𝙖𝙢
+🇭🇺 𝙃𝙪𝙣𝙜𝙖𝙧𝙮 • 𝙍𝙚𝙙𝙙𝙞𝙩
+🇷🇴 𝙍𝙤𝙢𝙖𝙣𝙞𝙖 • 𝙎𝙥𝙤𝙩𝙞𝙛𝙮
+🇧🇬 𝘽𝙪𝙡𝙜𝙖𝙧𝙞𝙖 • 𝙉𝙚𝙩𝙛𝙡𝙞𝙭
+🇭🇷 𝘾𝙧𝙤𝙖𝙩𝙞𝙖 • 𝙔𝙤𝙪𝙏𝙪𝙗𝙚
+🇷🇸 𝙎𝙚𝙧𝙗𝙞𝙖 • 𝙏𝙞𝙠𝙏𝙤𝙠
+🇺🇦 𝙐𝙠𝙧𝙖𝙞𝙣𝙚 • 𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥
+🇷🇺 𝙍𝙪𝙨𝙨𝙞𝙖 • 𝙔𝙖𝙣𝙙𝙚𝙭
+🇮🇱 𝙄𝙨𝙧𝙖𝙚𝙡 • 𝙒𝙞𝙭
+🇸🇦 𝙎𝙖𝙪𝙙𝙞 𝘼𝙧𝙖𝙗𝙞𝙖 • 𝙎𝙏𝘾 𝘾𝙡𝙤𝙪𝙙
+🇶🇦 𝙌𝙖𝙩𝙖𝙧 • 𝙊𝙤𝙧𝙚𝙙𝙤𝙤 𝘾𝙡𝙤𝙪𝙙
+🇪🇬 𝙀𝙜𝙮𝙥𝙩 • 𝙑𝙤𝙙𝙖𝙛𝙤𝙣𝙚
+🇿🇦 𝙎𝙤𝙪𝙩𝙝 𝘼𝙛𝙧𝙞𝙘𝙖 • 𝙈𝙏𝙉
+🇹🇭 𝙏𝙝𝙖𝙞𝙡𝙖𝙣𝙙 • 𝙇𝙄𝙉𝙀
+🇻🇳 𝙑𝙞𝙚𝙩𝙣𝙖𝙢 • 𝙕𝙖𝙡𝙤 𝘾𝙡𝙤𝙪𝙙
+🇮🇩 𝙄𝙣𝙙𝙤𝙣𝙚𝙨𝙞𝙖 • 𝙂𝙤𝙟𝙚𝙠
+🇲🇾 𝙈𝙖𝙡𝙖𝙮𝙨𝙞𝙖 • 𝙂𝙧𝙖𝙗
+🇵🇭 𝙋𝙝𝙞𝙡𝙞𝙥𝙥𝙞𝙣𝙚𝙨 • 𝙂𝙡𝙤𝙗𝙚
+🇳🇿 𝙉𝙚𝙬 𝙕𝙚𝙖𝙡𝙖𝙣𝙙 • 𝙎𝙥𝙖𝙧𝙠
+🇦🇷 𝘼𝙧𝙜𝙚𝙣𝙩𝙞𝙣𝙖 • 𝙈𝙚𝙧𝙘𝙖𝙙𝙤 𝙇𝙞𝙗𝙧𝙚
+🇨🇱 𝘾𝙝𝙞𝙡𝙚 • 𝙀𝙣𝙩𝙚𝙡
+🇨🇴 𝘾𝙤𝙡𝙤𝙢𝙗𝙞𝙖 • 𝘾𝙡𝙖𝙧𝙤
+🇵🇪 𝙋𝙚𝙧𝙪 • 𝙈𝙤𝙫𝙞𝙨𝙩𝙖𝙧
+🇵🇰 𝙋𝙖𝙠𝙞𝙨𝙩𝙖𝙣 • 𝙉𝙖𝙮𝙖𝙩𝙚𝙡
+🇧🇩 𝘽𝙖𝙣𝙜𝙡𝙖𝙙𝙚𝙨𝙝 • 𝙂𝙧𝙖𝙢𝙚𝙚𝙣𝙥𝙝𝙤𝙣𝙚
+🇮🇷 𝙄𝙧𝙖𝙣 • 𝘼𝙧𝙫𝙖𝙣𝘾𝙡𝙤𝙪𝙙
+🇮🇶 𝙄𝙧𝙖𝙦 • 𝘼𝙨𝙞𝙖𝙘𝙚𝙡𝙡
+🇯🇴 𝙅𝙤𝙧𝙙𝙖𝙣 • 𝙕𝙖𝙞𝙣
+🇰🇼 𝙆𝙪𝙬𝙖𝙞𝙩 • 𝙊𝙤𝙧𝙚𝙙𝙤𝙤
+🇴🇲 𝙊𝙢𝙖𝙣 • 𝙊𝙢𝙖𝙣𝙩𝙚𝙡
+🇲🇦 𝙈𝙤𝙧𝙤𝙘𝙘𝙤 • 𝙈𝙖𝙧𝙤𝙘 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇹🇳 𝙏𝙪𝙣𝙞𝙨𝙞𝙖 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇰🇪 𝙆𝙚𝙣𝙮𝙖 • 𝙎𝙖𝙛𝙖𝙧𝙞𝙘𝙤𝙢
+🇳🇬 𝙉𝙞𝙜𝙚𝙧𝙞𝙖 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇬🇭 𝙂𝙝𝙖𝙣𝙖 • 𝙑𝙤𝙙𝙖𝙛𝙤𝙣𝙚 𝙂𝙝𝙖𝙣𝙖
+🇪🇹 𝙀𝙩𝙝𝙞𝙤𝙥𝙞𝙖 • 𝙀𝙩𝙝𝙞𝙤 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇮🇸 𝙄𝙘𝙚𝙡𝙖𝙣𝙙 • 𝘾𝙡𝙤𝙪𝙙𝙉𝙤𝙧𝙙
+🇱🇺 𝙇𝙪𝙭𝙚𝙢𝙗𝙤𝙪𝙧𝙜 • 𝙇𝙪𝙭𝘾𝙤𝙣𝙣𝙚𝙘𝙩
+🇱🇮 𝙇𝙞𝙚𝙘𝙝𝙩𝙚𝙣𝙨𝙩𝙚𝙞𝙣 • 𝙁𝙞𝙗𝙚𝙧𝙉𝙚𝙩
+🇲🇨 𝙈𝙤𝙣𝙖𝙘𝙤 • 𝙈𝙤𝙣𝙖𝙘𝙤 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇲🇹 𝙈𝙖𝙡𝙩𝙖 • 𝙈𝙚𝙡𝙞𝙩𝙖
+🇨🇾 𝘾𝙮𝙥𝙧𝙪𝙨 • 𝘾𝙮𝙩𝙖
+🇱🇻 𝙇𝙖𝙩𝙫𝙞𝙖 • 𝙏𝙚𝙩
+🇱🇹 𝙇𝙞𝙩𝙝𝙪𝙖𝙣𝙞𝙖 • 𝙏𝙚𝙡𝙞𝙖
+🇪🇪 𝙀𝙨𝙩𝙤𝙣𝙞𝙖 • 𝙀𝙡𝙞𝙨𝙖
+🇸🇰 𝙎𝙡𝙤𝙫𝙖𝙠𝙞𝙖 • 𝙊𝙧𝙖𝙣𝙜𝙚 𝙎𝙆
+🇸🇮 𝙎𝙡𝙤𝙫𝙚𝙣𝙞𝙖 • 𝙏𝙚𝙡𝙚𝙠𝙤𝙢
+🇧🇦 𝘽𝙤𝙨𝙣𝙞𝙖 𝙖𝙣𝙙 𝙃𝙚𝙧𝙯𝙚𝙜𝙤𝙫𝙞𝙣𝙖 • 𝘽𝙃 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇲🇪 𝙈𝙤𝙣𝙩𝙚𝙣𝙚𝙜𝙧𝙤 • 𝘾𝙧𝙣𝙤𝙜𝙤𝙧𝙨𝙠𝙞 𝙏𝙚𝙡𝙚𝙠𝙤𝙢
+🇦🇱 𝘼𝙡𝙗𝙖𝙣𝙞𝙖 • 𝙊𝙣𝙚 𝘼𝙡𝙗𝙖𝙣𝙞𝙖
+🇲🇰 𝙉𝙤𝙧𝙩𝙝 𝙈𝙖𝙘𝙚𝙙𝙤𝙣𝙞𝙖 • 𝘼𝟭
+🇬🇪 𝙂𝙚𝙤𝙧𝙜𝙞𝙖 • 𝙈𝙖𝙜𝙩𝙞
+🇦🇲 𝘼𝙧𝙢𝙚𝙣𝙞𝙖 • 𝙐𝙘𝙤𝙢
+🇦🇿 𝘼𝙯𝙚𝙧𝙗𝙖𝙞𝙟𝙖𝙣 • 𝘼𝙯𝙚𝙧𝙘𝙚𝙡𝙡
+🇰🇿 𝙆𝙖𝙯𝙖𝙠𝙝𝙨𝙩𝙖𝙣 • 𝙆𝙖𝙯𝙖𝙠𝙝𝙩𝙚𝙡𝙚𝙘𝙤𝙢
+🇺🇿 𝙐𝙯𝙗𝙚𝙠𝙞𝙨𝙩𝙖𝙣 • 𝙐𝙘𝙚𝙡𝙡
+🇲🇳 𝙈𝙤𝙣𝙜𝙤𝙡𝙞𝙖 • 𝙈𝙤𝙗𝙞𝙘𝙤𝙢
+🇳🇵 𝙉𝙚𝙥𝙖𝙡 • 𝙒𝙤𝙧𝙡𝙙𝙇𝙞𝙣𝙠
+🇱🇰 𝙎𝙧𝙞 𝙇𝙖𝙣𝙠𝙖 • 𝘿𝙞𝙖𝙡𝙤𝙜
+🇲🇻 𝙈𝙖𝙡𝙙𝙞𝙫𝙚𝙨 • 𝘿𝙝𝙞𝙧𝙖𝙖𝙜𝙪
+🇫🇯 𝙁𝙞𝙟𝙞 • 𝙑𝙤𝙙𝙖𝙛𝙤𝙣𝙚 𝙁𝙞𝙟𝙞
+🇧🇸 𝘽𝙖𝙝𝙖𝙢𝙖𝙨 • 𝘽𝙏𝘾
+🇯🇲 𝙅𝙖𝙢𝙖𝙞𝙘𝙖 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇨🇺 𝘾𝙪𝙗𝙖 • 𝙀𝙏𝙀𝘾𝙎𝘼
+🇵🇦 𝙋𝙖𝙣𝙖𝙢𝙖 • 𝙏𝙞𝙜𝙤
+🇨🇷 𝘾𝙤𝙨𝙩𝙖 𝙍𝙞𝙘𝙖 • 𝙇𝙞𝙗𝙚𝙧𝙩𝙮
+🇩🇴 𝘿𝙤𝙢𝙞𝙣𝙞𝙘𝙖𝙣 𝙍𝙚𝙥𝙪𝙗𝙡𝙞𝙘 • 𝘼𝙡𝙩𝙞𝙘𝙚
+🇺🇾 𝙐𝙧𝙪𝙜𝙪𝙖𝙮 • 𝘼𝙣𝙩𝙚𝙡
+🇵🇾 𝙋𝙖𝙧𝙖𝙜𝙪𝙖𝙮 • 𝙋𝙚𝙧𝙨𝙤𝙣𝙖𝙡
+🇧🇴 𝘽𝙤𝙡𝙞𝙫𝙞𝙖 • 𝙀𝙣𝙩𝙚𝙡 𝘽𝙤𝙡𝙞𝙫𝙞𝙖
+🇦🇫 𝘼𝙛𝙜𝙝𝙖𝙣𝙞𝙨𝙩𝙖𝙣 • 𝙍𝙤𝙨𝙝𝙖𝙣
+🇩🇿 𝘼𝙡𝙜𝙚𝙧𝙞𝙖 • 𝘿𝙟𝙚𝙯𝙯𝙮
+🇦🇩 𝘼𝙣𝙙𝙤𝙧𝙧𝙖 • 𝘼𝙣𝙙𝙤𝙧𝙧𝙖 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇦🇴 𝘼𝙣𝙜𝙤𝙡𝙖 • 𝙐𝙣𝙞𝙩𝙚𝙡
+🇦🇬 𝘼𝙣𝙩𝙞𝙜𝙪𝙖 𝙖𝙣𝙙 𝘽𝙖𝙧𝙗𝙪𝙙𝙖 • 𝙁𝙡𝙤𝙬
+🇧🇭 𝘽𝙖𝙝𝙧𝙖𝙞𝙣 • 𝘽𝙖𝙩𝙚𝙡𝙘𝙤
+🇧🇧 𝘽𝙖𝙧𝙗𝙖𝙙𝙤𝙨 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇧🇾 𝘽𝙚𝙡𝙖𝙧𝙪𝙨 • 𝘼𝟭 𝘾𝙡𝙤𝙪𝙙
+🇧🇿 𝘽𝙚𝙡𝙞𝙯𝙚 • 𝙎𝙢𝙖𝙧𝙩
+🇧🇯 𝘽𝙚𝙣𝙞𝙣 • 𝙈𝙤𝙤𝙫
+🇧🇹 𝘽𝙝𝙪𝙩𝙖𝙣 • 𝘽𝙝𝙪𝙩𝙖𝙣 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇧🇼 𝘽𝙤𝙩𝙨𝙬𝙖𝙣𝙖 • 𝙈𝙖𝙨𝙘𝙤𝙢
+🇧🇳 𝘽𝙧𝙪𝙣𝙚𝙞 • 𝙄𝙢𝙖𝙜𝙞𝙣𝙚
+🇧🇫 𝘽𝙪𝙧𝙠𝙞𝙣𝙖 𝙁𝙖𝙨𝙤 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇧🇮 𝘽𝙪𝙧𝙪𝙣𝙙𝙞 • 𝙇𝙪𝙢𝙞𝙩𝙚𝙡
+🇨🇻 𝘾𝙖𝙥𝙚 𝙑𝙚𝙧𝙙𝙚 • 𝘾𝙑 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇰🇭 𝘾𝙖𝙢𝙗𝙤𝙙𝙞𝙖 • 𝙎𝙢𝙖𝙧𝙩
+🇨🇲 𝘾𝙖𝙢𝙚𝙧𝙤𝙤𝙣 • 𝙈𝙏𝙉
+🇨🇫 𝘾𝙚𝙣𝙩𝙧𝙖𝙡 𝘼𝙛𝙧𝙞𝙘𝙖𝙣 𝙍𝙚𝙥𝙪𝙗𝙡𝙞𝙘 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇹🇩 𝘾𝙝𝙖𝙙 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇰🇲 𝘾𝙤𝙢𝙤𝙧𝙤𝙨 • 𝙏𝙚𝙡𝙢𝙖
+🇨🇬 𝘾𝙤𝙣𝙜𝙤 • 𝙈𝙏𝙉
+🇨🇩 𝘿𝙚𝙢𝙤𝙘𝙧𝙖𝙩𝙞𝙘 𝙍𝙚𝙥𝙪𝙗𝙡𝙞𝙘 𝙤𝙛 𝙩𝙝𝙚 𝘾𝙤𝙣𝙜𝙤 • 𝙑𝙤𝙙𝙖𝙘𝙤𝙢
+🇨🇮 𝘾ô𝙩𝙚 𝙙'𝙄𝙫𝙤𝙞𝙧𝙚 • 𝙈𝙏𝙉
+🇩🇯 𝘿𝙟𝙞𝙗𝙤𝙪𝙩𝙞 • 𝘿𝙟𝙞𝙗𝙤𝙪𝙩𝙞 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇩🇲 𝘿𝙤𝙢𝙞𝙣𝙞𝙘𝙖 • 𝙁𝙡𝙤𝙬
+🇬🇶 𝙀𝙦𝙪𝙖𝙩𝙤𝙧𝙞𝙖𝙡 𝙂𝙪𝙞𝙣𝙚𝙖 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇪🇷 𝙀𝙧𝙞𝙩𝙧𝙚𝙖 • 𝙀𝙧𝙞𝙏𝙚𝙡
+🇸🇿 𝙀𝙨𝙬𝙖𝙩𝙞𝙣𝙞 • 𝙈𝙏𝙉
+🇬🇦 𝙂𝙖𝙗𝙤𝙣 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇬🇲 𝙂𝙖𝙢𝙗𝙞𝙖 • 𝙌𝘾𝙚𝙡𝙡
+🇬🇹 𝙂𝙪𝙖𝙩𝙚𝙢𝙖𝙡𝙖 • 𝘾𝙡𝙖𝙧𝙤
+🇬🇳 𝙂𝙪𝙞𝙣𝙚𝙖 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇬🇼 𝙂𝙪𝙞𝙣𝙚𝙖-𝘽𝙞𝙨𝙨𝙖𝙪 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇬🇾 𝙂𝙪𝙮𝙖𝙣𝙖 • 𝙂𝙏𝙏
+🇭🇹 𝙃𝙖𝙞𝙩𝙞 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇭🇳 𝙃𝙤𝙣𝙙𝙪𝙧𝙖𝙨 • 𝙏𝙞𝙜𝙤
+🇰🇮 𝙆𝙞𝙧𝙞𝙗𝙖𝙩𝙞 • 𝙏𝙚𝙡𝙚𝙘𝙤𝙢 𝙎𝙚𝙧𝙫𝙞𝙘𝙚𝙨
+🇱🇦 𝙇𝙖𝙤𝙨 • 𝙐𝙣𝙞𝙩𝙚𝙡
+🇱🇧 𝙇𝙚𝙗𝙖𝙣𝙤𝙣 • 𝘼𝙡𝙛𝙖
+🇱🇸 𝙇𝙚𝙨𝙤𝙩𝙝𝙤 • 𝙑𝙤𝙙𝙖𝙘𝙤𝙢
+🇱🇷 𝙇𝙞𝙗𝙚𝙧𝙞𝙖 • 𝙇𝙤𝙣𝙚𝙨𝙩𝙖𝙧
+🇱🇾 𝙇𝙞𝙗𝙮𝙖 • 𝙇𝙞𝙗𝙮𝙖𝙣𝙖
+🇲🇬 𝙈𝙖𝙙𝙖𝙜𝙖𝙨𝙘𝙖𝙧 • 𝙏𝙚𝙡𝙢𝙖
+🇲🇼 𝙈𝙖𝙡𝙖𝙬𝙞 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇲🇱 𝙈𝙖𝙡𝙞 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇲🇭 𝙈𝙖𝙧𝙨𝙝𝙖𝙡𝙡 𝙄𝙨𝙡𝙖𝙣𝙙𝙨 • 𝙉𝙏𝘼
+🇲🇷 𝙈𝙖𝙪𝙧𝙞𝙩𝙖𝙣𝙞𝙖 • 𝙈𝙖𝙩𝙩𝙚𝙡
+🇲🇺 𝙈𝙖𝙪𝙧𝙞𝙩𝙞𝙪𝙨 • 𝙀𝙢𝙩𝙚𝙡
+🇫🇲 𝙈𝙞𝙘𝙧𝙤𝙣𝙚𝙨𝙞𝙖 • 𝙁𝙎𝙈 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇲🇩 𝙈𝙤𝙡𝙙𝙤𝙫𝙖 • 𝙈𝙤𝙡𝙙𝙘𝙚𝙡𝙡
+🇲🇿 𝙈𝙤𝙯𝙖𝙢𝙗𝙞𝙦𝙪𝙚 • 𝙑𝙤𝙙𝙖𝙘𝙤𝙢
+🇲🇲 𝙈𝙮𝙖𝙣𝙢𝙖𝙧 • 𝙊𝙤𝙧𝙚𝙙𝙤𝙤
+🇳🇦 𝙉𝙖𝙢𝙞𝙗𝙞𝙖 • 𝙈𝙏𝘾
+🇳🇷 𝙉𝙖𝙪𝙧𝙪 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇳🇮 𝙉𝙞𝙘𝙖𝙧𝙖𝙜𝙪𝙖 • 𝘾𝙡𝙖𝙧𝙤
+🇳🇪 𝙉𝙞𝙜𝙚𝙧 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇵🇼 𝙋𝙖𝙡𝙖𝙪 • 𝙋𝙖𝙡𝙖𝙪𝘾𝙚𝙡
+🇵🇬 𝙋𝙖𝙥𝙪𝙖 𝙉𝙚𝙬 𝙂𝙪𝙞𝙣𝙚𝙖 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇷🇼 𝙍𝙬𝙖𝙣𝙙𝙖 • 𝙈𝙏𝙉
+🇰🇳 𝙎𝙖𝙞𝙣𝙩 𝙆𝙞𝙩𝙩𝙨 𝙖𝙣𝙙 𝙉𝙚𝙫𝙞𝙨 • 𝙁𝙡𝙤𝙬
+🇱🇨 𝙎𝙖𝙞𝙣𝙩 𝙇𝙪𝙘𝙞𝙖 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇻🇨 𝙎𝙖𝙞𝙣𝙩 𝙑𝙞𝙣𝙘𝙚𝙣𝙩 𝙖𝙣𝙙 𝙩𝙝𝙚 𝙂𝙧𝙚𝙣𝙖𝙙𝙞𝙣𝙚𝙨 • 𝙁𝙡𝙤𝙬
+🇼🇸 𝙎𝙖𝙢𝙤𝙖 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇸🇲 𝙎𝙖𝙣 𝙈𝙖𝙧𝙞𝙣𝙤 • 𝙏𝙚𝙡𝙚𝙘𝙤𝙢 𝙄𝙩𝙖𝙡𝙞𝙖
+🇸🇹 𝙎ã𝙤 𝙏𝙤𝙢é 𝙖𝙣𝙙 𝙋𝙧í𝙣𝙘𝙞𝙥𝙚 • 𝘾𝙎𝙏
+🇸🇳 𝙎𝙚𝙣𝙚𝙜𝙖𝙡 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇸🇨 𝙎𝙚𝙮𝙘𝙝𝙚𝙡𝙡𝙚𝙨 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇸🇱 𝙎𝙞𝙚𝙧𝙧𝙖 𝙇𝙚𝙤𝙣𝙚 • 𝙊𝙧𝙖𝙣𝙜𝙚
+🇸🇧 𝙎𝙤𝙡𝙤𝙢𝙤𝙣 𝙄𝙨𝙡𝙖𝙣𝙙𝙨 • 𝙏𝙚𝙡𝙚𝙠𝙤𝙢
+🇸🇴 𝙎𝙤𝙢𝙖𝙡𝙞𝙖 • 𝙃𝙤𝙧𝙢𝙪𝙪𝙙
+🇸🇸 𝙎𝙤𝙪𝙩𝙝 𝙎𝙪𝙙𝙖𝙣 • 𝙈𝙏𝙉
+🇸🇩 𝙎𝙪𝙙𝙖𝙣 • 𝙕𝙖𝙞𝙣
+🇸🇷 𝙎𝙪𝙧𝙞𝙣𝙖𝙢𝙚 • 𝙏𝙚𝙡𝙚𝙨𝙪𝙧
+🇸🇾 𝙎𝙮𝙧𝙞𝙖 • 𝙎𝙮𝙧𝙞𝙖𝙩𝙚𝙡
+🇹🇯 𝙏𝙖𝙟𝙞𝙠𝙞𝙨𝙩𝙖𝙣 • 𝙏𝙘𝙚𝙡𝙡
+🇹🇱 𝙏𝙞𝙢𝙤𝙧-𝙇𝙚𝙨𝙩𝙚 • 𝙏𝙚𝙡𝙚𝙢𝙤𝙧
+🇹🇬 𝙏𝙤𝙜𝙤 • 𝙏𝙤𝙜𝙤𝙘𝙚𝙡
+🇹🇴 𝙏𝙤𝙣𝙜𝙖 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇹🇹 𝙏𝙧𝙞𝙣𝙞𝙙𝙖𝙙 𝙖𝙣𝙙 𝙏𝙤𝙗𝙖𝙜𝙤 • 𝙁𝙡𝙤𝙬
+🇹🇲 𝙏𝙪𝙧𝙠𝙢𝙚𝙣𝙞𝙨𝙩𝙖𝙣 • 𝘼𝙡𝙩𝙮𝙣 𝘼𝙨𝙮𝙧
+🇹🇻 𝙏𝙪𝙫𝙖𝙡𝙪 • 𝙏𝙪𝙫𝙖𝙡𝙪 𝙏𝙚𝙡𝙚𝙘𝙤𝙢
+🇺🇬 𝙐𝙜𝙖𝙣𝙙𝙖 • 𝙈𝙏𝙉
+🇻🇺 𝙑𝙖𝙣𝙪𝙖𝙩𝙪 • 𝘿𝙞𝙜𝙞𝙘𝙚𝙡
+🇻🇦 𝙑𝙖𝙩𝙞𝙘𝙖𝙣 𝘾𝙞𝙩𝙮 • 𝙑𝙖𝙩𝙞𝙘𝙖𝙣 𝙉𝙚𝙩𝙬𝙤𝙧𝙠
+🇻🇪 𝙑𝙚𝙣𝙚𝙯𝙪𝙚𝙡𝙖 • 𝙈𝙤𝙫𝙞𝙡𝙣𝙚𝙩
+🇾🇪 𝙔𝙚𝙢𝙚𝙣 • 𝙔𝙚𝙢𝙚𝙣 𝙈𝙤𝙗𝙞𝙡𝙚
+🇿🇲 𝙕𝙖𝙢𝙗𝙞𝙖 • 𝘼𝙞𝙧𝙩𝙚𝙡
+🇿🇼 𝙕𝙞𝙢𝙗𝙖𝙗𝙬𝙚 • 𝙀𝙘𝙤𝙣𝙚𝙩
