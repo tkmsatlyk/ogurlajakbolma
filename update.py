@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 import os
 import json
-import re
 import base64
 import requests
+from urllib.parse import quote
 from datetime import datetime, date
 
 STATE_FILE = "state.json"
@@ -12,10 +13,27 @@ KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
 CONFIG_FILE = "CONFIG"
 KAZANC_FILE = "Kazanc.txt"
-GUNLUK_UCRET = 2.77  # 1 gün = 2.77 manat
+DURUM_FILE = "toplam.subs"
+GUNLUK_UCRET = 2.77
+KAZANC_HARIC_SLOTLAR = ("sub10",)
 
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V")
+
+HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 𝑉𝐼𝑃
+#profile-update-interval: 1
+#profile-web-page-url: https://t.me/xylen_111
+#support-url: https://t.me/xylen_111
+#announce:  📡Kömek gerek bolsa — goldaw elmydama taýyn Ynanýandygyňyz üçin sag boluň! Hil we tizligi saýladyňyz tizlik peselse \u200b⟲ şul şekile basaýmaly✅️【-DAY】
+#subscription-userinfo: upload=0; download=0; total=0; expire=0"""
+
+EXPIRED_ANNOUNCE = "#announce: ❤️‍🔥SAGBOLUŇ BIZE GUWANANYŇYZ UCIN TAZEDEN VPN KOD ALJAK BOLSAŇYZ SKITKA EDIP BERYÄRIS🟢"
+
+DEAD_LINK_NAME = "🫡VPN KODYŇ VAGTY DOLDY 🤝"
+DEAD_LINK = (
+    "vless://00000000-0000-0000-0000-000000000000@0.0.0.0:0"
+    "?encryption=none&security=none&type=tcp#" + quote(DEAD_LINK_NAME)
+)
 
 def safe_read_lines(path):
     try:
@@ -141,19 +159,46 @@ def parse_definition(parts):
         return None
     return customer, days, flag
 
-def write_kazanc_report(config_info):
-    """CONFIG'teki her satırın gün sayısını GUNLUK_UCRET ile çarpıp Kazanc.txt'ye yazar."""
+def build_active_header(remaining_days):
+    filled = HEADER_TEMPLATE.replace("【-DAY】", f"【{remaining_days}-DAY】")
+    return filled.split("\n")
+
+def build_expired_header():
+    lines = HEADER_TEMPLATE.split("\n")
+    new_lines = []
+    for line in lines:
+        if line.startswith("#announce:"):
+            new_lines.append(EXPIRED_ANNOUNCE)
+        else:
+            new_lines.append(line)
+    return new_lines
+
+def update_kazanc(state_data, slot, customer, target_days):
+    if slot in KAZANC_HARIC_SLOTLAR:
+        return
+    signature = f"{slot}|{customer}|{target_days}"
+    recorded = state_data.setdefault("_kazanc_kayitli", [])
+    if signature in recorded:
+        return
+    tutar = target_days * GUNLUK_UCRET
+    history = state_data.setdefault("_kazanc_gecmisi", [])
+    history.append({
+        "slot": slot, "customer": customer, "days": target_days,
+        "tutar": round(tutar, 2), "tarih": date.today().isoformat()
+    })
+    recorded.append(signature)
+    print(f"-> KAZANÇ: {slot} ({customer}, {target_days} gün) -> +{tutar:.2f} manat eklendi.")
+
+def write_kazanc_report(state_data):
+    history = state_data.get("_kazanc_gecmisi", [])
     lines = []
     total = 0.0
-    for slot in sorted(config_info.keys()):
-        customer, days, flag = config_info[slot]
-        tutar = days * GUNLUK_UCRET
-        total += tutar
-        lines.append(f"{slot} - {customer} - {days} gün - {tutar:.2f} manat")
-
+    for entry in history:
+        lines.append(f"{entry['tarih']} | {entry['slot']} - {entry['customer']} - "
+                      f"{entry['days']} gün - {entry['tutar']:.2f} manat")
+        total += entry["tutar"]
     lines.append("")
     lines.append(f"TOPLAM KAZANÇ: {total:.2f} manat")
-
     try:
         with open(KAZANC_FILE, "w", encoding="utf-8") as f:
             f.write("\n".join(lines) + "\n")
@@ -161,8 +206,23 @@ def write_kazanc_report(config_info):
     except Exception as e:
         print(f"Yazma hatası ({KAZANC_FILE}): {e}")
 
+def write_durum_report(durum_listesi):
+    """Her slot için yeşil/kırmızı durumu toplam.subs dosyasına yazar."""
+    lines = []
+    for slot, aktif, kalan_gun in durum_listesi:
+        if aktif:
+            lines.append(f"{slot} 🟢 {kalan_gun} gün kaldı")
+        else:
+            lines.append(f"{slot} 🔴")
+    try:
+        with open(DURUM_FILE, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+        print(f"-> {DURUM_FILE} güncellendi.")
+    except Exception as e:
+        print(f"Yazma hatası ({DURUM_FILE}): {e}")
+
 def main():
-    print("CONFIG panelinden okuyan (T/K/V + Kazanç destekli) sayaç sistemi başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V + kazanç + toplam.subs + süre dolunca mesaj) sistem başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
@@ -193,12 +253,10 @@ def main():
             slot_name = parts[0]
             config_info[slot_name] = parsed
 
-    # Kazanç raporunu hesapla ve yaz
-    write_kazanc_report(config_info)
-
     today_str = date.today().isoformat()
     any_expired = False
     expired_subs = []
+    durum_listesi = []
 
     slots = ["sub1", "sub2", "sub3", "sub4", "sub5",
               "sub6", "sub7", "sub8", "sub9", "sub10"]
@@ -225,6 +283,7 @@ def main():
                   f"'{matches[0]}' kullanılacak, diğerlerini silmeyi düşün.")
         if not matches:
             print(f"-> {slot} için hiç dosya bulunamadı, atlanıyor.")
+            durum_listesi.append((slot, False, 0))
             continue
 
         target_filename = matches[0]
@@ -244,17 +303,17 @@ def main():
 
         if not customer or target_days is None:
             print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
+            durum_listesi.append((slot, False, 0))
             continue
 
         if flag is None:
             flag = "K"
 
+        update_kazanc(state_data, slot, customer, target_days)
+
         chosen_links = []
         for ch in flag:
             chosen_links.extend(pools.get(ch, []))
-
-        lines = safe_read_lines(target_filename)
-        existing_header = [line.rstrip('\r\n') for line in lines[:12]]
 
         sub_state = state_data.get(slot, {})
         if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
@@ -270,34 +329,31 @@ def main():
         elapsed = (date.today() - start_date).days
         remaining_days = max(target_days - elapsed, 0)
 
-        updated_header = []
-        for line in existing_header:
-            if "-DAY" in line.upper() or "-GÜN" in line.upper() or "-GUN" in line.upper():
-                new_line = re.sub(
-                    r'[\[【](\d+)(-DAY|-G[UÜ]N)[\]】]',
-                    lambda m: f'【{remaining_days}{m.group(2)}】',
-                    line,
-                    flags=re.IGNORECASE
-                )
-                updated_header.append(new_line)
-            else:
-                updated_header.append(line)
-
         if elapsed >= target_days:
-            print(f"-> {slot} ({customer}) süresi doldu! Linkler temizlendi.")
-            content = updated_header
+            print(f"-> {slot} ({customer}) süresi doldu! Sahte/dead link yazıldı.")
+            content = build_expired_header() + [DEAD_LINK]
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
+            durum_listesi.append((slot, False, 0))
         else:
-            print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. "
-                  f"{len(chosen_links)} link eklendi.")
-            content = updated_header + chosen_links
+            if chosen_links:
+                print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. "
+                      f"{len(chosen_links)} link eklendi.")
+                content = build_active_header(remaining_days) + chosen_links
+                durum_listesi.append((slot, True, remaining_days))
+            else:
+                print(f"-> {slot} ({customer}) aktif ama havuzda ({flag}) hiç link yok!")
+                content = build_active_header(remaining_days)
+                durum_listesi.append((slot, False, 0))
 
         try:
             with open(target_filename, "w", encoding="utf-8") as f:
                 f.write("\n".join(content) + ("\n" if content else ""))
         except Exception as e:
             print(f"Yazma hatası ({target_filename}): {e}")
+
+    write_kazanc_report(state_data)
+    write_durum_report(durum_listesi)
 
     try:
         with open(STATE_FILE, "w", encoding="utf-8") as f:
