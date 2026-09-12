@@ -15,7 +15,7 @@ CONFIG_FILE = "CONFIG"
 KAZANC_FILE = "Kazanc.txt"
 GUNLUK_UCRET = 2.77
 KAZANC_HARIC_SLOTLAR = ("sub10",)
-
+KAZANC_HARIC_ISIMLER = {"reklam", "kanal", "kendim"}
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V")
 
