@@ -11,12 +11,13 @@ KODLARY_V2_FILE = "KODLARY_V2"
 KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
 CONFIG_FILE = "CONFIG"
+KAZANC_FILE = "Kazanc.txt"
+GUNLUK_UCRET = 2.77  # 1 gün = 2.77 manat
 
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V")
 
 def safe_read_lines(path):
-    """Dosyayı UTF-8 olarak okur. Bozuk karakter varsa uyarı basar, sessizce silmez."""
     try:
         with open(path, "rb") as f:
             raw = f.read()
@@ -43,8 +44,6 @@ def load_links(path):
     return links
 
 def extract_protocol_lines(text):
-    """Sadece vless/vmess/trojan/ss/hysteria/tuic ile başlayan satırları alır,
-    #profile-title, #announce gibi başlık satırlarını hiç almaz."""
     found = []
     for raw_line in text.splitlines():
         line = raw_line.strip()
@@ -53,8 +52,6 @@ def extract_protocol_lines(text):
     return found
 
 def fetch_subscription(url):
-    """Bir subscription URL'sine gidip içindeki linkleri döndürür.
-    Önce düz metin arar, olmazsa base64 çözmeyi dener."""
     try:
         resp = requests.get(url, timeout=15)
         resp.raise_for_status()
@@ -80,8 +77,6 @@ def fetch_subscription(url):
         return []
 
 def load_v2_links():
-    """KODLARY_V2'deki subscription URL'lerini çekip kendi ayrı havuzunu döndürür.
-    KODLARY dosyasına HİÇ dokunmaz, sadece bilgi amaçlı KODLARY_V2_SONUC.txt'ye yazar."""
     if not os.path.exists(KODLARY_V2_FILE):
         print(f"UYARI: '{KODLARY_V2_FILE}' dosyası bulunamadı, V havuzu boş kalacak.")
         return []
@@ -112,20 +107,16 @@ def load_v2_links():
     return all_links
 
 def parse_flag(token):
-    """T, K, V harflerinden oluşan, her harf en fazla 1 kere geçen bir kombinasyon.
-    Örnek geçerli: T, K, V, TK, KT, TV, VT, KV, VK, TKV, VKT, ..."""
     up = token.upper()
     if not up or len(up) > 3:
         return None
     if any(ch not in VALID_FLAG_LETTERS for ch in up):
         return None
-    if len(set(up)) != len(up):  # aynı harf tekrar etmesin
+    if len(set(up)) != len(up):
         return None
     return up
 
 def parse_definition(parts):
-    """parts[0] slot adı; geri kalanı customer + days (+ opsiyonel T/K/V kombinasyonu).
-    Dönüş: (customer, days, flag) veya None"""
     if len(parts) < 3:
         return None
 
@@ -139,7 +130,7 @@ def parse_definition(parts):
             return None
         customer = " ".join(parts[1:-2])
     else:
-        flag = "K"  # harf yoksa eski satırlarla uyumlu -> varsayılan KODLARY
+        flag = "K"
         try:
             days = int(parts[-1])
         except ValueError:
@@ -150,8 +141,28 @@ def parse_definition(parts):
         return None
     return customer, days, flag
 
+def write_kazanc_report(config_info):
+    """CONFIG'teki her satırın gün sayısını GUNLUK_UCRET ile çarpıp Kazanc.txt'ye yazar."""
+    lines = []
+    total = 0.0
+    for slot in sorted(config_info.keys()):
+        customer, days, flag = config_info[slot]
+        tutar = days * GUNLUK_UCRET
+        total += tutar
+        lines.append(f"{slot} - {customer} - {days} gün - {tutar:.2f} manat")
+
+    lines.append("")
+    lines.append(f"TOPLAM KAZANÇ: {total:.2f} manat")
+
+    try:
+        with open(KAZANC_FILE, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+        print(f"-> Kazanç raporu güncellendi. Toplam: {total:.2f} manat")
+    except Exception as e:
+        print(f"Yazma hatası ({KAZANC_FILE}): {e}")
+
 def main():
-    print("CONFIG panelinden okuyan (T/K/V destekli) sayaç sistemi başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V + Kazanç destekli) sayaç sistemi başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
@@ -167,7 +178,7 @@ def main():
         except:
             state_data = {}
 
-    config_info = {}  # { "sub3": (customer, days, flag), ... }
+    config_info = {}
     if os.path.exists(CONFIG_FILE):
         for raw_line in safe_read_lines(CONFIG_FILE):
             line = raw_line.strip()
@@ -181,6 +192,9 @@ def main():
                 continue
             slot_name = parts[0]
             config_info[slot_name] = parsed
+
+    # Kazanç raporunu hesapla ve yaz
+    write_kazanc_report(config_info)
 
     today_str = date.today().isoformat()
     any_expired = False
@@ -235,7 +249,6 @@ def main():
         if flag is None:
             flag = "K"
 
-        # Harflerin yazıldığı sırayla havuzları birleştir (örn. "KV" -> önce K sonra V)
         chosen_links = []
         for ch in flag:
             chosen_links.extend(pools.get(ch, []))
