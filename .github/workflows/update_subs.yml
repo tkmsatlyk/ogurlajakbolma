@@ -2,8 +2,8 @@ name: Otomatik Happ Link ToplayÄ±cÄ±
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Her 15 dakikada bir çalışır # Her saat baÅŸÄ± Ã§alÄ±ÅŸÄ±r
-  workflow_dispatch: # Elle tetiklemek iÃ§in
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -13,8 +13,12 @@ on:
       - 'Toplanan_linkler.txt'
       - 'KODLARY_V2'
 
+concurrency:
+  group: update-links
+  cancel-in-progress: true  # Yeni bir tetikleme gelirse, eskisi Ã§alÄ±ÅŸÄ±yorsa iptal edilir
+
 permissions:
-  contents: write  # <-- HatanÄ±n Ã§Ã¶zÃ¼mÃ¼ burasÄ±! Git push yetkisi verir.
+  contents: write
 
 jobs:
   update-links:
@@ -22,16 +26,19 @@ jobs:
     steps:
       - name: Repoyu Kopyala (Checkout)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1   # Sadece son commit'i Ã§ek, tÃ¼m geÃ§miÅŸi deÄŸil -> daha hÄ±zlÄ±
 
       - name: Python Kurulumu
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+          cache: 'pip'   # pip paketlerini Ã¶nbelleÄŸe alÄ±r, tekrar indirmeyi Ã¶nler
 
       - name: KÃ¼tÃ¼phaneleri YÃ¼kle
         run: |
           pip install --upgrade pip
-          pip install requests beautifulsoup4
+          pip install requests
 
       - name: Scripti Ã‡alÄ±ÅŸtÄ±r
         run: python update.py
