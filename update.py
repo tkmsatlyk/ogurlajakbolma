@@ -13,7 +13,6 @@ KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
 CONFIG_FILE = "CONFIG"
 KAZANC_FILE = "Kazanc.txt"
-DURUM_FILE = "toplam.subs"
 GUNLUK_UCRET = 2.77
 KAZANC_HARIC_SLOTLAR = ("sub10",)
 
@@ -189,40 +188,37 @@ def update_kazanc(state_data, slot, customer, target_days):
     recorded.append(signature)
     print(f"-> KAZANÇ: {slot} ({customer}, {target_days} gün) -> +{tutar:.2f} manat eklendi.")
 
-def write_kazanc_report(state_data):
+def write_combined_report(state_data, durum_listesi):
+    """Kazanç geçmişi + toplam, ardından slot durum listesi -> tek dosya (Kazanc.txt)."""
     history = state_data.get("_kazanc_gecmisi", [])
+    total = sum(entry["tutar"] for entry in history)
+
     lines = []
-    total = 0.0
+    lines.append("=== KAZANÇ GEÇMİŞİ ===")
     for entry in history:
         lines.append(f"{entry['tarih']} | {entry['slot']} - {entry['customer']} - "
                       f"{entry['days']} gün - {entry['tutar']:.2f} manat")
-        total += entry["tutar"]
     lines.append("")
     lines.append(f"TOPLAM KAZANÇ: {total:.2f} manat")
+    lines.append("")
+    lines.append("=== DURUM ===")
+    for slot, aktif, kalan_gun, customer in durum_listesi:
+        if aktif:
+            lines.append(f"{slot} 🟢 {customer} - {kalan_gun} gün kaldı")
+        elif customer:
+            lines.append(f"{slot} 🔴 {customer}")
+        else:
+            lines.append(f"{slot} 🔴")
+
     try:
         with open(KAZANC_FILE, "w", encoding="utf-8") as f:
             f.write("\n".join(lines) + "\n")
-        print(f"-> Kazanç raporu güncellendi. Toplam: {total:.2f} manat")
+        print(f"-> {KAZANC_FILE} güncellendi. Toplam kazanç: {total:.2f} manat")
     except Exception as e:
         print(f"Yazma hatası ({KAZANC_FILE}): {e}")
 
-def write_durum_report(durum_listesi):
-    """Her slot için yeşil/kırmızı durumu toplam.subs dosyasına yazar."""
-    lines = []
-    for slot, aktif, kalan_gun in durum_listesi:
-        if aktif:
-            lines.append(f"{slot} 🟢 {kalan_gun} gün kaldı")
-        else:
-            lines.append(f"{slot} 🔴")
-    try:
-        with open(DURUM_FILE, "w", encoding="utf-8") as f:
-            f.write("\n".join(lines) + "\n")
-        print(f"-> {DURUM_FILE} güncellendi.")
-    except Exception as e:
-        print(f"Yazma hatası ({DURUM_FILE}): {e}")
-
 def main():
-    print("CONFIG panelinden okuyan (T/K/V + kazanç + toplam.subs + süre dolunca mesaj) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V + tek dosyada kazanç+durum + süre dolunca mesaj) sistem başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
@@ -283,7 +279,7 @@ def main():
                   f"'{matches[0]}' kullanılacak, diğerlerini silmeyi düşün.")
         if not matches:
             print(f"-> {slot} için hiç dosya bulunamadı, atlanıyor.")
-            durum_listesi.append((slot, False, 0))
+            durum_listesi.append((slot, False, 0, None))
             continue
 
         target_filename = matches[0]
@@ -303,7 +299,7 @@ def main():
 
         if not customer or target_days is None:
             print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
-            durum_listesi.append((slot, False, 0))
+            durum_listesi.append((slot, False, 0, None))
             continue
 
         if flag is None:
@@ -334,17 +330,17 @@ def main():
             content = build_expired_header() + [DEAD_LINK]
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
-            durum_listesi.append((slot, False, 0))
+            durum_listesi.append((slot, False, 0, customer))
         else:
             if chosen_links:
                 print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. "
                       f"{len(chosen_links)} link eklendi.")
                 content = build_active_header(remaining_days) + chosen_links
-                durum_listesi.append((slot, True, remaining_days))
+                durum_listesi.append((slot, True, remaining_days, customer))
             else:
                 print(f"-> {slot} ({customer}) aktif ama havuzda ({flag}) hiç link yok!")
                 content = build_active_header(remaining_days)
-                durum_listesi.append((slot, False, 0))
+                durum_listesi.append((slot, False, 0, customer))
 
         try:
             with open(target_filename, "w", encoding="utf-8") as f:
@@ -352,8 +348,7 @@ def main():
         except Exception as e:
             print(f"Yazma hatası ({target_filename}): {e}")
 
-    write_kazanc_report(state_data)
-    write_durum_report(durum_listesi)
+    write_combined_report(state_data, durum_listesi)
 
     try:
         with open(STATE_FILE, "w", encoding="utf-8") as f:
