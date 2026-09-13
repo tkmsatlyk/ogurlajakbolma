@@ -47,12 +47,9 @@
     "_kazanc_kayitli": [
         "sub1|haram|12",
         "sub2|pubgger|30",
-        "sub3|kakis|31",
         "sub4|didar|30",
         "sub5|kanalgg|10",
-        "sub6|rek|3",
-        "sub7|kanalsps|3",
-        "sub3|kakiş|31"
+        "sub7|kanalsps|3"
     ],
     "_kazanc_gecmisi": [
         {
@@ -60,56 +57,35 @@
             "customer": "haram",
             "days": 12,
             "tutar": 33.24,
-            "tarih": "2026-09-12"
+            "tarih": "2026-09-13"
         },
         {
             "slot": "sub2",
             "customer": "pubgger",
             "days": 30,
             "tutar": 83.1,
-            "tarih": "2026-09-12"
-        },
-        {
-            "slot": "sub3",
-            "customer": "kakis",
-            "days": 31,
-            "tutar": 85.87,
-            "tarih": "2026-09-12"
+            "tarih": "2026-09-13"
         },
         {
             "slot": "sub4",
             "customer": "didar",
             "days": 30,
             "tutar": 83.1,
-            "tarih": "2026-09-12"
+            "tarih": "2026-09-13"
         },
         {
             "slot": "sub5",
             "customer": "kanalgg",
             "days": 10,
             "tutar": 27.7,
-            "tarih": "2026-09-12"
-        },
-        {
-            "slot": "sub6",
-            "customer": "rek",
-            "days": 3,
-            "tutar": 8.31,
-            "tarih": "2026-09-12"
+            "tarih": "2026-09-13"
         },
         {
             "slot": "sub7",
             "customer": "kanalsps",
             "days": 3,
             "tutar": 8.31,
-            "tarih": "2026-09-12"
-        },
-        {
-            "slot": "sub3",
-            "customer": "kakiş",
-            "days": 31,
-            "tutar": 85.87,
-            "tarih": "2026-09-12"
+            "tarih": "2026-09-13"
         }
     ]
 }
