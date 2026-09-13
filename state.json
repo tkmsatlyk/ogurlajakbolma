@@ -5,9 +5,9 @@
         "start_date": "2026-09-12"
     },
     "sub3": {
-        "customer": "kakiş",
-        "days": 31,
-        "start_date": "2026-09-12"
+        "customer": "pubgob",
+        "days": 1,
+        "start_date": "2026-09-13"
     },
     "sub4": {
         "customer": "didar",
@@ -47,7 +47,8 @@
     "_kazanc_kayitli": [
         "sub1|haram|12",
         "sub2|pubgger|30",
-        "sub4|didar|30"
+        "sub4|didar|30",
+        "sub3|pubgob|1"
     ],
     "_kazanc_gecmisi": [
         {
@@ -69,6 +70,13 @@
             "customer": "didar",
             "days": 30,
             "tutar": 83.1,
+            "tarih": "2026-09-13"
+        },
+        {
+            "slot": "sub3",
+            "customer": "pubgob",
+            "days": 1,
+            "tutar": 2.77,
             "tarih": "2026-09-13"
         }
     ]
