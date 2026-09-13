@@ -11,13 +11,13 @@
 TOPLAM KAZANÇ: 415.50 manat
 
 === DURUM ===
-sub1 🟢 haram - 12 gün kaldı
-sub2 🟢 pubgger - 16 gün kaldı
+sub1 🟢 haram - 11 gün kaldı
+sub2 🟢 pubgger - 15 gün kaldı
 sub3 🔴
-sub4 🟢 didar - 8 gün kaldı
-sub5 🟢 kanalgg - 9 gün kaldı
+sub4 🟢 didar - 7 gün kaldı
+sub5 🟢 kanalgg - 8 gün kaldı
 sub6 🔴
-sub7 🟢 kanalsps - 3 gün kaldı
+sub7 🟢 kanalsps - 2 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
