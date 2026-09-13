@@ -3,15 +3,16 @@
 2026-09-13 | sub2 - pubgger - 30 gün - 83.10 manat
 2026-09-13 | sub4 - didar - 30 gün - 83.10 manat
 2026-09-13 | sub3 - pubgob - 1 gün - 2.77 manat
+2026-09-13 | sub5 - pubgbo - 1 gün - 2.77 manat
 
-TOPLAM KAZANÇ: 202.21 manat
+TOPLAM KAZANÇ: 204.98 manat
 
 === DURUM ===
 sub1 🟢 haram - 11 gün kaldı
 sub2 🟢 pubgger - 15 gün kaldı
 sub3 🟢 pubgob - 1 gün kaldı
 sub4 🟢 didar - 7 gün kaldı
-sub5 🔴
+sub5 🟢 pubgbo - 1 gün kaldı
 sub6 🔴
 sub7 🟢 kanal - 5 gün kaldı
 sub8 🔴
