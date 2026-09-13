@@ -18,3 +18,4 @@ sub7 🟢 kanal - 5 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
+offline
