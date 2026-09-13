@@ -47,9 +47,7 @@
     "_kazanc_kayitli": [
         "sub1|haram|12",
         "sub2|pubgger|30",
-        "sub4|didar|30",
-        "sub5|kanalgg|10",
-        "sub7|kanalsps|3"
+        "sub4|didar|30"
     ],
     "_kazanc_gecmisi": [
         {
@@ -71,20 +69,6 @@
             "customer": "didar",
             "days": 30,
             "tutar": 83.1,
-            "tarih": "2026-09-13"
-        },
-        {
-            "slot": "sub5",
-            "customer": "kanalgg",
-            "days": 10,
-            "tutar": 27.7,
-            "tarih": "2026-09-13"
-        },
-        {
-            "slot": "sub7",
-            "customer": "kanalsps",
-            "days": 3,
-            "tutar": 8.31,
             "tarih": "2026-09-13"
         }
     ]

@@ -2,20 +2,17 @@
 2026-09-13 | sub1 - haram - 12 gün - 33.24 manat
 2026-09-13 | sub2 - pubgger - 30 gün - 83.10 manat
 2026-09-13 | sub4 - didar - 30 gün - 83.10 manat
-2026-09-13 | sub5 - kanalgg - 10 gün - 27.70 manat
-2026-09-13 | sub7 - kanalsps - 3 gün - 8.31 manat
 
-TOPLAM KAZANÇ: 235.45 manat
+TOPLAM KAZANÇ: 199.44 manat
 
 === DURUM ===
 sub1 🟢 haram - 11 gün kaldı
 sub2 🟢 pubgger - 15 gün kaldı
 sub3 🔴
 sub4 🟢 didar - 7 gün kaldı
-sub5 🟢 kanalgg - 8 gün kaldı
+sub5 🔴
 sub6 🔴
 sub7 🟢 kanal - 5 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
-offline
