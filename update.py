@@ -5,6 +5,7 @@ import base64
 import requests
 from urllib.parse import quote
 from datetime import datetime, date
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 STATE_FILE = "state.json"
 KODLARY_FILE = "KODLARY"
@@ -16,6 +17,8 @@ KAZANC_FILE = "Kazanc.txt"
 GUNLUK_UCRET = 2.77
 KAZANC_HARIC_SLOTLAR = ("sub10",)
 KAZANC_HARIC_ISIMLER = {"reklam", "kanal", "kendim"}
+SIFIRLAMA_ANAHTAR_KELIME = "offline"
+
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V")
 
@@ -28,11 +31,14 @@ HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 �
 
 EXPIRED_ANNOUNCE = "#announce: ❤️‍🔥SAGBOLUŇ BIZE GUWANANYŇYZ UCIN TAZEDEN VPN KOD ALJAK BOLSAŇYZ SKITKA EDIP BERYÄRIS🟢"
 
-DEAD_LINK_NAME = "🫡VPN KODYŇ VAGTY DOLDY 🤝"
+DEAD_LINK_NAME = "🇫🇲🫡VPN KODYŇ VAGTY DOLDY 🤝"
 DEAD_LINK = (
     "vless://00000000-0000-0000-0000-000000000000@0.0.0.0:0"
     "?encryption=none&security=none&type=tcp#" + quote(DEAD_LINK_NAME)
 )
+
+HTTP_SESSION = requests.Session()
+HTTP_TIMEOUT = 8
 
 def safe_read_lines(path):
     try:
@@ -70,28 +76,28 @@ def extract_protocol_lines(text):
 
 def fetch_subscription(url):
     try:
-        resp = requests.get(url, timeout=15)
+        resp = HTTP_SESSION.get(url, timeout=HTTP_TIMEOUT)
         resp.raise_for_status()
         raw_text = resp.text.strip()
     except Exception as e:
         print(f"UYARI: '{url}' adresine bağlanılamadı: {e}")
-        return []
+        return url, []
 
     direct = extract_protocol_lines(raw_text)
     if direct:
-        return direct
+        return url, direct
 
     try:
         padded = raw_text + "=" * (-len(raw_text) % 4)
         decoded = base64.b64decode(padded).decode("utf-8", errors="ignore")
         decoded_links = extract_protocol_lines(decoded)
         if decoded_links:
-            return decoded_links
+            return url, decoded_links
         print(f"UYARI: '{url}' base64 çözüldü ama içinde tanınan bir VPN linki bulunamadı.")
-        return []
+        return url, []
     except Exception as e:
         print(f"UYARI: '{url}' ne düz metin ne base64 olarak çözülebildi: {e}")
-        return []
+        return url, []
 
 def load_v2_links():
     if not os.path.exists(KODLARY_V2_FILE):
@@ -99,18 +105,18 @@ def load_v2_links():
         return []
 
     sub_urls = [u.strip() for u in safe_read_lines(KODLARY_V2_FILE) if u.strip()]
+    sub_urls = [u for u in sub_urls if u.startswith("http://") or u.startswith("https://")]
     if not sub_urls:
-        print(f"UYARI: '{KODLARY_V2_FILE}' boş, V havuzu boş kalacak.")
+        print(f"UYARI: '{KODLARY_V2_FILE}' boş veya geçerli URL yok, V havuzu boş kalacak.")
         return []
 
     all_links = []
-    for url in sub_urls:
-        if not url.startswith("http://") and not url.startswith("https://"):
-            print(f"UYARI: '{url}' bir HTTP/HTTPS linki gibi görünmüyor, atlanıyor.")
-            continue
-        links = fetch_subscription(url)
-        print(f"-> (V havuzu) '{url}' üzerinden {len(links)} link çekildi.")
-        all_links.extend(links)
+    with ThreadPoolExecutor(max_workers=min(8, len(sub_urls))) as executor:
+        futures = {executor.submit(fetch_subscription, url): url for url in sub_urls}
+        for future in as_completed(futures):
+            url, links = future.result()
+            print(f"-> (V havuzu) '{url}' üzerinden {len(links)} link çekildi.")
+            all_links.extend(links)
 
     if all_links:
         try:
@@ -172,8 +178,24 @@ def build_expired_header():
             new_lines.append(line)
     return new_lines
 
-def update_kazanc(state_data, slot, customer, target_days):
+def kazanca_dahil_mi(slot, customer):
     if slot in KAZANC_HARIC_SLOTLAR:
+        return False
+    if customer.strip().lower() in KAZANC_HARIC_ISIMLER:
+        return False
+    return True
+
+def sifirlama_istegi_var_mi():
+    """Kazanc.txt dosyasında herhangi bir satırda 'offline' yazıyorsa True döner."""
+    if not os.path.exists(KAZANC_FILE):
+        return False
+    for line in safe_read_lines(KAZANC_FILE):
+        if line.strip().lower() == SIFIRLAMA_ANAHTAR_KELIME:
+            return True
+    return False
+
+def update_kazanc(state_data, slot, customer, target_days):
+    if not kazanca_dahil_mi(slot, customer):
         return
     signature = f"{slot}|{customer}|{target_days}"
     recorded = state_data.setdefault("_kazanc_kayitli", [])
@@ -189,7 +211,6 @@ def update_kazanc(state_data, slot, customer, target_days):
     print(f"-> KAZANÇ: {slot} ({customer}, {target_days} gün) -> +{tutar:.2f} manat eklendi.")
 
 def write_combined_report(state_data, durum_listesi):
-    """Kazanç geçmişi + toplam, ardından slot durum listesi -> tek dosya (Kazanc.txt)."""
     history = state_data.get("_kazanc_gecmisi", [])
     total = sum(entry["tutar"] for entry in history)
 
@@ -210,15 +231,33 @@ def write_combined_report(state_data, durum_listesi):
         else:
             lines.append(f"{slot} 🔴")
 
+    new_content = "\n".join(lines) + "\n"
     try:
         with open(KAZANC_FILE, "w", encoding="utf-8") as f:
-            f.write("\n".join(lines) + "\n")
+            f.write(new_content)
         print(f"-> {KAZANC_FILE} güncellendi. Toplam kazanç: {total:.2f} manat")
     except Exception as e:
         print(f"Yazma hatası ({KAZANC_FILE}): {e}")
 
+def write_sub_file(target_filename, content):
+    new_content = "\n".join(content) + ("\n" if content else "")
+    if os.path.exists(target_filename):
+        try:
+            with open(target_filename, "r", encoding="utf-8") as f:
+                if f.read() == new_content:
+                    return False
+        except Exception:
+            pass
+    try:
+        with open(target_filename, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        return True
+    except Exception as e:
+        print(f"Yazma hatası ({target_filename}): {e}")
+        return False
+
 def main():
-    print("CONFIG panelinden okuyan (T/K/V + tek dosyada kazanç+durum + süre dolunca mesaj) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan sistem başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
@@ -233,6 +272,13 @@ def main():
                 state_data = json.load(f)
         except:
             state_data = {}
+
+    # "offline" yazıldıysa kazancı komple sıfırla
+    if sifirlama_istegi_var_mi():
+        state_data["_kazanc_gecmisi"] = []
+        state_data["_kazanc_kayitli"] = []
+        print("-> SIFIRLAMA ALGILANDI: Kazanc.txt içinde 'offline' bulundu. "
+              "Kazanç geçmişi tamamen silindi, CONFIG'teki aktif müşterilerden yeniden hesaplanacak.")
 
     config_info = {}
     if os.path.exists(CONFIG_FILE):
@@ -253,6 +299,7 @@ def main():
     any_expired = False
     expired_subs = []
     durum_listesi = []
+    degisen_dosya_sayisi = 0
 
     slots = ["sub1", "sub2", "sub3", "sub4", "sub5",
               "sub6", "sub7", "sub8", "sub9", "sub10"]
@@ -342,13 +389,11 @@ def main():
                 content = build_active_header(remaining_days)
                 durum_listesi.append((slot, False, 0, customer))
 
-        try:
-            with open(target_filename, "w", encoding="utf-8") as f:
-                f.write("\n".join(content) + ("\n" if content else ""))
-        except Exception as e:
-            print(f"Yazma hatası ({target_filename}): {e}")
+        if write_sub_file(target_filename, content):
+            degisen_dosya_sayisi += 1
 
     write_combined_report(state_data, durum_listesi)
+    print(f"-> Bu çalıştırmada {degisen_dosya_sayisi} sub dosyası fiilen değişti.")
 
     try:
         with open(STATE_FILE, "w", encoding="utf-8") as f:
