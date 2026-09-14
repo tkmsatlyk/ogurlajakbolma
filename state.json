@@ -87,5 +87,10 @@
             "tutar": 2.77,
             "tarih": "2026-09-13"
         }
-    ]
+    ],
+    "sub10": {
+        "customer": "kanal",
+        "days": 3,
+        "start_date": "2026-09-14"
+    }
 }
