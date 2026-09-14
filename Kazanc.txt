@@ -13,7 +13,7 @@ sub2 🟢 pubgger - 14 gün kaldı
 sub3 🟢 kanal - 4 gün kaldı
 sub4 🟢 didar - 6 gün kaldı
 sub5 🔴
-sub6 🟢 kanal - 3 gün kaldı
+sub6 🔴
 sub7 🔴
 sub8 🔴
 sub9 🔴
