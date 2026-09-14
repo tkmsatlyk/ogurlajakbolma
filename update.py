@@ -18,6 +18,7 @@ GUNLUK_UCRET = 2.77
 KAZANC_HARIC_SLOTLAR = ("sub10",)
 KAZANC_HARIC_ISIMLER = {"reklam", "kanal", "kendim"}
 SIFIRLAMA_ANAHTAR_KELIME = "offline"
+REFLESH_ANAHTAR_KELIME = "reflesh"
 
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V")
@@ -31,7 +32,7 @@ HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 �
 
 EXPIRED_ANNOUNCE = "#announce: ❤️‍🔥SAGBOLUŇ BIZE GUWANANYŇYZ UCIN TAZEDEN VPN KOD ALJAK BOLSAŇYZ SKITKA EDIP BERYÄRIS🟢"
 
-DEAD_LINK_NAME = "🇫🇲🫡VPN KODYŇ VAGTY DOLDY 🤝"
+DEAD_LINK_NAME = "🫡VPN KODYŇ VAGTY DOLDY 🤝"
 DEAD_LINK = (
     "vless://00000000-0000-0000-0000-000000000000@0.0.0.0:0"
     "?encryption=none&security=none&type=tcp#" + quote(DEAD_LINK_NAME)
@@ -186,11 +187,19 @@ def kazanca_dahil_mi(slot, customer):
     return True
 
 def sifirlama_istegi_var_mi():
-    """Kazanc.txt dosyasında herhangi bir satırda 'offline' yazıyorsa True döner."""
     if not os.path.exists(KAZANC_FILE):
         return False
     for line in safe_read_lines(KAZANC_FILE):
         if line.strip().lower() == SIFIRLAMA_ANAHTAR_KELIME:
+            return True
+    return False
+
+def reflesh_istegi_var_mi():
+    """CONFIG dosyasında herhangi bir satırda 'reflesh' yazıyorsa True döner."""
+    if not os.path.exists(CONFIG_FILE):
+        return False
+    for line in safe_read_lines(CONFIG_FILE):
+        if line.strip().lower() == REFLESH_ANAHTAR_KELIME:
             return True
     return False
 
@@ -273,12 +282,16 @@ def main():
         except:
             state_data = {}
 
-    # "offline" yazıldıysa kazancı komple sıfırla
     if sifirlama_istegi_var_mi():
         state_data["_kazanc_gecmisi"] = []
         state_data["_kazanc_kayitli"] = []
         print("-> SIFIRLAMA ALGILANDI: Kazanc.txt içinde 'offline' bulundu. "
               "Kazanç geçmişi tamamen silindi, CONFIG'teki aktif müşterilerden yeniden hesaplanacak.")
+
+    reflesh_aktif = reflesh_istegi_var_mi()
+    if reflesh_aktif:
+        print("-> REFLESH ALGILANDI: CONFIG içinde 'reflesh' bulundu. "
+              "Boş/atanmamış sub dosyaları temizlenecek.")
 
     config_info = {}
     if os.path.exists(CONFIG_FILE):
@@ -345,7 +358,13 @@ def main():
                       f"dosya adı ('{f_customer} {f_days} {f_flag}') FARKLI! CONFIG değeri kullanılacak.")
 
         if not customer or target_days is None:
-            print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
+            if reflesh_aktif:
+                print(f"-> {slot} boş VE reflesh aktif -> dosya temizleniyor (dead link yazılıyor).")
+                content = build_expired_header() + [DEAD_LINK]
+                if write_sub_file(target_filename, content):
+                    degisen_dosya_sayisi += 1
+            else:
+                print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
             continue
 
