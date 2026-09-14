@@ -1,20 +1,4 @@
-vless://b19d5280-1f11-4bb3-8f21-d922e7df31c8@216.24.57.1:443?encryption=none&security=tls&type=ws&headerType=none&path=%2F&host=loft-cayhana.tolkun-tv.ru&sni=loft-cayhana.tolkun-tv.ru&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1&fragment=3-3%2C0-1%2Ctlshello#🇺🇸 United States • Google
-vless://b19d5280-1f11-4bb3-8f21-d922e7df31c8@216.24.57.1:443?encryption=none&security=tls&type=ws&headerType=none&path=%2F&host=loft-cayhana.tolkun-tv.ru&sni=loft-cayhana.tolkun-tv.ru&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1&fragment=3-3%2C0-1%2Ctlshello#🇬🇧 United Kingdom • Cloudflare
-vless://b19d5280-1f11-4bb3-8f21-d922e7df31c8@216.24.57.1:443?encryption=none&security=tls&type=ws&headerType=none&path=%2F&host=loft-cayhana.tolkun-tv.ru&sni=loft-cayhana.tolkun-tv.ru&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1&fragment=3-3%2C0-1%2Ctlshello#🇩🇪 Germany • WiFiWarden
-vless://b19d5280-1f11-4bb3-8f21-d922e7df31c8@151.101.109.41:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=fast3.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D&sni=community.fastly.com&alpn=h3#🇫🇷 France • Claude
-vless://b19d5280-1f11-4bb3-8f21-d922e7df31c8@151.101.109.41:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=fast3.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D&sni=community.fastly.com&alpn=h3#🇯🇵 Japan • Fastly
-vless://b19d5280-1f11-4bb3-8f21-d922e7df31c8@151.101.109.41:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=fast3.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D&sni=community.fastly.com&alpn=h3#🇹🇷 Turkey • AWS
-ss://chacha20-ietf-poly1305:maOg-3idp7-sUs51bH4OlJem0Vjb03pr@135.106.217.188:44#🇮🇹 Italy • Azure
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpzV2ZXazQzS2J4alpvdTNrU2VvdmZn@159.200.230.73:120#🇪🇸 Spain • Oracle
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@216.24.57.1:443?security=tls&type=grpc&headerType=&serviceName=Ghost&authority=8.mxhammet.online&mode=gun&sni=8.mxhammet.online&fp=chrome&alpn=http%2F1.1#🇨🇦 Canada • DigitalOcean
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@216.24.57.1:443?security=tls&type=grpc&headerType=&serviceName=Ghost&authority=9.mxhammet.online&mode=gun&sni=9.mxhammet.online&fp=chrome&alpn=http%2F1.1#🇦🇺 Australia • Akamai
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@216.24.57.1:443?security=tls&type=grpc&headerType=&serviceName=Ghost&authority=9.mxhammet.online&mode=gun&sni=9.mxhammet.online&fp=chrome&alpn=http%2F1.1#🇳🇱 Netherlands • CloudFront
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@216.24.57.1:443?security=tls&type=grpc&headerType=&serviceName=Ghost&authority=8.mxhammet.online&mode=gun&sni=8.mxhammet.online&fp=chrome&alpn=http%2F1.1#🇨🇭 Switzerland • Proton
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@151.101.108.45:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=developer.fastly.com&fp=chrome&alpn=h3#🇸🇪 Sweden • Google Cloud
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@151.101.108.45:443?security=tls&type=xhttp&headerType=&path=%2F&host=gme2.global.ssl.fastly.net&sni=community.fastly.com&fp=firefox&alpn=h3#🇳🇴 Norway • Microsoft
-vless://f0630a16-6e1d-45cb-bed7-9ee9fa434094@151.101.108.45:443?security=tls&type=xhttp&headerType=&path=%2F&host=gme2.global.ssl.fastly.net&sni=community.fastly.com&fp=chrome&alpn=h3#🇫🇮 Finland • Apple
-vless://00a33f4a-a5ab-41ec-8537-4f2b67c283eb@201.34.150.74:18?security=none&encryption=none&headerType=none&type=tcp#🇰🇷 South Korea • Samsung Cloud
-vless://00a33f4a-a5ab-41ec-8537-4f2b67c283eb@201.34.150.74:31018?security=none&encryption=none&headerType=none&type=tcp#🇸🇬 Singapore • Tencent Cloud
-vless://00a33f4a-a5ab-41ec-8537-4f2b67c283eb@201.34.150.74:21018?security=none&encryption=none&headerType=none&type=tcp#🇦🇪 United Arab Emirates • Alibaba Cloud
-vless://00a33f4a-a5ab-41ec-8537-4f2b67c283eb@201.34.150.74:11018?security=none&encryption=none&headerType=none&type=tcp#🇧🇷 Brazil • Meta
-ss://chacha20-ietf-poly1305:FTiR69BfV1sYErcyBB8HPQ@87.58.151.124:97#🇲🇽 Mexico • GitHub
+vless://01fcd7e6-39af-452b-9cc3-5c663355c1ce@193.233.222.85:445?encryption=mlkem768x25519plus.native.0rtt.9EoWiMcztbonbc1g14DBHOSfQrstEe0UcX74ffL5p3U&security=none&type=tcp&headerType=none#🇺🇸 United States • Google
+ss://chacha20-ietf-poly1305:maOg-3idp7-sUs51bH4OlJem0Vjb03pr@135.106.217.188:44#🇬🇧 United Kingdom • Cloudflare
+ss://YWVzLTI1Ni1nY206bGltaXQ=@1.1.1.1:443#🇩🇪 Germany • WiFiWarden
+vless://a105f8b0-bed4-4e98-ab47-37f4842922e4@google.com:443?encryption=none&security=tls&sni=www.google.com&alpn=http%2F1.1&fp=chrome&type=ws&host=turkveyla-911889680157.europe-north1.run.app&path=%2F#🇫🇷 France • Claude
