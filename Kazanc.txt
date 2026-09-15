@@ -17,4 +17,4 @@ sub6 🔴
 sub7 🔴
 sub8 🔴
 sub9 🔴
-sub10 🟢 kanal - 2 gün kaldı
+sub10 🟢 kanal - 1 gün kaldı
