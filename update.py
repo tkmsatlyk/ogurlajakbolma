@@ -17,6 +17,7 @@ KAZANC_FILE = "Kazanc.txt"
 GUNLUK_UCRET = 2.77
 KAZANC_HARIC_SLOTLAR = ("sub10",)
 KAZANC_HARIC_ISIMLER = {"reklam", "kanal", "kendim"}
+ISIM_KORUNAN_SLOTLAR = ("sub10",)  # bu slotların #profile-title satırı hiç değiştirilmez
 SIFIRLAMA_ANAHTAR_KELIME = "offline"
 REFLESH_ANAHTAR_KELIME = "reflesh"
 
@@ -165,11 +166,24 @@ def parse_definition(parts):
         return None
     return customer, days, flag
 
-def build_active_header(remaining_days):
-    filled = HEADER_TEMPLATE.replace("【-DAY】", f"【{remaining_days}-DAY】")
-    return filled.split("\n")
+def get_custom_title_line(target_filename):
+    """Dosyanın mevcut #profile-title satırını (varsa) aynen okur."""
+    if not os.path.exists(target_filename):
+        return None
+    for line in safe_read_lines(target_filename)[:12]:
+        line = line.rstrip('\r\n')
+        if line.startswith("#profile-title:"):
+            return line
+    return None
 
-def build_expired_header():
+def build_active_header(remaining_days, custom_title=None):
+    filled = HEADER_TEMPLATE.replace("【-DAY】", f"【{remaining_days}-DAY】")
+    lines = filled.split("\n")
+    if custom_title:
+        lines[0] = custom_title
+    return lines
+
+def build_expired_header(custom_title=None):
     lines = HEADER_TEMPLATE.split("\n")
     new_lines = []
     for line in lines:
@@ -177,6 +191,8 @@ def build_expired_header():
             new_lines.append(EXPIRED_ANNOUNCE)
         else:
             new_lines.append(line)
+    if custom_title:
+        new_lines[0] = custom_title
     return new_lines
 
 def kazanca_dahil_mi(slot, customer):
@@ -195,7 +211,6 @@ def sifirlama_istegi_var_mi():
     return False
 
 def reflesh_istegi_var_mi():
-    """CONFIG dosyasında herhangi bir satırda 'reflesh' yazıyorsa True döner."""
     if not os.path.exists(CONFIG_FILE):
         return False
     for line in safe_read_lines(CONFIG_FILE):
@@ -344,6 +359,11 @@ def main():
 
         target_filename = matches[0]
 
+        # Bu slot'un ismi korunacaksa, mevcut #profile-title satırını yazmadan önce oku
+        custom_title = None
+        if slot in ISIM_KORUNAN_SLOTLAR:
+            custom_title = get_custom_title_line(target_filename)
+
         fname_parts = target_filename.replace('_', ' ').replace('-', ' ').split()
         file_parsed = parse_definition(fname_parts)
 
@@ -360,7 +380,7 @@ def main():
         if not customer or target_days is None:
             if reflesh_aktif:
                 print(f"-> {slot} boş VE reflesh aktif -> dosya temizleniyor (dead link yazılıyor).")
-                content = build_expired_header() + [DEAD_LINK]
+                content = build_expired_header(custom_title) + [DEAD_LINK]
                 if write_sub_file(target_filename, content):
                     degisen_dosya_sayisi += 1
             else:
@@ -393,7 +413,7 @@ def main():
 
         if elapsed >= target_days:
             print(f"-> {slot} ({customer}) süresi doldu! Sahte/dead link yazıldı.")
-            content = build_expired_header() + [DEAD_LINK]
+            content = build_expired_header(custom_title) + [DEAD_LINK]
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
             durum_listesi.append((slot, False, 0, customer))
@@ -401,11 +421,11 @@ def main():
             if chosen_links:
                 print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. "
                       f"{len(chosen_links)} link eklendi.")
-                content = build_active_header(remaining_days) + chosen_links
+                content = build_active_header(remaining_days, custom_title) + chosen_links
                 durum_listesi.append((slot, True, remaining_days, customer))
             else:
                 print(f"-> {slot} ({customer}) aktif ama havuzda ({flag}) hiç link yok!")
-                content = build_active_header(remaining_days)
+                content = build_active_header(remaining_days, custom_title)
                 durum_listesi.append((slot, False, 0, customer))
 
         if write_sub_file(target_filename, content):
