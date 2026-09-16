@@ -21,6 +21,7 @@ CHANNELS = [
     "https://t.me/s/v2speed_vpns",
     "https://t.me/s/ares_happ",
     "https://t.me/s/happvpn",
+    "https://t.me/s/tiktok1server",
 ]
 
 OUTPUT_FILE = "Toplanan_linkler.txt"
