@@ -17,7 +17,7 @@ CHANNELS = [
     "https://t.me/s/expensive_vpn",
     "https://t.me/s/aron58",
     "https://t.me/s/topserverss",
-    "https://t.me/s/xylen_111",
+    "https://t.me/s/happvpn",
 ]
 
 OUTPUT_FILE = "Toplanan_linkler.txt"
