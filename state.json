@@ -5,9 +5,9 @@
         "start_date": "2026-09-12"
     },
     "sub3": {
-        "customer": "kanal",
-        "days": 4,
-        "start_date": "2026-09-14"
+        "customer": "pubgprosu",
+        "days": 10,
+        "start_date": "2026-09-16"
     },
     "sub4": {
         "customer": "didar",
@@ -50,7 +50,8 @@
         "sub4|didar|30",
         "sub3|pubgob|1",
         "sub5|pubgbo|1",
-        "sub6|merdan|7"
+        "sub6|merdan|7",
+        "sub3|pubgprosu|10"
     ],
     "_kazanc_gecmisi": [
         {
@@ -94,11 +95,18 @@
             "days": 7,
             "tutar": 19.39,
             "tarih": "2026-09-15"
+        },
+        {
+            "slot": "sub3",
+            "customer": "pubgprosu",
+            "days": 10,
+            "tutar": 27.7,
+            "tarih": "2026-09-16"
         }
     ],
     "sub10": {
         "customer": "kanal",
-        "days": 1,
+        "days": 2,
         "start_date": "2026-09-16"
     }
 }
