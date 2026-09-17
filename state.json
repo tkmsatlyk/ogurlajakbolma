@@ -25,9 +25,9 @@
         "start_date": "2026-09-15"
     },
     "sub7": {
-        "customer": "kanal",
-        "days": 5,
-        "start_date": "2026-09-13"
+        "customer": "taktikzak",
+        "days": 2,
+        "start_date": "2026-09-17"
     },
     "sub8": {
         "customer": "kanal",
@@ -51,7 +51,8 @@
         "sub3|pubgob|1",
         "sub5|pubgbo|1",
         "sub6|merdan|7",
-        "sub3|pubgprosu|10"
+        "sub3|pubgprosu|10",
+        "sub7|taktikzak|2"
     ],
     "_kazanc_gecmisi": [
         {
@@ -102,6 +103,13 @@
             "days": 10,
             "tutar": 27.7,
             "tarih": "2026-09-16"
+        },
+        {
+            "slot": "sub7",
+            "customer": "taktikzak",
+            "days": 2,
+            "tutar": 5.54,
+            "tarih": "2026-09-17"
         }
     ],
     "sub10": {

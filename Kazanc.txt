@@ -6,8 +6,9 @@
 2026-09-13 | sub5 - pubgbo - 1 gün - 2.77 manat
 2026-09-15 | sub6 - merdan - 7 gün - 19.39 manat
 2026-09-16 | sub3 - pubgprosu - 10 gün - 27.70 manat
+2026-09-17 | sub7 - taktikzak - 2 gün - 5.54 manat
 
-TOPLAM KAZANÇ: 252.07 manat
+TOPLAM KAZANÇ: 257.61 manat
 
 === DURUM ===
 sub1 🟢 haram - 7 gün kaldı
@@ -16,7 +17,7 @@ sub3 🟢 pubgprosu - 9 gün kaldı
 sub4 🟢 didar - 3 gün kaldı
 sub5 🟢 kanal - 3 gün kaldı
 sub6 🟢 merdan - 5 gün kaldı
-sub7 🔴
+sub7 🟢 taktikzak - 2 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🟢 kanal - 1 gün kaldı
