@@ -20,4 +20,4 @@ sub6 🟢 merdan - 4 gün kaldı
 sub7 🟢 taktikzak - 1 gün kaldı
 sub8 🔴
 sub9 🔴
-sub10 🔴 kanal
+sub10 🔴
