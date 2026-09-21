@@ -13,13 +13,13 @@
 TOPLAM KAZANÇ: 448.74 manat
 
 === DURUM ===
-sub1 🟢 haram - 4 gün kaldı
-sub2 🟢 pubgger - 8 gün kaldı
-sub3 🟢 pubgprosu - 6 gün kaldı
-sub4 🟢 reklam - 4 gün kaldı
-sub5 🟢 osman - 6 gün kaldı
-sub6 🟢 merdan - 2 gün kaldı
-sub7 🟢 didarr - 61 gün kaldı
+sub1 🟢 haram - 3 gün kaldı
+sub2 🟢 pubgger - 7 gün kaldı
+sub3 🟢 pubgprosu - 5 gün kaldı
+sub4 🟢 reklam - 3 gün kaldı
+sub5 🟢 osman - 5 gün kaldı
+sub6 🟢 merdan - 1 gün kaldı
+sub7 🟢 didarr - 60 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
