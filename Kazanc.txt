@@ -20,6 +20,6 @@ sub4 🟢 reklam - 3 gün kaldı
 sub5 🟢 osman - 5 gün kaldı
 sub6 🟢 merdan - 1 gün kaldı
 sub7 🟢 didarr - 60 gün kaldı
-sub8 🔴
+sub8 🟢 reklam - 5 gün kaldı
 sub9 🔴
 sub10 🔴
