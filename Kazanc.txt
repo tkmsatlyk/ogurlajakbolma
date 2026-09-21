@@ -22,4 +22,4 @@ sub6 🟢 merdan - 1 gün kaldı
 sub7 🟢 didarr - 60 gün kaldı
 sub8 🔴
 sub9 🔴
-sub10 🟢 kanal - 10 gün kaldı
+sub10 🔴
