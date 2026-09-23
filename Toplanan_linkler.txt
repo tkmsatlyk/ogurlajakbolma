@@ -37,3 +37,9 @@ vless://00d4010a-ac43-48a4-a790-50a50599e616@45.14.201.118:40415?encryption=mlke
 vless://00d4010a-ac43-48a4-a790-50a50599e616@89.108.83.46:443?encryption=none&security=none&type=tcp&headerType=none#🇷🇺 Russia • Yandex
 vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇮🇱 Israel • Wix
 vless://09c4b0ea-529d-4068-bc41-f600ce0c0792@151.101.213.160:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22s…#🇸🇦 Saudi Arabia • STC Cloud
+vless://dd6e7b02-9402-4612-9c86-bb214ca0d50e@193.233.221.153:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇶🇦 Qatar • Ooredoo Cloud
+vless://dd6e7b02-9402-4612-9c86-bb214ca0d50e@193.233.221.153:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇪🇬 Egypt • Vodafone
+vless://dd6e7b02-9402-4612-9c86-bb214ca0d50e@193.233.221.153:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇿🇦 South Africa • MTN
+vless://dd6e7b02-9402-4612-9c86-bb214ca0d50e@193.233.221.153:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇹🇭 Thailand • LINE
+vless://dd6e7b02-9402-4612-9c86-bb214ca0d50e@193.233.221.153:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇻🇳 Vietnam • Zalo Cloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpoUlBvTDJxTkhjaUkzdkhyckFvaUg4Tkl4cS1uSm80NA==@193.233.221.153:1080#🇮🇩 Indonesia • Gojek
