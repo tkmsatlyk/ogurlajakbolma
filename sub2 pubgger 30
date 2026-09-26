@@ -26,14 +26,15 @@ vless://b04b640e-7c66-4dd7-b727-12b64f1ed090@151.101.213.207:443?encryption=none
 vless://b04b640e-7c66-4dd7-b727-12b64f1ed090@151.101.213.230:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=infinitycdnfast.global.ssl.fastly.net&mode=auto&sni=mail.fastly.com&alpn=h3#%F0%9F%87%B8%F0%9F%87%AC%20Singapur%20%C2%B7%20CDN
 vless://b04b640e-7c66-4dd7-b727-12b64f1ed090@151.101.213.206:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=infinitycdnfast.global.ssl.fastly.net&mode=auto&sni=mail.fastly.com&alpn=h3#%F0%9F%87%A8%F0%9F%87%A6%20Canada%20%C2%B7%20CDN
 vless://b04b640e-7c66-4dd7-b727-12b64f1ed090@151.101.213.244:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=infinitycdnfast.global.ssl.fastly.net&mode=auto&sni=mail.fastly.com&alpn=h3#%F0%9F%87%AE%F0%9F%87%AA%20%C4%B0rlanda%20%C2%B7%20CDN
-vless://30374571-c307-4dd1-9719-c6710e07cc1e@135.106.227.247:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AAGerman%20%7C%20Hamburg
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3M0JfbzZpblAxM2NNaTlOMzU4WE91S3E=@135.106.227.247:770#%F0%9F%87%B8%F0%9F%87%AASweden%20%7C%20Stockholm
-vless://30374571-c307-4dd1-9719-c6710e07cc1e@135.106.227.56:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%AEFinland%20%7C%20Helsinki
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3M0JfbzZpblAxM2NNaTlOMzU4WE91S3E=@135.106.227.56:770#%F0%9F%87%B3%F0%9F%87%B1Netherland%20%7C%20Amsterdam
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3M0JfbzZpblAxM2NNaTlOMzU4WE91S3E=@135.106.227.247:770#%F0%9F%87%A6%F0%9F%87%BFBaku%20%E2%97%8F%20Game%F0%9F%8E%AE
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3M0JfbzZpblAxM2NNaTlOMzU4WE91S3E=@135.106.227.58:770#%F0%9F%87%B7%F0%9F%87%BAPremium%20%E2%80%A2%20Game%F0%9F%8E%AE
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3M0JfbzZpblAxM2NNaTlOMzU4WE91S3E=@135.106.227.58:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20-%20Pubg%F0%9F%8E%AE
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3M0JfbzZpblAxM2NNaTlOMzU4WE91S3E=@135.106.227.58:770#%F0%9F%87%BA%F0%9F%87%BFTashlent%20%7C%20Pubg%F0%9F%8E%AE
+vless://1cff876f-0fe2-465c-8d7c-21d6243e8a65@135.106.227.247:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AAGerman%20%7C%20Hamburg
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.247:770#%F0%9F%87%B8%F0%9F%87%AASweden%20%7C%20Stockholm
+vless://1cff876f-0fe2-465c-8d7c-21d6243e8a65@135.106.227.56:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%AEFinland%20%7C%20Helsinki
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.56:770#%F0%9F%87%B3%F0%9F%87%B1Netherland%20%7C%20Amsterdam
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.247:770#%F0%9F%87%AC%F0%9F%87%A7United%20Kingdom%20%7C%20London
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.247:770#%F0%9F%87%A6%F0%9F%87%BFBaku%20%E2%97%8F%20Game%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.58:770#%F0%9F%87%B7%F0%9F%87%BAPremium%20%E2%80%A2%20Game%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.58:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20-%20Pubg%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.58:770#%F0%9F%87%BA%F0%9F%87%BFTashlent%20%7C%20Pubg%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4ZzJ4TDNMaDBldXIydk5tMDRua0VCR25HcmNrSzJOXw==@193.233.223.126:1080#🇺🇸 United States • Google
 vless://6ec63129-39fc-46b4-986a-70d68866413d@193.233.217.13:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
 vless://6ec63129-39fc-46b4-986a-70d68866413d@193.233.217.13:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇩🇪 Germany • WiFiWarden
