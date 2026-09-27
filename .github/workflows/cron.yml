@@ -3,7 +3,7 @@ name: mb sayaji
 on:
   push:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '*/59 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
           import re
           import os
           
-          bytes_to_add = 33822867.456
+          bytes_to_add = 143948513.28
           # Sadece bu iki dosyayı güncelliyoruz
           files_to_update = ['sub', 'sub1', 'sub2', 'sub3', 'sub4', 'sub5', 'sub6', 'sub7', 'sub8', 'sub9', 'sub10']
           
