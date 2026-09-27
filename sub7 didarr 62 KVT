@@ -2,7 +2,7 @@
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
-#announce:  📡Kömek gerek bolsa — goldaw elmydama taýyn Ynanýandygyňyz üçin sag boluň! Hil we tizligi saýladyňyz tizlik peselse ​⟲ şul şekile basaýmaly✅️【55-DAY】
+#announce:  📡Kömek gerek bolsa — goldaw elmydama taýyn Ynanýandygyňyz üçin sag boluň! Hil we tizligi saýladyňyz tizlik peselse ​⟲ şul şekile basaýmaly✅️【54-DAY】
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 vless://00000000@00000000:100?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%B2%E2%80%8B%F0%9D%97%A9%F0%9D%97%BC%F0%9D%97%BF%F0%9D%97%B1%F0%9D%97%BF%F0%9D%98%85%E2%80%8B%20%E2%9C%B5%20-%20Ho%C5%9F%20geldi%C3%B1iz%20%F0%9F%91%8B
 vless://b04b640e-7c66-4dd7-b727-12b64f1ed090@137.220.55.216:444?encryption=mlkem768x25519plus.native.0rtt.ildfndUEP_ZDHEV-ump80Pv6EvBxq7TVrCPt87fjhTo&security=none&type=tcp&headerType=none#%F0%9F%87%B9%F0%9F%87%B7%20Salam%20Rb6jjESy
@@ -49,5 +49,4 @@ ss://chacha20-ietf-poly1305:WxYpOK1iPSJySbVNMMJDtw@139.100.236.74:3#🇳🇱 Net
 ss://chacha20-ietf-poly1305:G1oxDjlLLnvcul65TMDW-byf4CjYvB9v@135.106.227.252:8388#🇨🇭 Switzerland • Proton
 ss://YWVzLTI1Ni1nY206bGltaXQ=@1.1.1.1:443#🇸🇪 Sweden • Google Cloud
 vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇳🇴 Norway • Microsoft
-vless://267b925b-93da-462e-ab05-91d922d7eaea@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMi…#🇫🇮 Finland • Apple
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0djT2luUk4tT1NHb1ZKUkFqNjJVYjNqeWJ6MXpRQQ@193.233.217.13:1080#🇰🇷 South Korea • Samsung Cloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0djT2luUk4tT1NHb1ZKUkFqNjJVYjNqeWJ6MXpRQQ@193.233.217.13:1080#🇫🇮 Finland • Apple
