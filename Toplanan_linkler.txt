@@ -12,5 +12,4 @@ ss://chacha20-ietf-poly1305:WxYpOK1iPSJySbVNMMJDtw@139.100.236.74:3#🇳🇱 Net
 ss://chacha20-ietf-poly1305:G1oxDjlLLnvcul65TMDW-byf4CjYvB9v@135.106.227.252:8388#🇨🇭 Switzerland • Proton
 ss://YWVzLTI1Ni1nY206bGltaXQ=@1.1.1.1:443#🇸🇪 Sweden • Google Cloud
 vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇳🇴 Norway • Microsoft
-vless://267b925b-93da-462e-ab05-91d922d7eaea@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMi…#🇫🇮 Finland • Apple
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0djT2luUk4tT1NHb1ZKUkFqNjJVYjNqeWJ6MXpRQQ@193.233.217.13:1080#🇰🇷 South Korea • Samsung Cloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0djT2luUk4tT1NHb1ZKUkFqNjJVYjNqeWJ6MXpRQQ@193.233.217.13:1080#🇫🇮 Finland • Apple
