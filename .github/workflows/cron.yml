@@ -1,7 +1,6 @@
 name: mb sayaji
 
 on:
-  push:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
@@ -20,48 +19,65 @@ jobs:
       - name: Run Update Script
         run: |
           python3 - <<'PY'
-          import re
           import os
+          import re
 
           bytes_to_add = 143948513.28
 
-          files_to_update = [
-              'sub',
-              'sub1',
-              'sub2',
-              'sub3',
-              'sub4',
-              'sub5',
-              'sub6',
-              'sub7',
-              'sub8',
-              'sub9',
-              'sub10'
+          # Dosya adının BAŞLANGICI bunlardan biri olacak.
+          prefixes = [
+              "sub",
+              "sub1",
+              "sub2",
+              "sub3",
+              "sub4",
+              "sub5",
+              "sub6",
+              "sub7",
+              "sub8",
+              "sub9",
+              "sub10"
           ]
 
-          for filename in files_to_update:
-              if not os.path.exists(filename):
-                  print(f"Dosya bulunamadı, atlanıyor: {filename}")
+          files_to_update = []
+
+          # Repository'nin ana klasöründeki dosyaları otomatik bul
+          for filename in os.listdir("."):
+              if not os.path.isfile(filename):
                   continue
 
-              with open(filename, 'r', encoding='utf-8') as f:
+              # Dosya adı belirlenen prefixlerden biriyle başlıyor mu?
+              if any(filename.startswith(prefix) for prefix in prefixes):
+                  files_to_update.append(filename)
+
+          print("Bulunan dosyalar:")
+
+          for filename in files_to_update:
+              print(f"  {filename}")
+
+          for filename in files_to_update:
+
+              with open(filename, "r", encoding="utf-8") as f:
                   data = f.read()
 
               def replacer(match):
                   current_val = float(match.group(1))
                   new_val = int(current_val + bytes_to_add)
-                  return f'download={new_val}'
+                  return f"download={new_val}"
 
               new_data = re.sub(
-                  r'download=([0-9.]+)',
+                  r"download=([0-9.]+)",
                   replacer,
                   data
               )
 
-              with open(filename, 'w', encoding='utf-8') as f:
-                  f.write(new_data)
+              if new_data != data:
+                  with open(filename, "w", encoding="utf-8") as f:
+                      f.write(new_data)
 
-              print(f"Güncellendi: {filename}")
+                  print(f"Güncellendi: {filename}")
+              else:
+                  print(f"download değeri bulunamadı/değişmedi: {filename}")
           PY
 
       - name: Commit and Push Changes
@@ -69,12 +85,17 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add sub sub1 sub2 sub3 sub4 sub5 sub6 sub7 sub8 sub9 sub10
+          # Python tarafından bulunan ve değişen dosyaları otomatik ekle
+          for file in sub*; do
+            if [ -f "$file" ]; then
+              git add -- "$file"
+            fi
+          done
 
           if git diff --cached --quiet; then
-            echo "Değişiklik yok, commit yapılmayacak."
+            echo "Commit edilecek değişiklik yok."
             exit 0
           fi
 
-          git commit -m "Otomatik güncelleme: sub dosyaları"
+          git commit -m "Otomatik güncelleme: download değerleri"
           git push
