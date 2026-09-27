@@ -31,22 +31,20 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.22
 vless://1cff876f-0fe2-465c-8d7c-21d6243e8a65@135.106.227.58:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%AEFinland%20%7C%20Helsinki
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.58:770#%F0%9F%87%AC%F0%9F%87%A7United%20Kingdom%20%7C%20London
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.227.58:770#%F0%9F%87%B3%F0%9F%87%B1Netherland%20%7C%20Amsterdam
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.229.155:770#%F0%9F%87%A6%F0%9F%87%BFBaku%20%E2%97%8F%20Game%F0%9F%8E%AE
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.229.155:770#%F0%9F%87%B7%F0%9F%87%BAPremium%20%E2%80%A2%20Game%F0%9F%8E%AE
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.229.155:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20-%20Pubg%F0%9F%8E%AE
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@135.106.229.155:770#%F0%9F%87%BA%F0%9F%87%BFTashlent%20%7C%20Pubg%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@139.100.236.127:770#%F0%9F%87%A6%F0%9F%87%BFBaku%20%E2%97%8F%20Game%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@139.100.236.127:770#%F0%9F%87%B7%F0%9F%87%BAPremium%20%E2%80%A2%20Game%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@139.100.236.127:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20-%20Pubg%F0%9F%8E%AE
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwM1RfeURkSXFrYkp0OTBqbGdqNE1DNW0=@139.100.236.127:770#%F0%9F%87%BA%F0%9F%87%BFTashlent%20%7C%20Pubg%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToxSnllUjB4ODFRTWpDd2Y5dnFvb29fcENmMTBpanRBRA==@193.233.217.13:1080#🇺🇸 United States • Google
-vless://5258e178-9ff3-49f6-999b-6920973bcf1a@146.75.57.25:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=lunex.store&path=%2FLunex&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇬🇧 United Kingdom • Cloudflare
-ss://chacha20-ietf-poly1305:WxYpOK1iPSJySbVNMMJDtw@62.109.12.234:2055#🇩🇪 Germany • WiFiWarden
-vless://9b8a9037-f69e-462a-9685-ae6b62826e7d@193.233.217.13:445?encryption=mlkem768x25519plus.native.0rtt.h7cumKd0UK-NSljFZci1t80cHrAPfqch82dlAPrzzCs&security=none&type=tcp&headerType=none#🇫🇷 France • Claude
-ss://aes-128-gcm:0716c552745851948293c137ac1c1e5b@216.105.169.238:17002#🇯🇵 Japan • Fastly
-ss://chacha20-ietf-poly1305:JKRv78uy_ohv6-8Aoppa3g@94.183.236.90:301#🇹🇷 Turkey • AWS
-vless://5258e178-9ff3-49f6-999b-6920973bcf1a@146.75.57.25:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=lunex.store&path=%2FLunex&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇮🇹 Italy • Azure
-ss://chacha20-ietf-poly1305:XURBrIwPZVbTCI7EBsce4g7MDbrzCams@135.106.227.252:8388#🇪🇸 Spain • Oracle
-ss://chacha20-ietf-poly1305:WxYpOK1iPSJySbVNMMJDtw@2.56.172.74:6#🇨🇦 Canada • DigitalOcean
-vless://5258e178-9ff3-49f6-999b-6920973bcf1a@146.75.57.25:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=lunex.store&path=%2FLunex&extra=%7B%22scMaxEachPostBytes%22%3A1000000.0%2C%22scMaxConcurrentPosts%22%3A100.0%2C%22scMinPostsIntervalMs%22%3A30.0%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22noGRPCHeader%22%3Afalse%7D#🇦🇺 Australia • Akamai
-ss://chacha20-ietf-poly1305:WxYpOK1iPSJySbVNMMJDtw@139.100.236.74:3#🇳🇱 Netherlands • CloudFront
-ss://chacha20-ietf-poly1305:G1oxDjlLLnvcul65TMDW-byf4CjYvB9v@135.106.227.252:8388#🇨🇭 Switzerland • Proton
-ss://YWVzLTI1Ni1nY206bGltaXQ=@1.1.1.1:443#🇸🇪 Sweden • Google Cloud
-vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇳🇴 Norway • Microsoft
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0djT2luUk4tT1NHb1ZKUkFqNjJVYjNqeWJ6MXpRQQ@193.233.217.13:1080#🇫🇮 Finland • Apple
+vless://47b63e55-a4e4-43ce-97dc-946e6a26971d@5.181.201.44:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=bababoy.karp1pdd.life&fp=random&pbk=98MNvJC4t0ZjK_xHlQjOx2WfLfAPluNDb71MzS9sPT8&sid=38018dde3e27335e&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
+ss://chacha20-ietf-poly1305:G1oxDjlLLnvcul65TMDW-byf4CjYvB9v@135.106.227.252:8388#🇩🇪 Germany • WiFiWarden
+ss://YWVzLTI1Ni1nY206bGltaXQ=@1.1.1.1:443#🇫🇷 France • Claude
+vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇯🇵 Japan • Fastly
+vless://267b925b-93da-462e-ab05-91d922d7eaea@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇹🇷 Turkey • AWS
+vless://267b925b-93da-462e-ab05-91d922d7eaea@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇮🇹 Italy • Azure
+vless://267b925b-93da-462e-ab05-91d922d7eaea@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇪🇸 Spain • Oracle
+vless://267b925b-93da-462e-ab05-91d922d7eaea@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇨🇦 Canada • DigitalOcean
+trojan://oyTYTTrf_F5-pzGG6uaVfw@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇦🇺 Australia • Akamai
+trojan://oyTYTTrf_F5-pzGG6uaVfw@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇳🇱 Netherlands • CloudFront
+trojan://oyTYTTrf_F5-pzGG6uaVfw@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇨🇭 Switzerland • Proton
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTppem8zbGFIRWdWWkQyZjFvTGEwNnRhMFk5ZUNuaFNUOA@193.233.217.13:1080#🇸🇪 Sweden • Google Cloud
