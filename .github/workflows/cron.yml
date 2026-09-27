@@ -3,7 +3,7 @@ name: mb sayaji
 on:
   push:
   schedule:
-    - cron: '*/59 * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -12,35 +12,69 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Run Update Script
         run: |
-          python3 -c "
+          python3 - <<'PY'
           import re
           import os
-          
+
           bytes_to_add = 143948513.28
-          # Sadece bu iki dosyayı güncelliyoruz
-          files_to_update = ['sub', 'sub1', 'sub2', 'sub3', 'sub4', 'sub5', 'sub6', 'sub7', 'sub8', 'sub9', 'sub10']
-          
-          def replacer(match):
-              current_val = float(match.group(1))
-              return f'download={int(current_val + bytes_to_add)}'
-          
+
+          files_to_update = [
+              'sub',
+              'sub1',
+              'sub2',
+              'sub3',
+              'sub4',
+              'sub5',
+              'sub6',
+              'sub7',
+              'sub8',
+              'sub9',
+              'sub10'
+          ]
+
           for filename in files_to_update:
-              if os.path.exists(filename):
-                  with open(filename, 'r') as f:
-                      data = f.read()
-                  new_data = re.sub(r'download=([0-9.]+)', replacer, data)
-                  with open(filename, 'w') as f:
-                      f.write(new_data)
-          "
-          
+              if not os.path.exists(filename):
+                  print(f"Dosya bulunamadı, atlanıyor: {filename}")
+                  continue
+
+              with open(filename, 'r', encoding='utf-8') as f:
+                  data = f.read()
+
+              def replacer(match):
+                  current_val = float(match.group(1))
+                  new_val = int(current_val + bytes_to_add)
+                  return f'download={new_val}'
+
+              new_data = re.sub(
+                  r'download=([0-9.]+)',
+                  replacer,
+                  data
+              )
+
+              with open(filename, 'w', encoding='utf-8') as f:
+                  f.write(new_data)
+
+              print(f"Güncellendi: {filename}")
+          PY
+
+      - name: Commit and Push Changes
+        run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add sub sub1
-          git commit -m "Otomatik güncelleme: sub ve sub1 +15.65 MB"
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git add sub sub1 sub2 sub3 sub4 sub5 sub6 sub7 sub8 sub9 sub10
+
+          if git diff --cached --quiet; then
+            echo "Değişiklik yok, commit yapılmayacak."
+            exit 0
+          fi
+
+          git commit -m "Otomatik güncelleme: sub dosyaları"
           git push
