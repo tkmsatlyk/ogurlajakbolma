@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import base64, hashlib, json, math, os, queue, random, shutil, socket
 import subprocess, tempfile, time
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse, parse_qs, unquote
 
@@ -14,16 +15,18 @@ REQ_TIMEOUT = 8
 BASE_PORT = 20000
 
 SIM = True
-SIM_MEDIAN = 0.35
+SIM_MEDIAN = 0.45
 SIM_SIGMA = 0.6
-SIM_SPIKE = 0.05
-BLOCK_SECURE = 0.05
-BLOCK_PLAIN = 0.30
+SIM_SPIKE = 0.08
+BLOCK_SECURE = 0.08
+BLOCK_PLAIN = 0.40
 BLOCK_ODD_PORT = 0.05
 GOOD_PORTS = {443, 8443, 2053, 2083, 2087, 2096}
 PEAK_HOURS = range(19, 24)
 NIGHT_HOURS = range(2, 7)
 
+STATS = Counter()
+ERRS = []
 PORTS = queue.Queue()
 for _p in range(BASE_PORT, BASE_PORT + WORKERS):
     PORTS.put(_p)
@@ -146,10 +149,13 @@ def real_test(out, port):
         json.dump(cfg, f)
         path = f.name
     proc = subprocess.Popen([XRAY, "run", "-c", path],
-                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                            stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
     try:
         for _ in range(40):
             if proc.poll() is not None:
+                STATS["xray_acilmadi"] += 1
+                if len(ERRS) < 3:
+                    ERRS.append(proc.stderr.read().decode("utf-8", "ignore")[:300])
                 return None
             try:
                 socket.create_connection(("127.0.0.1", port), 0.2).close()
@@ -157,6 +163,7 @@ def real_test(out, port):
             except OSError:
                 time.sleep(0.1)
         else:
+            STATS["xray_port_yok"] += 1
             return None
         times = []
         for _ in range(2):
@@ -166,6 +173,7 @@ def real_test(out, port):
                                capture_output=True, text=True)
             if r.stdout.strip() != "204":
                 if not times:
+                    STATS[f"baglanti_yok_curl{r.returncode}"] += 1
                     return None
                 continue
             times.append(int((time.time() - t0) * 1000))
@@ -204,13 +212,18 @@ def check(link):
     try:
         out, host, port, secure = build(link)
     except Exception:
+        STATS["desteklenmeyen_veya_bozuk"] += 1
         return link, None
     if SIM and blocked(host, port, secure):
+        STATS["simulasyon_engel"] += 1
         return link, None
     lp = PORTS.get()
     try:
         ms = real_test(out, lp)
-    except Exception:
+    except Exception as e:
+        STATS["hata"] += 1
+        if len(ERRS) < 3:
+            ERRS.append(str(e)[:200])
         ms = None
     finally:
         PORTS.put(lp)
@@ -218,13 +231,19 @@ def check(link):
         return link, None
     if SIM:
         ms += sim_delay()
-    return link, (ms if ms <= MAX_MS else None)
+    if ms > MAX_MS:
+        STATS["cok_yavas"] += 1
+        return link, None
+    STATS["calisiyor"] += 1
+    return link, ms
 
 
 def run_once():
     with open(FILE, encoding="utf-8") as f:
         links = list(dict.fromkeys(l.strip() for l in f if "://" in l))
     shutil.copy(FILE, FILE + ".bak")
+    STATS.clear()
+    ERRS.clear()
     with ThreadPoolExecutor(WORKERS) as ex:
         results = list(ex.map(check, links))
     alive = sorted((r for r in results if r[1] is not None), key=lambda r: r[1])
@@ -232,6 +251,9 @@ def run_once():
         f.write("\n".join(l for l, _ in alive) + "\n")
     print(f"{time.strftime('%H:%M:%S')} - {len(alive)}/{len(links)} calisiyor, "
           f"{len(links) - len(alive)} silindi")
+    print("Ayrinti:", dict(STATS))
+    for e in ERRS:
+        print("Hata ornegi:", e)
 
 
 if __name__ == "__main__":
