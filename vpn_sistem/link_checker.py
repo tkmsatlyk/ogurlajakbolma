@@ -1,33 +1,32 @@
 #!/usr/bin/env python3
-import base64, hashlib, json, math, random, shutil, socket, time
+import base64, hashlib, json, math, os, queue, random, shutil, socket
+import subprocess, tempfile, time
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs, unquote
 
 FILE = "toplanan_linkler.txt"
+XRAY = os.environ.get("XRAY_BIN", "xray")
+TEST_URL = "https://www.gstatic.com/generate_204"
 INTERVAL = 15 * 60
-TIMEOUT = 5
-ATTEMPTS = 3
-WORKERS = 100
 MAX_MS = 3000
+WORKERS = 30
+REQ_TIMEOUT = 8
+BASE_PORT = 20000
 
 SIM = True
-UDP_SCHEMES = {"hysteria2", "hy2", "hysteria", "tuic"}
-
-BASE_LATENCY = 0.45
-LATENCY_SIGMA = 0.6
-SPIKE_CHANCE = 0.05
-SPIKE_RANGE = (1.5, 3.0)
-RESET_CHANCE = 0.04
-LOSS_GOOD = 0.05
-LOSS_BAD = 0.60
-P_GOOD_TO_BAD = 0.15
-P_BAD_TO_GOOD = 0.30
-BLOCK_SECURE = 0.10
-BLOCK_PLAIN = 0.40
-BLOCK_ODD_PORT = 0.10
+SIM_MEDIAN = 0.35
+SIM_SIGMA = 0.6
+SIM_SPIKE = 0.05
+BLOCK_SECURE = 0.05
+BLOCK_PLAIN = 0.30
+BLOCK_ODD_PORT = 0.05
 GOOD_PORTS = {443, 8443, 2053, 2083, 2087, 2096}
 PEAK_HOURS = range(19, 24)
 NIGHT_HOURS = range(2, 7)
+
+PORTS = queue.Queue()
+for _p in range(BASE_PORT, BASE_PORT + WORKERS):
+    PORTS.put(_p)
 
 
 def b64(s):
@@ -35,22 +34,146 @@ def b64(s):
     return base64.urlsafe_b64decode(s + "=" * (-len(s) % 4))
 
 
-def parse(link):
+def make_stream(p):
+    net = {"tcp": "tcp", "raw": "tcp", "ws": "ws", "grpc": "grpc",
+           "httpupgrade": "httpupgrade", "xhttp": "xhttp",
+           "splithttp": "xhttp"}.get(p["net"])
+    if net is None:
+        raise ValueError("desteklenmeyen tasima")
+    s = {"network": net}
+    host, path = p["host"], p["path"]
+    if net == "ws":
+        s["wsSettings"] = {"path": path or "/"}
+        if host:
+            s["wsSettings"]["headers"] = {"Host": host}
+    elif net == "grpc":
+        s["grpcSettings"] = {"serviceName": p.get("service") or path}
+    elif net == "httpupgrade":
+        s["httpupgradeSettings"] = {"path": path or "/", "host": host}
+    elif net == "xhttp":
+        s["xhttpSettings"] = {"path": path or "/", "host": host,
+                              "mode": p.get("mode") or "auto"}
+    elif net == "tcp" and p.get("header") == "http":
+        s["tcpSettings"] = {"header": {"type": "http", "request": {
+            "path": [path or "/"], "headers": {"Host": [host] if host else []}}}}
+    sec = p["sec"]
+    if sec == "tls":
+        s["security"] = "tls"
+        t = {"serverName": p["sni"] or host or p["addr"],
+             "fingerprint": p["fp"] or "chrome"}
+        if p["alpn"]:
+            t["alpn"] = p["alpn"].split(",")
+        if p["insecure"]:
+            t["allowInsecure"] = True
+        s["tlsSettings"] = t
+    elif sec == "reality":
+        s["security"] = "reality"
+        s["realitySettings"] = {"serverName": p["sni"], "fingerprint": p["fp"] or "chrome",
+                                "publicKey": p["pbk"], "shortId": p["sid"],
+                                "spiderX": p["spx"] or "/"}
+    return s
+
+
+def build(link):
+    link = link.strip()
     scheme = link.split("://", 1)[0].lower()
     if scheme == "vmess":
         d = json.loads(b64(link[8:]))
-        return scheme, d["add"], int(d["port"]), d.get("tls") == "tls"
+        p = {"net": (d.get("net") or "tcp").lower(), "sec": "tls" if d.get("tls") == "tls" else "none",
+             "host": d.get("host", ""), "path": d.get("path", ""), "sni": d.get("sni", ""),
+             "fp": d.get("fp", ""), "alpn": d.get("alpn", ""), "service": d.get("path", ""),
+             "header": d.get("type", "none"), "insecure": False, "addr": d["add"]}
+        port = int(d["port"])
+        out = {"protocol": "vmess", "settings": {"vnext": [{"address": d["add"], "port": port,
+               "users": [{"id": d["id"], "alterId": int(d.get("aid") or 0),
+                          "security": d.get("scy") or "auto"}]}]},
+               "streamSettings": make_stream(p)}
+        return out, d["add"], port, p["sec"] != "none"
+
+    if scheme in ("vless", "trojan"):
+        u = urlparse(link)
+        qs = parse_qs(u.query)
+
+        def g(k, dv=""):
+            return unquote(qs.get(k, [dv])[0])
+        sec = g("security", "tls" if scheme == "trojan" else "none").lower()
+        p = {"net": g("type", "tcp").lower(), "sec": sec, "host": g("host"), "path": g("path"),
+             "sni": g("sni") or g("peer"), "fp": g("fp"), "alpn": g("alpn"), "pbk": g("pbk"),
+             "sid": g("sid"), "spx": g("spx"), "service": g("serviceName"),
+             "header": g("headerType", "none"), "mode": g("mode"),
+             "insecure": g("allowInsecure") == "1" or g("insecure") == "1", "addr": u.hostname}
+        user = unquote(u.username or "")
+        if scheme == "vless":
+            usr = {"id": user, "encryption": g("encryption", "none") or "none"}
+            if g("flow"):
+                usr["flow"] = g("flow")
+            out = {"protocol": "vless", "settings": {"vnext": [{"address": u.hostname,
+                   "port": u.port, "users": [usr]}]}, "streamSettings": make_stream(p)}
+        else:
+            out = {"protocol": "trojan", "settings": {"servers": [{"address": u.hostname,
+                   "port": u.port, "password": user}]}, "streamSettings": make_stream(p)}
+        return out, u.hostname, u.port, sec != "none"
+
     if scheme == "ss":
         body = link[5:].split("#")[0]
+        q = ""
+        if "?" in body:
+            body, q = body.split("?", 1)
+        if "plugin" in q:
+            raise ValueError("plugin")
         if "@" not in body:
             body = b64(body).decode()
-        u = urlparse("ss://" + body)
-        return scheme, u.hostname, u.port, False
-    u = urlparse(link)
-    text = link.lower()
-    secure = (scheme == "trojan" or "security=tls" in text
-              or "security=reality" in text)
-    return scheme, u.hostname, u.port, secure
+        userinfo, _, hostport = body.rpartition("@")
+        if ":" not in userinfo:
+            userinfo = b64(userinfo).decode()
+        method, _, password = userinfo.partition(":")
+        host, _, port = hostport.rpartition(":")
+        host = host.strip("[]")
+        port = int(port.strip("/"))
+        out = {"protocol": "shadowsocks", "settings": {"servers": [{"address": host,
+               "port": port, "method": method, "password": password}]}}
+        return out, host, port, False
+
+    raise ValueError("desteklenmeyen protokol")
+
+
+def real_test(out, port):
+    cfg = {"log": {"loglevel": "none"},
+           "inbounds": [{"listen": "127.0.0.1", "port": port, "protocol": "socks",
+                         "settings": {"auth": "noauth", "udp": False}}],
+           "outbounds": [out]}
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+        json.dump(cfg, f)
+        path = f.name
+    proc = subprocess.Popen([XRAY, "run", "-c", path],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        for _ in range(40):
+            if proc.poll() is not None:
+                return None
+            try:
+                socket.create_connection(("127.0.0.1", port), 0.2).close()
+                break
+            except OSError:
+                time.sleep(0.1)
+        else:
+            return None
+        times = []
+        for _ in range(2):
+            t0 = time.time()
+            r = subprocess.run(["curl", "-s", "-o", "/dev/null", "-x", f"socks5h://127.0.0.1:{port}",
+                                "--max-time", str(REQ_TIMEOUT), "-w", "%{http_code}", TEST_URL],
+                               capture_output=True, text=True)
+            if r.stdout.strip() != "204":
+                if not times:
+                    return None
+                continue
+            times.append(int((time.time() - t0) * 1000))
+        return min(times) if times else None
+    finally:
+        proc.kill()
+        proc.wait()
+        os.unlink(path)
 
 
 def load_factor():
@@ -70,50 +193,32 @@ def blocked(host, port, secure):
     return (h / 0xFFFFFFFF) < p
 
 
-def probe(host, port, secure):
-    load = 1.0
-    bad = False
-    if SIM:
-        if blocked(host, port, secure):
-            time.sleep(1)
-            return None
-        load = load_factor()
-    for _ in range(ATTEMPTS):
-        t0 = time.time()
-        if SIM:
-            if bad:
-                bad = random.random() >= P_BAD_TO_GOOD
-            else:
-                bad = random.random() < P_GOOD_TO_BAD
-            loss = min(0.95, (LOSS_BAD if bad else LOSS_GOOD) * load)
-            if random.random() < RESET_CHANCE:
-                time.sleep(0.2)
-                continue
-            if random.random() < loss:
-                time.sleep(TIMEOUT)
-                continue
-            delay = random.lognormvariate(math.log(BASE_LATENCY), LATENCY_SIGMA) * load
-            if random.random() < SPIKE_CHANCE:
-                delay += random.uniform(*SPIKE_RANGE)
-            time.sleep(delay)
-        try:
-            socket.create_connection((host, port), TIMEOUT).close()
-        except OSError:
-            continue
-        ms = int((time.time() - t0) * 1000)
-        if ms <= MAX_MS:
-            return ms
-    return None
+def sim_delay():
+    d = random.lognormvariate(math.log(SIM_MEDIAN), SIM_SIGMA) * load_factor()
+    if random.random() < SIM_SPIKE:
+        d += random.uniform(1.5, 3.0)
+    return int(d * 1000)
 
 
 def check(link):
     try:
-        scheme, host, port, secure = parse(link)
-        if scheme in UDP_SCHEMES:
-            return link, MAX_MS
-        return link, probe(host, port, secure)
+        out, host, port, secure = build(link)
     except Exception:
         return link, None
+    if SIM and blocked(host, port, secure):
+        return link, None
+    lp = PORTS.get()
+    try:
+        ms = real_test(out, lp)
+    except Exception:
+        ms = None
+    finally:
+        PORTS.put(lp)
+    if ms is None:
+        return link, None
+    if SIM:
+        ms += sim_delay()
+    return link, (ms if ms <= MAX_MS else None)
 
 
 def run_once():
@@ -122,8 +227,7 @@ def run_once():
     shutil.copy(FILE, FILE + ".bak")
     with ThreadPoolExecutor(WORKERS) as ex:
         results = list(ex.map(check, links))
-    alive = sorted((r for r in results if r[1] is not None and r[1] <= MAX_MS),
-                   key=lambda r: r[1])
+    alive = sorted((r for r in results if r[1] is not None), key=lambda r: r[1])
     with open(FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(l for l, _ in alive) + "\n")
     print(f"{time.strftime('%H:%M:%S')} - {len(alive)}/{len(links)} calisiyor, "
