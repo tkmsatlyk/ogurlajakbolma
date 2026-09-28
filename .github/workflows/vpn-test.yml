@@ -1,0 +1,32 @@
+name: vpn-test
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vpn-dosya
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test et
+        working-directory: vpn_sistem
+        run: python -c "import link_checker; link_checker.run_once()"
+      - name: Kaydet
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add vpn_sistem/toplanan_linkler.txt
+          git diff --cached --quiet || (git commit -m "Testten gecenler" && git pull --rebase && git push)
