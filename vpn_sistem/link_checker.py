@@ -7,7 +7,7 @@ FILE = "toplanan_linkler.txt"
 INTERVAL = 15 * 60
 TIMEOUT = 5
 ATTEMPTS = 3
-WORKERS = 30
+WORKERS = 100
 
 SIM = True
 SIM_DELAY = (0.3, 1.5)
