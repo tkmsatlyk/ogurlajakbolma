@@ -1,4 +1,4 @@
-name: vpn-kontrol
+name: vpn-topla
 
 on:
   schedule:
@@ -9,26 +9,24 @@ permissions:
   contents: write
 
 concurrency:
-  group: vpn-kontrol
+  group: vpn-dosya
   cancel-in-progress: false
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 14
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Topla ve test et
+      - name: Topla
         working-directory: vpn_sistem
-        run: |
-          sed -i 's/^SIM = True/SIM = False/' link_checker.py
-          python -c "import collector, link_checker; collector.collect(); link_checker.run_once()"
+        run: python -c "import collector; collector.collect()"
       - name: Kaydet
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git add vpn_sistem/toplanan_linkler.txt
-          git diff --cached --quiet || (git commit -m "Linkler guncellendi" && git pull --rebase && git push)
+          git diff --cached --quiet || (git commit -m "Linkler toplandi" && git pull --rebase --autostash && git push)
