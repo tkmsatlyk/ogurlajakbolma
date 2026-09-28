@@ -41,20 +41,17 @@ def scrape(channel):
 
 
 def collect():
-    try:
-        with open(FILE, encoding="utf-8") as f:
-            old = {l.strip() for l in f if "://" in l}
-    except FileNotFoundError:
-        old = set()
-    added = []
+    new = []
     for ch in CHANNELS:
         for l in scrape(ch):
-            if l not in old and l not in added:
-                added.append(l)
-    with open(FILE, "a", encoding="utf-8") as f:
-        for l in added:
-            f.write(l + "\n")
-    print(f"{len(added)} yeni link eklendi")
+            if l not in new:
+                new.append(l)
+    if not new:
+        print("Yeni link bulunamadi, eski liste korundu")
+        return
+    with open(FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(new) + "\n")
+    print(f"{len(new)} yeni link yazildi, eski liste silindi")
 
 
 if __name__ == "__main__":
