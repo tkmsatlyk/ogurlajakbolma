@@ -4,7 +4,7 @@ vless://00d4010a-ac43-48a4-a790-50a50599e616@18.165.140.67:443?encryption=none&s
 vless://c10ce355-1186-4469-8df1-6dd2564c8ee3@151.101.213.217:443?encryption=none&security=tls&sni=accounts.fastly.com&alpn=h3&fp=chrome&type=xhttp&mode=packet-up&host=lunex.store&path=%2FLunex#🇫🇷 France • Claude
 vless://c08a7170-c5cc-478b-9fcf-526ad06ff36a@5.63.152.83:8443?encryption=none&security=none&type=tcp&headerType=none#🇯🇵 Japan • Fastly
 vless://4bf0ee3a-d9d9-446b-b458-1c8c3f89aed7@2.29.53.116:80?encryption=none&security=none&type=tcp&headerType=none#🇹🇷 Turkey • AWS
-vless://e177fd28-5577-4348-a064-c8ca8106da50@208.72.154.43:444?encryption=mlkem768x25519plus.native.0rtt.ildfndUEP_ZDHEV-ump80Pv6EvBxq7TVrCPt87fjhTo&security=none&type=tcp&headerType=none#🇮🇹 Italy • Azure
+ss://chacha20-ietf-poly1305:i8yt-VVArkvgqH1zq6UcolE0N6fizmsw@2.29.53.116:1080#🇮🇹 Italy • Azure
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpKS1J2Nzh1eV9vaHY2LThBb3BwYTNn@80.242.57.97:302#🇪🇸 Spain • Oracle
 hysteria2://XQjlxBvLhYPiXknJqeWdqg@80.242.57.97:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇨🇦 Canada • DigitalOcean
 hysteria2://XQjlxBvLhYPiXknJqeWdqg@80.242.57.97:122?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇦🇺 Australia • Akamai
@@ -26,9 +26,4 @@ vless://5b37bbc7-0740-4377-a40f-34873ba5965d@151.101.213.217:443?security=tls&ty
 trojan://f7j83mldJ8cZs8qxwAuJsQ@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇩🇰 Denmark • Netlify
 trojan://f7j83mldJ8cZs8qxwAuJsQ@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇵🇱 Poland • Railway
 trojan://f7j83mldJ8cZs8qxwAuJsQ@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇮🇪 Ireland • Fly.io
-vless://8e9071c4-c3d1-46de-818f-a51ab20daaa0@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇬🇷 Greece • Discord
-vless://8e9071c4-c3d1-46de-818f-a51ab20daaa0@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇨🇿 Czechia • Telegram
-vless://8e9071c4-c3d1-46de-818f-a51ab20daaa0@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇭🇺 Hungary • Reddit
-vless://8e9071c4-c3d1-46de-818f-a51ab20daaa0@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇷🇴 Romania • Spotify
-vless://8e9071c4-c3d1-46de-818f-a51ab20daaa0@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇧🇬 Bulgaria • Netflix
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTowZjdIbVg3Ry02bHkwUHpyUlFweGRFaGdlS0RWN0JZUQ==@193.233.230.227:445#🇭🇷 Croatia • YouTube
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5VE1MVWllbnJ4UkVLVWFDMUJnNkZUZ3JqNVdZODIteA@193.233.230.79:1080#🇬🇷 Greece • Discord
