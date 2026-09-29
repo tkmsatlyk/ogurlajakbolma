@@ -2,7 +2,7 @@
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
-#announce:  📡Kömek gerek bolsa — goldaw elmydama taýyn Ynanýandygyňyz üçin sag boluň! Hil we tizligi saýladyňyz tizlik peselse ​⟲ şul şekile basaýmaly✅️【53-DAY】
+#announce:  📡Kömek gerek bolsa — goldaw elmydama taýyn Ynanýandygyňyz üçin sag boluň! Hil we tizligi saýladyňyz tizlik peselse ​⟲ şul şekile basaýmaly✅️【52-DAY】
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 vless://00000000@00000000:100?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%B2%E2%80%8B%F0%9D%97%A9%F0%9D%97%BC%F0%9D%97%BF%F0%9D%97%B1%F0%9D%97%BF%F0%9D%98%85%E2%80%8B%20%E2%9C%B5%20-%20Ho%C5%9F%20geldi%C3%B1iz%20%F0%9F%91%8B
 vless://ce44f54d-25b9-450e-bdab-b5ec4f8c82c8@139.100.225.210:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%AAGerman%20%7C%20Hamburg
@@ -24,32 +24,27 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToyR25ubGRqa3k3Mk8ydG5LMUtNNkY5XzU=@135.106.21
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToyR25ubGRqa3k3Mk8ydG5LMUtNNkY5XzU=@135.106.211.79:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20%7C%20Pubg%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToyR25ubGRqa3k3Mk8ydG5LMUtNNkY5XzU=@135.106.211.79:770#%F0%9F%87%BA%F0%9F%87%BFTashlent%20%7C%20Pubg%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpsWXNKVG51eW9JaC01SXh3cUhVVWFKT2tHaDBuQzRJOA==@193.233.217.13:1080#🇺🇸 United States • Google
-vless://a5fd09aa-595c-44d6-83e6-923eda55ceb3@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
-vless://a5fd09aa-595c-44d6-83e6-923eda55ceb3@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇩🇪 Germany • WiFiWarden
-vless://a5fd09aa-595c-44d6-83e6-923eda55ceb3@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇫🇷 France • Claude
-vless://a5fd09aa-595c-44d6-83e6-923eda55ceb3@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇯🇵 Japan • Fastly
-vless://a5fd09aa-595c-44d6-83e6-923eda55ceb3@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇹🇷 Turkey • AWS
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpFNW8zcTZKQXNoa3VRbFZua0NVQkRheEVTaHlSYTBEUg==@193.233.230.227:445#🇮🇹 Italy • Azure
-ss://chacha20-ietf-poly1305:wjT_6UdjORp3TM3nwMMYDxLNZieQGX8C@193.233.230.227:445#🇪🇸 Spain • Oracle
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpKS1J2Nzh1eV9vaHY2LThBb3BwYTNn@80.242.57.97:302#🇨🇦 Canada • DigitalOcean
-hysteria2://XQjlxBvLhYPiXknJqeWdqg@80.242.57.97:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇦🇺 Australia • Akamai
-hysteria2://XQjlxBvLhYPiXknJqeWdqg@80.242.57.97:122?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇳🇱 Netherlands • CloudFront
-vless://e76cbfdf-9199-4265-aea1-ef94909418e9@65.9.46.58:443?security=tls&type=xhttp&headerType=&path=%2Fuploads&host=d1zxhi3f2zjy2z.cloudfront.net&sni=d1zxhi3f2zjy2z.cloudfront.net&fp=chrome&alpn=h3#🇨🇭 Switzerland • Proton
-vless://e76cbfdf-9199-4265-aea1-ef94909418e9@65.9.46.58:443?security=tls&type=xhttp&headerType=&path=%2Fuploads&host=d1zxhi3f2zjy2z.cloudfront.net&sni=d1zxhi3f2zjy2z.cloudfront.net&fp=chrome&alpn=h3#🇸🇪 Sweden • Google Cloud
-vless://00d4010a-ac43-48a4-a790-50a50599e616@18.165.140.67:443?encryption=mlkem768x25519plus.native.0rtt.A1ZJkAurOY4b4TLBGU0aRkPxUVPcUfwOZvvSki3-vCA&security=tls&type=xhttp&sni=d2vwngt1cdztph.cloudfront.net&fp=chrome&alpn=h3&host=d2vwngt1cdztph.cloudfront.net&path=%2F&mode=auto#🇳🇴 Norway • Microsoft
-vless://00d4010a-ac43-48a4-a790-50a50599e616@18.165.140.67:443?encryption=mlkem768x25519plus.native.0rtt.A1ZJkAurOY4b4TLBGU0aRkPxUVPcUfwOZvvSki3-vCA&security=tls&type=xhttp&sni=d2vwngt1cdztph.cloudfront.net&fp=chrome&alpn=h3&host=d2vwngt1cdztph.cloudfront.net&path=%2F&mode=auto#🇫🇮 Finland • Apple
-vless://00d4010a-ac43-48a4-a790-50a50599e616@164.5.224.51:40415?encryption=mlkem768x25519plus.native.0rtt._p5quStKSoPSepOEvQXj3wjxLNV0YjWLY7kIdB5r3DU&security=none&type=tcp&headerType=none#🇰🇷 South Korea • Samsung Cloud
-vless://00d4010a-ac43-48a4-a790-50a50599e616@164.5.224.51:40415?encryption=mlkem768x25519plus.native.0rtt._p5quStKSoPSepOEvQXj3wjxLNV0YjWLY7kIdB5r3DU&security=none&type=tcp&headerType=none#🇸🇬 Singapore • Tencent Cloud
-vless://00d4010a-ac43-48a4-a790-50a50599e616@164.5.224.51:888?encryption=mlkem768x25519plus.native.0rtt.tJRB6ncR7HQ3sBkvnO81Qza2iNwuUbhyxImMnE57Vjw&security=none&type=tcp&headerType=none#🇦🇪 United Arab Emirates • Alibaba Cloud
-hysteria2://1affd469-d621-448e-bc74-b2cb5908ad24@164.5.224.51:555?security=tls&fm=%7B%7D&sni=frnccc.crashgamer-xonline-12.shop#🇧🇷 Brazil • Meta
-hysteria2://1affd469-d621-448e-bc74-b2cb5908ad24@164.5.224.51:777?security=tls&fm=%7B%7D&sni=nll.crashgamer-xonline-12.shop#🇲🇽 Mexico • GitHub
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpPbHB4ZXRnRjJVbnV4LTE5alB2dDJ3LUhVYjBKQzhHRQ==@193.233.230.227:445#🇮🇳 India • Gemini
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5cUdjTmlaajR1Q2k3REdTanhsZzVR@80.242.57.97:1#🇨🇳 China • Baidu
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5cUdjTmlaajR1Q2k3REdTanhsZzVR@80.242.57.97:1#🇵🇹 Portugal • OVHcloud
-vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇦🇹 Austria • Hetzner
-vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇧🇪 Belgium • Vercel
-vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇩🇰 Denmark • Netlify
-trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇵🇱 Poland • Railway
-trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇮🇪 Ireland • Fly.io
-trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇬🇷 Greece • Discord
-vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇨🇿 Czechia • Telegram
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5VE1MVWllbnJ4UkVLVWFDMUJnNkZUZ3JqNVdZODIteA@193.233.230.79:1080#🇬🇧 United Kingdom • Cloudflare
+ss://chacha20-ietf-poly1305:wjT_6UdjORp3TM3nwMMYDxLNZieQGX8C@193.233.230.227:445#🇩🇪 Germany • WiFiWarden
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpKS1J2Nzh1eV9vaHY2LThBb3BwYTNn@80.242.57.97:302#🇫🇷 France • Claude
+hysteria2://XQjlxBvLhYPiXknJqeWdqg@80.242.57.97:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇯🇵 Japan • Fastly
+hysteria2://XQjlxBvLhYPiXknJqeWdqg@80.242.57.97:122?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇹🇷 Turkey • AWS
+vless://e76cbfdf-9199-4265-aea1-ef94909418e9@65.9.46.58:443?security=tls&type=xhttp&headerType=&path=%2Fuploads&host=d1zxhi3f2zjy2z.cloudfront.net&sni=d1zxhi3f2zjy2z.cloudfront.net&fp=chrome&alpn=h3#🇮🇹 Italy • Azure
+vless://e76cbfdf-9199-4265-aea1-ef94909418e9@65.9.46.58:443?security=tls&type=xhttp&headerType=&path=%2Fuploads&host=d1zxhi3f2zjy2z.cloudfront.net&sni=d1zxhi3f2zjy2z.cloudfront.net&fp=chrome&alpn=h3#🇪🇸 Spain • Oracle
+vless://00d4010a-ac43-48a4-a790-50a50599e616@18.165.140.67:443?encryption=mlkem768x25519plus.native.0rtt.A1ZJkAurOY4b4TLBGU0aRkPxUVPcUfwOZvvSki3-vCA&security=tls&type=xhttp&sni=d2vwngt1cdztph.cloudfront.net&fp=chrome&alpn=h3&host=d2vwngt1cdztph.cloudfront.net&path=%2F&mode=auto#🇨🇦 Canada • DigitalOcean
+vless://00d4010a-ac43-48a4-a790-50a50599e616@18.165.140.67:443?encryption=mlkem768x25519plus.native.0rtt.A1ZJkAurOY4b4TLBGU0aRkPxUVPcUfwOZvvSki3-vCA&security=tls&type=xhttp&sni=d2vwngt1cdztph.cloudfront.net&fp=chrome&alpn=h3&host=d2vwngt1cdztph.cloudfront.net&path=%2F&mode=auto#🇦🇺 Australia • Akamai
+vless://00d4010a-ac43-48a4-a790-50a50599e616@164.5.224.51:40415?encryption=mlkem768x25519plus.native.0rtt._p5quStKSoPSepOEvQXj3wjxLNV0YjWLY7kIdB5r3DU&security=none&type=tcp&headerType=none#🇳🇱 Netherlands • CloudFront
+vless://00d4010a-ac43-48a4-a790-50a50599e616@164.5.224.51:40415?encryption=mlkem768x25519plus.native.0rtt._p5quStKSoPSepOEvQXj3wjxLNV0YjWLY7kIdB5r3DU&security=none&type=tcp&headerType=none#🇨🇭 Switzerland • Proton
+vless://00d4010a-ac43-48a4-a790-50a50599e616@164.5.224.51:888?encryption=mlkem768x25519plus.native.0rtt.tJRB6ncR7HQ3sBkvnO81Qza2iNwuUbhyxImMnE57Vjw&security=none&type=tcp&headerType=none#🇸🇪 Sweden • Google Cloud
+hysteria2://1affd469-d621-448e-bc74-b2cb5908ad24@164.5.224.51:555?security=tls&fm=%7B%7D&sni=frnccc.crashgamer-xonline-12.shop#🇳🇴 Norway • Microsoft
+hysteria2://1affd469-d621-448e-bc74-b2cb5908ad24@164.5.224.51:777?security=tls&fm=%7B%7D&sni=nll.crashgamer-xonline-12.shop#🇫🇮 Finland • Apple
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpPbHB4ZXRnRjJVbnV4LTE5alB2dDJ3LUhVYjBKQzhHRQ==@193.233.230.227:445#🇰🇷 South Korea • Samsung Cloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5cUdjTmlaajR1Q2k3REdTanhsZzVR@80.242.57.97:1#🇸🇬 Singapore • Tencent Cloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5cUdjTmlaajR1Q2k3REdTanhsZzVR@80.242.57.97:1#🇦🇪 United Arab Emirates • Alibaba Cloud
+vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇧🇷 Brazil • Meta
+vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇲🇽 Mexico • GitHub
+vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=xhttp&headerType=&path=%2FLunex&host=lunex.store&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+1000000%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3#🇮🇳 India • Gemini
+trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇨🇳 China • Baidu
+trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇵🇹 Portugal • OVHcloud
+trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇦🇹 Austria • Hetzner
+vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇧🇪 Belgium • Vercel
