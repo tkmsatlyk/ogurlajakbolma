@@ -47,4 +47,10 @@ vless://08636400-0496-4270-95d3-766c96d0c3f0@146.75.57.25:443?security=tls&type=
 trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇨🇳 China • Baidu
 trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇵🇹 Portugal • OVHcloud
 trojan://74xjW7ZiYVwUYfeJRPxiNA@8.6.112.0:443?security=tls&type=ws&headerType=&path=%2FLunex&host=cf.lunex-vpn.xyz&sni=cf.lunex-vpn.xyz&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#🇦🇹 Austria • Hetzner
-vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇧🇪 Belgium • Vercel
+vless://c2cdab56-9e4d-4ebb-85f5-8d1352fabb64@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇧🇪 Belgium • Vercel
+vless://c2cdab56-9e4d-4ebb-85f5-8d1352fabb64@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇩🇰 Denmark • Netlify
+vless://c2cdab56-9e4d-4ebb-85f5-8d1352fabb64@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇵🇱 Poland • Railway
+vless://c2cdab56-9e4d-4ebb-85f5-8d1352fabb64@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇮🇪 Ireland • Fly.io
+vless://c2cdab56-9e4d-4ebb-85f5-8d1352fabb64@193.233.230.227:443?encryption=mlkem768x25519plus.native.0rtt.WBSgTYFkazL5yuUK0n0b1siQrBsvcOKwiuYf8iSEWDM&security=none&type=tcp&headerType=none#🇬🇷 Greece • Discord
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpqLXk4cllDQ2d5bndNY2pmZ185VEo3cTIySE5LZ1FZZA==@193.233.230.227:445#🇨🇿 Czechia • Telegram
+vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#🇭🇺 Hungary • Reddit
