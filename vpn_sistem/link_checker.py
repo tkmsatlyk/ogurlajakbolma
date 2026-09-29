@@ -6,15 +6,21 @@ from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse, parse_qs, unquote
 
 FILE = "toplanan_linkler.txt"
+OUT_FILE = "calisan_linkler.txt"
+REPORT = "rapor.txt"
 XRAY = os.environ.get("XRAY_BIN", "xray")
-TEST_URL = "https://www.gstatic.com/generate_204"
+TEST_URLS = ["https://www.gstatic.com/generate_204",
+             "https://cp.cloudflare.com/generate_204"]
+CURL_REASON = {7: "baglanti_reddedildi", 28: "zaman_asimi", 35: "tls_hatasi",
+               52: "bos_cevap", 56: "baglanti_koptu", 58: "tls_hatasi",
+               60: "tls_hatasi", 97: "socks_hatasi"}
 INTERVAL = 15 * 60
 MAX_MS = 3000
 WORKERS = 30
 REQ_TIMEOUT = 8
 BASE_PORT = 20000
 
-SIM = False
+SIM = True
 SIM_MEDIAN = 0.45
 SIM_SIGMA = 0.6
 SIM_SPIKE = 0.08
@@ -140,6 +146,16 @@ def build(link):
     raise ValueError("desteklenmeyen protokol")
 
 
+def fetch(port, url):
+    t0 = time.time()
+    r = subprocess.run(["curl", "-s", "-o", "/dev/null", "-x", f"socks5h://127.0.0.1:{port}",
+                        "--max-time", str(REQ_TIMEOUT), "-w", "%{http_code}", url],
+                       capture_output=True, text=True)
+    if r.stdout.strip() == "204":
+        return int((time.time() - t0) * 1000), None
+    return None, CURL_REASON.get(r.returncode, f"curl{r.returncode}")
+
+
 def real_test(out, port):
     cfg = {"log": {"loglevel": "none"},
            "inbounds": [{"listen": "127.0.0.1", "port": port, "protocol": "socks",
@@ -153,31 +169,27 @@ def real_test(out, port):
     try:
         for _ in range(40):
             if proc.poll() is not None:
-                STATS["xray_acilmadi"] += 1
                 if len(ERRS) < 3:
                     ERRS.append(proc.stderr.read().decode("utf-8", "ignore")[:300])
-                return None
+                return "xray_acilmadi"
             try:
                 socket.create_connection(("127.0.0.1", port), 0.2).close()
                 break
             except OSError:
                 time.sleep(0.1)
         else:
-            STATS["xray_port_yok"] += 1
-            return None
-        times = []
-        for _ in range(2):
-            t0 = time.time()
-            r = subprocess.run(["curl", "-s", "-o", "/dev/null", "-x", f"socks5h://127.0.0.1:{port}",
-                                "--max-time", str(REQ_TIMEOUT), "-w", "%{http_code}", TEST_URL],
-                               capture_output=True, text=True)
-            if r.stdout.strip() != "204":
-                if not times:
-                    STATS[f"baglanti_yok_curl{r.returncode}"] += 1
-                    return None
-                continue
-            times.append(int((time.time() - t0) * 1000))
-        return min(times) if times else None
+            return "xray_port_yok"
+        first, reason, used = None, None, None
+        for url in TEST_URLS:
+            ms, why = fetch(port, url)
+            if ms is not None:
+                first, used = ms, url
+                break
+            reason = reason or why
+        if first is None:
+            return reason or "bilinmiyor"
+        second, _ = fetch(port, used)
+        return min(first, second) if second else first
     finally:
         proc.kill()
         proc.wait()
@@ -213,44 +225,51 @@ def check(link):
         out, host, port, secure = build(link)
     except Exception:
         STATS["desteklenmeyen_veya_bozuk"] += 1
-        return link, None
-    if SIM and blocked(host, port, secure):
-        STATS["simulasyon_engel"] += 1
-        return link, None
+        return link, None, "desteklenmeyen_veya_bozuk"
     lp = PORTS.get()
     try:
-        ms = real_test(out, lp)
+        res = real_test(out, lp)
     except Exception as e:
-        STATS["hata"] += 1
+        res = "hata"
         if len(ERRS) < 3:
             ERRS.append(str(e)[:200])
-        ms = None
     finally:
         PORTS.put(lp)
-    if ms is None:
-        return link, None
-    if SIM:
-        ms += sim_delay()
+    if isinstance(res, str):
+        STATS[res] += 1
+        return link, None, res
+    if SIM and blocked(host, port, secure):
+        STATS["simulasyon_engel"] += 1
+        return link, None, f"simulasyon_engel (gercekte {res}ms calisiyor)"
+    ms = res + (sim_delay() if SIM else 0)
     if ms > MAX_MS:
         STATS["cok_yavas"] += 1
-        return link, None
+        return link, None, f"cok_yavas ({ms}ms)"
     STATS["calisiyor"] += 1
-    return link, ms
+    return link, ms, f"OK {ms}ms"
 
 
 def run_once():
     with open(FILE, encoding="utf-8") as f:
         links = list(dict.fromkeys(l.strip() for l in f if "://" in l))
-    shutil.copy(FILE, FILE + ".bak")
     STATS.clear()
     ERRS.clear()
     with ThreadPoolExecutor(WORKERS) as ex:
         results = list(ex.map(check, links))
     alive = sorted((r for r in results if r[1] is not None), key=lambda r: r[1])
-    with open(FILE, "w", encoding="utf-8") as f:
-        f.write("\n".join(l for l, _ in alive) + "\n")
-    print(f"{time.strftime('%H:%M:%S')} - {len(alive)}/{len(links)} calisiyor, "
-          f"{len(links) - len(alive)} silindi")
+    with open(OUT_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(r[0] for r in alive) + "\n")
+
+    def order(r):
+        if r[1] is not None:
+            return (0, r[1])
+        return (1 if r[2].startswith("simulasyon") else 2, 0)
+    with open(REPORT, "w", encoding="utf-8") as f:
+        f.write(f"# {time.strftime('%H:%M:%S')} toplam {len(links)}, calisan {len(alive)}\n")
+        f.write(f"# ayrinti: {dict(STATS)}\n")
+        for link, ms, note in sorted(results, key=order):
+            f.write(f"{note} | {link}\n")
+    print(f"{time.strftime('%H:%M:%S')} - {len(alive)}/{len(links)} calisiyor")
     print("Ayrinti:", dict(STATS))
     for e in ERRS:
         print("Hata ornegi:", e)
