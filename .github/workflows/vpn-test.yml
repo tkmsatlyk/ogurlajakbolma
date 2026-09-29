@@ -33,5 +33,5 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add vpn_sistem/toplanan_linkler.txt
-          git diff --cached --quiet || (git commit -m "Testten gecenler" && git pull --rebase --autostash && git push)
+          git add vpn_sistem/calisan_linkler.txt vpn_sistem/rapor.txt
+          git diff --cached --quiet || (git commit -m "Calisan linkler" && git pull --rebase --autostash && git push)
