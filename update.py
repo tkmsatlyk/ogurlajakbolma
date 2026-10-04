@@ -12,17 +12,19 @@ KODLARY_FILE = "KODLARY"
 KODLARY_V2_FILE = "KODLARY_V2"
 KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
+ANONX_FILE = "Anonymous_X"
+ANONX_OUTPUT = "Anonymous_X_SONUC.txt"
 CONFIG_FILE = "CONFIG"
 KAZANC_FILE = "Kazanc.txt"
 GUNLUK_UCRET = 2.77
 KAZANC_HARIC_SLOTLAR = ("sub10",)
 KAZANC_HARIC_ISIMLER = {"reklam", "kanal", "kendim"}
-ISIM_KORUNAN_SLOTLAR = ("sub10",)  # bu slotların #profile-title satırı hiç değiştirilmez
+ISIM_KORUNAN_SLOTLAR = ("sub10",)
 SIFIRLAMA_ANAHTAR_KELIME = "offline"
 REFLESH_ANAHTAR_KELIME = "reflesh"
 
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
-VALID_FLAG_LETTERS = ("T", "K", "V")
+VALID_FLAG_LETTERS = ("T", "K", "V", "X")
 
 HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 𝑉𝐼𝑃
 #profile-update-interval: 1
@@ -49,8 +51,7 @@ def safe_read_lines(path):
         try:
             text = raw.decode("utf-8")
         except UnicodeDecodeError as e:
-            print(f"UYARI: '{path}' dosyasında bozuk karakter bulundu ({e}). "
-                  f"Karakter(ler) '?' ile değiştirilecek, dosyayı kontrol et.")
+            print(f"UYARI: '{path}' dosyasında bozuk karakter bulundu ({e}). Karakter(ler) '?' ile değiştirilecek.")
             text = raw.decode("utf-8", errors="replace")
         return text.splitlines(keepends=True)
     except Exception as e:
@@ -101,15 +102,17 @@ def fetch_subscription(url):
         print(f"UYARI: '{url}' ne düz metin ne base64 olarak çözülebildi: {e}")
         return url, []
 
-def load_v2_links():
-    if not os.path.exists(KODLARY_V2_FILE):
-        print(f"UYARI: '{KODLARY_V2_FILE}' dosyası bulunamadı, V havuzu boş kalacak.")
+def load_pool_from_urls(urls_file, output_file, label):
+    """Bir URL listesi dosyasını okuyup, hepsinden paralel link çeken genel fonksiyon.
+    KODLARY_V2 ve Anonymous_X ikisi de bunu kullanıyor."""
+    if not os.path.exists(urls_file):
+        print(f"UYARI: '{urls_file}' dosyası bulunamadı, {label} havuzu boş kalacak.")
         return []
 
-    sub_urls = [u.strip() for u in safe_read_lines(KODLARY_V2_FILE) if u.strip()]
+    sub_urls = [u.strip() for u in safe_read_lines(urls_file) if u.strip()]
     sub_urls = [u for u in sub_urls if u.startswith("http://") or u.startswith("https://")]
     if not sub_urls:
-        print(f"UYARI: '{KODLARY_V2_FILE}' boş veya geçerli URL yok, V havuzu boş kalacak.")
+        print(f"UYARI: '{urls_file}' boş veya geçerli URL yok, {label} havuzu boş kalacak.")
         return []
 
     all_links = []
@@ -117,23 +120,24 @@ def load_v2_links():
         futures = {executor.submit(fetch_subscription, url): url for url in sub_urls}
         for future in as_completed(futures):
             url, links = future.result()
-            print(f"-> (V havuzu) '{url}' üzerinden {len(links)} link çekildi.")
+            print(f"-> ({label} havuzu) '{url}' üzerinden {len(links)} link çekildi.")
             all_links.extend(links)
 
     if all_links:
         try:
-            with open(KODLARY_V2_OUTPUT, "w", encoding="utf-8") as f:
+            with open(output_file, "w", encoding="utf-8") as f:
                 f.write("\n".join(all_links) + "\n")
         except Exception as e:
-            print(f"Yazma hatası ({KODLARY_V2_OUTPUT}): {e}")
+            print(f"Yazma hatası ({output_file}): {e}")
     else:
-        print("UYARI: KODLARY_V2'deki hiçbir subscription'dan link çekilemedi. V havuzu boş.")
+        print(f"UYARI: '{urls_file}' içindeki hiçbir kaynaktan link çekilemedi. {label} havuzu boş.")
 
     return all_links
 
 def parse_flag(token):
+    """T, K, V, X harflerinden oluşan, her harf en fazla 1 kere geçen bir kombinasyon."""
     up = token.upper()
-    if not up or len(up) > 3:
+    if not up or len(up) > 4:
         return None
     if any(ch not in VALID_FLAG_LETTERS for ch in up):
         return None
@@ -167,7 +171,6 @@ def parse_definition(parts):
     return customer, days, flag
 
 def get_custom_title_line(target_filename):
-    """Dosyanın mevcut #profile-title satırını (varsa) aynen okur."""
     if not os.path.exists(target_filename):
         return None
     for line in safe_read_lines(target_filename)[:12]:
@@ -281,13 +284,14 @@ def write_sub_file(target_filename, content):
         return False
 
 def main():
-    print("CONFIG panelinden okuyan sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V/X destekli) sistem başlatıldı...")
 
     kodlary_links = load_links(KODLARY_FILE)
     toplanan_links = load_links(TOPLANAN_FILE)
-    v2_links = load_v2_links()
+    v2_links = load_pool_from_urls(KODLARY_V2_FILE, KODLARY_V2_OUTPUT, "V")
+    anonx_links = load_pool_from_urls(ANONX_FILE, ANONX_OUTPUT, "X")
 
-    pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links}
+    pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links, "X": anonx_links}
 
     state_data = {}
     if os.path.exists(STATE_FILE):
@@ -300,13 +304,11 @@ def main():
     if sifirlama_istegi_var_mi():
         state_data["_kazanc_gecmisi"] = []
         state_data["_kazanc_kayitli"] = []
-        print("-> SIFIRLAMA ALGILANDI: Kazanc.txt içinde 'offline' bulundu. "
-              "Kazanç geçmişi tamamen silindi, CONFIG'teki aktif müşterilerden yeniden hesaplanacak.")
+        print("-> SIFIRLAMA ALGILANDI: Kazanc.txt içinde 'offline' bulundu. Kazanç geçmişi sıfırlandı.")
 
     reflesh_aktif = reflesh_istegi_var_mi()
     if reflesh_aktif:
-        print("-> REFLESH ALGILANDI: CONFIG içinde 'reflesh' bulundu. "
-              "Boş/atanmamış sub dosyaları temizlenecek.")
+        print("-> REFLESH ALGILANDI: CONFIG içinde 'reflesh' bulundu. Boş sub dosyaları temizlenecek.")
 
     config_info = {}
     if os.path.exists(CONFIG_FILE):
@@ -350,8 +352,7 @@ def main():
             )
         )
         if len(matches) > 1:
-            print(f"UYARI: {slot} için birden fazla dosya bulundu: {matches}. "
-                  f"'{matches[0]}' kullanılacak, diğerlerini silmeyi düşün.")
+            print(f"UYARI: {slot} için birden fazla dosya bulundu: {matches}. '{matches[0]}' kullanılacak.")
         if not matches:
             print(f"-> {slot} için hiç dosya bulunamadı, atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
@@ -359,7 +360,6 @@ def main():
 
         target_filename = matches[0]
 
-        # Bu slot'un ismi korunacaksa, mevcut #profile-title satırını yazmadan önce oku
         custom_title = None
         if slot in ISIM_KORUNAN_SLOTLAR:
             custom_title = get_custom_title_line(target_filename)
@@ -374,17 +374,16 @@ def main():
         elif file_parsed:
             f_customer, f_days, f_flag = file_parsed
             if f_customer != customer or f_days != target_days:
-                print(f"UYARI: {slot} için CONFIG ('{customer} {target_days} {flag}') ile "
-                      f"dosya adı ('{f_customer} {f_days} {f_flag}') FARKLI! CONFIG değeri kullanılacak.")
+                print(f"UYARI: {slot} için CONFIG ile dosya adı FARKLI! CONFIG kullanılacak.")
 
         if not customer or target_days is None:
             if reflesh_aktif:
-                print(f"-> {slot} boş VE reflesh aktif -> dosya temizleniyor (dead link yazılıyor).")
+                print(f"-> {slot} boş VE reflesh aktif -> dosya temizleniyor.")
                 content = build_expired_header(custom_title) + [DEAD_LINK]
                 if write_sub_file(target_filename, content):
                     degisen_dosya_sayisi += 1
             else:
-                print(f"-> {slot} boş (CONFIG'te ve dosya adında müşteri bilgisi yok), atlanıyor.")
+                print(f"-> {slot} boş, atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
             continue
 
@@ -399,28 +398,23 @@ def main():
 
         sub_state = state_data.get(slot, {})
         if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
-            state_data[slot] = {
-                "customer": customer,
-                "days": target_days,
-                "start_date": today_str
-            }
+            state_data[slot] = {"customer": customer, "days": target_days, "start_date": today_str}
             sub_state = state_data[slot]
-            print(f"-> {slot} ({customer}, kaynak: {source}, mod: {flag}) için yeni kayıt algılandı. Sayaç sıfırlandı.")
+            print(f"-> {slot} ({customer}, kaynak: {source}, mod: {flag}) için yeni kayıt. Sayaç sıfırlandı.")
 
         start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
         elapsed = (date.today() - start_date).days
         remaining_days = max(target_days - elapsed, 0)
 
         if elapsed >= target_days:
-            print(f"-> {slot} ({customer}) süresi doldu! Sahte/dead link yazıldı.")
+            print(f"-> {slot} ({customer}) süresi doldu!")
             content = build_expired_header(custom_title) + [DEAD_LINK]
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
             durum_listesi.append((slot, False, 0, customer))
         else:
             if chosen_links:
-                print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. "
-                      f"{len(chosen_links)} link eklendi.")
+                print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. {len(chosen_links)} link.")
                 content = build_active_header(remaining_days, custom_title) + chosen_links
                 durum_listesi.append((slot, True, remaining_days, customer))
             else:
