@@ -2,7 +2,7 @@ name: Otomatik Happ Link ToplayÄ±cÄ±
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 */3 * * *'
   workflow_dispatch:
   push:
     branches:
@@ -12,6 +12,7 @@ on:
       - 'CONFIG'
       - 'Toplanan_linkler.txt'
       - 'KODLARY_V2'
+      - 'Anonymous_X'
 
 concurrency:
   group: update-links
