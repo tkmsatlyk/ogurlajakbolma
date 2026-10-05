@@ -22,3 +22,16 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpGYXdHUnppT1VQYlRZREVqdjVqZ3JxYzZ3aEtRdDBnMA=
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpGYXdHUnppT1VQYlRZREVqdjVqZ3JxYzZ3aEtRdDBnMA==@136.234.6.118:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20%7C%20Game%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpGYXdHUnppT1VQYlRZREVqdjVqZ3JxYzZ3aEtRdDBnMA==@136.234.6.91:770#%F0%9F%87%BA%F0%9F%87%BFTashkent%20%E2%80%A2%2024ms%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpGYXdHUnppT1VQYlRZREVqdjVqZ3JxYzZ3aEtRdDBnMA==@104.171.138.73:140#%F0%9F%87%B7%F0%9F%87%BAMoskow%20%E2%80%A2%2024ms%F0%9F%8E%AE
+vless://24a4aa8f-1ed3-4e6b-a337-94eae324f2e7@18.165.140.67:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=d22ypy60a8pxv2.cloudfront.net&mode=packet-up&sni=d22ypy60a8pxv2.cloudfront.net&fp=chrome&alpn=h3#%F0%9F%87%A9%F0%9F%87%AA%5BFRspeed%5D%20%E2%97%8F%20DE%E2%9A%A1%EF%B8%8F
+vless://24a4aa8f-1ed3-4e6b-a337-94eae324f2e7@18.165.140.67:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=d22ypy60a8pxv2.cloudfront.net&mode=packet-up&sni=d22ypy60a8pxv2.cloudfront.net&fp=chrome&alpn=h3#%F0%9F%87%AC%F0%9F%87%A7%20%5BFRspeed%5D%20%E2%97%8F%20UK%20%E2%9A%A1%EF%B8%8F
+vless://24a4aa8f-1ed3-4e6b-a337-94eae324f2e7@18.165.140.67:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=d22ypy60a8pxv2.cloudfront.net&mode=packet-up&sni=d22ypy60a8pxv2.cloudfront.net&fp=chrome&alpn=h3#%F0%9F%87%B8%F0%9F%87%AA%5BFRspeed%5D%20%E2%97%8F%20SW%20%E2%9A%A1%EF%B8%8F
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:33891?sni=fin.crashgamer-xonline-12.shop#%F0%9F%87%B3%F0%9F%87%B1%20Netherland%20-%20Super%20Speed%20%F0%9F%9A%80
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:13683?sni=nll.crashgamer-xonline-12.shop#%F0%9F%87%B9%F0%9F%87%B7%20T%C3%BCrkiye%20-%20Super%20Speed%20%F0%9F%9A%80
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:12242?sni=yessir.crashgamer-xonline-12.shop#%F0%9F%87%AB%F0%9F%87%B7%20Paris%20%E2%80%94%20Premium%20%E2%9A%A1
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:13683?sni=nll.crashgamer-xonline-12.shop#%F0%9F%87%A8%F0%9F%87%AD%20Switzerland%20-%20Super%20Speed%20%F0%9F%9A%80
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:33891?sni=fin.crashgamer-xonline-12.shop#%F0%9F%87%A9%F0%9F%87%AA%20Frankfurt%20%E2%80%94%20Premium%20%E2%9A%A1
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:13683?sni=nll.crashgamer-xonline-12.shop#%F0%9F%87%B1%F0%9F%87%BA%20Luxemburg%20%E2%80%94%20Premium%20%E2%9A%A1
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:12242?sni=yessir.crashgamer-xonline-12.shop#%F0%9F%87%B7%F0%9F%87%BA%20Russia%20-%20Super%20Game%20%F0%9F%8E%AE
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:33891?sni=fin.crashgamer-xonline-12.shop#%F0%9F%87%AB%F0%9F%87%AE%20Helsinki%20%E2%80%94%20Premium%20%E2%9A%A1
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:12242?sni=yessir.crashgamer-xonline-12.shop#%F0%9F%87%BA%F0%9F%87%B8%20Virginia%20%E2%80%94%20%20Super%20Speed%F0%9F%9A%80
+hysteria2://KPwI6jhE3abY066cmutnKYVpIrMpQbOX@45.82.31.79:12242?sni=yessir.crashgamer-xonline-12.shop#%F0%9F%87%AB%F0%9F%87%B7%20Paris%20%E2%80%94%20Super%20Speed%F0%9F%9A%80
