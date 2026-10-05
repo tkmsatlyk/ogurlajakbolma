@@ -9,11 +9,12 @@
 2026-09-17 | sub7 - taktikzak - 2 gün - 5.54 manat
 2026-09-19 | sub5 - osman - 7 gün - 19.39 manat
 2026-09-19 | sub7 - didarr - 62 gün - 171.74 manat
+2026-10-05 | sub1 - shadow - 4 gün - 11.08 manat
 
-TOPLAM KAZANÇ: 448.74 manat
+TOPLAM KAZANÇ: 459.82 manat
 
 === DURUM ===
-sub1 🔴 haram
+sub1 🟢 shadow - 4 gün kaldı
 sub2 🔴 pubgger
 sub3 🔴 pubgprosu
 sub4 🔴 reklam

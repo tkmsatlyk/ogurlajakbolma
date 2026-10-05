@@ -1,8 +1,8 @@
 {
     "sub1": {
-        "customer": "haram",
-        "days": 12,
-        "start_date": "2026-09-12"
+        "customer": "shadow",
+        "days": 4,
+        "start_date": "2026-10-05"
     },
     "sub3": {
         "customer": "pubgprosu",
@@ -54,7 +54,8 @@
         "sub3|pubgprosu|10",
         "sub7|taktikzak|2",
         "sub5|osman|7",
-        "sub7|didarr|62"
+        "sub7|didarr|62",
+        "sub1|shadow|4"
     ],
     "_kazanc_gecmisi": [
         {
@@ -126,6 +127,13 @@
             "days": 62,
             "tutar": 171.74,
             "tarih": "2026-09-19"
+        },
+        {
+            "slot": "sub1",
+            "customer": "shadow",
+            "days": 4,
+            "tutar": 11.08,
+            "tarih": "2026-10-05"
         }
     ],
     "sub10": {
