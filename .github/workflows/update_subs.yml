@@ -2,7 +2,7 @@ name: Otomatik Happ Link ToplayÄ±cÄ±
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: "*/15 * * * *"
   workflow_dispatch:
   push:
     branches:
