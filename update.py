@@ -27,7 +27,7 @@ REFLESH_ANAHTAR_KELIME = "reflesh"
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V", "X")
 
-HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 𝑉𝐼𝑃
+HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b✵
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
