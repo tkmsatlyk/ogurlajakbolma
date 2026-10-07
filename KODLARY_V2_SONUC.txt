@@ -1,5 +1,5 @@
-vless://117ee8fd-ef10-426a-9a74-aba8d2429c6e@172.160.225.236:775?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%AE%20Google
-vless://117ee8fd-ef10-426a-9a74-aba8d2429c6e@172.160.225.236:775?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%B0%20Google
+vless://117ee8fd-ef10-426a-9a74-aba8d2429c6e@9.235.147.89:775?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%AE%20Google
+vless://117ee8fd-ef10-426a-9a74-aba8d2429c6e@9.235.147.89:775?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%A9%F0%9F%87%B0%20Google
 vless://117ee8fd-ef10-426a-9a74-aba8d2429c6e@134.0.117.233:775?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%B7%F0%9F%87%BA%20Google
 vless://bc727031-60f8-4961-bcf0-216df5cf0683@151.101.71.39:443?encryption=none&security=tls&sni=developers.fastly.com&alpn=h3&type=xhttp&mode=auto&host=danmark-fastly.global.ssl.fastly.net&path=%2F#%F0%9F%87%B9%F0%9F%87%A9%20Google%3FserverDescription%3DVklQIENPUkVYIOKcpg%3D%3D%0A
 vless://35dbc97e-5e3e-4da5-bb8e-d05c74b7deb5@8.6.112.0:443?encryption=none&security=tls&sni=777ws.quantoom-cdn.ru&alpn=h3&fp=chrome&type=ws&host=777ws.quantoom-cdn.ru&path=%2Fcrack#%F0%9F%87%A9%F0%9F%87%AA%20Google
