@@ -14,6 +14,7 @@ KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
 ANONX_FILE = "Anonymous_X"
 ANONX_OUTPUT = "Anonymous_X_SONUC.txt"
+SABIT_ISIM_FILE = "Sabit_isim"
 CONFIG_FILE = "CONFIG"
 KAZANC_FILE = "Kazanc.txt"
 GUNLUK_UCRET = 2.77
@@ -103,8 +104,6 @@ def fetch_subscription(url):
         return url, []
 
 def load_pool_from_urls(urls_file, output_file, label):
-    """Bir URL listesi dosyasını okuyup, hepsinden paralel link çeken genel fonksiyon.
-    KODLARY_V2 ve Anonymous_X ikisi de bunu kullanıyor."""
     if not os.path.exists(urls_file):
         print(f"UYARI: '{urls_file}' dosyası bulunamadı, {label} havuzu boş kalacak.")
         return []
@@ -134,8 +133,38 @@ def load_pool_from_urls(urls_file, output_file, label):
 
     return all_links
 
+def rename_link(link, new_name):
+    try:
+        if link.startswith("vmess://"):
+            b64_part = link[len("vmess://"):]
+            padded = b64_part + "=" * (-len(b64_part) % 4)
+            decoded = base64.b64decode(padded).decode("utf-8", errors="ignore")
+            obj = json.loads(decoded)
+            obj["ps"] = new_name
+            new_b64 = base64.b64encode(json.dumps(obj, ensure_ascii=False).encode("utf-8")).decode("utf-8")
+            return "vmess://" + new_b64
+        else:
+            base_part = link.split("#", 1)[0]
+            return base_part + "#" + quote(new_name)
+    except Exception as e:
+        print(f"UYARI: link ismi değiştirilemedi, orijinali korunuyor: {e}")
+        return link
+
+def load_sabit_isimler():
+    if not os.path.exists(SABIT_ISIM_FILE):
+        return []
+    return [l.strip() for l in safe_read_lines(SABIT_ISIM_FILE) if l.strip()]
+
+def apply_sabit_isimler(links, names):
+    if not names:
+        return links
+    renamed = []
+    for i, link in enumerate(links):
+        name = names[i % len(names)]
+        renamed.append(rename_link(link, name))
+    return renamed
+
 def parse_flag(token):
-    """T, K, V, X harflerinden oluşan, her harf en fazla 1 kere geçen bir kombinasyon."""
     up = token.upper()
     if not up or len(up) > 4:
         return None
@@ -284,12 +313,18 @@ def write_sub_file(target_filename, content):
         return False
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/V/X destekli) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V/X + sabit isim destekli) sistem başlatıldı...")
+
+    sabit_isimler = load_sabit_isimler()
 
     kodlary_links = load_links(KODLARY_FILE)
-    toplanan_links = load_links(TOPLANAN_FILE)
     v2_links = load_pool_from_urls(KODLARY_V2_FILE, KODLARY_V2_OUTPUT, "V")
+    toplanan_links = load_links(TOPLANAN_FILE)
     anonx_links = load_pool_from_urls(ANONX_FILE, ANONX_OUTPUT, "X")
+
+    kodlary_links = apply_sabit_isimler(kodlary_links, sabit_isimler)
+    v2_links = apply_sabit_isimler(v2_links, sabit_isimler)
+    toplanan_links = apply_sabit_isimler(toplanan_links, sabit_isimler)
 
     pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links, "X": anonx_links}
 
@@ -304,11 +339,11 @@ def main():
     if sifirlama_istegi_var_mi():
         state_data["_kazanc_gecmisi"] = []
         state_data["_kazanc_kayitli"] = []
-        print("-> SIFIRLAMA ALGILANDI: Kazanc.txt içinde 'offline' bulundu. Kazanç geçmişi sıfırlandı.")
+        print("-> SIFIRLAMA ALGILANDI.")
 
     reflesh_aktif = reflesh_istegi_var_mi()
     if reflesh_aktif:
-        print("-> REFLESH ALGILANDI: CONFIG içinde 'reflesh' bulundu. Boş sub dosyaları temizlenecek.")
+        print("-> REFLESH ALGILANDI.")
 
     config_info = {}
     if os.path.exists(CONFIG_FILE):
@@ -352,9 +387,8 @@ def main():
             )
         )
         if len(matches) > 1:
-            print(f"UYARI: {slot} için birden fazla dosya bulundu: {matches}. '{matches[0]}' kullanılacak.")
+            print(f"UYARI: {slot} için birden fazla dosya bulundu.")
         if not matches:
-            print(f"-> {slot} için hiç dosya bulunamadı, atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
             continue
 
@@ -374,16 +408,13 @@ def main():
         elif file_parsed:
             f_customer, f_days, f_flag = file_parsed
             if f_customer != customer or f_days != target_days:
-                print(f"UYARI: {slot} için CONFIG ile dosya adı FARKLI! CONFIG kullanılacak.")
+                print(f"UYARI: {slot} için CONFIG ile dosya adı FARKLI!")
 
         if not customer or target_days is None:
             if reflesh_aktif:
-                print(f"-> {slot} boş VE reflesh aktif -> dosya temizleniyor.")
                 content = build_expired_header(custom_title) + [DEAD_LINK]
                 if write_sub_file(target_filename, content):
                     degisen_dosya_sayisi += 1
-            else:
-                print(f"-> {slot} boş, atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
             continue
 
@@ -400,25 +431,22 @@ def main():
         if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
             state_data[slot] = {"customer": customer, "days": target_days, "start_date": today_str}
             sub_state = state_data[slot]
-            print(f"-> {slot} ({customer}, kaynak: {source}, mod: {flag}) için yeni kayıt. Sayaç sıfırlandı.")
+            print(f"-> {slot} ({customer}) için yeni kayıt. Sayaç sıfırlandı.")
 
         start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
         elapsed = (date.today() - start_date).days
         remaining_days = max(target_days - elapsed, 0)
 
         if elapsed >= target_days:
-            print(f"-> {slot} ({customer}) süresi doldu!")
             content = build_expired_header(custom_title) + [DEAD_LINK]
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
             durum_listesi.append((slot, False, 0, customer))
         else:
             if chosen_links:
-                print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. {len(chosen_links)} link.")
                 content = build_active_header(remaining_days, custom_title) + chosen_links
                 durum_listesi.append((slot, True, remaining_days, customer))
             else:
-                print(f"-> {slot} ({customer}) aktif ama havuzda ({flag}) hiç link yok!")
                 content = build_active_header(remaining_days, custom_title)
                 durum_listesi.append((slot, False, 0, customer))
 
@@ -426,7 +454,7 @@ def main():
             degisen_dosya_sayisi += 1
 
     write_combined_report(state_data, durum_listesi)
-    print(f"-> Bu çalıştırmada {degisen_dosya_sayisi} sub dosyası fiilen değişti.")
+    print(f"-> Bu çalıştırmada {degisen_dosya_sayisi} sub dosyası değişti.")
 
     try:
         with open(STATE_FILE, "w", encoding="utf-8") as f:
