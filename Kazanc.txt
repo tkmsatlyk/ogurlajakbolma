@@ -14,13 +14,13 @@
 TOPLAM KAZANÇ: 459.82 manat
 
 === DURUM ===
-sub1 🟢 shadow - 1 gün kaldı
+sub1 🔴 shadow
 sub2 🔴
 sub3 🔴
 sub4 🔴
 sub5 🔴
 sub6 🔴
-sub7 🟢 didarr - 43 gün kaldı
+sub7 🟢 didarr - 42 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
