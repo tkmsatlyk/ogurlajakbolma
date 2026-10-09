@@ -27,7 +27,10 @@ REFLESH_ANAHTAR_KELIME = "reflesh"
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V", "X")
 
-HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b✵
+# Sabit protokol sırası: vless -> ss -> hysteria2 -> trojan -> vmess
+PROTOCOL_ORDER = ["vless://", "ss://", "hysteria2://", "trojan://", "vmess://"]
+
+HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b​✵
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
@@ -163,6 +166,33 @@ def apply_sabit_isimler(links, names):
         name = names[i % len(names)]
         renamed.append(rename_link(link, name))
     return renamed
+
+def interleave_by_protocol(links):
+    """Linkleri PROTOCOL_ORDER sirasina gore 'tur tur' dizer:
+    once her protokolden 1. link (vless,ss,hysteria2,trojan,vmess sirasiyla),
+    sonra her protokolden 2. link, boyle devam eder.
+    Listede olmayan protokoller (hysteria, tuic) en sona, kendi sirasiyla eklenir."""
+    buckets = {p: [] for p in PROTOCOL_ORDER}
+    leftover = []
+    for link in links:
+        matched = False
+        for p in PROTOCOL_ORDER:
+            if link.startswith(p):
+                buckets[p].append(link)
+                matched = True
+                break
+        if not matched:
+            leftover.append(link)
+
+    result = []
+    max_len = max((len(buckets[p]) for p in PROTOCOL_ORDER), default=0)
+    for i in range(max_len):
+        for p in PROTOCOL_ORDER:
+            if i < len(buckets[p]):
+                result.append(buckets[p][i])
+
+    result.extend(leftover)
+    return result
 
 def parse_flag(token):
     up = token.upper()
@@ -313,7 +343,7 @@ def write_sub_file(target_filename, content):
         return False
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/V/X + sabit isim destekli) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V/X + sabit isim + protokol sıralama) sistem başlatıldı...")
 
     sabit_isimler = load_sabit_isimler()
 
@@ -360,6 +390,8 @@ def main():
             slot_name = parts[0]
             config_info[slot_name] = parsed
 
+    print(f"-> CONFIG'te {len(config_info)} slot tanımlı: {list(config_info.keys())}")
+
     today_str = date.today().isoformat()
     any_expired = False
     expired_subs = []
@@ -387,8 +419,9 @@ def main():
             )
         )
         if len(matches) > 1:
-            print(f"UYARI: {slot} için birden fazla dosya bulundu.")
+            print(f"UYARI: {slot} için birden fazla dosya bulundu: {matches}.")
         if not matches:
+            print(f"-> {slot} için hiç dosya bulunamadı, atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
             continue
 
@@ -412,9 +445,12 @@ def main():
 
         if not customer or target_days is None:
             if reflesh_aktif:
+                print(f"-> {slot} boş VE reflesh aktif -> dosya temizleniyor.")
                 content = build_expired_header(custom_title) + [DEAD_LINK]
                 if write_sub_file(target_filename, content):
                     degisen_dosya_sayisi += 1
+            else:
+                print(f"-> {slot} boş, atlanıyor.")
             durum_listesi.append((slot, False, 0, None))
             continue
 
@@ -427,26 +463,32 @@ def main():
         for ch in flag:
             chosen_links.extend(pools.get(ch, []))
 
+        # Protokol sırasına göre tur tur diz
+        chosen_links = interleave_by_protocol(chosen_links)
+
         sub_state = state_data.get(slot, {})
         if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
             state_data[slot] = {"customer": customer, "days": target_days, "start_date": today_str}
             sub_state = state_data[slot]
-            print(f"-> {slot} ({customer}) için yeni kayıt. Sayaç sıfırlandı.")
+            print(f"-> {slot} ({customer}, kaynak: {source}, mod: {flag}) için yeni kayıt. Sayaç sıfırlandı.")
 
         start_date = datetime.strptime(sub_state["start_date"], "%Y-%m-%d").date()
         elapsed = (date.today() - start_date).days
         remaining_days = max(target_days - elapsed, 0)
 
         if elapsed >= target_days:
+            print(f"-> {slot} ({customer}) süresi doldu!")
             content = build_expired_header(custom_title) + [DEAD_LINK]
             any_expired = True
             expired_subs.append(f"{slot}({customer})")
             durum_listesi.append((slot, False, 0, customer))
         else:
             if chosen_links:
+                print(f"-> {slot} ({customer}, mod: {flag}) aktif. Kalan gün: {remaining_days}. {len(chosen_links)} link.")
                 content = build_active_header(remaining_days, custom_title) + chosen_links
                 durum_listesi.append((slot, True, remaining_days, customer))
             else:
+                print(f"-> {slot} ({customer}) aktif ama havuzda ({flag}) hiç link yok!")
                 content = build_active_header(remaining_days, custom_title)
                 durum_listesi.append((slot, False, 0, customer))
 
