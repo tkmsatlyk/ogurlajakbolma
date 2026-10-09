@@ -27,10 +27,9 @@ REFLESH_ANAHTAR_KELIME = "reflesh"
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
 VALID_FLAG_LETTERS = ("T", "K", "V", "X")
 
-# Sabit protokol sırası: vless -> ss -> hysteria2 -> trojan -> vmess
 PROTOCOL_ORDER = ["vless://", "ss://", "hysteria2://", "trojan://", "vmess://"]
 
-HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b​✵
+HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 𝑉𝐼𝑃
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
@@ -158,20 +157,7 @@ def load_sabit_isimler():
         return []
     return [l.strip() for l in safe_read_lines(SABIT_ISIM_FILE) if l.strip()]
 
-def apply_sabit_isimler(links, names):
-    if not names:
-        return links
-    renamed = []
-    for i, link in enumerate(links):
-        name = names[i % len(names)]
-        renamed.append(rename_link(link, name))
-    return renamed
-
 def interleave_by_protocol(links):
-    """Linkleri PROTOCOL_ORDER sirasina gore 'tur tur' dizer:
-    once her protokolden 1. link (vless,ss,hysteria2,trojan,vmess sirasiyla),
-    sonra her protokolden 2. link, boyle devam eder.
-    Listede olmayan protokoller (hysteria, tuic) en sona, kendi sirasiyla eklenir."""
     buckets = {p: [] for p in PROTOCOL_ORDER}
     leftover = []
     for link in links:
@@ -193,6 +179,22 @@ def interleave_by_protocol(links):
 
     result.extend(leftover)
     return result
+
+def apply_sabit_isimler_after_sort(links, names, anonx_set):
+    """Siralama (interleave) yapildiktan SONRA, nihai siraya gore isim verir.
+    Anonymous_X'ten gelen linklere dokunulmaz."""
+    if not names:
+        return links
+    renamed = []
+    name_index = 0
+    for link in links:
+        if link in anonx_set:
+            renamed.append(link)
+            continue
+        name = names[name_index % len(names)]
+        renamed.append(rename_link(link, name))
+        name_index += 1
+    return renamed
 
 def parse_flag(token):
     up = token.upper()
@@ -343,7 +345,7 @@ def write_sub_file(target_filename, content):
         return False
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/V/X + sabit isim + protokol sıralama) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V/X + sıralama sonrası isimlendirme) sistem başlatıldı...")
 
     sabit_isimler = load_sabit_isimler()
 
@@ -351,10 +353,7 @@ def main():
     v2_links = load_pool_from_urls(KODLARY_V2_FILE, KODLARY_V2_OUTPUT, "V")
     toplanan_links = load_links(TOPLANAN_FILE)
     anonx_links = load_pool_from_urls(ANONX_FILE, ANONX_OUTPUT, "X")
-
-    kodlary_links = apply_sabit_isimler(kodlary_links, sabit_isimler)
-    v2_links = apply_sabit_isimler(v2_links, sabit_isimler)
-    toplanan_links = apply_sabit_isimler(toplanan_links, sabit_isimler)
+    anonx_set = set(anonx_links)
 
     pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links, "X": anonx_links}
 
@@ -463,8 +462,10 @@ def main():
         for ch in flag:
             chosen_links.extend(pools.get(ch, []))
 
-        # Protokol sırasına göre tur tur diz
+        # 1) Once protokol sirasina gore diz
         chosen_links = interleave_by_protocol(chosen_links)
+        # 2) SONRA o nihai siraya gore isim ver (Anonymous_X'e dokunmadan)
+        chosen_links = apply_sabit_isimler_after_sort(chosen_links, sabit_isimler, anonx_set)
 
         sub_state = state_data.get(slot, {})
         if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
