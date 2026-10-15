@@ -16,12 +16,12 @@ TOPLAM KAZANÇ: 479.21 manat
 
 === DURUM ===
 sub1 🔴
-sub2 🟢 hemha - 4 gün kaldı
+sub2 🟢 hemha - 3 gün kaldı
 sub3 🔴
 sub4 🔴
 sub5 🔴
 sub6 🔴
-sub7 🟢 didarr - 37 gün kaldı
+sub7 🟢 didarr - 36 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
