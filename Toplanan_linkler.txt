@@ -56,42 +56,32 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxVVhqYnNnLTBNMHVaY1kxbUlrY3czaFhidDlxRzVvNg%
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxVVhqYnNnLTBNMHVaY1kxbUlrY3czaFhidDlxRzVvNg%3D%3D@86.38.238.65:1080#🇮🇶 Iraq • Asiacell
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxVVhqYnNnLTBNMHVaY1kxbUlrY3czaFhidDlxRzVvNg%3D%3D@86.38.238.30:1080#🇯🇴 Jordan • Zain
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxVVhqYnNnLTBNMHVaY1kxbUlrY3czaFhidDlxRzVvNg%3D%3D@86.38.238.30:1080#🇰🇼 Kuwait • Ooredoo
-ss://chacha20-ietf-poly1305:QeyZJ-Y2mic9gXK6wA8UjiGC4_9Lemka@89.167.65.89:214#🇴🇲 Oman • Omantel
-vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@151.101.67.6:443?encryption=none&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&type=xhttp&path=%2F&host=mxde7k2x.global.ssl.fastly.net&mode=auto#🇲🇦 Morocco • Maroc Telecom
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:654#🇹🇳 Tunisia • Orange
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@135.106.219.251:140#🇰🇪 Kenya • Safaricom
-hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:513?sni=flh.tmcyberx.com&insecure=0&obfs=salamander&obfs-password=Jdds8Oph_FVBYLAdZNgW4z0m#🇳🇬 Nigeria • Airtel
-hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:459?sni=www.google.com&insecure=0#🇬🇭 Ghana • Vodafone Ghana
-hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:464?sni=www.google.com&insecure=0#🇪🇹 Ethiopia • Ethio Telecom
-hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:456?sni=www.google.com&insecure=0#🇮🇸 Iceland • CloudNord
-hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:462?sni=www.google.com&insecure=0#🇱🇺 Luxembourg • LuxConnect
-vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@82.97.250.65:573?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=grXjan0-JKK96hdoqlyHvfeqIA6ydUvmpNXG4qjTRX0&sid=3805b94eca42b655&type=tcp#🇱🇮 Liechtenstein • FiberNet
-vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@82.97.250.65:575?encryption=none&security=reality&sni=www.apple.com&fp=chrome&pbk=1XIlqSLyGHU0SpiO3MPhDJADm3em_ggYba-3dBIqRRA&sid=96ef740f897a1731&type=grpc&serviceName=grpc#🇲🇨 Monaco • Monaco Telecom
-vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@138.199.37.227:443?encryption=none&security=tls&sni=google.com&fp=chrome&alpn=h2&type=ws&path=%2F&host=mxde1b7k.b-cdn.net#🇲🇹 Malta • Melita
-vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@151.101.67.6:443?encryption=none&security=tls&sni=mxnlkmmqi.global.ssl.fastly.net&fp=chrome&alpn=h3&type=xhttp&path=%2F&host=mxnlkmmqi.global.ssl.fastly.net&mode=auto#🇨🇾 Cyprus • Cyta
-vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@82.97.250.65:568?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=grXjan0-JKK96hdoqlyHvfeqIA6ydUvmpNXG4qjTRX0&sid=3805b94eca42b655&type=tcp#🇱🇻 Latvia • Tet
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:447#🇱🇹 Lithuania • Telia
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:526#🇪🇪 Estonia • Elisa
-vless://df44b334-b88c-4f6c-acab-9c5e2556a251@136.234.77.91:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#🇸🇰 Slovakia • Orange SK
-vless://df44b334-b88c-4f6c-acab-9c5e2556a251@136.234.77.91:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#🇸🇮 Slovenia • Telekom
-vless://df44b334-b88c-4f6c-acab-9c5e2556a251@136.234.77.91:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#🇧🇦 Bosnia and Herzegovina • BH Telecom
-vless://df44b334-b88c-4f6c-acab-9c5e2556a251@136.234.77.91:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#🇲🇪 Montenegro • Crnogorski Telekom
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0owUHlYWTB0RnBONkZqY1dObzAtZTFkNHNsd0RzWA==@136.234.77.91:770#🇦🇱 Albania • One Albania
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0owUHlYWTB0RnBONkZqY1dObzAtZTFkNHNsd0RzWA==@136.234.77.91:770#🇲🇰 North Macedonia • A1
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0owUHlYWTB0RnBONkZqY1dObzAtZTFkNHNsd0RzWA==@136.234.77.91:770#🇬🇪 Georgia • Magti
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0owUHlYWTB0RnBONkZqY1dObzAtZTFkNHNsd0RzWA==@136.234.77.91:770#🇦🇲 Armenia • Ucom
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0owUHlYWTB0RnBONkZqY1dObzAtZTFkNHNsd0RzWA==@136.234.77.91:770#🇦🇿 Azerbaijan • Azercell
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpST0owUHlYWTB0RnBONkZqY1dObzAtZTFkNHNsd0RzWA==@136.234.77.91:140#🇰🇿 Kazakhstan • Kazakhtelecom
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTozTDJYcDhDeS1lUmdsSi14aVhPZHVRTGpZdC1fZUFobg%3D%3D@86.38.238.30:1080#🇺🇿 Uzbekistan • Ucell
-vless://383dfafa-0700-4e4e-9bce-2dbbd04aeaa5@cl6tqh.ilovecats.space:443?security=reality&encryption=none&pbk=BMQ3S7fi5YShG3gr0ATTfxAjFXQQBZ8gLdddbGXjIHA&headerType=none&fp=random&type=tcp&flow=xtls-rprx-vision&sni=cl6tqh.ilovecats.space&sid=bc841c9683308194#🇲🇳 Mongolia • Mobicom
-trojan://humanity@188.114.97.6:443?path=%2Fassignment&security=tls&insecure=0&host=www.pleadcourt.org&fp=chrome&type=ws&allowInsecure=0&sni=www.pleadcourt.org#🇳🇵 Nepal • WorldLink
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpLNXNFdlppS21lbnMxMDRC@20.234.97.18:443#🇱🇰 Sri Lanka • Dialog
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHYXlZYTJWN3BVYkpCZkt1@20.234.97.18:443#🇲🇻 Maldives • Dhiraagu
-vless://033e0875-76d0-4c18-94e7-7e2d0d68d716@135.106.220.131:66?encryption=none&security=none&type=tcp&headerType=none#🇫🇯 Fiji • Vodafone Fiji
-vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇧🇸 Bahamas • BTC
-vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇯🇲 Jamaica • Digicel
-vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇨🇺 Cuba • ETECSA
-vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇵🇦 Panama • Tigo
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpnZW5TRXBRdG1pY2xIdzFrZDN2U3ZncVd4SFE0LUwwTg==@139.100.221.142:1080#🇨🇷 Costa Rica • Liberty
-vmess://eyJhZGQiOiAiMTM5LjEwMC4yMjEuMTQyIiwgImFpZCI6ICIwIiwgImlkIjogImZiODdmNjg2LWJmNzQtNDZkYS1hOTc3LTFkOWYwMDY3ZDVjYyIsICJuZXQiOiAidGNwIiwgInBvcnQiOiA5OTEsICJwcyI6ICJcdWQ4M2NcdWRkZjdcdWQ4M2NcdWRkZmEgZG93bmxvYWRlciIsICJzY3kiOiAiYXV0byIsICJ0eXBlIjogIm5vbmUiLCAidiI6ICIyIn0=#🇩🇴 Dominican Republic • Altice
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpnZW5TRXBRdG1pY2xIdzFrZDN2U3ZncVd4SFE0LUwwTg==@139.100.221.142:1080#🇺🇾 Uruguay • Antel
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:654#🇴🇲 Oman • Omantel
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:654#🇲🇦 Morocco • Maroc Telecom
+hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:513?sni=flh.tmcyberx.com&insecure=0&obfs=salamander&obfs-password=Jdds8Oph_FVBYLAdZNgW4z0m#🇹🇳 Tunisia • Orange
+hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:459?sni=www.google.com&insecure=0#🇰🇪 Kenya • Safaricom
+hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:464?sni=www.google.com&insecure=0#🇳🇬 Nigeria • Airtel
+hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:456?sni=www.google.com&insecure=0#🇬🇭 Ghana • Vodafone Ghana
+hysteria2://nboK5sFjF5lI6W21w-2jujwWsnYnvO1K@82.97.250.65:462?sni=www.google.com&insecure=0#🇪🇹 Ethiopia • Ethio Telecom
+vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@82.97.250.65:573?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=grXjan0-JKK96hdoqlyHvfeqIA6ydUvmpNXG4qjTRX0&sid=3805b94eca42b655&type=tcp#🇮🇸 Iceland • CloudNord
+vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@82.97.250.65:575?encryption=none&security=reality&sni=www.apple.com&fp=chrome&pbk=1XIlqSLyGHU0SpiO3MPhDJADm3em_ggYba-3dBIqRRA&sid=96ef740f897a1731&type=grpc&serviceName=grpc#🇱🇺 Luxembourg • LuxConnect
+vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@138.199.37.227:443?encryption=none&security=tls&sni=google.com&fp=chrome&alpn=h2&type=ws&path=%2F&host=mxde1b7k.b-cdn.net#🇱🇮 Liechtenstein • FiberNet
+vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@82.97.250.65:568?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=grXjan0-JKK96hdoqlyHvfeqIA6ydUvmpNXG4qjTRX0&sid=3805b94eca42b655&type=tcp#🇲🇨 Monaco • Monaco Telecom
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:447#🇲🇹 Malta • Melita
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@82.97.250.65:526#🇨🇾 Cyprus • Cyta
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6UGxCX1FwLVpWdS1UWEM0SE1oRTBNNXFSazFQd21WUg@157.22.134.168:140#🇱🇻 Latvia • Tet
+vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@151.101.173.8:443?encryption=none&security=tls&sni=Account.fastly.com&fp=chrome&alpn=h3&type=xhttp&path=%2F&host=mxnlkmmqi.global.ssl.fastly.net&mode=auto#🇱🇹 Lithuania • Telia
+vless://6aa30463-fa56-4b9e-9dbd-7a9beb951855@151.101.109.8:443?encryption=none&security=tls&sni=Account.fastly.com&fp=chrome&alpn=h3&type=xhttp&path=%2F&host=mxnlkmmqi.global.ssl.fastly.net&mode=auto#🇪🇪 Estonia • Elisa
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTozTDJYcDhDeS1lUmdsSi14aVhPZHVRTGpZdC1fZUFobg%3D%3D@86.38.238.30:1080#🇸🇰 Slovakia • Orange SK
+vless://383dfafa-0700-4e4e-9bce-2dbbd04aeaa5@cl6tqh.ilovecats.space:443?security=reality&encryption=none&pbk=BMQ3S7fi5YShG3gr0ATTfxAjFXQQBZ8gLdddbGXjIHA&headerType=none&fp=random&type=tcp&flow=xtls-rprx-vision&sni=cl6tqh.ilovecats.space&sid=bc841c9683308194#🇸🇮 Slovenia • Telekom
+trojan://humanity@188.114.97.6:443?path=%2Fassignment&security=tls&insecure=0&host=www.pleadcourt.org&fp=chrome&type=ws&allowInsecure=0&sni=www.pleadcourt.org#🇧🇦 Bosnia and Herzegovina • BH Telecom
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpLNXNFdlppS21lbnMxMDRC@20.234.97.18:443#🇲🇪 Montenegro • Crnogorski Telekom
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHYXlZYTJWN3BVYkpCZkt1@20.234.97.18:443#🇦🇱 Albania • One Albania
+vless://033e0875-76d0-4c18-94e7-7e2d0d68d716@135.106.220.131:66?encryption=none&security=none&type=tcp&headerType=none#🇲🇰 North Macedonia • A1
+vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇬🇪 Georgia • Magti
+vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇦🇲 Armenia • Ucom
+vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇦🇿 Azerbaijan • Azercell
+vless://2116169b-1437-4331-a378-c14a742837df@151.101.173.16:443?encryption=none&security=tls&type=xhttp&headerType=none&path=%2F&host=dayka-unkepravber.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A%221000000%22%2C%22scMinPostsIntervalMs%22%3A%2230%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%22100%22%7D%7D&sni=accounts.fastly.com&fp=chrome&alpn=h3&fragment=1-3%2C10-20%2Ctlshello#🇰🇿 Kazakhstan • Kazakhtelecom
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpnZW5TRXBRdG1pY2xIdzFrZDN2U3ZncVd4SFE0LUwwTg==@139.100.221.142:1080#🇺🇿 Uzbekistan • Ucell
+vmess://eyJhZGQiOiAiMTM5LjEwMC4yMjEuMTQyIiwgImFpZCI6ICIwIiwgImlkIjogImZiODdmNjg2LWJmNzQtNDZkYS1hOTc3LTFkOWYwMDY3ZDVjYyIsICJuZXQiOiAidGNwIiwgInBvcnQiOiA5OTEsICJwcyI6ICJcdWQ4M2NcdWRkZjdcdWQ4M2NcdWRkZmEgZG93bmxvYWRlciIsICJzY3kiOiAiYXV0byIsICJ0eXBlIjogIm5vbmUiLCAidiI6ICIyIn0=#🇲🇳 Mongolia • Mobicom
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpnZW5TRXBRdG1pY2xIdzFrZDN2U3ZncVd4SFE0LUwwTg==@139.100.221.142:1080#🇳🇵 Nepal • WorldLink
