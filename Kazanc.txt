@@ -16,7 +16,7 @@ TOPLAM KAZANÇ: 479.21 manat
 
 === DURUM ===
 sub1 🔴
-sub2 🔴 hemha
+sub2 🔴
 sub3 🔴
 sub4 🔴
 sub5 🔴
