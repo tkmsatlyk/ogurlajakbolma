@@ -21,7 +21,7 @@ sub3 🔴
 sub4 🔴
 sub5 🔴
 sub6 🔴
-sub7 🟢 didarr - 32 gün kaldı
+sub7 🟢 didarr - 31 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
