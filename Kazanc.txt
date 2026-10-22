@@ -15,7 +15,7 @@
 TOPLAM KAZANÇ: 479.21 manat
 
 === DURUM ===
-sub1 🟢 kanal - 1 gün kaldı
+sub1 🟢 kanal - 5 gün kaldı
 sub2 🔴
 sub3 🔴
 sub4 🔴
