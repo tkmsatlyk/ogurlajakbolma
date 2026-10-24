@@ -15,9 +15,9 @@
         "start_date": "2026-09-19"
     },
     "sub2": {
-        "customer": "hemha",
-        "days": 7,
-        "start_date": "2026-10-11"
+        "customer": "pubgger",
+        "days": 3,
+        "start_date": "2026-10-24"
     },
     "sub6": {
         "customer": "merdan",
@@ -56,7 +56,8 @@
         "sub5|osman|7",
         "sub7|didarr|62",
         "sub1|shadow|4",
-        "sub2|hemha|7"
+        "sub2|hemha|7",
+        "sub2|pubgger|3"
     ],
     "_kazanc_gecmisi": [
         {
@@ -142,6 +143,13 @@
             "days": 7,
             "tutar": 19.39,
             "tarih": "2026-10-11"
+        },
+        {
+            "slot": "sub2",
+            "customer": "pubgger",
+            "days": 3,
+            "tutar": 8.31,
+            "tarih": "2026-10-24"
         }
     ],
     "sub10": {

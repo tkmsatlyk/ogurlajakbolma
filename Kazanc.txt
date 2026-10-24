@@ -11,12 +11,13 @@
 2026-09-19 | sub7 - didarr - 62 gün - 171.74 manat
 2026-10-05 | sub1 - shadow - 4 gün - 11.08 manat
 2026-10-11 | sub2 - hemha - 7 gün - 19.39 manat
+2026-10-24 | sub2 - pubgger - 3 gün - 8.31 manat
 
-TOPLAM KAZANÇ: 479.21 manat
+TOPLAM KAZANÇ: 487.52 manat
 
 === DURUM ===
 sub1 🟢 kanal - 3 gün kaldı
-sub2 🔴
+sub2 🟢 pubgger - 3 gün kaldı
 sub3 🔴
 sub4 🔴
 sub5 🔴
