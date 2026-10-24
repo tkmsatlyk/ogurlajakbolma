@@ -5,9 +5,9 @@
         "start_date": "2026-10-22"
     },
     "sub3": {
-        "customer": "pubgprosu",
-        "days": 10,
-        "start_date": "2026-09-16"
+        "customer": "Müslüman",
+        "days": 3,
+        "start_date": "2026-10-24"
     },
     "sub4": {
         "customer": "reklam",
@@ -16,7 +16,7 @@
     },
     "sub2": {
         "customer": "pubgger",
-        "days": 3,
+        "days": 6,
         "start_date": "2026-10-24"
     },
     "sub6": {
@@ -57,7 +57,9 @@
         "sub7|didarr|62",
         "sub1|shadow|4",
         "sub2|hemha|7",
-        "sub2|pubgger|3"
+        "sub2|pubgger|3",
+        "sub2|pubgger|6",
+        "sub3|Müslüman|3"
     ],
     "_kazanc_gecmisi": [
         {
@@ -147,6 +149,20 @@
         {
             "slot": "sub2",
             "customer": "pubgger",
+            "days": 3,
+            "tutar": 8.31,
+            "tarih": "2026-10-24"
+        },
+        {
+            "slot": "sub2",
+            "customer": "pubgger",
+            "days": 6,
+            "tutar": 16.62,
+            "tarih": "2026-10-24"
+        },
+        {
+            "slot": "sub3",
+            "customer": "Müslüman",
             "days": 3,
             "tutar": 8.31,
             "tarih": "2026-10-24"
