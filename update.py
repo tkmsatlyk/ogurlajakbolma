@@ -29,7 +29,7 @@ VALID_FLAG_LETTERS = ("T", "K", "V", "X")
 
 PROTOCOL_ORDER = ["vless://", "ss://", "hysteria2://", "trojan://", "vmess://"]
 
-HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b✵
+HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b✵ 
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
@@ -136,14 +136,18 @@ def load_pool_from_urls(urls_file, output_file, label):
     return all_links
 
 def rename_link(link, new_name):
+    """Linkin ismini (remark) degistirir. vmess icin base64 JSON icindeki 'ps' alani guncellenir."""
     try:
         if link.startswith("vmess://"):
-            b64_part = link[len("vmess://"):]
-            padded = b64_part + "=" * (-len(b64_part) % 4)
-            decoded = base64.b64decode(padded).decode("utf-8", errors="ignore")
+            b64_part = link[len("vmess://"):].split("#", 1)[0].strip()
+            # ASCII olmayan karakterleri at, urlsafe karakterleri duzelt
+            b64_bytes = b64_part.encode("ascii", errors="ignore")
+            b64_bytes = b64_bytes.replace(b"-", b"+").replace(b"_", b"/")
+            b64_bytes += b"=" * (-len(b64_bytes) % 4)
+            decoded = base64.b64decode(b64_bytes).decode("utf-8", errors="ignore")
             obj = json.loads(decoded)
             obj["ps"] = new_name
-            new_b64 = base64.b64encode(json.dumps(obj, ensure_ascii=False).encode("utf-8")).decode("utf-8")
+            new_b64 = base64.b64encode(json.dumps(obj, ensure_ascii=False).encode("utf-8")).decode("ascii")
             return "vmess://" + new_b64
         else:
             base_part = link.split("#", 1)[0]
@@ -180,20 +184,15 @@ def interleave_by_protocol(links):
     result.extend(leftover)
     return result
 
-def apply_sabit_isimler_after_sort(links, names, anonx_set):
-    """Siralama (interleave) yapildiktan SONRA, nihai siraya gore isim verir.
-    Anonymous_X'ten gelen linklere dokunulmaz."""
+def apply_sabit_isimler_after_sort(links, names):
+    """Siralama yapildiktan SONRA, nihai siraya gore TUM linklere (Anonymous_X dahil)
+    Sabit_isim dosyasindaki isimleri sirayla verir. Linklerin yeri degismez."""
     if not names:
         return links
     renamed = []
-    name_index = 0
-    for link in links:
-        if link in anonx_set:
-            renamed.append(link)
-            continue
-        name = names[name_index % len(names)]
+    for i, link in enumerate(links):
+        name = names[i % len(names)]
         renamed.append(rename_link(link, name))
-        name_index += 1
     return renamed
 
 def parse_flag(token):
@@ -345,7 +344,7 @@ def write_sub_file(target_filename, content):
         return False
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/V/X + sıralama sonrası isimlendirme) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V/X + sıralama sonrası isimlendirme, X dahil) sistem başlatıldı...")
 
     sabit_isimler = load_sabit_isimler()
 
@@ -353,7 +352,6 @@ def main():
     v2_links = load_pool_from_urls(KODLARY_V2_FILE, KODLARY_V2_OUTPUT, "V")
     toplanan_links = load_links(TOPLANAN_FILE)
     anonx_links = load_pool_from_urls(ANONX_FILE, ANONX_OUTPUT, "X")
-    anonx_set = set(anonx_links)
 
     pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links, "X": anonx_links}
 
@@ -464,8 +462,8 @@ def main():
 
         # 1) Once protokol sirasina gore diz
         chosen_links = interleave_by_protocol(chosen_links)
-        # 2) SONRA o nihai siraya gore isim ver (Anonymous_X'e dokunmadan)
-        chosen_links = apply_sabit_isimler_after_sort(chosen_links, sabit_isimler, anonx_set)
+        # 2) SONRA nihai siraya gore TUM linklere (X dahil) isim ver
+        chosen_links = apply_sabit_isimler_after_sort(chosen_links, sabit_isimler)
 
         sub_state = state_data.get(slot, {})
         if sub_state.get("customer") != customer or sub_state.get("days") != target_days:
