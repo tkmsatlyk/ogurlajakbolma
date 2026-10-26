@@ -12,6 +12,7 @@ KODLARY_FILE = "KODLARY"
 KODLARY_V2_FILE = "KODLARY_V2"
 KODLARY_V2_OUTPUT = "KODLARY_V2_SONUC.txt"
 TOPLANAN_FILE = "Toplanan_linkler.txt"
+TOPLANAN_2_FILE = "Toplanan_linkler_2.txt"
 ANONX_FILE = "Anonymous_X"
 ANONX_OUTPUT = "Anonymous_X_SONUC.txt"
 SABIT_ISIM_FILE = "Sabit_isim"
@@ -25,11 +26,11 @@ SIFIRLAMA_ANAHTAR_KELIME = "offline"
 REFLESH_ANAHTAR_KELIME = "reflesh"
 
 PROTOCOL_PREFIXES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "tuic://")
-VALID_FLAG_LETTERS = ("T", "K", "V", "X")
+VALID_FLAG_LETTERS = ("T", "K", "V", "X", "Y")
 
 PROTOCOL_ORDER = ["vless://", "ss://", "hysteria2://", "trojan://", "vmess://"]
 
-HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b✵ 
+HEADER_TEMPLATE = """#profile-title: \u200b𝗩𝗼𝗿𝗱𝗿𝘅 \u200b𒀭 𝑉𝐼𝑃
 #profile-update-interval: 1
 #profile-web-page-url: https://t.me/xylen_111
 #support-url: https://t.me/xylen_111
@@ -140,7 +141,6 @@ def rename_link(link, new_name):
     try:
         if link.startswith("vmess://"):
             b64_part = link[len("vmess://"):].split("#", 1)[0].strip()
-            # ASCII olmayan karakterleri at, urlsafe karakterleri duzelt
             b64_bytes = b64_part.encode("ascii", errors="ignore")
             b64_bytes = b64_bytes.replace(b"-", b"+").replace(b"_", b"/")
             b64_bytes += b"=" * (-len(b64_bytes) % 4)
@@ -185,7 +185,7 @@ def interleave_by_protocol(links):
     return result
 
 def apply_sabit_isimler_after_sort(links, names):
-    """Siralama yapildiktan SONRA, nihai siraya gore TUM linklere (Anonymous_X dahil)
+    """Siralama yapildiktan SONRA, nihai siraya gore TUM linklere
     Sabit_isim dosyasindaki isimleri sirayla verir. Linklerin yeri degismez."""
     if not names:
         return links
@@ -197,7 +197,7 @@ def apply_sabit_isimler_after_sort(links, names):
 
 def parse_flag(token):
     up = token.upper()
-    if not up or len(up) > 4:
+    if not up or len(up) > 5:
         return None
     if any(ch not in VALID_FLAG_LETTERS for ch in up):
         return None
@@ -344,16 +344,23 @@ def write_sub_file(target_filename, content):
         return False
 
 def main():
-    print("CONFIG panelinden okuyan (T/K/V/X + sıralama sonrası isimlendirme, X dahil) sistem başlatıldı...")
+    print("CONFIG panelinden okuyan (T/K/V/X/Y + sıralama + isimlendirme) sistem başlatıldı...")
 
     sabit_isimler = load_sabit_isimler()
 
     kodlary_links = load_links(KODLARY_FILE)
     v2_links = load_pool_from_urls(KODLARY_V2_FILE, KODLARY_V2_OUTPUT, "V")
     toplanan_links = load_links(TOPLANAN_FILE)
+    toplanan_2_links = load_links(TOPLANAN_2_FILE)
     anonx_links = load_pool_from_urls(ANONX_FILE, ANONX_OUTPUT, "X")
 
-    pools = {"T": toplanan_links, "K": kodlary_links, "V": v2_links, "X": anonx_links}
+    pools = {
+        "T": toplanan_links,
+        "K": kodlary_links,
+        "V": v2_links,
+        "X": anonx_links,
+        "Y": toplanan_2_links,
+    }
 
     state_data = {}
     if os.path.exists(STATE_FILE):
@@ -462,7 +469,7 @@ def main():
 
         # 1) Once protokol sirasina gore diz
         chosen_links = interleave_by_protocol(chosen_links)
-        # 2) SONRA nihai siraya gore TUM linklere (X dahil) isim ver
+        # 2) SONRA nihai siraya gore TUM linklere isim ver
         chosen_links = apply_sabit_isimler_after_sort(chosen_links, sabit_isimler)
 
         sub_state = state_data.get(slot, {})
