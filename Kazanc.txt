@@ -20,7 +20,7 @@ TOPLAM KAZANÇ: 512.45 manat
 === DURUM ===
 sub1 🟢 kanal - 2 gün kaldı
 sub2 🟢 pubgger - 3 gün kaldı
-sub3 🔴 Müslüman
+sub3 🔴
 sub4 🔴
 sub5 🔴
 sub6 🔴
