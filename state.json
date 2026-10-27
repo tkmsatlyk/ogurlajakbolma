@@ -10,9 +10,9 @@
         "start_date": "2026-10-24"
     },
     "sub4": {
-        "customer": "reklam",
-        "days": 5,
-        "start_date": "2026-09-19"
+        "customer": "black",
+        "days": 7,
+        "start_date": "2026-10-27"
     },
     "sub2": {
         "customer": "pubgger",
@@ -59,7 +59,8 @@
         "sub2|hemha|7",
         "sub2|pubgger|3",
         "sub2|pubgger|6",
-        "sub3|Müslüman|3"
+        "sub3|Müslüman|3",
+        "sub4|black|7"
     ],
     "_kazanc_gecmisi": [
         {
@@ -166,6 +167,13 @@
             "days": 3,
             "tutar": 8.31,
             "tarih": "2026-10-24"
+        },
+        {
+            "slot": "sub4",
+            "customer": "black",
+            "days": 7,
+            "tutar": 19.39,
+            "tarih": "2026-10-27"
         }
     ],
     "sub10": {
