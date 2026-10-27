@@ -20,9 +20,9 @@
         "start_date": "2026-10-24"
     },
     "sub6": {
-        "customer": "merdan",
-        "days": 7,
-        "start_date": "2026-09-15"
+        "customer": "scarfase",
+        "days": 1,
+        "start_date": "2026-10-27"
     },
     "sub7": {
         "customer": "didarr",
@@ -60,7 +60,8 @@
         "sub2|pubgger|3",
         "sub2|pubgger|6",
         "sub3|Müslüman|3",
-        "sub4|black|7"
+        "sub4|black|7",
+        "sub6|scarfase|1"
     ],
     "_kazanc_gecmisi": [
         {
@@ -173,6 +174,13 @@
             "customer": "black",
             "days": 7,
             "tutar": 19.39,
+            "tarih": "2026-10-27"
+        },
+        {
+            "slot": "sub6",
+            "customer": "scarfase",
+            "days": 1,
+            "tutar": 2.77,
             "tarih": "2026-10-27"
         }
     ],
