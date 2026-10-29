@@ -1,20 +1,20 @@
 ss://YWVzLTI1Ni1nY206ankwRkR1M28xRm44a2hyL1krQXFiaW9rUkQ2dzdtL3cxdmkycHFBaGpKND0@185.203.5.190:48305?type=tcp#🇺🇸 United States • Google
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbDc5ZzNXMWlqbGo0aTZ2QUtNQTRn@2.56.174.156:302#🇬🇧 United Kingdom • Cloudflare
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbDc5ZzNXMWlqbGo0aTZ2QUtNQTRn@2.56.174.156:301#🇩🇪 Germany • WiFiWarden
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbDc5ZzNXMWlqbGo0aTZ2QUtNQTRn@2.56.174.156:301#🇫🇷 France • Claude
-hysteria2://KnuJZaRxSZbIR8FEFSbzCw@2.56.174.156:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇯🇵 Japan • Fastly
-hysteria2://KnuJZaRxSZbIR8FEFSbzCw@2.56.174.156:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇹🇷 Turkey • AWS
-hysteria2://KnuJZaRxSZbIR8FEFSbzCw@2.56.174.156:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇮🇹 Italy • Azure
-vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@104.16.240.31:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.tazenew.ru&sni=g1.tazenew.ru&fp=chrome&alpn=h3#🇪🇸 Spain • Oracle
-vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@104.16.240.31:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.tazenew.ru&sni=g1.tazenew.ru&fp=chrome&alpn=h3#🇨🇦 Canada • DigitalOcean
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbDc5ZzNXMWlqbGo0aTZ2QUtNQTRn@217.149.31.237:302#🇬🇧 United Kingdom • Cloudflare
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbDc5ZzNXMWlqbGo0aTZ2QUtNQTRn@217.149.31.237:301#🇩🇪 Germany • WiFiWarden
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbDc5ZzNXMWlqbGo0aTZ2QUtNQTRn@217.149.31.237:301#🇫🇷 France • Claude
+hysteria2://KnuJZaRxSZbIR8FEFSbzCw@217.149.31.237:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇯🇵 Japan • Fastly
+hysteria2://KnuJZaRxSZbIR8FEFSbzCw@217.149.31.237:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇹🇷 Turkey • AWS
+hysteria2://KnuJZaRxSZbIR8FEFSbzCw@217.149.31.237:123?security=tls&insecure=0&pinSHA256=B8534596AEC7280260B503D6160663713E3B563ADA203795A9C04C78E1FC8419&sni=www.google.com#🇮🇹 Italy • Azure
+vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@104.16.240.16:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.tazenew.ru&sni=g1.tazenew.ru&fp=chrome&alpn=h3#🇪🇸 Spain • Oracle
+vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@104.16.240.16:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.tazenew.ru&sni=g1.tazenew.ru&fp=chrome&alpn=h3#🇨🇦 Canada • DigitalOcean
 vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=chrome&alpn=h3#🇦🇺 Australia • Akamai
 vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=chrome&alpn=h3#🇳🇱 Netherlands • CloudFront
 vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=firefox&alpn=h3#🇨🇭 Switzerland • Proton
 vless://d234d67b-7c1b-4989-91df-d3eeb8323ab4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=chrome&alpn=h3#🇸🇪 Sweden • Google Cloud
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@130.193.46.98:12242?sni=ddd.echoesofaforgottenwinterstorm.fun#🇳🇴 Norway • Microsoft
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@130.193.46.98:12242?sni=ddd.echoesofaforgottenwinterstorm.fun#🇫🇮 Finland • Apple
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@130.193.46.98:666?sni=tqpzff.echoesofaforgottenwinterstorm.fun#🇰🇷 South Korea • Samsung Cloud
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@130.193.46.98:777?sni=hrurh.echoesofaforgottenwinterstorm.fun#🇸🇬 Singapore • Tencent Cloud
+hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@153.51.119.206:777?sni=hrurh.echoesofaforgottenwinterstorm.fun#🇳🇴 Norway • Microsoft
+hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@153.51.119.206:666?sni=tqpzff.echoesofaforgottenwinterstorm.fun#🇫🇮 Finland • Apple
+hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@153.51.119.206:12242?sni=ddd.echoesofaforgottenwinterstorm.fun#🇰🇷 South Korea • Samsung Cloud
+hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@153.51.119.206:12242?sni=ddd.echoesofaforgottenwinterstorm.fun#🇸🇬 Singapore • Tencent Cloud
 vless://0bf8538b-6299-46b0-9775-8b00939dccb5@static.blog-forme.ru:443?type=tcp&security=reality&sni=static.blog-forme.ru&fp=firefox&pbk=CgbJG-9Wv2NW-cuS1ZIaCAenRUZbxGFt5EjLkFCUcWs&sid=627da539c308202e&encryption=none#🇦🇪 United Arab Emirates • Alibaba Cloud
 vless://0bf8538b-6299-46b0-9775-8b00939dccb5@static.blog-forme.ru:443?type=tcp&security=reality&sni=static.blog-forme.ru&fp=firefox&pbk=CgbJG-9Wv2NW-cuS1ZIaCAenRUZbxGFt5EjLkFCUcWs&sid=627da539c308202e&encryption=none#🇧🇷 Brazil • Meta
 vless://0bf8538b-6299-46b0-9775-8b00939dccb5@static.blog-forme.ru:443?type=tcp&security=reality&sni=static.blog-forme.ru&fp=chrome&pbk=CgbJG-9Wv2NW-cuS1ZIaCAenRUZbxGFt5EjLkFCUcWs&sid=627da539c308202e&encryption=none#🇲🇽 Mexico • GitHub
