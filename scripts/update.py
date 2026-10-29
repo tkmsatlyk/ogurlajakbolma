@@ -15,7 +15,7 @@ from datetime import datetime
 CHANNELS = [
     "https://t.me/s/Richman_vpns",
     "https://t.me/s/ares_happ",
-    "https://t.me/s/happvpn",
+    "https://t.me/s/topserverss",
     "https://t.me/s/turkmen_server",
 ]
 
