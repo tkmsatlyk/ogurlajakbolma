@@ -27,6 +27,6 @@ sub4 🟢 black - 4 gün kaldı
 sub5 🔴
 sub6 🔴
 sub7 🟢 didarr - 21 gün kaldı
-sub8 🔴 reklam
+sub8 🔴
 sub9 🔴
 sub10 🔴
