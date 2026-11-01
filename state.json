@@ -1,8 +1,8 @@
 {
     "sub1": {
-        "customer": "kanal",
+        "customer": "knal",
         "days": 3,
-        "start_date": "2026-10-29"
+        "start_date": "2026-11-01"
     },
     "sub3": {
         "customer": "Müslüman",
@@ -61,7 +61,8 @@
         "sub2|pubgger|6",
         "sub3|Müslüman|3",
         "sub4|black|7",
-        "sub6|scarfase|1"
+        "sub6|scarfase|1",
+        "sub1|knal|3"
     ],
     "_kazanc_gecmisi": [
         {
@@ -182,6 +183,13 @@
             "days": 1,
             "tutar": 2.77,
             "tarih": "2026-10-27"
+        },
+        {
+            "slot": "sub1",
+            "customer": "knal",
+            "days": 3,
+            "tutar": 8.31,
+            "tarih": "2026-11-01"
         }
     ],
     "sub10": {

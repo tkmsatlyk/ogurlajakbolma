@@ -16,17 +16,18 @@
 2026-10-24 | sub3 - Müslüman - 3 gün - 8.31 manat
 2026-10-27 | sub4 - black - 7 gün - 19.39 manat
 2026-10-27 | sub6 - scarfase - 1 gün - 2.77 manat
+2026-11-01 | sub1 - knal - 3 gün - 8.31 manat
 
-TOPLAM KAZANÇ: 534.61 manat
+TOPLAM KAZANÇ: 542.92 manat
 
 === DURUM ===
-sub1 🟢 kanal - 1 gün kaldı
+sub1 🟢 knal - 3 gün kaldı
 sub2 🔴
 sub3 🔴
-sub4 🟢 black - 3 gün kaldı
+sub4 🟢 black - 2 gün kaldı
 sub5 🔴
 sub6 🔴
-sub7 🟢 didarr - 20 gün kaldı
+sub7 🟢 didarr - 19 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
