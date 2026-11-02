@@ -21,13 +21,13 @@
 TOPLAM KAZANÇ: 542.92 manat
 
 === DURUM ===
-sub1 🟢 knal - 3 gün kaldı
+sub1 🟢 knal - 2 gün kaldı
 sub2 🔴
 sub3 🔴
-sub4 🟢 black - 2 gün kaldı
+sub4 🟢 black - 1 gün kaldı
 sub5 🔴
 sub6 🔴
-sub7 🟢 didarr - 19 gün kaldı
+sub7 🟢 didarr - 18 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
