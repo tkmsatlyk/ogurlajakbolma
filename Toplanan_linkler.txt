@@ -1,11 +1,11 @@
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpWRnBRSm9WM18tSm9oWklFVml4bkFQQjZjM25FbmJIbw==@185.125.101.86:1080#🇺🇸 United States • Google
-vless://7c94b97c-5331-4320-8b87-77fa7ac05f05@185.125.101.86:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpWRnBRSm9WM18tSm9oWklFVml4bkFQQjZjM25FbmJIbw==@185.125.101.86:1080#🇩🇪 Germany • WiFiWarden
-vless://7c94b97c-5331-4320-8b87-77fa7ac05f05@185.125.101.86:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇫🇷 France • Claude
-vless://7c94b97c-5331-4320-8b87-77fa7ac05f05@185.125.101.86:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇯🇵 Japan • Fastly
-vless://7c94b97c-5331-4320-8b87-77fa7ac05f05@185.125.101.86:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇹🇷 Turkey • AWS
-vless://7c94b97c-5331-4320-8b87-77fa7ac05f05@185.125.101.86:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇮🇹 Italy • Azure
-vless://7c94b97c-5331-4320-8b87-77fa7ac05f05@185.125.101.86:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇪🇸 Spain • Oracle
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpqS0NPZDU3MUVWcW90VG5BV2kydVMyU2pKVENieF9hSw==@83.141.75.184:1080#🇺🇸 United States • Google
+vless://a0cd4c09-bee3-4c5b-8806-39faa8ede2ef@83.141.75.203:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpMdjVuX1lMV0JTS2ZCUVdFRFdBRzZZeGVJZV83Zmt4dg==@83.141.75.203:1080#🇩🇪 Germany • WiFiWarden
+vless://a0cd4c09-bee3-4c5b-8806-39faa8ede2ef@83.141.75.203:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇫🇷 France • Claude
+vless://a0cd4c09-bee3-4c5b-8806-39faa8ede2ef@83.141.75.203:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇯🇵 Japan • Fastly
+vless://a0cd4c09-bee3-4c5b-8806-39faa8ede2ef@83.141.75.203:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇹🇷 Turkey • AWS
+vless://a0cd4c09-bee3-4c5b-8806-39faa8ede2ef@83.141.75.203:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇮🇹 Italy • Azure
+vless://a0cd4c09-bee3-4c5b-8806-39faa8ede2ef@83.141.75.203:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇪🇸 Spain • Oracle
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkNnRpSTBrR2F3d2cyVGZveUFFSnRn@85.198.81.193:302#🇨🇦 Canada • DigitalOcean
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkNnRpSTBrR2F3d2cyVGZveUFFSnRn@85.198.81.193:302#🇦🇺 Australia • Akamai
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkNnRpSTBrR2F3d2cyVGZveUFFSnRn@85.198.81.193:301#🇳🇱 Netherlands • CloudFront
@@ -19,103 +19,98 @@ vless://23a12d8c-7d73-49e9-9b5a-ea54a351c474@65.9.9.32:443?security=tls&type=xht
 hysteria2://YxSnqY8S5IB-SAwILXHOTVxqQit5EzPv@85.234.106.126:12242?sni=ddd.echoesofaforgottenwinterstorm.fun#🇧🇷 Brazil • Meta
 hysteria2://YxSnqY8S5IB-SAwILXHOTVxqQit5EzPv@85.234.106.126:443?sni=fin.bmwx5sport.online#🇲🇽 Mexico • GitHub
 hysteria2://YxSnqY8S5IB-SAwILXHOTVxqQit5EzPv@85.234.106.126:443?sni=fin.bmwx5sport.online#🇮🇳 India • Gemini
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇨🇳 China • Baidu
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇵🇹 Portugal • OVHcloud
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇦🇹 Austria • Hetzner
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇧🇪 Belgium • Vercel
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇩🇰 Denmark • Netlify
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇵🇱 Poland • Railway
-vless://50a87e21-f0e2-4b53-a787-91adfe748f63@hollandlanzerotte.xyz:443?type=raw&security=reality&sni=hollandlanzerotte.xyz&fp=qq&flow=xtls-rprx-vision&pbk=EEL-yDPBfol_fiEEM8Pd0zue7SSz5MtZlXEePVak2jc&encryption=none#🇮🇪 Ireland • Fly.io
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?type=tcp&security=tls&sni=www.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇬🇷 Greece • Discord
-vless://13bf9403-22d1-4221-939b-f6606c423139@66.163.113.238:443?type=tcp&security=reality&sni=steamcommunity.com&fp=chrome&flow=xtls-rprx-vision&pbk=DNCphTaL7BtXj1HybzMFir0ki_IiM62kr6ddIZYxagw&sid=5c56a4cfea5866c0&encryption=none#🇨🇿 Czechia • Telegram
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.131:443?type=tcp&security=tls&sni=blog.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇭🇺 Hungary • Reddit
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇷🇴 Romania • Spotify
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.19:443?type=tcp&security=tls&sni=learn.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇧🇬 Bulgaria • Netflix
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇭🇷 Croatia • YouTube
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇷🇸 Serbia • TikTok
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?type=tcp&security=tls&sni=resources.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇺🇦 Ukraine • WhatsApp
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇷🇺 Russia • Yandex
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇮🇱 Israel • Wix
-vless://50a87e21-f0e2-4b53-a787-91adfe748f63@finlandlanzarotte.live:443?type=tcp&security=reality&sni=finlandlanzarotte.live&fp=qq&flow=xtls-rprx-vision&pbk=6lZ5dkQN2sH9tYca374W4N1n9eCanD_F2FfghcksKSo&encryption=none#🇸🇦 Saudi Arabia • STC Cloud
-vless://6da2c981-8c77-4340-bda3-93399b7aea26@87.199.207.116:443?type=xhttp&security=reality&sni=docs.blog-forme.ru&fp=firefox&pbk=nalACuCZjV1sZx7QOH6yAIDio8mFI0FgVKYQvQHBKS4&sid=fb3a5f2d4ca346ed&path=%2Fv2%2Fsync%2Faf2c0c&mode=auto&encryption=none#🇶🇦 Qatar • Ooredoo Cloud
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇪🇬 Egypt • Vodafone
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?type=tcp&security=tls&sni=resources.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇿🇦 South Africa • MTN
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇹🇭 Thailand • LINE
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.211:443?type=tcp&security=tls&sni=api.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇻🇳 Vietnam • Zalo Cloud
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇮🇩 Indonesia • Gojek
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.67:443?type=tcp&security=tls&sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇲🇾 Malaysia • Grab
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.218:443?type=tcp&security=tls&sni=learn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇵🇭 Philippines • Globe
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.19:443?type=tcp&security=tls&sni=learn.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇳🇿 New Zealand • Spark
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?type=tcp&security=tls&sni=www.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇦🇷 Argentina • Mercado Libre
-vless://50a87e21-f0e2-4b53-a787-91adfe748f63@hollandlanzerotte.xyz:443?type=raw&security=reality&sni=hollandlanzerotte.xyz&fp=qq&flow=xtls-rprx-vision&pbk=EEL-yDPBfol_fiEEM8Pd0zue7SSz5MtZlXEePVak2jc&encryption=none#🇨🇱 Chile • Entel
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇨🇴 Colombia • Claro
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇵🇪 Peru • Movistar
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?type=tcp&security=tls&sni=www.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇵🇰 Pakistan • Nayatel
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇧🇩 Bangladesh • Grameenphone
-vless://727a9178-d7f0-4142-8205-b0d19959ded0@2.56.3.106:443?type=tcp&security=reality&sni=bol.com&fp=edge&flow=xtls-rprx-vision&pbk=yyXZsa238GRW90w5DweXAdRTtVSuK9oZF_dihKQ41So&sid=9e5a335de26d1f5a&encryption=none#🇮🇷 Iran • ArvanCloud
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇮🇶 Iraq • Asiacell
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇯🇴 Jordan • Zain
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.93:443?type=tcp&security=tls&sni=connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇰🇼 Kuwait • Ooredoo
-vless://50a87e21-f0e2-4b53-a787-91adfe748f63@201.58.183.99:443?type=tcp&security=reality&sni=geminilanzerotte.live&fp=qq&flow=xtls-rprx-vision&pbk=_aURfmVUjvCRZipDI2eqMO0VQa64BJRGYFOdlBFi1XQ&encryption=none#🇴🇲 Oman • Omantel
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&fp=chrome&allowInsecure=1#🇲🇦 Morocco • Maroc Telecom
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.211:443?type=tcp&security=tls&sni=api.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇹🇳 Tunisia • Orange
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&fp=chrome&allowInsecure=1#🇰🇪 Kenya • Safaricom
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=firefox&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇳🇬 Nigeria • Airtel
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.93:443?type=tcp&security=tls&sni=connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇬🇭 Ghana • Vodafone Ghana
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇪🇹 Ethiopia • Ethio Telecom
-trojan://humanity@130.12.46.156:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇮🇸 Iceland • CloudNord
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇱🇺 Luxembourg • LuxConnect
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.218:443?type=tcp&security=tls&sni=learn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&fp=chrome&allowInsecure=1#🇱🇮 Liechtenstein • FiberNet
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=chrome&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇲🇨 Monaco • Monaco Telecom
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇲🇹 Malta • Melita
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?type=tcp&security=tls&sni=resources.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇨🇾 Cyprus • Cyta
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇱🇻 Latvia • Tet
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇱🇹 Lithuania • Telia
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.112:443?type=tcp&security=tls&sni=resources.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇪🇪 Estonia • Elisa
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?type=tcp&security=tls&sni=www.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇸🇰 Slovakia • Orange SK
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇸🇮 Slovenia • Telekom
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇧🇦 Bosnia and Herzegovina • BH Telecom
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=chrome&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇲🇪 Montenegro • Crnogorski Telekom
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇦🇱 Albania • One Albania
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇲🇰 North Macedonia • A1
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇬🇪 Georgia • Magti
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇦🇲 Armenia • Ucom
-vless://13bf9403-22d1-4221-939b-f6606c423139@66.163.113.238:443?type=tcp&security=reality&sni=steamcommunity.com&fp=edge&flow=xtls-rprx-vision&pbk=DNCphTaL7BtXj1HybzMFir0ki_IiM62kr6ddIZYxagw&sid=5c56a4cfea5866c0&encryption=none#🇦🇿 Azerbaijan • Azercell
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&fp=chrome&allowInsecure=1#🇰🇿 Kazakhstan • Kazakhtelecom
-vless://6da2c981-8c77-4340-bda3-93399b7aea26@87.199.207.116:443?type=xhttp&security=reality&sni=docs.blog-forme.ru&fp=firefox&pbk=nalACuCZjV1sZx7QOH6yAIDio8mFI0FgVKYQvQHBKS4&sid=fb3a5f2d4ca346ed&path=%2Fv2%2Fsync%2Faf2c0c&mode=auto&encryption=none#🇺🇿 Uzbekistan • Ucell
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.93:443?type=tcp&security=tls&sni=connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇲🇳 Mongolia • Mobicom
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇳🇵 Nepal • WorldLink
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.131:443?type=tcp&security=tls&sni=blog.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇱🇰 Sri Lanka • Dialog
-trojan://humanity@194.55.164.118:443?type=ws&security=tls&sni=www.cordweave.com&fp=chrome&path=%2Fassignment&allowInsecure=1#🇲🇻 Maldives • Dhiraagu
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?type=tcp&security=tls&sni=www.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇫🇯 Fiji • Vodafone Fiji
-vless://727a9178-d7f0-4142-8205-b0d19959ded0@2.56.3.106:443?type=tcp&security=reality&sni=bol.com&fp=edge&flow=xtls-rprx-vision&pbk=yyXZsa238GRW90w5DweXAdRTtVSuK9oZF_dihKQ41So&sid=9e5a335de26d1f5a&encryption=none#🇧🇸 Bahamas • BTC
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.152:443?type=tcp&security=tls&sni=learn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇯🇲 Jamaica • Digicel
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.33:443?type=tcp&security=tls&sni=courses.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇨🇺 Cuba • ETECSA
-vless://33255fe8-18af-4d97-8c6f-79c9f12a4029@146.75.35.101:443?type=xhttp&security=tls&sni=accounts.fastly.com&fp=chrome&alpn=h3&host=dayka-unkepravber.net&path=%2F&mode=packet-up&allowInsecure=1&encryption=none#🇵🇦 Panama • Tigo
-trojan://humanity@103.219.195.65:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇨🇷 Costa Rica • Liberty
-vless://bc716a9d-31dd-4e49-a606-277ff48cdd4e@146.75.35.101:443?type=xhttp&security=tls&sni=accounts.fastly.com&fp=chrome&alpn=h3&host=dayka-unkepravber.net&path=%2F&mode=packet-up&allowInsecure=1&encryption=none#🇩🇴 Dominican Republic • Altice
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.19:443?type=tcp&security=tls&sni=learn.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇺🇾 Uruguay • Antel
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?type=tcp&security=tls&sni=www.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇵🇾 Paraguay • Personal
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇧🇴 Bolivia • Entel Bolivia
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇦🇫 Afghanistan • Roshan
-vless://50a87e21-f0e2-4b53-a787-91adfe748f63@201.58.183.99:443?type=tcp&security=reality&sni=geminilanzerotte.live&fp=firefox&flow=xtls-rprx-vision&pbk=_aURfmVUjvCRZipDI2eqMO0VQa64BJRGYFOdlBFi1XQ&encryption=none#🇩🇿 Algeria • Djezzy
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&fp=chrome&allowInsecure=1#🇨🇳 China • Baidu
+vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=firefox&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇵🇹 Portugal • OVHcloud
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇦🇹 Austria • Hetzner
+vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=chrome&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇧🇪 Belgium • Vercel
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇩🇰 Denmark • Netlify
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇵🇱 Poland • Railway
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇮🇪 Ireland • Fly.io
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇬🇷 Greece • Discord
+vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇨🇿 Czechia • Telegram
+vless://13bf9403-22d1-4221-939b-f6606c423139@66.163.113.238:443?type=tcp&security=reality&sni=steamcommunity.com&fp=edge&flow=xtls-rprx-vision&pbk=DNCphTaL7BtXj1HybzMFir0ki_IiM62kr6ddIZYxagw&sid=5c56a4cfea5866c0&encryption=none#🇭🇺 Hungary • Reddit
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&fp=chrome&allowInsecure=1#🇷🇴 Romania • Spotify
+vless://6da2c981-8c77-4340-bda3-93399b7aea26@87.199.207.116:443?type=xhttp&security=reality&sni=docs.blog-forme.ru&fp=firefox&pbk=nalACuCZjV1sZx7QOH6yAIDio8mFI0FgVKYQvQHBKS4&sid=fb3a5f2d4ca346ed&path=%2Fv2%2Fsync%2Faf2c0c&mode=auto&encryption=none#🇧🇬 Bulgaria • Netflix
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.93:443?type=tcp&security=tls&sni=connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇭🇷 Croatia • YouTube
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇷🇸 Serbia • TikTok
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.131:443?type=tcp&security=tls&sni=blog.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇺🇦 Ukraine • WhatsApp
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?type=tcp&security=tls&sni=www.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇷🇺 Russia • Yandex
+vless://727a9178-d7f0-4142-8205-b0d19959ded0@2.56.3.106:443?type=tcp&security=reality&sni=bol.com&fp=edge&flow=xtls-rprx-vision&pbk=yyXZsa238GRW90w5DweXAdRTtVSuK9oZF_dihKQ41So&sid=9e5a335de26d1f5a&encryption=none#🇮🇱 Israel • Wix
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.152:443?type=tcp&security=tls&sni=learn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇸🇦 Saudi Arabia • STC Cloud
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.33:443?type=tcp&security=tls&sni=courses.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇶🇦 Qatar • Ooredoo Cloud
+vless://33255fe8-18af-4d97-8c6f-79c9f12a4029@146.75.35.101:443?type=xhttp&security=tls&sni=accounts.fastly.com&fp=chrome&alpn=h3&host=dayka-unkepravber.net&path=%2F&mode=packet-up&allowInsecure=1&encryption=none#🇪🇬 Egypt • Vodafone
+trojan://humanity@179.255.127.200:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇿🇦 South Africa • MTN
+trojan://humanity@179.255.136.189:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇹🇭 Thailand • LINE
+vless://ee29ce31-ee5e-479b-900c-97c50e0f1218@189.24.79.229:443?type=tcp&security=reality&sni=www.microsoft.com&fp=firefox&flow=xtls-rprx-vision&pbk=Di20k-Yrc4tfKGcSYCLp88xDaYMsIrIa_6go-QvAVCw&sid=6717a9ae&encryption=none#🇻🇳 Vietnam • Zalo Cloud
+trojan://humanity@179.255.127.82:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇮🇩 Indonesia • Gojek
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇲🇾 Malaysia • Grab
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?type=tcp&security=tls&sni=resources.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇵🇭 Philippines • Globe
+vless://727a9178-d7f0-4142-8205-b0d19959ded0@2.56.3.106:443?type=tcp&security=reality&sni=bol.com&fp=edge&flow=xtls-rprx-vision&pbk=yyXZsa238GRW90w5DweXAdRTtVSuK9oZF_dihKQ41So&sid=9e5a335de26d1f5a&encryption=none#🇳🇿 New Zealand • Spark
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.152:443?type=tcp&security=tls&sni=learn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇦🇷 Argentina • Mercado Libre
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.33:443?type=tcp&security=tls&sni=courses.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇨🇱 Chile • Entel
+vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇨🇴 Colombia • Claro
+vless://13bf9403-22d1-4221-939b-f6606c423139@66.163.113.238:443?type=tcp&security=reality&sni=steamcommunity.com&fp=chrome&flow=xtls-rprx-vision&pbk=DNCphTaL7BtXj1HybzMFir0ki_IiM62kr6ddIZYxagw&sid=5c56a4cfea5866c0&encryption=none#🇵🇪 Peru • Movistar
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.19:443?type=tcp&security=tls&sni=learn.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇵🇰 Pakistan • Nayatel
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?type=tcp&security=tls&sni=www.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇧🇩 Bangladesh • Grameenphone
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?type=tcp&security=tls&sni=www.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇮🇷 Iran • ArvanCloud
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.112:443?type=tcp&security=tls&sni=resources.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇮🇶 Iraq • Asiacell
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇯🇴 Jordan • Zain
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇰🇼 Kuwait • Ooredoo
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.67:443?type=tcp&security=tls&sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇴🇲 Oman • Omantel
+vless://ee29ce31-ee5e-479b-900c-97c50e0f1218@189.24.79.229:443?type=tcp&security=reality&sni=www.microsoft.com&fp=firefox&flow=xtls-rprx-vision&pbk=Di20k-Yrc4tfKGcSYCLp88xDaYMsIrIa_6go-QvAVCw&sid=6717a9ae&encryption=none#🇲🇦 Morocco • Maroc Telecom
+trojan://humanity@179.255.136.189:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇹🇳 Tunisia • Orange
+vless://bc716a9d-31dd-4e49-a606-277ff48cdd4e@146.75.35.101:443?type=xhttp&security=tls&sni=accounts.fastly.com&fp=chrome&alpn=h3&host=dayka-unkepravber.net&path=%2F&mode=packet-up&allowInsecure=1&encryption=none#🇰🇪 Kenya • Safaricom
+ss://YWVzLTI1Ni1nY206Z3pzMmRleE9nR0ZpbDdjV0d4d2xhdjFjZ21nSmVYNUM1NDhIeWNWeEZ6RT0@193.233.138.128:23819#🇳🇬 Nigeria • Airtel
+trojan://humanity@103.219.195.65:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇬🇭 Ghana • Vodafone Ghana
+trojan://humanity@179.255.127.45:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇪🇹 Ethiopia • Ethio Telecom
+trojan://humanity@5.253.29.83:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇮🇸 Iceland • CloudNord
+trojan://humanity@130.12.46.156:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇱🇺 Luxembourg • LuxConnect
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0WXVJSUo1dnBIZml3Qkp0LWdpTXpLQ09yTWtXamdpTA@185.125.101.86:1080#🇱🇮 Liechtenstein • FiberNet
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6VmNQWUZwd3hvRWljT0l6dkQ0aWZuTGJtRmZaZ2w1dg@162.33.179.4:4500#🇲🇨 Monaco • Monaco Telecom
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6VmNQWUZwd3hvRWljT0l6dkQ0aWZuTGJtRmZaZ2w1dg@45.131.97.45:4500#🇲🇹 Malta • Melita
+trojan://humanity@104.18.72.213:443?type=ws&security=tls&sni=www.cordweave.com&fp=chrome&path=%2F%252Fassignment&allowInsecure=1#🇨🇾 Cyprus • Cyta
+trojan://humanity@104.16.244.188:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇱🇻 Latvia • Tet
+vless://056405e8-de9f-4d0d-8145-956f13cc34da@185.255.115.254:27591?type=tcp&security=reality&sni=www.samsung.com&fp=firefox&pbk=LY0H47MWx87_L_JBzxFAuTzKZB53U7MrZQK8-dNnMxM&sid=6c5c7900406a1ae7&encryption=none#🇱🇹 Lithuania • Telia
+vless://50a87e21-f0e2-4b53-a787-91adfe748f63@finlandlanzarotte.live:443?type=tcp&security=reality&sni=finlandlanzarotte.live&fp=qq&flow=xtls-rprx-vision&pbk=6lZ5dkQN2sH9tYca374W4N1n9eCanD_F2FfghcksKSo&encryption=none#🇪🇪 Estonia • Elisa
+vless://00d80782-13bb-4e45-82b6-4c21747eabd6@93.123.101.241:443?type=tcp&security=reality&sni=quill099.filebeam.website&fp=firefox&flow=xtls-rprx-vision&pbk=xcTXD3of3Yt5hHdIwYGZ1LjMBgiL6sqj5J33J4U4ozM&sid=a7c31f92&spx=%2F&encryption=none#🇸🇰 Slovakia • Orange SK
+vless://3e38366f-0424-4d66-9ae5-968736f97bb4@62.233.33.127:8443?type=tcp&security=reality&sni=uk-room08.filesnap.tech&fp=firefox&flow=xtls-rprx-vision&pbk=3dMgo8doJ_VnhlbmxO7NDD8UtE2Q6oj57jzgMv5HWFQ&sid=3b54c469284b9337&encryption=none#🇸🇮 Slovenia • Telekom
+vless://da139ac8-fcae-4b50-b24f-2e9508331222@62.233.33.177:8443?type=tcp&security=reality&sni=uk-room06.filesnap.tech&fp=firefox&flow=xtls-rprx-vision&pbk=D9IxnCLtXuDLR1yBNZwWdxxbNDfsZgN3C9IsqKgG8Ec&sid=17a35165f9d25923&encryption=none#🇧🇦 Bosnia and Herzegovina • BH Telecom
+vless://ec28e452-6550-4fd8-b8f4-2e75783fb9e5@62.233.33.177:8443?type=tcp&security=reality&sni=uk-room06.filesnap.tech&fp=firefox&flow=xtls-rprx-vision&pbk=D9IxnCLtXuDLR1yBNZwWdxxbNDfsZgN3C9IsqKgG8Ec&sid=17a35165f9d25923&encryption=none#🇲🇪 Montenegro • Crnogorski Telekom
+vless://b6ac1632-d2f2-4be8-a642-c84096a9ff7e@62.233.33.189:8443?type=tcp&security=reality&sni=uk-room06.filesnap.tech&fp=firefox&flow=xtls-rprx-vision&pbk=D9IxnCLtXuDLR1yBNZwWdxxbNDfsZgN3C9IsqKgG8Ec&sid=17a35165f9d25923&encryption=none#🇦🇱 Albania • One Albania
+vless://43bf9b72-9aac-4eff-9aa2-f4b0cdafeb5d@62.233.33.118:8443?type=tcp&security=reality&sni=uk-room06.filesnap.tech&fp=firefox&flow=xtls-rprx-vision&pbk=D9IxnCLtXuDLR1yBNZwWdxxbNDfsZgN3C9IsqKgG8Ec&sid=17a35165f9d25923&encryption=none#🇲🇰 North Macedonia • A1
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpmMEhpb3RMR3IzaUdHNDdJbEJnM1FBSlBOWGpUUHBvaw@193.233.138.128:1080#🇬🇪 Georgia • Magti
+vless://f90b7d43-69e2-4b46-a672-8029bc6796a2@185.255.115.130:25895?type=tcp&security=reality&sni=www.samsung.com&fp=firefox&pbk=jOVKSP-bS9OkILJ8Epz8hadh6qhavCrOiJYeF0NCn0k&sid=a73f0410d728c823&encryption=none#🇦🇲 Armenia • Ucom
+trojan://humanity@194.55.164.118:443?type=ws&security=tls&sni=www.cordweave.com&fp=chrome&path=%2Fassignment&allowInsecure=1#🇦🇿 Azerbaijan • Azercell
+vless://a35c508f-4d5d-4531-842e-6e9d43c762c0@fl3.nexfile.net:4443?type=xhttp&security=tls&sni=fl3.nexfile.net&fp=firefox&path=%2Fapi%2Fv1%2Fsync%2F&mode=auto&allowInsecure=1&encryption=none#🇰🇿 Kazakhstan • Kazakhtelecom
+vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇺🇿 Uzbekistan • Ucell
+vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.131.6:443?type=xhttp&security=tls&sni=apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇲🇳 Mongolia • Mobicom
+vless://50a87e21-f0e2-4b53-a787-91adfe748f63@hollandlanzerotte.xyz:443?type=raw&security=reality&sni=hollandlanzerotte.xyz&fp=qq&flow=xtls-rprx-vision&pbk=EEL-yDPBfol_fiEEM8Pd0zue7SSz5MtZlXEePVak2jc&encryption=none#🇳🇵 Nepal • WorldLink
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.131:443?type=tcp&security=tls&sni=blog.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇱🇰 Sri Lanka • Dialog
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇲🇻 Maldives • Dhiraagu
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.19:443?type=tcp&security=tls&sni=learn.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇫🇯 Fiji • Vodafone Fiji
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇧🇸 Bahamas • BTC
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇯🇲 Jamaica • Digicel
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?type=tcp&security=tls&sni=resources.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇨🇺 Cuba • ETECSA
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?type=tcp&security=tls&sni=www.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇵🇦 Panama • Tigo
+vless://13bf9403-22d1-4221-939b-f6606c423139@66.163.113.238:443?type=tcp&security=reality&sni=steamcommunity.com&fp=chrome&flow=xtls-rprx-vision&pbk=DNCphTaL7BtXj1HybzMFir0ki_IiM62kr6ddIZYxagw&sid=5c56a4cfea5866c0&encryption=none#🇨🇷 Costa Rica • Liberty
+vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuvCfh7ggQFRVUktNRU5fU0VSVkVSICM3NSIsICJhZGQiOiAiNDMuMTMwLjM1LjUzIiwgInBvcnQiOiAiMTAwODciLCAiaWQiOiAiOGU5M2IwMDktZjFhZi00NDhhLWI4ZWYtYjExMDg0OWEzNWYwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ0Y3AiLCAidHlwZSI6ICJub25lIiwgImhvc3QiOiAiIiwgInBhdGgiOiAiIiwgInRscyI6ICIiLCAic25pIjogIiJ9#🇩🇴 Dominican Republic • Altice
+vless://727a9178-d7f0-4142-8205-b0d19959ded0@2.56.3.106:443?type=tcp&security=reality&sni=bol.com&fp=edge&flow=xtls-rprx-vision&pbk=yyXZsa238GRW90w5DweXAdRTtVSuK9oZF_dihKQ41So&sid=9e5a335de26d1f5a&encryption=none#🇺🇾 Uruguay • Antel
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.152:443?type=tcp&security=tls&sni=learn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇵🇾 Paraguay • Personal
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.33:443?type=tcp&security=tls&sni=courses.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇧🇴 Bolivia • Entel Bolivia
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.60:443?type=tcp&security=tls&sni=cdn.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇦🇫 Afghanistan • Roshan
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?type=tcp&security=tls&sni=api.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇩🇿 Algeria • Djezzy
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.93:443?type=tcp&security=tls&sni=connectingpeoplewithgreatjobs.com&fp=chrome&allowInsecure=1#🇦🇩 Andorra • Andorra Telecom
-ss://YWVzLTI1Ni1nY206Y0NNSmdKVEEzQkE0ODlZVVlyRnE3WEhYU2lTcFdsTGE@46.17.46.27:18443#🇦🇴 Angola • Unitel
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=chrome&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇦🇬 Antigua and Barbuda • Flow
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.218:443?type=tcp&security=tls&sni=learn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&fp=chrome&allowInsecure=1#🇧🇭 Bahrain • Batelco
-trojan://humanity@179.255.136.189:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇧🇧 Barbados • Digicel
-trojan://humanity@5.253.29.83:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇧🇾 Belarus • A1 Cloud
-vless://bdf38176-48e9-40f1-9d1c-d501c333b464@151.101.67.6:443?type=xhttp&security=tls&sni=amp-api-edge.apps.apple.com&fp=chrome&alpn=h3&host=kkbr.tm&path=%2Fcrownnet&mode=auto&allowInsecure=1&encryption=none#🇧🇿 Belize • Smart
-vless://13bf9403-22d1-4221-939b-f6606c423139@66.163.113.238:443?type=tcp&security=reality&sni=steamcommunity.com&fp=chrome&flow=xtls-rprx-vision&pbk=DNCphTaL7BtXj1HybzMFir0ki_IiM62kr6ddIZYxagw&sid=5c56a4cfea5866c0&encryption=none#🇧🇯 Benin • Moov
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.131:443?type=tcp&security=tls&sni=blog.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇧🇹 Bhutan • Bhutan Telecom
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.79:443?type=tcp&security=tls&sni=blog.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇧🇼 Botswana • Mascom
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?type=tcp&security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇧🇳 Brunei • Imagine
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?type=tcp&security=tls&sni=courses.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇧🇫 Burkina Faso • Orange
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?type=tcp&security=tls&sni=resources.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇧🇮 Burundi • Lumitel
-vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuvCfh7ggQFRVUktNRU5fU0VSVkVSICM5NCIsICJhZGQiOiAiNDMuMTMwLjM1LjUzIiwgInBvcnQiOiAiMTAwODciLCAiaWQiOiAiOGU5M2IwMDktZjFhZi00NDhhLWI4ZWYtYjExMDg0OWEzNWYwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ0Y3AiLCAidHlwZSI6ICJub25lIiwgImhvc3QiOiAiIiwgInBhdGgiOiAiIiwgInRscyI6ICIiLCAic25pIjogIiJ9#🇨🇻 Cape Verde • CV Telecom
-vless://727a9178-d7f0-4142-8205-b0d19959ded0@2.56.3.106:443?type=tcp&security=reality&sni=bol.com&fp=edge&flow=xtls-rprx-vision&pbk=yyXZsa238GRW90w5DweXAdRTtVSuK9oZF_dihKQ41So&sid=9e5a335de26d1f5a&encryption=none#🇰🇭 Cambodia • Smart
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.152:443?type=tcp&security=tls&sni=learn.connectingpeoplewithgreatjobs.com&allowInsecure=1#🇨🇲 Cameroon • MTN
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@208.69.78.33:443?type=tcp&security=tls&sni=courses.yourultimateprofessionalcareerhub.com&allowInsecure=1#🇨🇫 Central African Republic • Orange
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.211:443?type=tcp&security=tls&sni=api.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇹🇩 Chad • Airtel
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇰🇲 Comoros • Telma
-vless://6da2c981-8c77-4340-bda3-93399b7aea26@87.199.207.116:443?type=xhttp&security=reality&sni=docs.blog-forme.ru&fp=firefox&pbk=nalACuCZjV1sZx7QOH6yAIDio8mFI0FgVKYQvQHBKS4&sid=fb3a5f2d4ca346ed&path=%2Fv2%2Fsync%2Faf2c0c&mode=auto&encryption=none#🇨🇬 Congo • MTN
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.67:443?type=tcp&security=tls&sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇦🇴 Angola • Unitel
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.211:443?type=tcp&security=tls&sni=api.explorecreativejobsandenhanceyourcareerportfolio.com&fp=chrome&allowInsecure=1#🇦🇬 Antigua and Barbuda • Flow
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.171:443?type=tcp&security=tls&sni=cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇧🇭 Bahrain • Batelco
+vless://6da2c981-8c77-4340-bda3-93399b7aea26@87.199.207.116:443?type=xhttp&security=reality&sni=docs.blog-forme.ru&fp=firefox&pbk=nalACuCZjV1sZx7QOH6yAIDio8mFI0FgVKYQvQHBKS4&sid=fb3a5f2d4ca346ed&path=%2Fv2%2Fsync%2Faf2c0c&mode=auto&encryption=none#🇧🇧 Barbados • Digicel
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.112:443?type=tcp&security=tls&sni=resources.explorecreativejobsandenhanceyourcareerportfolio.com&allowInsecure=1#🇧🇾 Belarus • A1 Cloud
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.218:443?type=tcp&security=tls&sni=learn.discoverfreshgraduatejobsstartyourprofessionaljourney.com&allowInsecure=1#🇧🇿 Belize • Smart
+trojan://va3E77I9fZCnCVcGKkxBCfz5@vpn.liumr.top:443?type=tcp&security=tls&sni=vpn.liumr.top&allowInsecure=1#🇧🇯 Benin • Moov
+ss://YWVzLTI1Ni1nY206Y0NNSmdKVEEzQkE0ODlZVVlyRnE3WEhYU2lTcFdsTGE@46.17.46.27:18443#🇧🇹 Bhutan • Bhutan Telecom
+vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.120:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=chrome&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&encryption=none#🇧🇼 Botswana • Mascom
+vless://6036c28a-8db2-432e-8118-ff0c16641ad0@200.169.184.168:443?type=tcp&security=reality&sni=tm6.24convertflow.ru&fp=firefox&flow=xtls-rprx-vision&pbk=2IylNqpuTBeUvd333tXWY6i0l8nkH6o5qfRVKZm6FA0&sid=e0aadc6f38ff06a8&encryption=none#🇧🇳 Brunei • Imagine
+trojan://humanity@103.218.173.218:443?type=ws&security=tls&sni=www.cordweave.com&path=%2Fassignment&allowInsecure=1#🇧🇫 Burkina Faso • Orange
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@152.175.6.229:31884?type=tcp&security=tls&sni=hk010.zestapp778.com&fp=firefox&allowInsecure=1&encryption=none#🇧🇮 Burundi • Lumitel
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@45.76.155.179:443?type=tcp&security=tls&sni=sg003.zestapp778.com&fp=firefox&allowInsecure=1&encryption=none#🇨🇻 Cape Verde • CV Telecom
+vless://6f433cf6-4221-48b2-ad29-01121952ef8a@193.23.218.107:443?type=tcp&security=reality&sni=yandex.ru&fp=qq&flow=xtls-rprx-vision&pbk=cBTZdCBwrYTTarw6B_lu2TN1M6_Lku68FfWCQT9svhc&sid=cb620aa2f04bce33&encryption=none#🇰🇭 Cambodia • Smart
