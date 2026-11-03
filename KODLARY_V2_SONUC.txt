@@ -27,4 +27,4 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ=
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@193.233.138.158:770#%F0%9F%87%AB%F0%9F%87%AEFinland%20%7C%20Game%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@193.233.138.158:770#%F0%9F%87%BA%F0%9F%87%BFTashkent%20%7C%20VIP%20Game%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@193.233.138.158:140#%F0%9F%87%B7%F0%9F%87%BAMoskow%20%7C%20Game%F0%9F%8E%AE
-trojan://2qXHbJUhdqYE2p0fdARlmEji0dNxk58V@google.com:443?security=tls&type=tcp&headerType=none&fp=chrome#%F0%9F%87%AA%F0%9F%87%BA%F0%9F%91%A4Ozime_31%20%7C%20%E2%8C%9B359
+trojan://2qXHbJUhdqYE2p0fdARlmEji0dNxk58V@google.com:443?security=tls&type=tcp&headerType=none&fp=chrome#%F0%9F%87%AA%F0%9F%87%BA%F0%9F%91%A4Ozime_31%20%7C%20%E2%8C%9B358
