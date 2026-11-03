@@ -1,11 +1,11 @@
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpVY2lpZ2JfOVI5Yms2QUZQSHQ4VlNBc3RhbDg4NUpGQg==@45.83.27.36:1080#🇺🇸 United States • Google
-vless://2fe96826-ec2b-4e75-a8c1-9db7a2251632@45.83.27.124:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpmQ3VfeDRJNGtvcVJsY3JJTDdxLUxVQVdud21Ia0Mzaw==@45.83.27.124:1080#🇩🇪 Germany • WiFiWarden
-vless://2fe96826-ec2b-4e75-a8c1-9db7a2251632@45.83.27.124:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇫🇷 France • Claude
-vless://2fe96826-ec2b-4e75-a8c1-9db7a2251632@45.83.27.124:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇯🇵 Japan • Fastly
-vless://2fe96826-ec2b-4e75-a8c1-9db7a2251632@45.83.27.124:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇹🇷 Turkey • AWS
-vless://2fe96826-ec2b-4e75-a8c1-9db7a2251632@45.83.27.124:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇮🇹 Italy • Azure
-vless://2fe96826-ec2b-4e75-a8c1-9db7a2251632@45.83.27.124:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇪🇸 Spain • Oracle
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpCN0MzQjV0bXRXQ1VSZkRVb1NmOVBfb0g3eXZ1TjBwcg==@45.83.84.10:1080#🇺🇸 United States • Google
+vless://b8de332e-3afb-43ed-905c-dd5df3bf7231@45.83.84.10:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpCN0MzQjV0bXRXQ1VSZkRVb1NmOVBfb0g3eXZ1TjBwcg==@45.83.84.10:1080#🇩🇪 Germany • WiFiWarden
+vless://b8de332e-3afb-43ed-905c-dd5df3bf7231@45.83.84.10:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇫🇷 France • Claude
+vless://b8de332e-3afb-43ed-905c-dd5df3bf7231@45.83.84.10:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇯🇵 Japan • Fastly
+vless://b8de332e-3afb-43ed-905c-dd5df3bf7231@45.83.84.10:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇹🇷 Turkey • AWS
+vless://b8de332e-3afb-43ed-905c-dd5df3bf7231@45.83.84.10:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇮🇹 Italy • Azure
+vless://b8de332e-3afb-43ed-905c-dd5df3bf7231@45.83.84.10:445?encryption=mlkem768x25519plus.native.0rtt.HmBJ239G1wSVp9KiXHVtZf4CrtBKFQAqaQjEuMRc0Eo&security=none&type=tcp&headerType=none#🇪🇸 Spain • Oracle
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkNnRpSTBrR2F3d2cyVGZveUFFSnRn@85.198.81.193:302#🇨🇦 Canada • DigitalOcean
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkNnRpSTBrR2F3d2cyVGZveUFFSnRn@85.198.81.193:302#🇦🇺 Australia • Akamai
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkNnRpSTBrR2F3d2cyVGZveUFFSnRn@85.198.81.193:301#🇳🇱 Netherlands • CloudFront
