@@ -27,7 +27,7 @@ sub3 🔴
 sub4 🔴 black
 sub5 🔴
 sub6 🔴
-sub7 🟢 didarr - 13 gün kaldı
+sub7 🟢 didarr - 12 gün kaldı
 sub8 🔴
 sub9 🔴
 sub10 🔴
