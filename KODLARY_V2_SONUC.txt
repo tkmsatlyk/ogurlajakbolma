@@ -16,4 +16,4 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ=
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@95.163.152.52:770#%F0%9F%87%AB%F0%9F%87%B7%20France%20%E2%94%80%20Roubaix
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@95.163.152.52:770#%F0%9F%87%A8%F0%9F%87%ADSwitzerland%20%E2%94%80%20Bern
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@49.12.216.194:140#%F0%9F%87%AA%F0%9F%87%B8%20Spain%20%E2%94%80%20Madrid
-vless://225ccefa-70e1-4f2d-a814-01681310a628@95.163.152.52:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AA%F0%9F%87%BA%F0%9F%91%A4Ozime_31%20%7C%20%E2%8C%9B13
+vless://225ccefa-70e1-4f2d-a814-01681310a628@95.163.152.52:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AA%F0%9F%87%BA%F0%9F%91%A4Ozime_31%20%7C%20%E2%8C%9B12
