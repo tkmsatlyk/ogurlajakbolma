@@ -1,4 +1,5 @@
-vless://Panel-Gerekler-Link,Tg:@reaper_baba@reaplinepanel.pages.dev:3169?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%B2%20Kodynyz%20%C3%B6%C3%A7%C3%BCrildi%20%E2%9D%8C
+vless://cfea90d8-5a6b-4b68-8e43-f4985947b4ea@176.53.230.12:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AA%F0%9F%87%BA%F0%9F%91%A4%F0%9D%90%94%F0%9D%90%A5%F0%9D%90%9A%F0%9D%90%A7%F0%9D%90%B2%F0%9D%90%A3%F0%9D%90%B2%20%F0%9D%90%80%F0%9D%90%9D%F0%9D%90%B2%3A%20Jwjwjwjw?serverDescription=UmVhcExpbmU=
+vless://cfea90d8-5a6b-4b68-8e43-f4985947b4ea@176.53.230.12:880?encryption=mlkem768x25519plus.native.0rtt.6Hr-sa_vTzy6TgzZaMBHTb9tT8KoST0tm2GuBklPQHM&security=none&type=tcp&headerType=none#%F0%9F%87%AA%F0%9F%87%BA%F0%9D%90%8B%F0%9D%90%A2%F0%9D%90%A6%F0%9D%90%A2%F0%9D%90%AD%3A%2014.6%2F100GB?serverDescription=UmVhcExpbmU=
 ss://chacha20-ietf-poly1305:r0HYrmIq3cKwqwH9N8P2tGFmMU8PMiSb@193.233.246.230:1080#%F0%9F%87%BA%F0%9F%87%BFMaster%20%E2%80%93%20Game%20%F0%9F%8E%AE
 ss://chacha20-ietf-poly1305:r0HYrmIq3cKwqwH9N8P2tGFmMU8PMiSb@193.233.246.230:1080#%F0%9F%87%AB%F0%9F%87%AEExtrem%E2%80%93%20Game%20%F0%9F%8E%AE
 ss://chacha20-ietf-poly1305:r0HYrmIq3cKwqwH9N8P2tGFmMU8PMiSb@193.233.246.230:1080#%F0%9F%87%B7%F0%9F%87%BATCP%20%E2%80%93%20Game%20%F0%9F%8E%AE
