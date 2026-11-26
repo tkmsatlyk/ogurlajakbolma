@@ -1,6 +1,4 @@
 vless://Panel-Gerekler-Link,Tg:@reaper_baba@reaplinepanel.pages.dev:3169?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%87%AB%F0%9F%87%B2%20Kodynyz%20%C3%B6%C3%A7%C3%BCrildi%20%E2%9D%8C
-ss://chacha20-ietf-poly1305:r0HYrmIq3cKwqwH9N8P2tGFmMU8PMiSb@193.233.230.135:1080#%F0%9F%87%BA%F0%9F%87%BFGame%20%232
-ss://chacha20-ietf-poly1305:r0HYrmIq3cKwqwH9N8P2tGFmMU8PMiSb@193.233.230.135:1080#%F0%9F%87%B7%F0%9F%87%BAGame%20%231
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@2.56.175.194:140#%F0%9F%87%B7%F0%9F%87%BAMoskow%20%E2%94%80%2020-56ms%20%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@2.56.175.194:770#%F0%9F%87%BA%F0%9F%87%BFTashkent%20%E2%94%80%2040-72ms%20%F0%9F%8E%AE
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJalVUYm94a2pnd2FEcVVpbFBEUzBRR0hYdWt6dzFyMQ==@2.56.175.194:770#%F0%9F%87%AB%F0%9F%87%AESupercell%20%E2%94%80%20Game%20%F0%9F%8E%AE
