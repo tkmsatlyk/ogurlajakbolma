@@ -1,34 +1,16 @@
-vless://00000000-0000-0000-0000-000000000000@1.1.1.1:443?encryption=none&security=none&type=tcp#🇺🇸 United States • Google
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp1dk0ybDVXQ0x2VDJMTjZHU240Ni1n@177.3.204.156:302#🇬🇧 United Kingdom • Cloudflare
-vless://65a052a7-326c-4ae0-869b-0dac4ad6eae4@104.16.240.123:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.tazenew.ru&sni=g1.tazenew.ru&fp=chrome&alpn=h3#🇩🇪 Germany • WiFiWarden
-vless://65a052a7-326c-4ae0-869b-0dac4ad6eae4@104.16.240.99:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.tazenew.ru&sni=g1.tazenew.ru&fp=chrome&alpn=h3#🇫🇷 France • Claude
-vless://65a052a7-326c-4ae0-869b-0dac4ad6eae4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=chrome&alpn=h3#🇯🇵 Japan • Fastly
-vless://65a052a7-326c-4ae0-869b-0dac4ad6eae4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=chrome&alpn=h3#🇹🇷 Turkey • AWS
-vless://65a052a7-326c-4ae0-869b-0dac4ad6eae4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=firefox&alpn=h3#🇮🇹 Italy • Azure
-vless://65a052a7-326c-4ae0-869b-0dac4ad6eae4@151.101.3.6:443?security=tls&type=xhttp&headerType=&path=%2F&host=g1.global.ssl.fastly.net&sni=apps.apple.com&fp=chrome&alpn=h3#🇪🇸 Spain • Oracle
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@187.7.205.44:12242?sni=tinny1.echoesofaforgottenwinterstorm.fun#🇨🇦 Canada • DigitalOcean
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@187.7.205.44:666?sni=tinny2.echoesofaforgottenwinterstorm.fun#🇦🇺 Australia • Akamai
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@187.7.205.44:666?sni=tinny2.echoesofaforgottenwinterstorm.fun#🇳🇱 Netherlands • CloudFront
-hysteria2://1N7_6vJFRkNQOcOoXNxPTGsKfWTwpICM@187.7.205.44:12242?sni=tinny1.echoesofaforgottenwinterstorm.fun#🇨🇭 Switzerland • Proton
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpOc0owZ0pWVzVoVWVhYTlVdzcxV2dJeVhvOVZ1a0p4bQ@94.154.130.107:1080#🇸🇪 Sweden • Google Cloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo4eC1RRHU0T3g5Nmk0NXZvamw4SmQ1aEZfWWRhUXN3Ng@45.15.152.132:1080#🇳🇴 Norway • Microsoft
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiZ2dVejBYazl6Si1XcVdWQno1dkZQX1JEUGNON0I3ZA@45.15.152.132:1080#🇫🇮 Finland • Apple
-vless://00000000-0000-0001-0000-000000000000@81.163.22.114:443?type=tcp&security=tls&sni=oecxdhvdfbmwptoldi.fcloudservices.lat&fp=chrome&alpn=h2%2C+http%2F1.1&allowInsecure=1&encryption=none#🇰🇷 South Korea • Samsung Cloud
-vless://eb83b44c-ad8c-4658-9923-313e59bb4d5e@sw6.yndx-game.com:443?type=tcp&security=tls&sni=sw6.yndx-game.com&fp=firefox&alpn=h2%2C+http%2F1.1&flow=xtls-rprx-vision&allowInsecure=1&encryption=none#🇸🇬 Singapore • Tencent Cloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbzVuQlcxcjRDUFdOQlV2QkxvR1owM3VTSjBkYk5zSA@136.234.71.177:4500#🇦🇪 United Arab Emirates • Alibaba Cloud
-ss://YWVzLTI1Ni1nY206MTIzNDU2@8.216.6.19:5555#🇧🇷 Brazil • Meta
-vless://5de17b74-d5f0-4da8-9b89-9e05bdb2e583@94.183.152.206:443?type=tcp&security=reality&sni=nn1.poka-poka.xyz&fp=qq&flow=xtls-rprx-vision&pbk=_R7n8YpQYZ8RwTQ9RA2k9dWRS5UfxY-KwzHbDB_heFo&sid=f2f916eb0ae89aba&encryption=none#🇲🇽 Mexico • GitHub
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4dlpwNjNQR25QVGRfQ3A3LVB6djlZdmxwOXVaOEV5Zg@45.15.152.53:770#🇮🇳 India • Gemini
-vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+Hq/Cfh64gQFRVUktNRU5fU0VSVkVSICMxMCIsICJhZGQiOiAiNDUuMTUuMTUyLjUzIiwgInBvcnQiOiAiNjYwIiwgImlkIjogIjUzOTcxM2ZjLWNiOTUtNDM5ZS05NDIzLTRkODJjZjFiMzljZCIsICJhaWQiOiAiMCIsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJob3N0IjogIiIsICJwYXRoIjogIiIsICJ0bHMiOiAiIiwgInNuaSI6ICIifQ==#🇨🇳 China • Baidu
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4dlpwNjNQR25QVGRfQ3A3LVB6djlZdmxwOXVaOEV5Zg@193.233.248.77:1080#🇵🇹 Portugal • OVHcloud
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTozTDBaMU9VT0tnQjBnbnE5M2oxX2tCQzNDejNOb3VYdg@45.15.152.53:770#🇦🇹 Austria • Hetzner
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTozTDBaMU9VT0tnQjBnbnE5M2oxX2tCQzNDejNOb3VYdg@193.233.248.77:1080#🇧🇪 Belgium • Vercel
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpSMDJLbXp6U0Q3UGVaX0Rvc0Y4N3haN3pJbjhqTHR5UA@s23.fusetea.ir:2089#🇩🇰 Denmark • Netlify
-vless://00000000-0000-0001-0000-000000000000@81.163.22.114:443?type=tcp&security=tls&sni=oecxdhvdfbmwptoldi.fcloudservices.lat&fp=chrome&alpn=h2%2Chttp%2F1.1&allowInsecure=1&encryption=none#🇵🇱 Poland • Railway
-ss://YWVzLTI1Ni1nY206MTIzNDU2@8.216.6.19:5555#🇮🇪 Ireland • Fly.io
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo4eC1RRHU0T3g5Nmk0NXZvamw4SmQ1aEZfWWRhUXN3Ng@45.15.152.132:1080#🇬🇷 Greece • Discord
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiZ2dVejBYazl6Si1XcVdWQno1dkZQX1JEUGNON0I3ZA@45.15.152.132:1080#🇨🇿 Czechia • Telegram
-vless://00000000-0000-0001-0000-000000000000@81.163.22.114:443?type=tcp&security=tls&sni=oecxdhvdfbmwptoldi.fcloudservices.lat&fp=chrome&alpn=h2%2C+http%2F1.1&allowInsecure=1&encryption=none#🇭🇺 Hungary • Reddit
-vless://eb83b44c-ad8c-4658-9923-313e59bb4d5e@sw6.yndx-game.com:443?type=tcp&security=tls&sni=sw6.yndx-game.com&fp=firefox&alpn=h2%2C+http%2F1.1&flow=xtls-rprx-vision&allowInsecure=1&encryption=none#🇷🇴 Romania • Spotify
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTotbzVuQlcxcjRDUFdOQlV2QkxvR1owM3VTSjBkYk5zSA@136.234.71.177:4500#🇧🇬 Bulgaria • Netflix
-ss://YWVzLTI1Ni1nY206Y0NNSmdKVEEzQkE0ODlZVVlyRnE3WEhYU2lTcFdsTGE@91.206.92.158:18443#🇭🇷 Croatia • YouTube
+vless://88b32c05-5ad0-40d5-8290-b9a91ee8cdcb@45.15.153.57:10447?encryption=mlkem768x25519plus.native.0rtt.TT7iK2QTyuFXjvhFeeGTUb-tBJPiTtfksxo9joNsSXY&security=none&type=tcp&headerType=none#🇺🇸 United States • Google
+vless://88b32c05-5ad0-40d5-8290-b9a91ee8cdcb@45.15.153.57:10447?encryption=mlkem768x25519plus.native.0rtt.TT7iK2QTyuFXjvhFeeGTUb-tBJPiTtfksxo9joNsSXY&security=none&type=tcp&headerType=none#🇬🇧 United Kingdom • Cloudflare
+vless://88b32c05-5ad0-40d5-8290-b9a91ee8cdcb@45.15.153.57:10447?encryption=mlkem768x25519plus.native.0rtt.TT7iK2QTyuFXjvhFeeGTUb-tBJPiTtfksxo9joNsSXY&security=none&type=tcp&headerType=none#🇩🇪 Germany • WiFiWarden
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5V0dCSFN3anBPVGs0VEpyYmNCVmZ4UVkzcUx0TldMYQ==@45.15.153.57:1080#🇫🇷 France • Claude
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5V0dCSFN3anBPVGs0VEpyYmNCVmZ4UVkzcUx0TldMYQ==@45.15.153.57:1080#🇯🇵 Japan • Fastly
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5V0dCSFN3anBPVGs0VEpyYmNCVmZ4UVkzcUx0TldMYQ==@45.15.153.57:1080#🇹🇷 Turkey • AWS
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5V0dCSFN3anBPVGs0VEpyYmNCVmZ4UVkzcUx0TldMYQ==@45.15.153.57:1080#🇮🇹 Italy • Azure
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5V0dCSFN3anBPVGs0VEpyYmNCVmZ4UVkzcUx0TldMYQ==@193.233.249.158:1080#🇪🇸 Spain • Oracle
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5V0dCSFN3anBPVGs0VEpyYmNCVmZ4UVkzcUx0TldMYQ==@45.15.153.57:1080#🇨🇦 Canada • DigitalOcean
+vless://88b32c05-5ad0-40d5-8290-b9a91ee8cdcb@8.6.112.0:443?encryption=none&security=tls&type=ws&headerType=none&path=%2Fws&host=cdn.ysmacloud.online&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%223%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22length%22%3A%223%22%2C%22delay%22%3A%221%22%7D%7D%5D%7D&sni=cdn.ysmacloud.online&fp=chrome&alpn=http%2F1.1#🇦🇺 Australia • Akamai
+ss://YWVzLTI1Ni1nY206bGltaXQ=@1.1.1.1:443#🇳🇱 Netherlands • CloudFront
+vless://00000000-0000-0001-0000-000000000000@213.171.25.82:443?type=tcp&security=tls&sni=ocxjrdsfwziqcqmhkg.fcloudservices.site&fp=firefox&allowInsecure=1&encryption=none#🇨🇭 Switzerland • Proton
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpSMDJLbXp6U0Q3UGVaX0Rvc0Y4N3haN3pJbjhqTHR5UA@s23.fusetea.ir:2089#🇸🇪 Sweden • Google Cloud
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpOOEVtdkRxcHZTUE9DaTFlQmF5UGRHSmZmR2tQMGI5ZQ@109.111.255.171:1080#🇳🇴 Norway • Microsoft
+vless://00000000-0000-0001-0000-000000000000@81.163.22.114:443?type=tcp&security=tls&sni=oecxdhvdfbmwptoldi.fcloudservices.lat&fp=chrome&alpn=h2%2Chttp%2F1.1&allowInsecure=1&encryption=none#🇫🇮 Finland • Apple
+ss://YWVzLTI1Ni1nY206MTIzNDU2@8.216.9.142:5555#🇰🇷 South Korea • Samsung Cloud
